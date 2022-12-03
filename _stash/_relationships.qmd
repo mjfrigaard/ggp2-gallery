@@ -1,0 +1,1319 @@
+---
+title: "ggplot2 graph gallery"
+author: "Relationships"
+format:
+  revealjs:
+    height: 900
+    width: 1600
+    code-line-numbers: true
+    theme: [night, slides.scss]
+    background-transition: fade
+    transition: slide
+    transition-speed: fast
+    highlight-style: ayu-mirage
+    
+code-link: true
+execute:
+  echo: true
+  freeze: auto
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+library(xml2)
+library(reactable)
+library(ggalluvial)
+# options ----
+options(
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# ggplot2 theme ----
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+# funs ----
+ds538 <- readr::read_rds("data/ds538.rds")
+# movies_data ----
+movies_data <- readr::read_rds("data/movies_data.rds")
+```
+
+# Load packages
+
+<br>
+
+
+:::: columns
+::: {.column width="49%"}
+
+Data packages:
+
+<br>
+
+::: {style="font-size: 0.80em; color:"}
+```{r}
+#| eval: true
+#| echo: true
+#| label: packages-data
+library(tidyverse)
+# install.packages('fivethirtyeightdata', 
+# repos = 'https://fivethirtyeightdata.github.io/drat/', 
+# type = 'source')
+library(scales)
+library(kableExtra)
+library(palmerpenguins)
+library(fivethirtyeight)
+library(ggplot2movies)
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+
+Graph packages:
+
+<br>
+
+::: {style="font-size: 0.80em; color:"}
+```{r}
+#| eval: true
+#| echo: true
+#| label: packages-graphs
+# install.packages("devtools")
+# devtools::install_github("eclarke/ggbeeswarm")
+library(ggbeeswarm)
+# devtools::install_github("wilkelab/ggridges")
+library(ggridges)
+```
+:::
+:::
+::::
+
+
+# palmerpenguins
+
+<br>
+
+*You can learn more about the `penguins` data on the [package website](https://allisonhorst.github.io/palmerpenguins/)*
+
+<br>
+
+:::: columns
+::: {.column width="38%"}
+```{r}
+#| eval: false
+#| echo: true
+#| label: penguins
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="60%"}
+```{r}
+#| eval: true
+#| echo: false
+#| label: penguins-glimpse
+penguins <- palmerpenguins::penguins
+glimpse(penguins, 50)
+```
+:::
+::::
+
+# fivethirtyeight
+
+<br>
+
+*All datasets from the [`fivethirtyeight` package](https://fivethirtyeight-r.netlify.app/) are listed below with descriptions*
+
+<br>
+
+Access them using: 
+
+```{r}
+#| label: fivethirtyeight-namespace
+#| eval: false
+#| echo: true
+fivethirtyeight::
+```
+
+```{r}
+#| label: fivethirtyeight-kable
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+kableExtra::kable_material_dark(
+  kable_input = knitr::kable(
+    head(ds538)
+    ), font_size = 25
+  )
+```
+
+# ggplot2movies
+
+<br>
+
+*We're using `movies_data` (derived version of the [`ggplot2movies::movies`](https://github.com/hadley/ggplot2movies))*
+
+<br>
+
+::: columns
+::: {.column width="38%"}
+```{r movies_data}
+#| eval: false
+#| echo: true
+#| label: movies_data
+#| message: false
+#| warning: false
+glimpse(movies_data)
+```
+:::
+
+::: {.column width="2%"}
+
+:::
+
+::: {.column width="60%"}
+```{r glimpse-movies_data, echo=FALSE}
+#| eval: true
+#| echo: false
+#| label: movies_data-glimpse
+#| message: false
+#| warning: false
+glimpse(movies_data, 50)
+```
+:::
+:::
+
+# RELATIONSHIPS
+
+<br>
+
+::: {.fragment fragment-index=1}
+Trends,  
+:::
+
+::: {.fragment fragment-index=2}
+correlations,
+:::
+
+::: {.fragment fragment-index=3}
+and connections
+:::
+
+::: {.fragment fragment-index=4}
+::: {style="font-size: 1.00em; color: #ffac00;"}
+with `ggplot2`
+:::
+:::
+
+# SCATTER PLOT
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Scatter plots are used to display two continuous variables.
+
+. . .
+
+<br>
+
+If one of the continuous variables is assumed to affect the other (i.e., `outcome` vs. `predictor`), place the `outcome` on the `y` axis and the `predictor` on the `x` axis.
+
+
+## SCATTER PLOT
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+
+::: {style="font-size: 0.80em;"}
+The `penguins` data
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_scatter
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_scatter
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.75em;"}
+
+1. Create the labels
+
+2. Map `bill_length_mm` to the `x` axis
+
+3. Map `flipper_length_mm` to the `y` axis
+
+4. Add `geom_point()`  
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_scatter
+#| code-line-numbers: "1-11|1-3|6-7|8|10-11"
+#| eval: false
+#| echo: true 
+
+labs_scatter <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)")
+ggp2_scatter <- penguins |>
+  ggplot(
+    aes(x = bill_length_mm, 
+      y = flipper_length_mm)) +
+  geom_point()
+
+ggp2_scatter + 
+  labs_scatter
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+If multiple points occupy the same value position, use transparency (`alpha`) to improve visibility.
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_scatter
+#| eval: true
+#| echo: false
+
+# create graph layers 
+labs_scatter <- labs(title = "Bill Length vs. Flipper Length",
+                      x = "Bill Length (mm)", y = "Flipper length (mm)")
+
+ggp2_scatter <- penguins |> 
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point() 
+
+ggp2_scatter + 
+  labs_scatter
+```
+:::
+::::
+
+
+::::::
+
+# GROUPED SCATTER PLOT
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+To display the relationship between **two** continuous variables across a third categorical variable...
+
+. . .
+
+<br>
+
+...use color to distinguish between categorical levels across the two continuous variable. 
+
+## GROUPED SCATTER PLOT
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_grp_scatter
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_grp_scatter
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.75em;"}
+1. Create the labels
+
+2. Map `bill_length_mm` to the `x` axis 
+
+3. Map `flipper_length_mm` to the `y` axis  
+
+4. Map `species` to `color` inside the `geom_point()`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_grp_scatter
+#| code-line-numbers: "1-13|1-4|8-9|10|12-13"
+#| eval: false
+#| echo: true 
+
+labs_grp_scatter <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)", 
+  color = "Penguin species")
+
+ggp2_grp_scatter <- penguins |> 
+  ggplot(
+    aes(x = bill_length_mm, 
+        y = flipper_length_mm)) + 
+  geom_point(aes(color = species)) 
+
+ggp2_grp_scatter + 
+  labs_grp_scatter
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Adjust over-plotting with transparency (`alpha`)
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_grp_scatter
+#| eval: true
+#| echo: false
+
+labs_grp_scatter <- labs(title = "Bill Length vs. Flipper Length",
+                      x = "Bill Length (mm)", y = "Flipper length (mm)", 
+                      color = "Penguin species")
+
+ggp2_grp_scatter <- penguins |> 
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(aes(color = species)) 
+
+ggp2_grp_scatter + 
+  labs_grp_scatter
+```
+:::
+::::
+
+
+::::::
+
+
+
+# BUBBLE CHART
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Bubble graphs display relationships between three continuous variables. 
+
+. . .
+
+<br>
+
+The position on the `x` and `y` axis illustrates the relationship between the first two, and the `size` of the point (i.e., bubble) conveys the value of the third. 
+
+## BUBBLE CHART
+
+:::::: panel-tabset
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+The `penguins` data  
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_bubble
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_bubble
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+***
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+
+2. Map `bill_length_mm` to `x` axis
+:::
+
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.70em;"}
+
+3. Map `flipper_length_mm` to `y` axis 
+
+4. Map `body_mass_g` to `size`  
+
+5. Set `alpha` to `1/3`  
+
+6. Add `scale_size()`, set the `range` to `c(0.1, 10)` and `name` to `"Body Mass (g)"`
+:::
+
+::: {style="font-size: 0.80em;"}
+```{r}
+#| label: graph_code_bubble
+#| code-line-numbers: "1-15|1-4|7-8|9|10-11|13-14"
+#| eval: false
+#| echo: true 
+
+labs_bubble <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)", 
+  size = "Body Mass (g)")
+
+ggp2_bubble <- penguins |> 
+  ggplot(
+    aes(x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(aes(size = body_mass_g), alpha = 1/3) + 
+  scale_size(range = c(.1, 10), 
+             name = "Body Mass (g)")
+
+ggp2_bubble + 
+  labs_bubble
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Once again, transparency (`alpha`) can be used to handle over-plotting
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_bubble
+#| eval: true
+#| echo: false
+
+labs_bubble <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)", 
+  size = "Body Mass (g)")
+
+ggp2_bubble <- penguins |> 
+  ggplot(aes(x = bill_length_mm, 
+             y = flipper_length_mm)) + 
+  geom_point(aes(size = body_mass_g), 
+             alpha = 1/3) + 
+  scale_size(range = c(.1, 10), 
+             name = "Body Mass (g)")
+
+ggp2_bubble + 
+  labs_bubble
+```
+:::
+::::
+
+
+::::::
+
+# GROUPED BUBBLE CHART
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+In addition to size, the grouped bubble graph uses color to display differences across categorical levels.
+
+## GROUPED BUBBLE CHART
+
+:::::: panel-tabset
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+The `penguins` data 
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_grp_bubble
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_grp_bubble
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+***
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.65em;"}
+1. Create the labels
+
+2. Map `bill_length_mm` to the `x` axis and  `flipper_length_mm` to the `y` axis  
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.65em;"}
+
+3. Inside `geom_point()`  
+    - map `body_mass_g` to `size` and `species` to `fill`  
+    - set the `alpha` to `2/3`, shape to `21`, and `color` to `"black"`  
+4. In the `scale_size()`  
+    - set `range` to `c(.04, 8)` and `name` to `"Body Mass (g)"` 
+  
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_grp_bubble
+#| code-line-numbers: "1-15|1-4|7-8|9-10|11|12|14-15"
+#| eval: false
+#| echo: true 
+
+labs_grp_bubble <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)", 
+  size = "Body Mass (g)")
+
+ggp2_grp_bubble <- penguins |> 
+  ggplot(aes(
+    x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(
+    aes(size = body_mass_g, fill = species), 
+        alpha = 2/3, shape = 21, color = "black") + 
+  scale_size(range = c(.04, 8), name = "Body Mass (g)") 
+
+ggp2_grp_bubble + 
+  labs_grp_bubble
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_grp_bubble
+#| eval: true
+#| echo: false
+
+labs_grp_bubble <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)", 
+  size = "Body Mass (g)")
+
+ggp2_grp_bubble <- penguins |> 
+  ggplot(aes(
+    x = bill_length_mm, 
+    y = flipper_length_mm)) + 
+  geom_point(
+    aes(size = body_mass_g, 
+        fill = species), 
+          alpha = 2/3,
+          shape = 21, 
+          color = "black") + 
+  scale_size(range = c(.04, 8), 
+             name = "Body Mass (g)") 
+
+ggp2_grp_bubble + 
+  labs_grp_bubble
+```
+:::
+::::
+
+
+::::::
+
+
+
+# ALLUVIAL GRAPHS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+An alluvial graph displays the changes in composition or flow over time or across multiple categories. 
+
+. . .
+
+<br>
+
+We can build bump charts in `ggplot2` with the [`ggalluvial` package:](https://corybrunson.github.io/ggalluvial/)  
+
+```{r inst-ggalluvial}
+#| eval: false
+devtools::install_github("corybrunson/ggalluvial")
+library(ggalluvial)
+```
+
+
+## ALLUVIAL GRAPH (WIDE FORM)
+
+:::::: panel-tabset
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+
+Below we create a wide example of the `penguins` data (as `peng_wide`)
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_alluvial
+#| eval: false
+peng_wide <- penguins |> 
+  drop_na() |> 
+  count(year, island, sex, species) |> 
+  mutate(year = factor(year)) |> 
+  rename(freq = n)
+glimpse(peng_wide)
+```
+
+```{r}
+#| label: data_run_alluvial
+#| eval: true
+#| echo: false 
+peng_wide <- penguins |> 
+  drop_na() |> 
+  count(year, island, sex, species) |> 
+  mutate(year = factor(year)) |> 
+  rename(freq = n)
+glimpse(peng_wide, 50)
+```
+:::
+
+***
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.65em;"}
+1. Create the labels (with `ggtitle()`, `ylab()`, and `labs()`)
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.65em;"}
+
+3. Add `scale_x_discrete()` with the `limits` set to `"Year"`, `"Island"` and `"Species"`, and `expand` to `0.1` and `0.07`
+
+4. Add `geom_alluvium()` with `fill` set to the `sex` variable and `geom_stratum()`
+
+5. Add `geom_text()`, with `stat` set to `stratum` and label set to `after_stat(stratum)` (*inside* `aes()`) 
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: graph_code_alluvial
+#| code-line-numbers: "1-15|1-4|7-8|9-11|12|13|14-15|17-20"
+#| eval: false
+#| echo: true 
+labs_alluvial <- ggtitle(label = "Palmer Penguins", 
+    subtitle = "Stratified by year, island and species")
+labs_alluvial_y <- ylab("Frequency") 
+labs_alluvial_fill <- labs(fill = "Sex")
+
+ggp2_alluvial_w <- ggplot(data = peng_wide,
+  aes(axis1 = year, axis2 = island,
+      axis3 = species, y = freq)) +
+  scale_x_discrete(
+    limits = c("Year", "Island", "Species"),
+    expand = c(0.1, 0.07)) +
+  geom_alluvium(aes(fill = sex)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", 
+    aes(label = after_stat(stratum)))
+
+ggp2_alluvial_w + 
+  labs_alluvial + 
+  labs_alluvial_y + 
+  labs_alluvial_fill
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+The `ggalluvial` functions can handle wide or long data. 
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_alluvial
+#| eval: true
+#| echo: false
+
+# convert to wide
+peng_wide <- penguins |> 
+  drop_na() |> 
+  count(year, island, sex, species) |> 
+  mutate(year = factor(year)) |> 
+  rename(freq = n)
+
+# labels
+labs_alluvial <- ggtitle(label = "Palmer Penguins", 
+    subtitle = "Stratified by year, island and species")
+labs_alluvial_y <- ylab("Frequency") 
+labs_alluvial_fill <- labs(fill = "Sex")
+
+# plot with wide data
+ggp2_alluvial_w <- ggplot(data = peng_wide,
+  aes(axis1 = year,
+      axis2 = island,
+      axis3 = species,
+      y = freq)) +
+  scale_x_discrete(
+    limits = c("Year", "Island", "Species"),
+    expand = c(0.1, .07)) +
+  geom_alluvium(aes(fill = sex)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", 
+    aes(label = after_stat(stratum)))
+
+ggp2_alluvial_w + 
+  labs_alluvial + 
+  labs_alluvial_y + 
+  labs_alluvial_fill
+```
+:::
+::::
+
+
+::::::
+
+## ALLUVIAL GRAPH (LODES FORM)
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+Below we create `peng_lodes` from the `penguins` dataset using the   `to_lodes_form()` from the `ggalluvial` package.
+:::
+
+::: {style="font-size: 0.70em;"}
+```{r}
+#| label: data_show_alluvial_lf
+#| eval: false
+peng_lodes <- penguins |> 
+  select(Year = year, Island = island, 
+         Species = species, Sex = sex) |> 
+  drop_na() |> 
+  count(Year, Island, Species, Sex) |> 
+  mutate(Year = factor(Year)) |> 
+  rename(Freqency = n) |> 
+  ggalluvial::to_lodes_form(key = "Measure", axes = 1:3) 
+glimpse(peng_lodes)
+```
+
+```{r}
+#| label: data_run_alluvial_lf
+#| eval: true
+#| echo: false 
+peng_lodes <- penguins |> 
+  select(Year = year, Island = island, 
+         Species = species, Sex = sex) |> 
+  drop_na() |> 
+  count(Year, Island, Species, Sex) |> 
+  mutate(Year = factor(Year)) |> 
+  rename(Freqency = n) |> 
+  ggalluvial::to_lodes_form(key = "Measure", axes = 1:3) 
+glimpse(peng_lodes, 50)
+```
+:::
+
+***
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.70em;"}
+
+2. Map `Measure` to `x`, `Frequency` to `y`, `stratum` to `stratum`, `alluvium` to `alluvium`, and `label` to `stratum`.
+
+3. Add the `geom_alluvium()` and map `Sex` to `fill`  
+
+4. Add the `geom_stratum()` and set the `width` to `0.45`  
+
+5. Add `geom_text()` and set `stat` to `"stratum"`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: graph_code_alluvial_lf
+#| code-line-numbers: "1-15|1-2|5-9|10|11|12|14-15"
+#| eval: false
+#| echo: true 
+labs_alluvial <- ggtitle(label = "Palmer Penguins", 
+    subtitle = "Stratified by year, island and species")
+
+ggp2_alluvial_lf <- ggplot(data = peng_lodes,
+  aes(x = Measure,
+      y = Freqency,
+      stratum = stratum,
+      alluvium = alluvium,
+      label = stratum)) +
+  ggalluvial::geom_alluvium(aes(fill = Sex)) +
+  ggalluvial::geom_stratum(width = 0.45) +
+  geom_text(stat = "stratum")
+
+ggp2_alluvial_lf + 
+  labs_alluvial
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Convert data to lodes form using `to_lodes_form()` from the `ggalluvial` package.
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_alluvial_lf
+#| eval: true
+#| echo: false
+peng_lodes <- penguins |> 
+  select(Year = year, Island = island, 
+         Species = species, Sex = sex) |> 
+  tidyr::drop_na() |> 
+  dplyr::count(Year, Island, Species, Sex) |> 
+  dplyr::mutate(Year = factor(Year)) |> 
+  dplyr::rename(Freqency = n) |> 
+  ggalluvial::to_lodes_form(key = "Measure", axes = 1:3)  
+  
+labs_alluvial <- ggtitle(label = "Palmer Penguins", 
+    subtitle = "Stratified by year, island and species")
+
+ggp2_alluvial_lf <- ggplot(data = peng_lodes,
+  aes(x = Measure,
+      y = Freqency,
+      stratum = stratum,
+      alluvium = alluvium,
+      label = stratum)) +
+  ggalluvial::geom_alluvium(aes(fill = Sex)) +
+  ggalluvial::geom_stratum() +
+  geom_stratum(width = 0.45) +
+  geom_text(stat = "stratum")
+
+ggp2_alluvial_lf + 
+  labs_alluvial
+```
+:::
+::::
+
+
+::::::
+
+
+# BUMP CHART
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+
+Bump charts show how numerical (ranked) values change over time for different categories (or groups). Differences are represented with connecting lines (along the `y` axis) that cover the full timescale (along the `x` axis).
+
+. . .
+
+<br>
+
+We can build bump charts in `ggplot2` with the [`ggbump` package:](https://github.com/davidsjoberg/ggbump)  
+
+```{r inst-ggbump}
+#| eval: false
+devtools::install_github("davidsjoberg/ggbump")
+library(ggbump)
+```
+
+
+## BUMP CHART
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+:::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+We'll use the `fivethirtyeight::tv_hurricanes` data, but slightly restructured and filtered. 
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_bump
+#| eval: false
+fivethirtyeight::tv_hurricanes |> 
+  filter(date > as_date("2017-09-15")) |> 
+  pivot_longer(cols = -date, 
+    names_to = 'hurricane', 
+    values_to = 'value') |> 
+  group_by(date) |>
+  mutate(rank = rank(value, 
+    ties.method = "random")) |> 
+  ungroup() -> tidy_hurricanes
+glimpse(tidy_hurricanes)
+```
+
+```{r}
+#| label: data_run_bump
+#| eval: true
+#| echo: false 
+fivethirtyeight::tv_hurricanes |> 
+  filter(date > as_date("2017-09-15")) |> 
+  pivot_longer(cols = -date, 
+    names_to = 'hurricane', 
+    values_to = 'value') |> 
+  group_by(date) |>
+  mutate(rank = rank(value, 
+    ties.method = "random")) |> 
+  ungroup() -> tidy_hurricanes
+glimpse(tidy_hurricanes, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map date to the `x`, `rank` to the `y`, and `hurricane` to `color`
+
+3. Add `ggbump::geom_bump()` and set `size` to `2`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_bump
+#| eval: false
+#| echo: true
+#| code-line-numbers: "1-10|1-4|6|7|8|9|11-12"
+labs_bump <- labs(title = "TV News Hurricane Mentions",   
+  subtitle = "Between Sep 15-25th, 2017", 
+  x = "Date", y = "Rank", 
+  color = "Hurricanes")
+ggp2_bump <- ggplot(tidy_hurricanes, 
+    aes(x = date, 
+      y = rank, 
+      color = hurricane)) +
+    ggbump::geom_bump(size = 2)
+
+ggp2_bump + 
+  labs_bump
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+More description of graph...
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_bump
+#| eval: true
+#| echo: false
+# Create labels 
+labs_bump <- labs(title = "TV News Hurricane Mentions",   
+  subtitle = "Between Sep 15-25th, 2017", 
+  x = "Date", y = "Rank", 
+  color = "Hurricanes")
+# create plot 
+ggp2_bump <- ggplot(tidy_hurricanes, 
+    aes(date, rank, color = hurricane)) +
+    ggbump::geom_bump(size = 2)
+
+ggp2_bump + 
+  labs_bump
+```
+:::
+::::
+
+::::::
+
+# Recap
+
+We've covered [`ggplot2` graphs that display]{.fragment} [relationships]{.fragment .highlight-red}

@@ -1,0 +1,1486 @@
+---
+title: "ggplot2 graph gallery"
+author: "Proportions"
+format:
+  revealjs:
+    height: 900
+    width: 1600
+    code-line-numbers: true
+    theme: [night, slides.scss]
+    background-transition: fade
+    transition: slide
+    transition-speed: fast
+    highlight-style: ayu-mirage
+    
+code-link: true
+execute:
+  echo: true
+  freeze: auto
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+library(xml2)
+library(reactable)
+# options ----
+options(
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# ggplot2 theme ----
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+# funs ----
+ds538 <- readr::read_rds("data/ds538.rds")
+# movies_data ----
+movies_data <- readr::read_rds("data/movies_data.rds")
+```
+
+# Load packages
+
+<br>
+
+
+:::: columns
+::: {.column width="49%"}
+Data packages:
+
+<br>
+
+::: {style="font-size: 0.75em; color:"}
+```{r}
+#| eval: true
+#| echo: true
+#| label: packages-data
+library(tidyverse)
+# install.packages('fivethirtyeightdata', 
+# repos = 'https://fivethirtyeightdata.github.io/drat/', 
+# type = 'source')
+library(scales)
+library(kableExtra)
+library(palmerpenguins)
+library(fivethirtyeight)
+library(ggplot2movies)
+```
+:::
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+Graph packages:
+
+<br>
+
+::: {style="font-size: 0.75em; color:"}
+```{r}
+#| eval: true
+#| echo: true
+#| label: packages-graphs
+# install.packages("devtools")
+# devtools::install_github("kassambara/ggpubr")
+library(ggpubr)
+# devtools::install_github("liamgilbey/ggwaffle")
+library(ggwaffle)
+# devtools::install_github("haleyjeppson/ggmosaic")
+library(ggmosaic)
+# devtools::install_github("wilkox/treemapify")
+library(treemapify)
+```
+:::
+:::
+::::
+
+
+# palmerpenguins
+
+<br>
+
+*You can learn more about the `penguins` data on the [package website](https://allisonhorst.github.io/palmerpenguins/)*
+
+<br>
+
+:::: columns
+::: {.column width="38%"}
+```{r}
+#| eval: false
+#| echo: true
+#| label: penguins
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="60%"}
+```{r}
+#| eval: true
+#| echo: false
+#| label: penguins-glimpse
+penguins <- palmerpenguins::penguins
+glimpse(penguins, 50)
+```
+:::
+::::
+
+# fivethirtyeight
+
+<br>
+
+*All datasets from the [`fivethirtyeight` package](https://fivethirtyeight-r.netlify.app/) are listed below with descriptions*
+
+<br>
+
+Access them using: 
+
+```{r}
+#| label: fivethirtyeight-namespace
+#| eval: false
+#| echo: true
+fivethirtyeight::
+```
+
+. . .
+
+```{r}
+#| label: fivethirtyeight-kable
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+kableExtra::kable_material_dark(
+  kable_input = knitr::kable(
+    head(ds538)
+    ), font_size = 25
+  )
+```
+
+# ggplot2movies
+
+<br>
+
+*We're using `movies_data` (derived version of the [`ggplot2movies::movies`](https://github.com/hadley/ggplot2movies))*
+
+<br>
+
+::: columns
+::: {.column width="38%"}
+```{r movies_data}
+#| eval: false
+#| echo: true
+#| label: movies_data
+#| message: false
+#| warning: false
+glimpse(movies_data)
+```
+:::
+
+::: {.column width="2%"}
+
+:::
+
+::: {.column width="60%"}
+```{r glimpse-movies_data, echo=FALSE}
+#| eval: true
+#| echo: false
+#| label: movies_data-glimpse
+#| message: false
+#| warning: false
+glimpse(movies_data, 50)
+```
+:::
+:::
+
+
+# COMPARING PROPORTIONS 
+
+<br>
+
+::: {.fragment fragment-index=1}
+Comparing Proportions 
+:::
+
+::: {.fragment fragment-index=2}
+& Part-to-Whole Relationships
+:::
+
+::: {.fragment fragment-index=3}
+::: {style="font-size: 1.00em; color: #ffac00;"}
+with `ggplot2`
+:::
+:::
+
+# PIE-CHARTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+"*In general, pie charts work well when the goal is to emphasize simple fractions, such as one-half, one-third, or one-quarter.*"
+:::
+
+::: {.column width="50%"}
+"*They also work well when we have very small datasets.*" - Claus O. Wilke, [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) (2019)
+:::
+:::
+
+. . .
+
+<br>
+
+Pie-charts are ideal for comparing the proportions of categorical variable values, and we can build pie-charts using the [`ggpubr` package.](https://rpkgs.datanovia.com/ggpubr/)
+
+## PIE-CHARTS
+
+:::::: panel-tabset
+
+### Data
+
+:::: columns
+::: {.column width="35%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.75em;"}
+Summarise percent `mpaa` in `movies_data`
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="60%"}
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ggpie
+#| eval: false
+movie_pie <- movies_data |> 
+  dplyr::group_by(mpaa) |> 
+  summarise(cnt = n()) |> 
+  mutate(
+    perc = round(cnt / sum(cnt), 3),
+    mpaa = factor(mpaa, 
+          levels = c("PG", "PG-13", "R")))
+glimpse(movie_pie)
+```
+
+```{r}
+#| label: data_run_ggpie
+#| eval: true
+#| echo: false 
+movie_pie <- movies_data |> 
+  dplyr::group_by(mpaa) |> 
+  summarise(cnt = n()) |> 
+  mutate(
+    perc = round(cnt / sum(cnt), 3),
+    mpaa = factor(mpaa, 
+          levels = c("PG", "PG-13", "R")))
+glimpse(movie_pie, 50)
+```
+:::
+:::
+::::
+
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_ggpie
+#| code-line-numbers: "1-14|1-5|8|9|10|11|13-14"
+#| eval: false
+#| echo: true 
+labs <- paste0(movie_pie$mpaa, " (", 
+               (100*movie_pie$perc), "%)")
+labs_pie <- labs(
+  title = "Percent MPAA ratings for IMDB movies",
+  x = "Percent MPAA rating")
+
+ggp2_pie <- ggpubr::ggpie(movie_pie, 
+          x = "perc", label = labs, 
+          lab.pos = "in", lab.font = "white",
+          fill = "mpaa", color = "white") + 
+    theme(legend.position = "none")  
+    
+ggp2_pie + 
+  labs_pie
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.75em;"}
+
+1. Create the labels
+
+2. Assign `"perc"` to `x`
+
+3. Assign `labs` to `label` 
+
+4. Assign `"in"` to `lab.pos`
+
+5. Assign `"white"` to `lab.font` and `color`
+
+6. Assign `"mpaa"` to `fill`
+
+7. Remove legend with `theme(legend.position = "none")` 
+:::
+:::
+
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.75em;"}
+*Note the variables in `ggpubr::ggpie()` are assigned in quotes!*
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: graph_create_ggpie
+#| eval: true
+#| echo: false
+labs <- paste0(movie_pie$mpaa, " (", 
+               (100*movie_pie$perc), "%)")
+labs_pie <- labs(
+  title = "Percent MPAA ratings for IMDB movies",
+  x = "Percent MPAA rating")
+
+ggp2_pie <- ggpubr::ggpie(movie_pie, 
+          x = "perc", label = labs, 
+          lab.pos = "in", lab.font = "white",
+          fill = "mpaa", color = "white") + 
+    theme(legend.position = "none")  
+    
+ggp2_pie + 
+  labs_pie
+```
+:::
+::::
+::::::
+
+
+
+# DIVERGING BAR GRAPHS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+If you have two proportions that contain positive and negative values, consider using diverging bars with `geom_bar()`
+
+## DIVERGING BAR GRAPHS
+
+:::::: panel-tabset
+
+### Data
+
+:::: columns
+::: {.column width="35%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.75em;"}
+Create `trump_approval_diverg` from the `trump_approval_trend` dataset in the `fivethirtyeight` package.
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="60%"}
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_show_diverging_bar
+#| eval: false
+fivethirtyeight::trump_approval_trend |> 
+  filter(subgroup == "All polls") |> 
+  mutate(
+    month = lubridate::month(modeldate,
+                label = TRUE, abbr = TRUE),
+    approve = approve_estimate*0.01,
+    disapprove = disapprove_estimate*0.01,
+    disapprove = disapprove * -1) |> 
+  pivot_longer(cols = c(approve, disapprove), 
+    names_to = "poll", values_to = "values") |> 
+  group_by(month, poll) |> 
+    summarise(
+      month_avg = mean(values, na.rm = TRUE)
+    ) |> 
+  ungroup() -> trump_approval_diverg
+glimpse(trump_approval_diverg)
+```
+
+```{r}
+#| label: data_run_diverging_bar
+#| eval: true
+#| echo: false 
+fivethirtyeight::trump_approval_trend |> 
+  filter(subgroup == "All polls") |> 
+  mutate(
+    month = lubridate::month(modeldate,
+                label = TRUE, abbr = TRUE),
+    approve = approve_estimate*0.01,
+    disapprove = disapprove_estimate*0.01,
+    disapprove = disapprove * -1) |> 
+  pivot_longer(cols = c(approve, disapprove), 
+    names_to = "poll", values_to = "values") |> 
+  group_by(month, poll) |> 
+    summarise(
+      month_avg = mean(values, na.rm = TRUE)
+    ) |> 
+  ungroup() -> trump_approval_diverg
+glimpse(trump_approval_diverg, 50)
+```
+:::
+:::
+::::
+
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_diverging_bar
+#| code-line-numbers: "1-16|1-6|9|10-11|12-13|15-16"
+#| eval: false
+#| echo: true 
+labs_geom_bar_diverg <- labs(
+  title = "Trump Approval Ratings",
+  subtitle = "From 'How Popular is Donald Trump'",
+  x = "Month",
+  y = "Monthly average percent",
+  fill = "Estimate")
+ggp2_bars_diverg <- ggplot(
+  data = trump_approval_diverg, 
+    aes(x = month, y = month_avg)) +
+  geom_bar(aes(fill = poll),
+    stat = "identity", width = .5) + 
+  scale_y_continuous(limits = c(-1, 1), 
+    labels = scales::percent)
+
+ggp2_bars_diverg + 
+  labs_geom_bar_diverg
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map the `month` to the `x` and `month_avg` to the `y`  
+
+3. *Inside* `geom_bar()`    
+   - map `poll` to `fill`  
+   - use `stat = "identity"` and `width = .5`  
+  
+4. Add `scale_y_continuous()` to manually set the limits and format the axis with `scales::percent`  
+:::
+:::
+
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.75em;"}
+
+Diverging bars display the bars above and below zero (or some reference value)
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: graph_create_diverging_bar
+#| eval: true
+#| echo: false
+labs_geom_bar_diverg <- labs(
+  title = "Trump Approval Ratings",
+  subtitle = "From 'How Popular is Donald Trump'",
+  x = "Month",
+  y = "Monthly average percent",
+  fill = "Estimate")
+ggp2_bars_diverg <- ggplot(
+  data = trump_approval_diverg, 
+    aes(x = month, y = month_avg)) +
+  geom_bar(aes(fill = poll),
+    stat = "identity", width = .5) + 
+  scale_y_continuous(limits = c(-1, 1), 
+    labels = scales::percent)
+
+ggp2_bars_diverg + 
+  labs_geom_bar_diverg
+```
+:::
+::::
+::::::
+
+# DIVERGING BAR GRAPHS (VERTICAL)
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Diverging bar-charts can be arranged vertically, too. 
+
+. . . 
+
+<br>
+
+For vertically arranged bars, we switch the `x` and `y` axis variables.
+
+## DIVERGING BAR GRAPHS (VERTICAL)
+
+:::::: panel-tabset
+
+### Data
+
+:::: columns
+::: {.column width="35%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.75em;"}
+Create `trump_approval_diverg` from the `trump_approval_trend` dataset in the `fivethirtyeight` package.
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="60%"}
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_show_diverging_bar_vert
+#| eval: false
+fivethirtyeight::trump_approval_trend |> 
+  filter(subgroup == "All polls") |> 
+  mutate(
+    month = lubridate::month(modeldate,
+                label = TRUE, abbr = TRUE),
+    approve = approve_estimate*0.01,
+    disapprove = disapprove_estimate*0.01,
+    disapprove = disapprove * -1) |> 
+  pivot_longer(cols = c(approve, disapprove), 
+    names_to = "poll", values_to = "values") |> 
+  group_by(month, poll) |> 
+    summarise(
+      month_avg = mean(values, na.rm = TRUE)
+    ) |> 
+  ungroup() -> trump_approval_diverg
+glimpse(trump_approval_diverg)
+```
+
+```{r}
+#| label: data_run_diverging_bar_vert
+#| eval: true
+#| echo: false 
+fivethirtyeight::trump_approval_trend |> 
+  filter(subgroup == "All polls") |> 
+  mutate(
+    month = lubridate::month(modeldate,
+                label = TRUE, abbr = TRUE),
+    approve = approve_estimate*0.01,
+    disapprove = disapprove_estimate*0.01,
+    disapprove = disapprove * -1) |> 
+  pivot_longer(cols = c(approve, disapprove), 
+    names_to = "poll", values_to = "values") |> 
+  group_by(month, poll) |> 
+    summarise(
+      month_avg = mean(values, na.rm = TRUE)
+    ) |> 
+  ungroup() -> trump_approval_diverg
+glimpse(trump_approval_diverg, 50)
+```
+:::
+:::
+::::
+
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_diverging_bar_vert
+#| code-line-numbers: "1-16|1-6|9|10-12|13-14|15-16"
+#| eval: false
+#| echo: true 
+labs_geom_bar_diverg_vert <- labs(
+  title = "Trump Approval Ratings",
+  subtitle = "From 'How Popular is Donald Trump'",
+  x = "Monthly average percent",
+  y = "Month",
+  fill = "Estimate")
+ggp2_bar_diverg_vert <- ggplot(
+  data = trump_approval_diverg,
+      aes(x = month_avg, y =  month)) +
+  geom_bar(
+      aes(fill = poll), 
+        stat = "identity", width = .5) + 
+  scale_x_continuous(limits = c(-1, 1), 
+        labels = scales::percent)
+ggp2_bar_diverg_vert + 
+  labs_geom_bar_diverg_vert
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.75em;"}
+1. Create the labels
+
+2. Map the `month_avg` to the `x` and `month` to the `y` 
+
+3. *Inside* `geom_bar()`    
+   - map `poll` to `fill`  
+   - use `stat = "identity"` and `width = .5`  
+  
+4. Add `scale_y_continuous()` to manually set the limits and format the axis with `scales::percent` 
+:::
+:::
+
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.75em;"}
+
+Diverging bar-graphs can also be arranged vertically across a reference value
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: graph_create_diverging_bar_vert
+#| eval: true
+#| echo: false
+labs_geom_bar_diverg_vert <- labs(
+  title = "Trump Approval Ratings",
+  subtitle = "From 'How Popular is Donald Trump'",
+  x = "Monthly average percent",
+  y = "Month",
+  fill = "Estimate")
+ggp2_bar_diverg_vert <- ggplot(
+  data = trump_approval_diverg,
+      aes(x = month_avg, y =  month)) +
+  geom_bar(
+      aes(fill = poll), 
+        stat = "identity", width = .5) + 
+  scale_x_continuous(limits = c(-1, 1), 
+        labels = scales::percent)
+ggp2_bar_diverg_vert + 
+  labs_geom_bar_diverg_vert
+```
+:::
+::::
+::::::
+
+
+
+# STACKED (OR FILLED) DENSITY GRAPHS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Density graphs are typically used to visualize the distribution of a single variable,
+
+. . .
+
+<br>
+
+but stacked density graphs are great for visualizing how proportions vary across numeric (continuous) variables.
+
+## STACKED (OR FILLED) DENSITY GRAPHS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+Remove missing `sex` from the `penguins` data
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_fill_density
+#| eval: false
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density)
+```
+
+```{r}
+#| label: data_run_fill_density
+#| eval: true
+#| echo: false 
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map the `flipper_length_mm` to the `x` and add  `after_stat(count)` 
+
+3. Map `sex` to `fill`  
+
+3. *Inside* the `geom_density()` function, set `position` to `"fill"`
+
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_fill_density
+#| code-line-numbers: "1-10|1-4|6|7|8|9|10-11"
+#| eval: false
+#| echo: true 
+labs_fill_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Penguin sex (female, male)")
+ggp2_fill_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+          fill = sex)) +
+      geom_density(position = "fill") 
+ggp2_fill_density + 
+  labs_fill_density
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+[*You can use `position = "fill"` to produce a conditional density estimate*](https://ggplot2.tidyverse.org/reference/geom_density.html#ref-examples)
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_fill_density
+#| eval: true
+#| echo: false
+peng_density <- filter(penguins, !is.na(sex))
+labs_fill_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Penguin sex (female, male)")
+ggp2_fill_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+          fill = sex)) +
+      geom_density(position = "fill") 
+ggp2_fill_density + 
+  labs_fill_density
+```
+:::
+::::
+
+
+::::::
+
+# MOSAIC PLOT
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width
+
+. . .
+
+<br>
+
+We can build mosaic plots using the [`ggmosaic` package.](https://haleyjeppson.github.io/ggmosaic/)
+
+
+## MOSAIC PLOT
+
+:::::: panel-tabset
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+The `fivethirtyeight::flying` data, after removing the missing values from `baby` and `unruly_child`. 
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_mosaic
+#| eval: false
+
+flying <- fivethirtyeight::flying
+fly_mosaic <- filter(flying, 
+              !is.na(baby) & !is.na(unruly_child)) |> 
+              select(baby, unruly_child)
+glimpse(fly_mosaic)
+```
+
+```{r}
+#| label: data_run_mosaic
+#| eval: true
+#| echo: false 
+
+flying <- fivethirtyeight::flying
+fly_mosaic <- filter(flying, 
+              !is.na(baby) & !is.na(unruly_child)) |> 
+              select(baby, unruly_child)
+                
+glimpse(fly_mosaic, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+
+2. Map the `product()` of `unruly_child` and `baby` to the `x` axis
+
+3. Map `unruly_child` to `fill`
+
+4. Move the `legend` to the top of the graph with `theme(legend.position = "top")`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: mosaic
+#| code-line-numbers: "1-13|1-6|9|10|11|12-13"
+#| eval: false
+#| echo: true 
+
+labs_mosaic <- labs(
+  title = "In general...", 
+  subtitle = "...is it rude to...",
+  x = "... bring a baby on a plane?",
+  y = "..,knowingly bring unruly children on a plane?",
+  fill = "Responses") 
+ggp2_mosaic <- ggplot(data = fly_mosaic) +
+  ggmosaic::geom_mosaic(
+    aes(x = product(unruly_child, baby), 
+                  fill = unruly_child)) + 
+  theme(legend.position = "top")
+ggp2_mosaic + 
+  labs_mosaic
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+It's a good idea to adjust the `fig-height` and `fig-width` of your graph:
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_mosaic
+#| eval: true
+#| echo: false
+#| fig-height: 7.5
+#| fig-width: 9.25
+#| fig-dpi: 400
+
+flying <- fivethirtyeight::flying
+fly_mosaic <- filter(flying, !is.na(baby) &
+                 !is.na(unruly_child))
+
+labs_mosaic <- labs(
+  title = "In general...", 
+  subtitle = "...is it rude to...",
+  x = "... bring a baby on a plane?",
+  y = "..,knowingly bring unruly children on a plane?",
+  fill = "Responses") 
+ggp2_mosaic <- ggplot(data = fly_mosaic) +
+  ggmosaic::geom_mosaic(
+    aes(x = product(unruly_child, baby), 
+                  fill = unruly_child)) + 
+  theme(legend.position = "top")
+ggp2_mosaic + 
+  labs_mosaic
+```
+:::
+::::
+
+
+::::::
+
+
+# TREEMAPS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Treemaps display how numerical hierarchical values make up a whole in a rectangular layout.
+
+. . .
+
+<br>
+
+We'll build a treemap using the [`treemapify` package.](http://wilkox.org/treemapify/) 
+
+## TREEMAPS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+Filter the missing values from `sex`, group the data by `species`, `island`, and `sex`, then count the `species` and `island` (then `ungroup()`).
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_treemaps
+#| eval: false
+treemap_peng <- penguins |> 
+                  filter(!is.na(sex)) |> 
+                  group_by(species, island, sex) |>
+  count(species, island) |> 
+  ungroup()
+glimpse(treemap_peng)
+```
+
+```{r}
+#| label: data_run_treemaps
+#| eval: true
+#| echo: false 
+treemap_peng <- penguins |> 
+                  filter(!is.na(sex)) |> 
+                  group_by(species, island, sex) |>
+  count(species, island) |> 
+  ungroup()
+glimpse(treemap_peng, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map the `n` to `area`, `sex` to `fill`, `species` to `label`, and `island` to `subgroup`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: treemaps
+#| code-line-numbers: "1-12|1-2|4|5|6|7|8|11-12"
+#| eval: false
+#| echo: true 
+labs_treemap <- labs(
+  title = "Species, island, and sex of adult penguins")
+ggp2_treemap <- ggplot(treemap_peng, 
+       aes(area = n, 
+           fill = sex, 
+           label = species,
+           subgroup = island)) +
+       treemapify::geom_treemap() 
+ggp2_treemap + 
+  labs_treemap
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+This layout is often referred to as "*squarified*", and it represents 100% of the total values
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_treemaps
+#| eval: true
+#| echo: false
+treemap_peng <- penguins |> 
+                  filter(!is.na(sex)) |> 
+                  group_by(species, island, sex) |>
+  count(species, island) |> 
+  ungroup()
+labs_treemap <- labs(
+  title = "Species, island, and sex of adult penguins")
+ggp2_treemap <- ggplot(treemap_peng, 
+       aes(area = n, 
+           fill = sex, 
+           label = species,
+           subgroup = island)) +
+       treemapify::geom_treemap() 
+ggp2_treemap + 
+  labs_treemap
+```
+:::
+::::
+
+
+::::::
+
+## MORE TREEMAPS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+Filter the missing values from `sex`, group the data by `species`, `island`, and `sex`, then count the `species` and `island` (then `ungroup()`).
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ggp2_treemap_sgb
+#| eval: false
+treemap_peng <- penguins |> 
+          filter(!is.na(sex)) |> 
+          group_by(species, island, sex) |>
+          count(species, island) |> 
+          ungroup()
+glimpse(treemap_peng)
+```
+
+```{r}
+#| label: data_run_ggp2_treemap_sgb
+#| eval: true
+#| echo: false 
+treemap_peng <- penguins |> 
+          filter(!is.na(sex)) |> 
+          group_by(species, island, sex) |>
+          count(species, island) |> 
+          ungroup()
+glimpse(treemap_peng, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+1. Add the borders with `geom_treemap_subgroup_border()`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: ggp2_treemap_sgb
+#| code-line-numbers: "|10"
+#| eval: false
+#| echo: true 
+labs_treemap <- labs(
+  title = "Species, island, and sex of adult penguins")
+ggp2_treemap <- ggplot(treemap_peng, 
+       aes(area = n, 
+           fill = sex, 
+           label = species,
+           subgroup = island)) +
+       treemapify::geom_treemap()
+ggp2_treemap_sgb <- ggp2_treemap + 
+       treemapify::geom_treemap_subgroup_border()
+ggp2_treemap_sgb + 
+  labs_treemap
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Add border lines to the subgroups 
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_ggp2_treemap_sgb
+#| eval: true
+#| echo: false
+treemap_peng <- penguins |> 
+          filter(!is.na(sex)) |> 
+          group_by(species, island, sex) |>
+          count(species, island) |> 
+          ungroup()
+labs_treemap <- labs(
+  title = "Species, island, and sex of adult penguins")
+ggp2_treemap <- ggplot(treemap_peng, 
+       aes(area = n, 
+           fill = sex, 
+           label = species,
+           subgroup = island)) +
+       treemapify::geom_treemap()
+ggp2_treemap_sgb <- ggp2_treemap + 
+       treemapify::geom_treemap_subgroup_border()
+ggp2_treemap_sgb + 
+  labs_treemap
+```
+:::
+::::
+
+
+::::::
+
+
+## EVEN MORE TREEMAPS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+Filter the missing values from `sex`, group the data by `species`, `island`, and `sex`, then count the `species` and `island` (then `ungroup()`).
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ggp2_tmap_sgb_txt
+#| eval: false
+treemap_peng <- penguins |> 
+          filter(!is.na(sex)) |> 
+          group_by(species, island, sex) |>
+          count(species, island) |> 
+          ungroup()
+glimpse(treemap_peng)
+```
+
+```{r}
+#| label: data_run_ggp2_tmap_sgb_txt
+#| eval: true
+#| echo: false 
+treemap_peng <- penguins |> 
+          filter(!is.na(sex)) |> 
+          group_by(species, island, sex) |>
+          count(species, island) |> 
+          ungroup()
+glimpse(treemap_peng, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+1. Include labels for subgroup with `geom_treemap_subgroup_text()` (see full list of arguments [here](http://wilkox.org/treemapify/))
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: ggp2_tmap_sgb_txt
+#| code-line-numbers: "1-2|3-11|5|6|7|8|9|10|11|12-14"
+#| eval: false
+#| echo: true 
+ggp2_treemap_sgb <- ggp2_treemap + 
+       treemapify::geom_treemap_subgroup_border()
+ggp2_tmap_sgb_txt <- 
+  treemapify::geom_treemap_subgroup_text(
+         place = "center", 
+         grow = TRUE, 
+         alpha = 0.9, 
+         color = "white",
+         fontface = "bold",
+         family = "sans",
+         min.size = 0)
+ggp2_treemap_sgb + 
+  ggp2_tmap_sgb_txt + 
+  labs_treemap
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Add text to the treemap sub-groups
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_ggp2_tmap_sgb_txt
+#| eval: true
+#| echo: false
+treemap_peng <- penguins |> 
+          filter(!is.na(sex)) |> 
+          group_by(species, island, sex) |>
+          count(species, island) |> 
+          ungroup()
+ggp2_treemap_sgb <- ggp2_treemap + 
+       treemapify::geom_treemap_subgroup_border()
+ggp2_tmap_sgb_txt <- 
+  treemapify::geom_treemap_subgroup_text(
+         place = "center", 
+         grow = TRUE, 
+         alpha = 0.9, 
+         color = "white",
+         fontface = "bold",
+         family = "sans",
+         min.size = 0)
+ggp2_treemap_sgb + 
+  ggp2_tmap_sgb_txt + 
+  labs_treemap
+```
+:::
+::::
+
+
+::::::
+
+# Recap
+
+We've covered [`ggplot2` graphs that display]{.fragment} [proportions]{.fragment .highlight-red}

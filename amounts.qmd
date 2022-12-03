@@ -1,0 +1,623 @@
+---
+title: "[Category]"
+format:
+  html:
+    dpi: 320
+    fig-format: retina
+    fig-asp: 0.618
+    toc: true
+    toc-location: left
+    toc-title: Contents
+    html-math-method: katex
+    css: styles.css
+    theme:
+      light: materia    
+      dark: superhero
+      
+      
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+library(xml2)
+library(reactable)
+library(ggalluvial)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+```
+
+# COMPARING AMOUNTS
+
+Comparing Counts and Summaries with `ggplot2` (and friends!)
+
+
+## GROUPED COLUMN GRAPHS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Grouped column graphs display calculated ‘summary’ values for a numerical variable across the levels of a second categorical variable. Color is used to make comparisons and distinguish between groups (or levels) of the categorical variable.
+
+<br>
+
+In `ggplot2`, we can create grouped column graphs with `geom_co()`.
+::::
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_grp_col
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2movies")
+library(ggplot2movies) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Description of data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_grp_col
+#| eval: true
+#| echo: true
+movies_grp_col <- ggplot2movies::movies |> 
+    filter(!is.na(budget) & mpaa != "") |> 
+    select(budget, mpaa)
+glimpse(movies_grp_col)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `mpaa` to `x` and `budget` to `y`
+
+Inside `geom_col()`, map `mpaa` to `fill` and remove the legend with `show.legend = FALSE`
+
+Format the `y` axis with `scale_y_continuous()` by setting labels to `scales::dollar`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_grp_col
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Total budget in US dollars")
+ggp2_col <- ggplot(data = movies_grp_col,
+              aes(x = mpaa, 
+                  y = budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_grp_col
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Total budget in US dollars")
+ggp2_col <- ggplot(data = movies_grp_col,
+              aes(x = mpaa, 
+                  y = budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+
+### Summary
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**SUMMARY:**
+:::
+
+If we pass a categorical variable to the `x` (like `mpaa`) and a continuous variable to `y` (like `budget`), `geom_col()` will calculate the `sum()` of `y` by levels of `x`
+
+```{r}
+#| label: create_summary_grp_col
+#| eval: false
+#| echo: true
+#| warning: false
+#| message: false
+ggplot2movies::movies |>
+    filter(!is.na(budget) & mpaa != "") |>
+    select(budget, mpaa) |>
+    group_by(mpaa) |>
+    summarise(tot_bud = sum(budget, na.rm = TRUE),
+        tot_bud = scales::dollar(tot_bud)) |>
+    ungroup() |>
+    select(MPAA = mpaa,
+        `Total budget` = tot_bud)
+```
+
+We can see the underlying summary of budget using `dplyr`’s `group_by()` and `summarise()` functions.
+
+```{r}
+#| label: show_summary_grp_col
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+ggplot2movies::movies |>
+    filter(!is.na(budget) & mpaa != "") |>
+    select(budget, mpaa) |>
+    group_by(mpaa) |>
+    summarise(tot_bud = sum(budget, na.rm = TRUE),
+        tot_bud = scales::dollar(tot_bud)) |>
+    ungroup() |>
+    select(MPAA = mpaa,
+        `Total budget` = tot_bud) |>
+    knitr::kable()
+```
+
+
+::::
+
+## SUMMARIZED COLUMN GRAPHS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+`geom_col()` allows us to display any summary statistic we can calculate for a numerical variable.
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+For example, the code below summarizes the average `budget` grouped by levels of `mpaa` rating in the `movies` dataset.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_sum_col
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2movies")
+library(ggplot2movies) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Description of data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_sum_col
+#| eval: true
+#| echo: true
+movies_sum_col <- ggplot2movies::movies |>
+    filter(!is.na(budget) & mpaa != "") |>
+    select(budget, mpaa) |>
+    group_by(mpaa) |>
+    summarise(avg_budget = mean(budget, na.rm = TRUE)) |>
+    ungroup()
+glimpse(movies_sum_col)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `mpaa` to the `x` and `avg_budget` to the `y`
+
+Map `mpaa` to `fill` inside the `aes()` of `geom_col()` and remove the legend with `show.lengend = FALSE`
+
+Format the `y` axis with `scale_y_continuous()` by setting labels to `scales::dollar`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_sum_col
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Average budget in US dollars")
+ggp2_col <- ggplot(data = movies_sum_col,
+              aes(x = mpaa, 
+                  y = avg_budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_sum_col
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Average budget in US dollars")
+ggp2_col <- ggplot(data = movies_sum_col,
+              aes(x = mpaa, 
+                  y = avg_budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+
+::::
+
+## OVERLAPPING BAR GRAPHS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+We can also use bars to look at numeric and categorical variables using `geom_bar()` by setting `fill` argument
+
+<br>
+
+This results in bars differentiated by color and ‘stacked’ on top of each other.
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_ovrlp_bars
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove missing `sex` from `penguins` and filter to only `"Adelie"` penguins.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_ovrlp_bars
+#| eval: true
+#| echo: true
+penguins_ovrlp <- filter(penguins,
+                  !is.na(sex) & species == "Adelie")
+glimpse(penguins_ovrlp)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `flipper_length_mm` to the `x` and `sex` to `fill`
+
+Add the `geom_bar()` layer
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_ovrlp_bars
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_bar_ovrlp <- labs(
+  title = "Adelie adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
+          aes(x = flipper_length_mm, fill = sex)) +
+                geom_bar() 
+ggp2_bar_ovrlp + 
+  labs_bar_ovrlp
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_ovrlp_bars
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_bar_ovrlp <- labs(
+  title = "Adelie adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
+          aes(x = flipper_length_mm, fill = sex)) +
+                geom_bar() 
+ggp2_bar_ovrlp + 
+  labs_bar_ovrlp
+```
+
+::::
+
+<!--
+
+## Graph_Description
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Description
+
+<br>
+
+More_description.
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Description of data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_scatter <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)")
+ggp2_scatter <- penguins |>
+  ggplot(
+    aes(x = bill_length_mm, 
+      y = flipper_length_mm)) +
+  geom_point()
+
+ggp2_scatter + 
+  labs_scatter
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_scatter <- labs(
+    title = "Bill Length vs. Flipper Length",
+    x = "Bill Length (mm)", 
+    y = "Flipper length (mm)")
+ggp2_scatter <- penguins |> 
+  ggplot(aes(x = bill_length_mm,
+      y = flipper_length_mm)) + 
+  geom_point() 
+ggp2_scatter + 
+  labs_scatter
+```
+
+::::
+
+-->

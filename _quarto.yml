@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "ggplot2 gallery"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: univariate.qmd
+        text: Univariate
+      - href: amounts.qmd
+        text: Amounts
+      - href: proportions.qmd
+        text: Proportions
+      - href: distributions.qmd
+        text: Distributions
+      - href: relationships.qmd
+        text: Relationships
+      - href: stat-graphs.qmd
+        text: Statistical Graphs
+
+
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    css: styles.css
+    theme:
+      light: materia    
+      dark: superhero
+      
+editor: source
+
+
+

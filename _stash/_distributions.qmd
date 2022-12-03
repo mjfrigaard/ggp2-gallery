@@ -1,0 +1,1616 @@
+---
+title: "ggplot2 graph gallery"
+author: "Comparing Distributions"
+format:
+  revealjs:
+    height: 900
+    width: 1600
+    code-line-numbers: true
+    theme: [night, slides.scss]
+    background-transition: fade
+    transition: slide
+    transition-speed: fast
+    highlight-style: ayu-mirage
+    
+code-link: true
+execute:
+  echo: true
+  freeze: auto
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+library(xml2)
+library(reactable)
+library(patchwork)
+# options ----
+options(
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# ggplot2 theme ----
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+# funs ----
+ds538 <- readr::read_rds("data/ds538.rds")
+# movies_data ----
+movies_data <- readr::read_rds("data/movies_data.rds")
+```
+
+# Load packages
+
+<br>
+
+
+:::: columns
+::: {.column width="49%"}
+
+Data packages:
+
+<br>
+
+::: {style="font-size: 0.80em; color:"}
+```{r}
+#| eval: true
+#| echo: true
+#| label: packages-data
+library(tidyverse)
+# install.packages('fivethirtyeightdata', 
+# repos = 'https://fivethirtyeightdata.github.io/drat/', 
+# type = 'source')
+library(scales)
+library(kableExtra)
+library(palmerpenguins)
+library(fivethirtyeight)
+library(ggplot2movies)
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+
+Graph packages:
+
+<br>
+
+::: {style="font-size: 0.80em; color:"}
+```{r}
+#| eval: true
+#| echo: true
+#| label: packages-graphs
+# install.packages("devtools")
+# devtools::install_github("eclarke/ggbeeswarm")
+library(ggbeeswarm)
+# devtools::install_github("wilkelab/ggridges")
+library(ggridges)
+```
+:::
+:::
+::::
+
+
+# palmerpenguins
+
+<br>
+
+*You can learn more about the `penguins` data on the [package website](https://allisonhorst.github.io/palmerpenguins/)*
+
+<br>
+
+:::: columns
+::: {.column width="38%"}
+```{r}
+#| eval: false
+#| echo: true
+#| label: penguins
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="60%"}
+```{r}
+#| eval: true
+#| echo: false
+#| label: penguins-glimpse
+penguins <- palmerpenguins::penguins
+glimpse(penguins, 50)
+```
+:::
+::::
+
+# fivethirtyeight
+
+<br>
+
+*All datasets from the [`fivethirtyeight` package](https://fivethirtyeight-r.netlify.app/) are listed below with descriptions*
+
+<br>
+
+Access them using: 
+
+```{r}
+#| label: fivethirtyeight-namespace
+#| eval: false
+#| echo: true
+fivethirtyeight::
+```
+
+. . .
+
+```{r}
+#| label: fivethirtyeight-kable
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+kableExtra::kable_material_dark(
+  kable_input = knitr::kable(
+    head(ds538)
+    ), font_size = 25
+  )
+```
+
+# ggplot2movies
+
+<br>
+
+*We're using `movies_data` (derived version of the [`ggplot2movies::movies`](https://github.com/hadley/ggplot2movies))*
+
+<br>
+
+::: columns
+::: {.column width="38%"}
+```{r movies_data}
+#| eval: false
+#| echo: true
+#| label: movies_data
+#| message: false
+#| warning: false
+glimpse(movies_data)
+```
+:::
+
+::: {.column width="2%"}
+
+:::
+
+::: {.column width="60%"}
+```{r glimpse-movies_data, echo=FALSE}
+#| eval: true
+#| echo: false
+#| label: movies_data-glimpse
+#| message: false
+#| warning: false
+glimpse(movies_data, 50)
+```
+:::
+:::
+
+# COMPARING DISTRIBUTIONS
+
+<br>
+
+::: {.fragment fragment-index=1}
+Comparing Distributions 
+:::
+
+::: {.fragment fragment-index=2}
+Across Groups
+:::
+
+::: {.fragment fragment-index=3}
+::: {style="font-size: 1.00em; color: #ffac00;"}
+with `ggplot2`
+:::
+:::
+
+# OVERLAPPING HISTOGRAMS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Overlapping histograms allow us to compare distributions across the levels of a categorical (or ordinal) variable.
+
+
+## OVERLAPPING HISTOGRAM
+
+:::::: panel-tabset
+
+### Code
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+The `penguins` data
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ovrlp_hist
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_ovrlp_hist
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map `flipper_length_mm` to the `x` axis and `species` to `fill` 
+
+3. Set `alpha` to `2/3` inside `geom_histogram()`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_ovrlp_hist
+#| code-line-numbers: "1-10|1-4|6-7|8|9-10"
+#| eval: false
+#| echo: true 
+labs_ovrlp_hist <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Species")
+ggp2_ovrlp_hist <- ggplot(data = penguins,
+     aes(x = flipper_length_mm, 
+         fill = species)) + 
+     geom_histogram(alpha = 2/3) 
+ggp2_ovrlp_hist + 
+  labs_ovrlp_hist
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Histograms work by dividing the variable provided to `x` [*into bins and counting the number of observations in each bin.*](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+
+Experiment with different `binwidth`s when comparing distributions across groups. 
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_ovrlp_hist
+#| eval: true
+#| echo: false
+labs_ovrlp_hist <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Species")
+ggp2_ovrlp_hist <- ggplot(data = penguins,
+     aes(x = flipper_length_mm, 
+         fill = species)) + 
+     geom_histogram(alpha = 2/3) 
+ggp2_ovrlp_hist + 
+  labs_ovrlp_hist
+```
+:::
+::::
+
+::::::
+
+# OVERLAPPING FREQUENCY POLYGONS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Overlapping frequency polygons are similar to overlapping histograms--they allow us to compare distributions of a continuous variable across the levels of a categorical variable.
+
+. . .
+
+<br>
+
+Instead of using bars, frequency polygons use lines to show the shape of the distribution. 
+
+## OVERLAPPING FREQUENCY POLYGONS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ovrlp_freq_poly
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_ovrlp_freq_poly
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+
+1. Create the labels
+
+2. Map `flipper_length_mm` to the `x` and `species` to `group`  
+
+3. Map `species` to the `color` aesthetic *inside* the `geom_freqpoly()`
+
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_ovrlp_freq_poly
+#| code-line-numbers: "1-10|1-4|6-7|8|9-10"
+#| eval: false
+#| echo: true 
+labs_ovrlp_freq_poly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  color = "Species")
+ggp2_ovrlp_freq_poly <- ggplot(data = penguins, 
+       aes(x = flipper_length_mm,
+           group = species)) + 
+  geom_freqpoly(aes(color = species))
+ggp2_ovrlp_freq_poly + 
+  labs_ovrlp_freq_poly
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+Use `color` and `group` to view polygons for different levels of a categorical variable. 
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_ovrlp_freq_poly
+#| eval: true
+#| echo: false
+labs_ovrlp_freq_poly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  color = "Species")
+ggp2_ovrlp_freq_poly <- ggplot(data = penguins, 
+       aes(x = flipper_length_mm,
+           group = species)) + 
+  geom_freqpoly(aes(color = species))
+ggp2_ovrlp_freq_poly + 
+  labs_ovrlp_freq_poly
+```
+:::
+::::
+
+::::::
+
+# OVERLAPPING DOT-PLOTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+We can use dot-plots to compare distributions of a continuous variable across the levels of a categorical variable, but we need to adjust the way the dots are displayed. 
+
+. . .
+
+<br>
+
+The `geom_dotplot()` function has adjustable `method` and `binposition` arguments that allow it to function similar to a histogram or frequency polygon. 
+
+## OVERLAPPING DOT-PLOTS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+Remove missing `sex` from `penguins`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ovrlp_dot_plots
+#| eval: false
+peng_dotplot <- filter(penguins, !is.na(sex))
+glimpse(peng_dotplot)
+```
+
+```{r}
+#| label: data_run_ovrlp_dot_plots
+#| eval: true
+#| echo: false 
+peng_dotplot <- filter(penguins, !is.na(sex))
+glimpse(peng_dotplot, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+
+2. Map `flipper_length_mm` to `x`
+
+3. Map `species` to `fill` (*inside* `factor()`)
+
+4. Inside `geom_dotplot`, set `method` to `"histodot"`, `binwidth` to `1`, and `binpositions` to `"all"`
+
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_ovrlp_dot_plots
+#| code-line-numbers: "1-13|1-4|6|7|9|10|11|12-13"
+#| eval: false
+#| echo: true 
+labs_ovrlp_dotplot <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Species")
+ggp2_ovrlp_dotplot <- ggplot(data = peng_dotplot, 
+    aes(x = flipper_length_mm,
+        fill = factor(species))) +
+  geom_dotplot(
+    method = "histodot",
+    binwidth = 1,
+    binpositions = "all")
+ggp2_ovrlp_dotplot + 
+  labs_ovrlp_dotplot
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="23%"}
+::: {style="font-size: 0.70em;"}
+
+- `binwidth` = [*When method is "histodot", this specifies bin width. Defaults to 1/30 of the range of the data*](https://ggplot2.tidyverse.org/reference/geom_dotplot.html)
+
+- `binpositions` = [*"all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.*](https://ggplot2.tidyverse.org/reference/geom_dotplot.html)
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="72%"}
+
+```{r}
+#| label: create_ovrlp_dot_plots
+#| eval: true
+#| echo: false
+labs_ovrlp_dotplot <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Species")
+ggp2_ovrlp_dotplot <- ggplot(data = peng_dotplot, 
+    aes(x = flipper_length_mm,
+        fill = factor(species))) +
+  geom_dotplot(
+    method = "histodot",
+    binwidth = 1,
+    binpositions = "all")
+ggp2_ovrlp_dotplot + 
+  labs_ovrlp_dotplot
+```
+:::
+::::
+
+::::::
+
+# BEE-SWARM PLOTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+We can also use smaller dots (or points) to show the spread of values for a particular variable with bee-swarm plots 
+
+. . .
+
+<br>
+
+Install the [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm) using 
+
+```{r}
+#| label: ggbeeswarm
+#| eval: false
+#| echo: true
+devtools::install_github("eclarke/ggbeeswarm")
+library(ggbeeswarm)
+```
+
+
+## BEE-SWARM PLOTS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_beeswarm
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_beeswarm
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map `island` to the `x` axis and `color`
+
+3. Map `body_mass_g` to the `y` axis
+
+4. Add the `ggbeeswarm::geom_beeswarm()` layer (with `alpha`)
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_beeswarm
+#| code-line-numbers: "1-13|1-5|6-8|9|10-11|12-13"
+#| eval: false
+#| echo: true 
+labs_beeswarm <- labs(
+  title = "Adult Foraging Penguins",
+  x = "Penguin Species",
+  y = "Body mass (grams)")
+ggp2_beeswarm <- ggplot(data = penguins, 
+       aes(x = species, 
+           y = body_mass_g, 
+           color = species)) + 
+  ggbeeswarm::geom_beeswarm(
+      alpha = 2/3, 
+    show.legend = FALSE) 
+ggp2_beeswarm + 
+  labs_beeswarm
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="23%"}
+::: {style="font-size: 0.65em;"}
+
+Adjust the size/shape of the swarm using `method =` or the  `geom_quasirandom()` function from `ggbeeswarm`
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="72%"}
+
+```{r}
+#| label: create_beeswarm
+#| eval: true
+#| echo: false
+labs_beeswarm <- labs(
+  title = "Adult Foraging Penguins",
+  x = "Penguin Species",
+  y = "Body mass (grams)")
+ggp2_beeswarm <- ggplot(data = penguins, 
+       aes(x = species, 
+           y = body_mass_g, 
+           color = species)) + 
+  ggbeeswarm::geom_beeswarm(
+      alpha = 2/3, 
+    show.legend = FALSE) 
+ggp2_beeswarm + 
+  labs_beeswarm
+```
+:::
+::::
+
+::::::
+
+# OVERLAPPING (OR STACKED) DENSITY PLOTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+The `geom_density()` creates a [*smoothed version of the histogram*](https://ggplot2.tidyverse.org/reference/geom_density.html) and allows us to compare the distributions of a continuous variable across the levels of a categorical variable.
+
+. . .
+
+<br>
+
+We can choose to overlap or `"stack"` the smoothed distributions.
+
+## OVERLAPPING DENSITY PLOTS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.80em;"}
+Remove missing `sex` from the `penguins` data
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ovrlp_density
+#| eval: false
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density)
+```
+
+```{r}
+#| label: data_run_ovrlp_density
+#| eval: true
+#| echo: false 
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.80em;"}
+1. Create the labels
+
+2. Map the `flipper_length_mm` to the `x` and `sex` to `fill` 
+
+3. Add the `geom_density()`  
+
+5. Set the `alpha` to `1/3` (to handle the overlapping areas)
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_ovrlp_density
+#| code-line-numbers: "1-10|1-4|6|7|8|9|10|11-12"
+#| eval: false
+#| echo: true 
+labs_ovrlp_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Sex")
+ggp2_ovrlp_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           fill = sex)) +
+      geom_density(alpha = 1/3) 
+ggp2_ovrlp_density + 
+  labs_ovrlp_density
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+
+*A downside of density plots is the lack of interpretability of the **y** axis*
+
+Make density area slightly transparent to handle over-plotting.
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_ovrlp_density
+#| eval: true
+#| echo: false
+labs_ovrlp_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Sex")
+ggp2_ovrlp_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           fill = sex)) +
+      geom_density(alpha = 1/3) 
+ggp2_ovrlp_density + 
+  labs_ovrlp_density
+```
+:::
+::::
+
+
+::::::
+
+
+## STACKED DENSITY PLOTS 
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+Remove missing `sex` from the `penguins` data
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_stack_density
+#| eval: false
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density)
+```
+
+```{r}
+#| label: data_run_stack_density
+#| eval: true
+#| echo: false 
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.70em;"}
+
+1. Create the labels
+
+2. Map the `flipper_length_mm` to the `x`, add  `after_stat(count)`, and map `sex` to `fill` 
+
+4. *Inside* `geom_density()`, set `position` to `"stack"`
+
+5. Set the `alpha` to `1/3`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_stack_density
+#| code-line-numbers: "1-12|1-4|6-8|9-10|11-12"
+#| eval: false
+#| echo: true 
+labs_stack_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_stack_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+           fill = sex)) +
+      geom_density(position = "stack", 
+                   alpha = 1/3) 
+ggp2_stack_density + 
+  labs_stack_density
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="24%"}
+::: {style="font-size: 0.70em;"}
+
+Adding `after_stat(count)` uses the *`density * n` instead of the default density* which [*'preserves marginal densities'*](https://ggplot2.tidyverse.org/reference/geom_density.html#computed-variables).
+
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="71%"}
+
+```{r}
+#| label: create_stack_density
+#| eval: true
+#| echo: false
+labs_stack_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_stack_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+           fill = sex)) +
+      geom_density(position = "stack", 
+                   alpha = 1/3) 
+ggp2_stack_density + 
+  labs_stack_density
+```
+:::
+::::
+
+### Compare
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.70em;"}
+
+
+
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: compare_densities
+#| eval: true
+#| echo: false
+
+labs_ovrlp_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Sex")
+ggp2_ovrlp_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           fill = sex)) +
+      geom_density(alpha = 1/3) 
+
+ggp2_ovrlp <- ggp2_ovrlp_density + 
+  labs_ovrlp_density
+
+labs_stack_density <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "position = 'stack'",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_stack_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+           fill = sex)) +
+      geom_density(position = "stack", 
+                   alpha = 1/3) 
+ggp2_stack <- ggp2_stack_density + 
+  labs_stack_density
+
+ggp2_ovrlp + ggp2_stack + 
+   plot_annotation(title = 'Overlapping vs. Stacked Densities')
+```
+:::
+::::
+
+
+
+::::::
+
+
+# RIDGELINE PLOTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+If we want to plot density curves but retain the interpretability of the axes, consider comparing multiple distributions using the [`ggridges` package](https://wilkelab.org/ggridges/).
+
+## RIDGELINE PLOTS
+
+:::::: panel-tabset
+
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+Remove missing `island` from `penguins`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_ridgelines
+#| eval: false
+peng_ridges <- filter(penguins, !is.na(island))
+glimpse(peng_ridges)
+```
+
+```{r}
+#| label: data_run_ridgelines
+#| eval: true
+#| echo: false 
+peng_ridges <- filter(penguins, !is.na(island))
+glimpse(peng_ridges, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+
+2. Map `bill_length_mm` to the `x` axis
+
+3. Map `island` to the `y` axis and `fill`
+
+4. Add the `ggridges::geom_density_ridges()` layer (with `alpha` set to `2/3`)
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_ridgelines
+#| code-line-numbers: "1-11|1-4|6|7|8|9"
+#| eval: false
+#| echo: true 
+labs_ridges <- labs(
+  title = "Adult foraging penguins",
+  x = "Bill length (millimeters)",
+  y = "Island", fill = "Island")
+ggp2_ridges <- ggplot(data = peng_ridges,
+       aes(x = bill_length_mm, 
+           y = island, 
+        fill = island)) +
+  ggridges::geom_density_ridges(alpha = 2/3) 
+ggp2_ridges + 
+  labs_ridges
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.70em;"}
+
+Ridgeline plots are excellent for comparing continuous distributions across groups. 
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_ridgelines
+#| eval: true
+#| echo: false
+labs_ridges <- labs(
+  title = "Adult foraging penguins",
+  x = "Bill length (millimeters)",
+  y = "Island", fill = "Island")
+ggp2_ridges <- ggplot(data = peng_ridges,
+       aes(x = bill_length_mm, 
+           y = island, 
+        fill = island)) +
+  ggridges::geom_density_ridges(alpha = 2/3) 
+ggp2_ridges + 
+  labs_ridges
+```
+:::
+::::
+
+::::::
+
+# GROUPED BOX-PLOTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Grouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
+
+. . .
+
+<br>
+
+The five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges.
+
+## GROUPED BOX-PLOTS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+The `movies_data` data.
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_grp_boxplots
+#| eval: false
+peng_box <- filter(penguins, !is.na(island))
+glimpse(peng_box)
+```
+
+```{r}
+#| label: data_run_grp_boxplots
+#| eval: true
+#| echo: false 
+peng_box <- filter(penguins, !is.na(island))
+glimpse(peng_box, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+
+2. Map `island` to the `x` axis and to `fill`
+
+3. Map `bill_length_mm` to the `y` axis
+
+4. Add `geom_boxplot()` and set the `alpha` to `2/3`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_grp_boxplots
+#| code-line-numbers: "1-12|1-5|7|8|9|10"
+#| eval: false
+#| echo: true 
+labs_grp_boxplots <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_boxplots <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_boxplot(alpha = 2/3) 
+ggp2_grp_boxplots + 
+  labs_grp_boxplots
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.70em;"}
+
+When a categorical variable is supplied, the plot will contain a box for each level or group.
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_grp_boxplots
+#| eval: true
+#| echo: false
+labs_grp_boxplots <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_boxplots <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_boxplot(alpha = 2/3) 
+ggp2_grp_boxplots + 
+  labs_grp_boxplots
+```
+:::
+::::
+
+::::::
+
+# GROUPED VIOLIN PLOTS
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+A ‘violin plot’ is a variation of a density or ridgeline plot,  where the distribution is plotted symmetrically creating a two-sided, smoothed distribution.
+
+
+## GROUPED VIOLIN PLOTS
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.70em;"}
+Remove missing `island` from `penguins`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_grp_violin
+#| eval: false
+peng_violin <- filter(penguins, !is.na(island))
+glimpse(peng_violin)
+```
+
+```{r}
+#| label: data_run_grp_violin
+#| eval: true
+#| echo: false 
+peng_violin <- filter(penguins, !is.na(island))
+glimpse(peng_violin, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+::: {style="font-size: 0.70em;"}
+1. Create the labels
+
+2. Map `island` to the `x`, `bill_length_mm` to the `y`, and  `island` to `fill` 
+
+5. Set `alpha` to `2/3`
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_grp_violin
+#| code-line-numbers: "|6|7|8|9"
+#| eval: false
+#| echo: true 
+labs_grp_violin <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_violin <- ggplot(data = peng_violin,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_violin(alpha = 2/3) 
+ggp2_grp_violin + 
+  labs_grp_violin
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.70em;"}
+
+Violin plots can allow us to compare the 'center' and 'spread' of continuous variables across categorical groups.
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: create_grp_violin
+#| eval: true
+#| echo: false
+labs_grp_violin <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_violin <- ggplot(data = peng_violin,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_violin(alpha = 2/3) 
+ggp2_grp_violin + 
+  labs_grp_violin
+```
+:::
+::::
+
+::::::
+
+# CODE THEN GRAPH (L1)
+
+<br>
+
+. . .
+
+::: {style="font-size: 1.25em; color: #ffd500;"}
+***When would I use this graph?***
+:::
+
+<br>
+
+. . .
+
+<br>
+
+Description...
+
+. . .
+
+<br>
+
+More description...
+
+
+## CODE THEN GRAPH (L2)
+
+:::::: panel-tabset
+
+### Code
+
+
+:::: columns
+::: {.column width="45%"}
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+
+::: {style="font-size: 0.80em;"}
+The data
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: data_show_
+#| eval: false
+glimpse(penguins)
+```
+
+```{r}
+#| label: data_run_
+#| eval: true
+#| echo: false 
+glimpse(penguins, 50)
+```
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.75em;"}
+
+1. Create the labels
+
+2. 
+
+3. 
+
+4. 
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: graph_code_
+#| code-line-numbers: "1"
+#| eval: false
+#| echo: true 
+
+```
+:::
+:::
+::::
+
+### Graph
+
+:::: columns
+::: {.column width="20%"}
+::: {style="font-size: 0.75em;"}
+
+More description 
+
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="75%"}
+
+```{r}
+#| label: graph_create_
+#| eval: true
+#| echo: false
+
+```
+:::
+::::
+
+::::::
+
+
+
+
+
+

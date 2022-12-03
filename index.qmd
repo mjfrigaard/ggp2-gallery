@@ -1,0 +1,235 @@
+---
+title: "Welcome to the `ggplot2` graph gallery!"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+    smooth-scroll: true
+    code-fold: true
+    code-summary: "View code"
+    code-overflow: wrap
+    highlight-style: arrow
+    
+---
+
+
+This Quarto website contains a series of graphs composed in `ggplot2`. Install `ggplot2` using the code below:
+
+```{r}
+#| label: ggp2-pkg
+#| eval: false
+#| echo: true
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+Or install it as part of the `tidyverse`:
+
+```{r}
+#| label: tidyverse-pkg
+#| eval: false
+#| echo: true
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+## Graph Packages
+
+Most of the graphs in this gallery can be built using on of `ggplot2` 's many `geom_*` functions. If a graph requires additional `geom`s or functions, the development version for these packages have been listed.
+
+## Galleries
+
+The graphs have been broken into separate categories:
+
+### Univariate Graphs
+
+The following graphs are used to display **single variable** **distributions**:
+
+-   [ ] Bar Graphs
+
+-   [ ] Histograms
+
+-   [ ] Frequency Polygons
+
+-   [ ] Dot-Plots
+
+-   [ ] Density Plots
+
+-   [ ] Violin Plots
+
+-   [ ] Box-Plots
+
+### Comparing Distributions
+
+These graphs can be used to compare **multiple variable distributions:**
+
+-   [ ] Overlapping Histograms
+
+-   [ ] Overlapping Frequency Polygons
+
+-   [ ] Overlapping Dot-Plots
+
+-   [ ] Bee-swarm Plots
+
+    -   [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bee-swarm Plots
+        devtools::install_github("eclarke/ggbeeswarm")
+        library(ggbeeswarm)
+        ```
+
+-   [ ] Overlapping Densities
+
+-   [ ] Ridgeline Plots
+
+    -   [`ggridges` package](https://wilkelab.org/ggridges/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Ridgeline plots 
+        devtools::install_github("wilkelab/ggridges")
+        library(ggridges)
+        ```
+
+-   [ ] Box-plots
+
+-   [ ] Violin plots
+
+-   [ ] *Rain-cloud plots*
+
+### Comparing Amounts
+
+The following graphs are used to display **amounts**:
+
+-   [ ] Bar-graphs
+
+-   [x] Grouped Bar-graphs
+
+-   [ ] Stacked Bar-graphs
+
+-   [ ] *Dot/point plots*
+
+    -   We cover [dot-plots](https://mjfrigaard.github.io/ggp2-graph-gallery/slides/distributions.html#/dot-plots) above in the distributions section.
+
+-   [ ] Waffle Charts
+
+    -   [`ggwaffle` package](https://liamgilbey.github.io/ggwaffle/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Waffle Charts
+        devtools::install_github("liamgilbey/ggwaffle")
+        library(ggwaffle)
+        ```
+
+### Comparing Proportions
+
+The following graphs are used to compare **proportions**:
+
+-   [ ] Pie Charts
+
+    -   [`ggpubr` package](https://rpkgs.datanovia.com/ggpubr/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Pie Charts 
+        devtools::install_github("kassambara/ggpubr")
+        library(ggpubr)
+        ```
+
+-   [ ] Diverging Bar-graphs
+
+    -   Horizontal
+    -   Vertical
+
+-   [ ] Stacked-densities
+
+-   [ ] Mosaic Plots
+
+    -   [`ggmosaic` package](https://haleyjeppson.github.io/ggmosaic/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Mosaic Charts 
+        devtools::install_github("haleyjeppson/ggmosaic")
+        library(ggmosaic)
+        ```
+
+-   [ ] Treemaps
+
+    -   [`treemapify` package](https://wilkox.org/treemapify/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Treemaps
+        devtools::install_github("wilkox/treemapify")
+        library(treemapify)
+        ```
+
+-   [ ] *Parallel Sets*
+
+### Relationships
+
+The following graphs are used to display relationships between two (or more) variables:
+
+-   [ ] Scatter Plots
+
+-   [ ] Grouped Scatter plots
+
+-   [ ] Bubble Charts
+
+-   [ ] Grouped Bubble Charts
+
+-   [ ] Alluvial Charts
+
+    -   [ggalluvial package](https://corybrunson.github.io/ggalluvial/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bump charts
+        devtools::install_github("corybrunson/ggalluvial")
+        library(ggalluvial)
+        ```
+
+-   [ ] Bump Charts
+
+    -   [ggbump package](https://github.com/davidsjoberg/ggbump)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bump charts
+        devtools::install_github("davidsjoberg/ggbump")
+        library(ggbump)
+        ```
+
+-   [ ] Slope-graphs
+
+-   [ ] *Density Contours*
+
+-   [ ] *2D Bins*
+
+-   [ ] *Hex Bins*
+
+-   [ ] *Correlograms*
+
+## Data
+
+The following datasets have been used to create the graphs:
+
+```{r}
+#| label: palmer-penguins
+#| eval: false
+#| echo: true
+
+```
