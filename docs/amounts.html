@@ -307,7 +307,10 @@ $ mpaa   &lt;chr&gt; "PG-13", "PG-13", "R", "PG-13", "R", "R", "PG", "PG-13", "R
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>SUMMARY:</strong></p>
 </div>
+<div style="font-size: 0.85em;">
 <p>If we pass a categorical variable to the <code>x</code> (like <code>mpaa</code>) and a continuous variable to <code>y</code> (like <code>budget</code>), <code>geom_col()</code> will calculate the <code>sum()</code> of <code>y</code> by levels of <code>x</code></p>
+</div>
+<div style="font-size: 0.75em;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggplot2movies<span class="sc">::</span>movies <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(budget) <span class="sc">&amp;</span> mpaa <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
@@ -319,7 +322,11 @@ $ mpaa   &lt;chr&gt; "PG-13", "PG-13", "R", "PG-13", "R", "R", "PG", "PG-13", "R
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">MPAA =</span> mpaa,</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Total budget</span><span class="st">`</span> <span class="ot">=</span> tot_bud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+<div style="font-size: 0.85em;">
 <p>We can see the underlying summary of budget using <code>dplyr</code>’s <code>group_by()</code> and <code>summarise()</code> functions.</p>
+</div>
+<div style="font-size: 0.75em;">
 <div class="cell">
 <div class="cell-output-display">
 
@@ -350,6 +357,7 @@ $ mpaa   &lt;chr&gt; "PG-13", "PG-13", "R", "PG-13", "R", "R", "PG", "PG-13", "R
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>

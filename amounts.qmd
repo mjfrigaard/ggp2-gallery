@@ -5,6 +5,7 @@ format:
     dpi: 320
     fig-format: retina
     fig-asp: 0.618
+    fig-width: 6
     toc: true
     toc-location: left
     toc-title: Contents
@@ -188,8 +189,11 @@ ggp2_col +
 **SUMMARY:**
 :::
 
+::: {style="font-size: 0.85em;"}
 If we pass a categorical variable to the `x` (like `mpaa`) and a continuous variable to `y` (like `budget`), `geom_col()` will calculate the `sum()` of `y` by levels of `x`
+:::
 
+::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: create_summary_grp_col
 #| eval: false
@@ -207,8 +211,14 @@ ggplot2movies::movies |>
         `Total budget` = tot_bud)
 ```
 
-We can see the underlying summary of budget using `dplyr`’s `group_by()` and `summarise()` functions.
+:::
 
+
+::: {style="font-size: 0.85em;"}
+We can see the underlying summary of budget using `dplyr`’s `group_by()` and `summarise()` functions.
+:::
+
+::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: show_summary_grp_col
 #| eval: true
@@ -226,7 +236,7 @@ ggplot2movies::movies |>
         `Total budget` = tot_bud) |>
     knitr::kable()
 ```
-
+:::
 
 ::::
 

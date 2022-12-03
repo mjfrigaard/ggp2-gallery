@@ -196,7 +196,7 @@ The following graphs are used to display relationships between two (or more) var
         ```{r}
         #| eval: false
         #| echo: true
-        # Bump charts
+        # Alluvial charts
         devtools::install_github("corybrunson/ggalluvial")
         library(ggalluvial)
         ```
