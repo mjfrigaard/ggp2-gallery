@@ -56,6 +56,13 @@
     "text": "Data\nThe following datasets have been used to create the graphs:"
   },
   {
+    "objectID": "stat-graphs.html",
+    "href": "stat-graphs.html",
+    "title": "ggplot2 gallery",
+    "section": "",
+    "text": "Statistical graphs with ggplot2 (and friends!)\n\n\n\n\n\n\n\n\nNote\n\n\n\n\nWhen would I use this graph?\n\n\nDescription\n\nMore_description.\n\n\n\nPackagesData\n\n\n\nPACKAGES:\n\n\nInstall packages.\n\n\n\ninstall.packages(\"palmerpenguins\")\nlibrary(palmerpenguins) \nlibrary(ggplot2)\n\n\n\n\n\nDATA:\n\n\nDescription of data\n\n\n\npenguins <- palmerpenguins::penguins\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           <fct> Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            <fct> Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               <fct> male, female, female, NA, female, male, female, male…\n$ year              <int> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n\n\n\n\n\n\n\nCodeGraph\n\n\n\nCODE:\n\n\n\nCreate the labels\n\n\n\n\n\n\n\nlabs_scatter <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\", y = \"Flipper length (mm)\")\nggp2_scatter <- penguins |>\n  ggplot(\n    aes(x = bill_length_mm, \n      y = flipper_length_mm)) +\n  geom_point()\n\nggp2_scatter + \n  labs_scatter\n\n\n\n\n\nGRAPH:"
+  },
+  {
     "objectID": "amounts.html",
     "href": "amounts.html",
     "title": "ggplot2 gallery",
