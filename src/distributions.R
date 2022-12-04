@@ -19,9 +19,9 @@ options(scipen = 9999999)
 # ggplot2 theme ----
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
 # funs ----
-ds538 <- readr::read_rds("slides/data/ds538.rds")
+ds538 <- readr::read_rds("data/ds538.rds")
 # movies_data ----
-movies_data <- readr::read_rds("slides/data/movies_data.rds")
+movies_data <- readr::read_rds("data/movies_data.rds")
 # penguins ----
 penguins <- palmerpenguins::penguins
 # movies ----

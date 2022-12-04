@@ -54,11 +54,11 @@ Statistical graphs with `ggplot2` (and friends!)
 ::: {style="font-size: 1.25em; color: #ffd500;"}
 **When would I use this graph?**
 :::
-<br>
+
 
 Description
 
-<br>
+
 
 More_description.
 ::::
@@ -122,13 +122,9 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-1. Create the labels
+Create the labels
 
-2. 
 
-3. 
-
-4. 
 :::
 
 ::: {style="font-size: 0.75em;"}
