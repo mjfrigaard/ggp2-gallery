@@ -46,77 +46,37 @@ The graphs have been broken into separate categories:
 
 The following graphs are used to display **single variable** **distributions**:
 
--   [ ] Bar Graphs
+-   [x] [Bar Graphs](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#bar-graphs)
 
--   [ ] Histograms
+-   [x] [Histograms](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#histograms)
 
--   [ ] Frequency Polygons
+-   [x] [Frequency Polygons](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#frequency-polygons)
 
--   [ ] Dot-Plots
+-   [x] [Dot-Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#dot-plots)
 
--   [ ] Density Plots
+-   [x] [Density Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#density-plots)
 
--   [ ] Violin Plots
+-   [x] [Violin Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#violin-plots)
 
--   [ ] Box-Plots
-
-### Comparing Distributions
-
-These graphs can be used to compare **multiple variable distributions:**
-
--   [ ] Overlapping Histograms
-
--   [ ] Overlapping Frequency Polygons
-
--   [ ] Overlapping Dot-Plots
-
--   [ ] Bee-swarm Plots
-
-    -   [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm)
-
-        ```{r}
-        #| eval: false
-        #| echo: true
-        # Bee-swarm Plots
-        devtools::install_github("eclarke/ggbeeswarm")
-        library(ggbeeswarm)
-        ```
-
--   [ ] Overlapping Densities
-
--   [ ] Ridgeline Plots
-
-    -   [`ggridges` package](https://wilkelab.org/ggridges/)
-
-        ```{r}
-        #| eval: false
-        #| echo: true
-        # Ridgeline plots 
-        devtools::install_github("wilkelab/ggridges")
-        library(ggridges)
-        ```
-
--   [ ] Box-plots
-
--   [ ] Violin plots
-
--   [ ] *Rain-cloud plots*
+-   [x] [Box-Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#box-plots)
 
 ### Comparing Amounts
 
 The following graphs are used to display **amounts**:
 
--   [ ] Bar-graphs
+-   [x] [Grouped column-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#grouped-column-graphs)
 
--   [x] Grouped Bar-graphs
+-   [x] [Summarized column-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#summarized-column-graphs)
 
--   [ ] Stacked Bar-graphs
+-   [x] [Overlapping bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#overlapping-bar-graphs)
 
--   [ ] *Dot/point plots*
+-   [x] [Side-to-side ("dodge") bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#side-to-side-bar-graphs)
 
-    -   We cover [dot-plots](https://mjfrigaard.github.io/ggp2-graph-gallery/slides/distributions.html#/dot-plots) above in the distributions section.
+-   [x] [Side-to-side ("dodge2") bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#dodge2-bar-graphs)
 
--   [ ] Waffle Charts
+-   [x] [Heatmaps](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#heatmaps)
+
+-   [x] [Waffle charts](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#waffle-chart)
 
     -   [`ggwaffle` package](https://liamgilbey.github.io/ggwaffle/)
 
@@ -132,7 +92,7 @@ The following graphs are used to display **amounts**:
 
 The following graphs are used to compare **proportions**:
 
--   [ ] Pie Charts
+-   [x] [Pie Charts](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#pie-charts)
 
     -   [`ggpubr` package](https://rpkgs.datanovia.com/ggpubr/)
 
@@ -144,14 +104,13 @@ The following graphs are used to compare **proportions**:
         library(ggpubr)
         ```
 
--   [ ] Diverging Bar-graphs
+-   [x] [Diverging Bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#diverging-bar-graphs)
 
-    -   Horizontal
-    -   Vertical
+  -   [x] [Vertical](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#diverging-bar-graphs-vertical)
 
--   [ ] Stacked-densities
+-   [x] [Stacked-densities](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#stacked-or-filled-density-graphs)
 
--   [ ] Mosaic Plots
+-   [x] [Mosaic Plots](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#mosaic-plot)
 
     -   [`ggmosaic` package](https://haleyjeppson.github.io/ggmosaic/)
 
@@ -163,7 +122,7 @@ The following graphs are used to compare **proportions**:
         library(ggmosaic)
         ```
 
--   [ ] Treemaps
+-   [x] [Treemaps](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#treemaps)
 
     -   [`treemapify` package](https://wilkox.org/treemapify/)
 
@@ -177,19 +136,64 @@ The following graphs are used to compare **proportions**:
 
 -   [ ] *Parallel Sets*
 
+
+### Comparing Distributions
+
+These graphs can be used to compare **multiple variable distributions:**
+
+-   [x] [Overlapping Histograms](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-histogram)
+
+-   [x] [Overlapping Frequency Polygons](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-frequency-polygons)
+
+-   [x] [Overlapping Dot-Plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-dot-plots)
+
+-   [x] [Bee-swarm Plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#bee-swarm-plots)
+
+    -   [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bee-swarm Plots
+        devtools::install_github("eclarke/ggbeeswarm")
+        library(ggbeeswarm)
+        ```
+
+-   [x] [Overlapping Densities](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-or-stacked-density-plots)
+
+-   [x] [Ridgeline Plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#ridgeline-plots)
+
+    -   [`ggridges` package](https://wilkelab.org/ggridges/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Ridgeline plots 
+        devtools::install_github("wilkelab/ggridges")
+        library(ggridges)
+        ```
+
+-   [x] [Grouped Box-plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#grouped-box-plots)
+
+-   [x] [Violin plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#grouped-violin-plots)
+
+-   [ ] *Rain-cloud plots*
+
+
+
 ### Relationships
 
 The following graphs are used to display relationships between two (or more) variables:
 
--   [ ] Scatter Plots
+-   [x] [Scatter plots](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#scatter-plot)
 
--   [ ] Grouped Scatter plots
+-   [x] [Grouped scatter plots](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#grouped-scatter-plot)
 
--   [ ] Bubble Charts
+-   [x] [Bubble charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#bubble-chart)
 
--   [ ] Grouped Bubble Charts
+-   [x] [Grouped bubble charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#grouped-bubble-chart)
 
--   [ ] Alluvial Charts
+-   [x] [Alluvial charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#alluvial-graphs)
 
     -   [ggalluvial package](https://corybrunson.github.io/ggalluvial/)
 
@@ -201,7 +205,7 @@ The following graphs are used to display relationships between two (or more) var
         library(ggalluvial)
         ```
 
--   [ ] Bump Charts
+-   [x] [Bump charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#bump-chart)
 
     -   [ggbump package](https://github.com/davidsjoberg/ggbump)
 
@@ -213,7 +217,7 @@ The following graphs are used to display relationships between two (or more) var
         library(ggbump)
         ```
 
--   [ ] Slope-graphs
+-   [ ] *Slope-graphs*
 
 -   [ ] *Density Contours*
 

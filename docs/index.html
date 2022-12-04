@@ -4095,68 +4095,33 @@ $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;</style>
 <h3 class="anchored" data-anchor-id="univariate-graphs">Univariate Graphs</h3>
 <p>The following graphs are used to display <strong>single variable</strong> <strong>distributions</strong>:</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled>Bar Graphs</p></li>
-<li><p><input type="checkbox" disabled>Histograms</p></li>
-<li><p><input type="checkbox" disabled>Frequency Polygons</p></li>
-<li><p><input type="checkbox" disabled>Dot-Plots</p></li>
-<li><p><input type="checkbox" disabled>Density Plots</p></li>
-<li><p><input type="checkbox" disabled>Violin Plots</p></li>
-<li><p><input type="checkbox" disabled>Box-Plots</p></li>
-</ul>
-</section>
-<section id="comparing-distributions" class="level3">
-<h3 class="anchored" data-anchor-id="comparing-distributions">Comparing Distributions</h3>
-<p>These graphs can be used to compare <strong>multiple variable distributions:</strong></p>
-<ul class="task-list">
-<li><p><input type="checkbox" disabled>Overlapping Histograms</p></li>
-<li><p><input type="checkbox" disabled>Overlapping Frequency Polygons</p></li>
-<li><p><input type="checkbox" disabled>Overlapping Dot-Plots</p></li>
-<li><p><input type="checkbox" disabled>Bee-swarm Plots</p><ul>
-<li><p><a href="https://github.com/eclarke/ggbeeswarm"><code>ggbeeswarm</code> package</a></p>
-<div class="cell">
-<details>
-<summary>View code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bee-swarm Plots</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;eclarke/ggbeeswarm&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div></li>
-</ul></li>
-<li><p><input type="checkbox" disabled>Overlapping Densities</p></li>
-<li><p><input type="checkbox" disabled>Ridgeline Plots</p><ul>
-<li><p><a href="https://wilkelab.org/ggridges/"><code>ggridges</code> package</a></p>
-<div class="cell">
-<details>
-<summary>View code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ridgeline plots </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;wilkelab/ggridges&quot;</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div></li>
-</ul></li>
-<li><p><input type="checkbox" disabled>Box-plots</p></li>
-<li><p><input type="checkbox" disabled>Violin plots</p></li>
-<li><p><input type="checkbox" disabled><em>Rain-cloud plots</em></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#bar-graphs">Bar Graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#histograms">Histograms</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#frequency-polygons">Frequency Polygons</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#dot-plots">Dot-Plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#density-plots">Density Plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#violin-plots">Violin Plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/univariate.html#box-plots">Box-Plots</a></p></li>
 </ul>
 </section>
 <section id="comparing-amounts" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-amounts">Comparing Amounts</h3>
 <p>The following graphs are used to display <strong>amounts</strong>:</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled>Bar-graphs</p></li>
-<li><p><input type="checkbox" disabled checked>Grouped Bar-graphs</p></li>
-<li><p><input type="checkbox" disabled>Stacked Bar-graphs</p></li>
-<li><p><input type="checkbox" disabled><em>Dot/point plots</em></p><ul>
-<li>We cover <a href="https://mjfrigaard.github.io/ggp2-graph-gallery/slides/distributions.html#/dot-plots">dot-plots</a> above in the distributions section.</li>
-</ul></li>
-<li><p><input type="checkbox" disabled>Waffle Charts</p><ul>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#grouped-column-graphs">Grouped column-graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#summarized-column-graphs">Summarized column-graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#overlapping-bar-graphs">Overlapping bar-graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#side-to-side-bar-graphs">Side-to-side (“dodge”) bar-graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#dodge2-bar-graphs">Side-to-side (“dodge2”) bar-graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#heatmaps">Heatmaps</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/amounts.html#waffle-chart">Waffle charts</a></p><ul>
 <li><p><a href="https://liamgilbey.github.io/ggwaffle/"><code>ggwaffle</code> package</a></p>
 <div class="cell">
 <details>
 <summary>View code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Waffle Charts</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;liamgilbey/ggwaffle&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggwaffle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Waffle Charts</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;liamgilbey/ggwaffle&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggwaffle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div></li>
 </ul></li>
@@ -4166,56 +4131,89 @@ $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;</style>
 <h3 class="anchored" data-anchor-id="comparing-proportions">Comparing Proportions</h3>
 <p>The following graphs are used to compare <strong>proportions</strong>:</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled>Pie Charts</p><ul>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/proportions.html#pie-charts">Pie Charts</a></p><ul>
 <li><p><a href="https://rpkgs.datanovia.com/ggpubr/"><code>ggpubr</code> package</a></p>
 <div class="cell">
 <details>
 <summary>View code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pie Charts </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;kassambara/ggpubr&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pie Charts </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;kassambara/ggpubr&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div></li>
 </ul></li>
-<li><p><input type="checkbox" disabled>Diverging Bar-graphs</p><ul>
-<li>Horizontal</li>
-<li>Vertical</li>
-</ul></li>
-<li><p><input type="checkbox" disabled>Stacked-densities</p></li>
-<li><p><input type="checkbox" disabled>Mosaic Plots</p><ul>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/proportions.html#diverging-bar-graphs">Diverging Bar-graphs</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/proportions.html#diverging-bar-graphs-vertical">Vertical</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/proportions.html#stacked-or-filled-density-graphs">Stacked-densities</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/proportions.html#mosaic-plot">Mosaic Plots</a></p><ul>
 <li><p><a href="https://haleyjeppson.github.io/ggmosaic/"><code>ggmosaic</code> package</a></p>
 <div class="cell">
 <details>
 <summary>View code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mosaic Charts </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;haleyjeppson/ggmosaic&quot;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mosaic Charts </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;haleyjeppson/ggmosaic&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div></li>
 </ul></li>
-<li><p><input type="checkbox" disabled>Treemaps</p><ul>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/proportions.html#treemaps">Treemaps</a></p><ul>
 <li><p><a href="https://wilkox.org/treemapify/"><code>treemapify</code> package</a></p>
 <div class="cell">
 <details>
 <summary>View code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Treemaps</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;wilkox/treemapify&quot;</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Treemaps</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;wilkox/treemapify&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div></li>
 </ul></li>
 <li><p><input type="checkbox" disabled><em>Parallel Sets</em></p></li>
 </ul>
 </section>
+<section id="comparing-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-distributions">Comparing Distributions</h3>
+<p>These graphs can be used to compare <strong>multiple variable distributions:</strong></p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-histogram">Overlapping Histograms</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-frequency-polygons">Overlapping Frequency Polygons</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-dot-plots">Overlapping Dot-Plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#bee-swarm-plots">Bee-swarm Plots</a></p><ul>
+<li><p><a href="https://github.com/eclarke/ggbeeswarm"><code>ggbeeswarm</code> package</a></p>
+<div class="cell">
+<details>
+<summary>View code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bee-swarm Plots</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;eclarke/ggbeeswarm&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div></li>
+</ul></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-or-stacked-density-plots">Overlapping Densities</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#ridgeline-plots">Ridgeline Plots</a></p><ul>
+<li><p><a href="https://wilkelab.org/ggridges/"><code>ggridges</code> package</a></p>
+<div class="cell">
+<details>
+<summary>View code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ridgeline plots </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;wilkelab/ggridges&quot;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div></li>
+</ul></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#grouped-box-plots">Grouped Box-plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/distributions.html#grouped-violin-plots">Violin plots</a></p></li>
+<li><p><input type="checkbox" disabled><em>Rain-cloud plots</em></p></li>
+</ul>
+</section>
 <section id="relationships" class="level3">
 <h3 class="anchored" data-anchor-id="relationships">Relationships</h3>
 <p>The following graphs are used to display relationships between two (or more) variables:</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled>Scatter Plots</p></li>
-<li><p><input type="checkbox" disabled>Grouped Scatter plots</p></li>
-<li><p><input type="checkbox" disabled>Bubble Charts</p></li>
-<li><p><input type="checkbox" disabled>Grouped Bubble Charts</p></li>
-<li><p><input type="checkbox" disabled>Alluvial Charts</p><ul>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/relationships.html#scatter-plot">Scatter plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/relationships.html#grouped-scatter-plot">Grouped scatter plots</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/relationships.html#bubble-chart">Bubble charts</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/relationships.html#grouped-bubble-chart">Grouped bubble charts</a></p></li>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/relationships.html#alluvial-graphs">Alluvial charts</a></p><ul>
 <li><p><a href="https://corybrunson.github.io/ggalluvial/">ggalluvial package</a></p>
 <div class="cell">
 <details>
@@ -4226,7 +4224,7 @@ $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;</style>
 </details>
 </div></li>
 </ul></li>
-<li><p><input type="checkbox" disabled>Bump Charts</p><ul>
+<li><p><input type="checkbox" disabled checked><a href="https://mjfrigaard.github.io/ggp2-gallery/relationships.html#bump-chart">Bump charts</a></p><ul>
 <li><p><a href="https://github.com/davidsjoberg/ggbump">ggbump package</a></p>
 <div class="cell">
 <details>
@@ -4237,7 +4235,7 @@ $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;</style>
 </details>
 </div></li>
 </ul></li>
-<li><p><input type="checkbox" disabled>Slope-graphs</p></li>
+<li><p><input type="checkbox" disabled><em>Slope-graphs</em></p></li>
 <li><p><input type="checkbox" disabled><em>Density Contours</em></p></li>
 <li><p><input type="checkbox" disabled><em>2D Bins</em></p></li>
 <li><p><input type="checkbox" disabled><em>Hex Bins</em></p></li>
