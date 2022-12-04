@@ -610,7 +610,7 @@ Map `sex` to `fill`
 labs_fill_density <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
-  fill = "Penguin sex (female, male)")
+  fill = "Sex")
 ggp2_fill_density <- ggplot(data = peng_density, 
        aes(x = flipper_length_mm, 
            after_stat(count),
@@ -636,7 +636,7 @@ ggp2_fill_density +
 labs_fill_density <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
-  fill = "Penguin sex (female, male)")
+  fill = "Sex")
 ggp2_fill_density <- ggplot(data = peng_density, 
        aes(x = flipper_length_mm, 
            after_stat(count),

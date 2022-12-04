@@ -1016,7 +1016,7 @@ ggp2_heatmap_tile <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_tile()
+       geom_tile() 
 ggp2_heatmap_tile + 
   labs_heatmap_tile
 ```
@@ -1043,7 +1043,7 @@ ggp2_heatmap_tile <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_tile()
+       geom_tile() 
 ggp2_heatmap_tile + 
   labs_heatmap_tile
 ```
@@ -1144,7 +1144,7 @@ ggp2_heatmap_raster <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_raster()
+       geom_raster() 
 ggp2_heatmap_raster + 
   labs_heatmap_raster
 ```
@@ -1171,7 +1171,7 @@ ggp2_heatmap_raster <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_raster()
+       geom_raster() 
 ggp2_heatmap_raster + 
   labs_heatmap_raster
 ```
