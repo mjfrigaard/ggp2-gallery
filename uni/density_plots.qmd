@@ -1,0 +1,182 @@
+---
+title: "Density Plots"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+library(xml2)
+library(reactable)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+penguins <- palmerpenguins::penguins
+labs_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_density <- ggplot(data = penguins, 
+        aes(x = flipper_length_mm)) + 
+      geom_density() 
+
+ggp2_density +
+  labs_density
+```
+
+Density plots are similar to frequency polygons and histograms, except the line has been ‘smoothed.’
+
+Instead of dividing the x axis into discrete quantitative ‘bins’ to create groups for the variable values, density plots transform the distribution according to a ‘bandwidth’ parameter.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_density
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_density
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `flipper_length_mm` to the `x` axis
+
+Add the `geom_density()` layer
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_density
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_density <- ggplot(data = penguins, 
+        aes(x = flipper_length_mm)) + 
+      geom_density() 
+
+ggp2_density +
+  labs_density
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_density
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_density <- ggplot(data = penguins, 
+        aes(x = flipper_length_mm)) + 
+      geom_density() 
+
+ggp2_density +
+  labs_density
+```
+
+::::

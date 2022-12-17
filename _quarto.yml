@@ -4,31 +4,50 @@ project:
 
 website:
   title: "ggplot2 gallery"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: univariate.qmd
-        text: Univariate
-      - href: amounts.qmd
-        text: Amounts
-      - href: proportions.qmd
-        text: Proportions
-      - href: distributions.qmd
-        text: Distributions
-      - href: relationships.qmd
-        text: Relationships
-      - href: stat-graphs.qmd
-        text: Statistical Graphs
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - section: "Welcome"
+        contents:
+          - index.qmd
+      - section: "Univariate"
+        contents:
+          - uni/bar_graphs.qmd
+          - uni/histograms.qmd
+          - uni/frequency_polygons.qmd
+          - uni/dot_plots.qmd
+          - uni/density_plots.qmd
+          - uni/violin_plot.qmd
+          - uni/box_plots.qmd
+      - section: "Amounts"
+        contents:
+          - amt/grouped_column_graphs.qmd
+          - amt/summarized_column_graphs.qmd
+          - amt/overlapping_bar_graphs.qmd
+          - amt/side_to_side_bar_graphs.qmd
+          - amt/dodge2_bar_graphs.qmd
+          - amt/waffle_chart.qmd
+          - amt/heatmaps.qmd
+          - amt/more_heatmaps.qmd
+      - section: "Proportions"
+      - section: "Distributions"
+      - section: "Relationships"
+      - section: "Stat-Graphs"
 
 
 format:
   html:
+    dpi: 320
+    fig-format: retina
+    fig-asp: 0.618
     toc: true
-    toc-depth: 2
+    toc-location: left
+    toc-title: Contents
+    html-math-method: katex
     css: styles.css
     theme:
-      light: materia    
+      light: materia
       dark: superhero
       
 editor: source

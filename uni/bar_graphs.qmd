@@ -1,0 +1,188 @@
+---
+title: "Bar-graphs"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+penguins_bar <- palmerpenguins::penguins |> 
+    filter(!is.na(species))
+labs_bar <- labs(
+  title = "Adult foraging penguins",
+  x = "Species", y = "Count", 
+  fill = "Species")
+ggp2_bar <- ggplot(data = penguins_bar,
+       aes(x = species)) +
+    geom_bar(aes(fill = species), 
+        show.legend = FALSE)
+ggp2_bar +
+  labs_bar
+```
+
+A bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable.
+
+Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each level value.
+
+In `ggplot2`, bar charts can be built using `geom_bar()` (see also: `geom_col()`).
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_bar
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Filter the missing values from `species` in the `palmerpenguins::penguins` data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_bar
+#| eval: true
+#| echo: true
+penguins_bar <- palmerpenguins::penguins |> 
+    filter(!is.na(species))
+glimpse(penguins_bar)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `species` to the `x` axis
+
+Map `species` to the `fill` aesthetic inside the `aes()` of `geom_bar()`
+
+Remove the legend with `show.legend = FALSE`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_bar
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_bar <- labs(
+  title = "Adult foraging penguins",
+  x = "Species", y = "Count", 
+  fill = "Species")
+ggp2_bar <- ggplot(data = penguins_bar,
+       aes(x = species)) +
+    geom_bar(aes(fill = species), 
+        show.legend = FALSE)
+ggp2_bar +
+  labs_bar
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_bar
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_bar <- labs(
+  title = "Adult foraging penguins",
+  x = "Species", y = "Count", 
+  fill = "Species")
+ggp2_bar <- ggplot(data = penguins_bar,
+       aes(x = species)) +
+    geom_bar(aes(fill = species), 
+        show.legend = FALSE)
+ggp2_bar +
+  labs_bar
+```
+
+::::

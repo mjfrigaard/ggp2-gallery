@@ -1,0 +1,198 @@
+---
+title: "Summarized column-graphs"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(ggplot2movies) 
+library(ggplot2)
+movies_sum_col <- ggplot2movies::movies |>
+    filter(!is.na(budget) & mpaa != "") |>
+    select(budget, mpaa) |>
+    group_by(mpaa) |>
+    summarise(avg_budget = mean(budget, na.rm = TRUE)) |>
+    ungroup()
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Average budget in US dollars")
+ggp2_col <- ggplot(data = movies_sum_col,
+              aes(x = mpaa, 
+                  y = avg_budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+
+`geom_col()` allows us to display summary statistics for a numerical variable across levels of a categorical variable. 
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_sum_col
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2movies")
+library(ggplot2movies) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove the missing values and reduce the `ggplot2movies::movies` dataset to only `budget` and `mpaa`, then group the data by `mpaa` and calculate the mean `budget` (as `avg_budget`). 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_sum_col
+#| eval: true
+#| echo: true
+movies_sum_col <- ggplot2movies::movies |>
+    filter(!is.na(budget) & mpaa != "") |>
+    select(budget, mpaa) |>
+    group_by(mpaa) |>
+    summarise(avg_budget = mean(budget, na.rm = TRUE)) |>
+    ungroup()
+glimpse(movies_sum_col)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `mpaa` to the `x` and `avg_budget` to the `y`
+
+Map `mpaa` to `fill` inside the `aes()` of `geom_col()` and remove the legend with `show.lengend = FALSE`
+
+Format the `y` axis with `scale_y_continuous()` by setting labels to `scales::dollar`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_sum_col
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Average budget in US dollars")
+ggp2_col <- ggplot(data = movies_sum_col,
+              aes(x = mpaa, 
+                  y = avg_budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_sum_col
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_col <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", 
+  y = "Average budget in US dollars")
+ggp2_col <- ggplot(data = movies_sum_col,
+              aes(x = mpaa, 
+                  y = avg_budget)) + 
+        geom_col(aes(fill = mpaa), 
+          show.legend = FALSE) + 
+        scale_y_continuous(labels = scales::dollar) 
+ggp2_col + 
+  labs_col
+```
+
+::::

@@ -1,0 +1,214 @@
+---
+title: "Heatmaps"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
+install.packages("fivethirtyeight")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(fivethirtyeight) 
+library(ggplot2)
+heatmap_ross <- fivethirtyeight::bob_ross |>
+  pivot_longer(-c(episode, season,
+    episode_num, title),
+    names_to = "object",
+    values_to = "present") |>
+  mutate(present = as.logical(present),
+    object = str_replace_all(object, "_", " ")) |>
+  arrange(episode, object) |> 
+  filter(object %in% c("conifer", "trees", 
+    "tree", "snow", "palm trees", "grass", 
+    "flowers", "cactus", "bushes", "cirrus", 
+    "cumulus", "deciduous", "clouds", "fog")) |>
+  group_by(season, object) |>
+  summarise(occurrences = sum(present)) |>
+  ungroup()
+labs_heatmap_tile <- labs(
+  title = "Bob Ross' plants & clouds", 
+  x = "Season", 
+  y = "Plant & Cloud Objects", 
+  fill = "Occurrences")
+ggp2_heatmap_tile <- ggplot(data = heatmap_ross, 
+       aes(x = season, 
+           y = object, 
+           fill = occurrences)) + 
+       geom_tile() 
+ggp2_heatmap_tile + 
+  labs_heatmap_tile
+```
+
+Heatmaps display quantitative values across an intersection of two categorical (or discrete) variables.
+
+The intersecting cells contain variations of color saturation (i.e., the grade of purity or vividness) to represent the numerical values between groups.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_heatmap
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("fivethirtyeight")
+library(fivethirtyeight) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+For the heatmap, we’re going to re-structure and filter the `bob_ross` data from the `fivethirtyeight` package.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_heatmap
+#| eval: true
+#| echo: true
+heatmap_ross <- fivethirtyeight::bob_ross |>
+  pivot_longer(-c(episode, season,
+    episode_num, title),
+    names_to = "object",
+    values_to = "present") |>
+  mutate(present = as.logical(present),
+    object = str_replace_all(object, "_", " ")) |>
+  arrange(episode, object) |> 
+  filter(object %in% c("conifer", "trees", 
+    "tree", "snow", "palm trees", "grass", 
+    "flowers", "cactus", "bushes", "cirrus", 
+    "cumulus", "deciduous", "clouds", "fog")) |>
+  group_by(season, object) |>
+  summarise(occurrences = sum(present)) |>
+  ungroup()
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Assign `season` to `x`, `object` to `y`, and `occurrences` to `fill`
+
+Add the `geom_tile()`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_heatmap
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_heatmap_tile <- labs(
+  title = "Bob Ross' plants & clouds", 
+  x = "Season", 
+  y = "Plant & Cloud Objects", 
+  fill = "Occurrences")
+ggp2_heatmap_tile <- ggplot(data = heatmap_ross, 
+       aes(x = season, 
+           y = object, 
+           fill = occurrences)) + 
+       geom_tile() 
+ggp2_heatmap_tile + 
+  labs_heatmap_tile
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_heatmap
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_heatmap_tile <- labs(
+  title = "Bob Ross' plants & clouds", 
+  x = "Season", 
+  y = "Plant & Cloud Objects", 
+  fill = "Occurrences")
+ggp2_heatmap_tile <- ggplot(data = heatmap_ross, 
+       aes(x = season, 
+           y = object, 
+           fill = occurrences)) + 
+       geom_tile() 
+ggp2_heatmap_tile + 
+  labs_heatmap_tile
+```
+
+::::

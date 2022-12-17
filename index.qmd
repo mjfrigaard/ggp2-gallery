@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the `ggplot2` graph gallery!"
+title: "Overview"
 format:
   html:
     toc: true
@@ -13,8 +13,29 @@ format:
     
 ---
 
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+```
 
-This Quarto website contains a series of graphs composed in `ggplot2`. Install `ggplot2` using the code below:
+
+Welcome to the `ggplot2` graph gallery! This Quarto website contains a series of graphs composed in `ggplot2`. Install `ggplot2` using the code below:
 
 ```{r}
 #| label: ggp2-pkg
@@ -24,7 +45,7 @@ install.packages("ggplot2")
 library(ggplot2)
 ```
 
-Or install it as part of the `tidyverse`:
+Or install `ggplot2` as part of the `tidyverse`:
 
 ```{r}
 #| label: tidyverse-pkg
@@ -34,49 +55,129 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
+## Data
+
+An effort has been made to keep the number of additional packages at a minimum, so most of the graphs have been created with one of two datasets: 
+
+### `penguins`
+
+:::: {.callout-note collapse="true"}
+## `penguins` data
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("palmerpenguins")
+library(palmerpenguins)
+palmerpenguins::penguins |> glimpse()
+```
+
+```{r}
+#| label: penguins-pkg
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+library(palmerpenguins)
+palmerpenguins::penguins |> glimpse()
+```
+:::
+
+### `movies`
+
+:::: {.callout-note collapse="true"}
+## `movies` data
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("ggplot2movies")
+library(ggplot2movies)
+ggplot2movies::movies |> glimpse()
+```
+
+
+```{r}
+#| label: movies-pkg
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+library(ggplot2movies)
+ggplot2movies::movies |> glimpse()
+```
+
+:::
+
+### `fivethirtyeight`
+
+:::: {.callout-note collapse="true"}
+## `fivethirtyeight` data
+
+A few of the graphs use data from the `fivethirtyeight` package. 
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("fivethirtyeight")
+library(fivethirtyeight)
+fivethirtyeight::datasets_master |> 
+    select(`Data Frame Name`, `Article Title`)
+```
+
+```{r}
+#| label: 538-pkg
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+library(fivethirtyeight)
+reactable::reactable(fivethirtyeight::datasets_master |> 
+    select(`Data Frame Name`, `Article Title`), 
+    defaultPageSize = 5)
+```
+
+:::
+
+
+
 ## Graph Packages
 
 Most of the graphs in this gallery can be built using on of `ggplot2` 's many `geom_*` functions. If a graph requires additional `geom`s or functions, the development version for these packages have been listed.
 
-## Galleries
-
-The graphs have been broken into separate categories:
-
-### Univariate Graphs
+## Univariate Graphs
 
 The following graphs are used to display **single variable** **distributions**:
 
--   [x] [Bar Graphs](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#bar-graphs)
+-   [x] Bar Graphs
 
--   [x] [Histograms](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#histograms)
+-   [x] Histograms
 
--   [x] [Frequency Polygons](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#frequency-polygons)
+-   [x] Frequency Polygons
 
--   [x] [Dot-Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#dot-plots)
+-   [x] Dot-Plots
 
--   [x] [Density Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#density-plots)
+-   [x] Density Plots
 
--   [x] [Violin Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#violin-plots)
+-   [x] Violin Plots
 
--   [x] [Box-Plots](https://mjfrigaard.github.io/ggp2-gallery/univariate.html#box-plots)
+-   [x] Box-Plots
 
-### Comparing Amounts
+## Comparing Amounts
 
 The following graphs are used to display **amounts**:
 
--   [x] [Grouped column-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#grouped-column-graphs)
+-   [x] Grouped column-graphs
 
--   [x] [Summarized column-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#summarized-column-graphs)
+-   [x] Summarized column-graphs
 
--   [x] [Overlapping bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#overlapping-bar-graphs)
+-   [x] Overlapping bar-graphs
 
--   [x] [Side-to-side ("dodge") bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#side-to-side-bar-graphs)
+-   [x] Side-to-side (`"dodge"`) bar-graphs
 
--   [x] [Side-to-side ("dodge2") bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#dodge2-bar-graphs)
+-   [x] Side-to-side (`"dodge2"`) bar-graphs
 
--   [x] [Heatmaps](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#heatmaps)
-
--   [x] [Waffle charts](https://mjfrigaard.github.io/ggp2-gallery/amounts.html#waffle-chart)
+-   [x] Waffle charts
 
     -   [`ggwaffle` package](https://liamgilbey.github.io/ggwaffle/)
 
@@ -88,11 +189,13 @@ The following graphs are used to display **amounts**:
         library(ggwaffle)
         ```
 
-### Comparing Proportions
+-   [x] Heatmaps
+
+## Comparing Proportions
 
 The following graphs are used to compare **proportions**:
 
--   [x] [Pie Charts](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#pie-charts)
+-   [x] Pie Charts
 
     -   [`ggpubr` package](https://rpkgs.datanovia.com/ggpubr/)
 
@@ -104,13 +207,13 @@ The following graphs are used to compare **proportions**:
         library(ggpubr)
         ```
 
--   [x] [Diverging Bar-graphs](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#diverging-bar-graphs)
+-   [x] Diverging Bar-graphs
 
-  -   [x] [Vertical](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#diverging-bar-graphs-vertical)
+  -   [x] Vertical
 
--   [x] [Stacked-densities](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#stacked-or-filled-density-graphs)
+-   [x] Stacked-densities
 
--   [x] [Mosaic Plots](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#mosaic-plot)
+-   [x] Mosaic Plots
 
     -   [`ggmosaic` package](https://haleyjeppson.github.io/ggmosaic/)
 
@@ -122,7 +225,7 @@ The following graphs are used to compare **proportions**:
         library(ggmosaic)
         ```
 
--   [x] [Treemaps](https://mjfrigaard.github.io/ggp2-gallery/proportions.html#treemaps)
+-   [x] Treemaps
 
     -   [`treemapify` package](https://wilkox.org/treemapify/)
 
@@ -137,17 +240,17 @@ The following graphs are used to compare **proportions**:
 -   [ ] *Parallel Sets*
 
 
-### Comparing Distributions
+## Comparing Distributions
 
 These graphs can be used to compare **multiple variable distributions:**
 
--   [x] [Overlapping Histograms](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-histogram)
+-   [x] Overlapping Histograms
 
--   [x] [Overlapping Frequency Polygons](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-frequency-polygons)
+-   [x] Overlapping Frequency Polygons
 
--   [x] [Overlapping Dot-Plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-dot-plots)
+-   [x] Overlapping Dot-Plots
 
--   [x] [Bee-swarm Plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#bee-swarm-plots)
+-   [x] Bee-swarm Plots
 
     -   [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm)
 
@@ -159,9 +262,9 @@ These graphs can be used to compare **multiple variable distributions:**
         library(ggbeeswarm)
         ```
 
--   [x] [Overlapping Densities](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#overlapping-or-stacked-density-plots)
+-   [x] Overlapping Densities
 
--   [x] [Ridgeline Plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#ridgeline-plots)
+-   [x] Ridgeline Plots
 
     -   [`ggridges` package](https://wilkelab.org/ggridges/)
 
@@ -173,27 +276,27 @@ These graphs can be used to compare **multiple variable distributions:**
         library(ggridges)
         ```
 
--   [x] [Grouped Box-plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#grouped-box-plots)
+-   [x] Grouped Box-plots
 
--   [x] [Violin plots](https://mjfrigaard.github.io/ggp2-gallery/distributions.html#grouped-violin-plots)
+-   [x] Violin plots
 
 -   [ ] *Rain-cloud plots*
 
 
 
-### Relationships
+## Relationships
 
 The following graphs are used to display relationships between two (or more) variables:
 
--   [x] [Scatter plots](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#scatter-plot)
+-   [x] Scatter plots
 
--   [x] [Grouped scatter plots](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#grouped-scatter-plot)
+-   [x] Grouped scatter plots
 
--   [x] [Bubble charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#bubble-chart)
+-   [x] Bubble charts
 
--   [x] [Grouped bubble charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#grouped-bubble-chart)
+-   [x] Grouped bubble charts
 
--   [x] [Alluvial charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#alluvial-graphs)
+-   [x] Alluvial charts
 
     -   [ggalluvial package](https://corybrunson.github.io/ggalluvial/)
 
@@ -205,7 +308,7 @@ The following graphs are used to display relationships between two (or more) var
         library(ggalluvial)
         ```
 
--   [x] [Bump charts](https://mjfrigaard.github.io/ggp2-gallery/relationships.html#bump-chart)
+-   [x] Bump charts
 
     -   [ggbump package](https://github.com/davidsjoberg/ggbump)
 
@@ -226,14 +329,3 @@ The following graphs are used to display relationships between two (or more) var
 -   [ ] *Hex Bins*
 
 -   [ ] *Correlograms*
-
-## Data
-
-The following datasets have been used to create the graphs:
-
-```{r}
-#| label: palmer-penguins
-#| eval: false
-#| echo: true
-
-```

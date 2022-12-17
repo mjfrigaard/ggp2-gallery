@@ -1,0 +1,241 @@
+---
+title: "Box-Plots"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(ggplot2movies)
+library(ggplot2)
+movies_box <- ggplot2movies::movies |> 
+                dplyr::filter(year > 2000 & 
+                                mpaa != "" & 
+                                    !is.na(budget))
+labs_boxplot <- labs(
+  title = "IMDB Movie information and user ratings",
+  y = "Length", x = "")
+ggp2_boxplot <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot() 
+
+ggp2_boxplot + 
+  labs_boxplot
+```
+
+Box-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
+
+In `ggplot2`, we can create a box-plot for a single numeric variable using `geom_boxplot()`
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_boxplot
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2movies")
+library(ggplot2movies) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Filter `ggplot2movies::movies` to only include films after the made after `2000`, and remove missing values from `mpaa` and `budget`.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_
+#| eval: true
+#| echo: true
+movies_box <- ggplot2movies::movies |> 
+                dplyr::filter(year > 2000 & 
+                                mpaa != "" & 
+                                    !is.na(budget))
+glimpse(movies_box)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+  - Assign a blank character string (`""`) to the `x` axis in `labs()`
+
+Map `length` to the `y` axis and an empty string (`""`) to the `x` axis
+
+Add the `geom_boxplot()` layer
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_boxplot <- labs(
+  title = "IMDB Movie information and user ratings",
+  y = "Length", x = "")
+ggp2_boxplot <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot() 
+
+ggp2_boxplot + 
+  labs_boxplot
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_boxplot <- labs(
+  title = "IMDB Movie information and user ratings",
+  y = "Length", x = "")
+ggp2_boxplot <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot() 
+
+ggp2_boxplot + 
+  labs_boxplot
+```
+
+::::
+
+### MORE ON BOX-PLOTS
+
+:::: {.panel-tabset}
+
+### Summary Statistics
+
+::: {style="font-size: 0.85em;"}
+The table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the length column from the `movies_box` dataset.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: box_table_stats
+#| eval: true
+#| echo: false 
+lgnth_skim <- skimr::skim(movies_box$length)
+LengthBoxStats <- select(lgnth_skim,
+     `25th` = numeric.p25, Median = numeric.p50,
+     `75th` = numeric.p75, Histogram = numeric.hist) %>%
+     mutate(IQR = IQR(movies_box$length, na.rm = TRUE)) %>%
+     select(`25th`, Median, `75th`, IQR, Histogram)
+kableExtra::kable_paper(
+  kable_input = knitr::kable(LengthBoxStats), 
+  font_size = 14
+  )
+```
+:::
+
+### How to read a box-plot
+
+::: {style="font-size: 0.85em;"}
+In the figure below we can see how the box-plot represents each of these numbers using lines and points.
+:::
+
+![](../www/boxplot-diagram.png){fig-align="center" width="100%" height="100%"}
+
+::: {style="font-size: 0.85em;"}
+In `ggplot2`, values that fall more than 1.5 times the IQR are displayed as individual points (aka outliers). The lines extending from the bottom and top of the main box represent the last non-outlier value in the distribution.
+:::
+
+### Compare 
+
+::: {style="font-size: 0.85em;"}
+Compare the four graphs of `length` from `movie_box` below to the box-plot:
+:::
+
+![](../www/boxplot-comparisons.png){fig-align="center" width="100%" height="100%"}
+
+::::
