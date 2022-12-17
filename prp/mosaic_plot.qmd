@@ -1,0 +1,208 @@
+---
+title: "Mosaic Plots"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("fivethirtyeight")
+devtools::install_github("haleyjeppson/ggmosaic")
+library()
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(fivethirtyeight) 
+library(ggmosaic)
+library(ggplot2) 
+flying <- fivethirtyeight::flying
+fly_mosaic <- filter(flying, 
+              !is.na(baby) & !is.na(unruly_child)) |> 
+              select(baby, unruly_child)
+labs_mosaic <- labs(
+      title = "In general...", 
+      subtitle = "...is it rude to...",
+      x = "... bring a baby on a plane?",
+      y = "..,knowingly bring unruly children on a plane?",
+      fill = "Responses") 
+ggp2_mosaic <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(x = product(unruly_child, baby), 
+      fill = baby)) +
+  theme_mosaic()
+ggp2_mosaic + 
+    labs_mosaic
+```
+
+A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
+
+We can build mosaic plots using the [`ggmosaic` package.](https://haleyjeppson.github.io/ggmosaic/)
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("fivethirtyeight")
+library(fivethirtyeight) 
+devtools::install_github("haleyjeppson/ggmosaic")
+library(ggmosaic)
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Description of data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_
+#| eval: true
+#| echo: true
+flying <- fivethirtyeight::flying
+fly_mosaic <- filter(flying, 
+              !is.na(baby) & !is.na(unruly_child)) |> 
+              select(baby, unruly_child)
+glimpse(fly_mosaic)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map the `product()` of `unruly_child` and `baby` to the `x` axis
+
+Map `baby` to `fill`
+
+Add `theme_mosaic()`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+#| fig-height: 7
+#| fig-width: 7
+labs_mosaic <- labs(
+      title = "In general...", 
+      subtitle = "...is it rude to...",
+      x = "... bring a baby on a plane?",
+      y = "..,knowingly bring unruly children on a plane?",
+      fill = "Responses") 
+ggp2_mosaic <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(x = product(unruly_child, baby), 
+      fill = baby)) +
+  theme_mosaic()
+ggp2_mosaic + 
+    labs_mosaic
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.85em;"}
+*It's a good idea to adjust the `fig-height` and `fig-width` of your graph:*
+:::
+
+```{r}
+#| label: create_graph_
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 7
+#| fig-width: 7
+labs_mosaic <- labs(
+      title = "In general...", 
+      subtitle = "...is it rude to...",
+      x = "... bring a baby on a plane?",
+      y = "..,knowingly bring unruly children on a plane?",
+      fill = "Responses") 
+ggp2_mosaic <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(x = product(unruly_child, baby), 
+      fill = baby)) +
+  theme_mosaic()
+ggp2_mosaic + 
+    labs_mosaic
+```
+
+::::

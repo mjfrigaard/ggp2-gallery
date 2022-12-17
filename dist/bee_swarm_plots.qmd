@@ -1,0 +1,200 @@
+---
+title: "Bee-swarm Plots"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+devtools::install_github("eclarke/ggbeeswarm")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(ggbeeswarm)
+library(palmerpenguins) 
+library(ggplot2)
+penguins <- palmerpenguins::penguins
+labs_beeswarm <- labs(
+  title = "Adult Foraging Penguins",
+  x = "Penguin Species",
+  y = "Body mass (grams)")
+ggp2_beeswarm <- ggplot(data = penguins, 
+       aes(x = species, 
+           y = body_mass_g, 
+           color = species)) + 
+  ggbeeswarm::geom_beeswarm(
+      alpha = 2/3, 
+    show.legend = FALSE) 
+ggp2_beeswarm + 
+  labs_beeswarm
+```
+
+We can also use smaller dots (or points) to show the spread of values for a particular variable with bee-swarm plots
+
+Install the [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm).
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_beeswarm
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+devtools::install_github("eclarke/ggbeeswarm")
+library(ggbeeswarm)
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_beeswarm
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `island` to the `x` axis and `color`
+
+Map `body_mass_g` to the `y` axis
+
+Add the `ggbeeswarm::geom_beeswarm()` layer (with `alpha`)
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_beeswarm
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_beeswarm <- labs(
+  title = "Adult Foraging Penguins",
+  x = "Penguin Species",
+  y = "Body mass (grams)")
+ggp2_beeswarm <- ggplot(data = penguins, 
+       aes(x = species, 
+           y = body_mass_g, 
+           color = species)) + 
+  ggbeeswarm::geom_beeswarm(
+      alpha = 2/3, 
+    show.legend = FALSE) 
+ggp2_beeswarm + 
+  labs_beeswarm
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Adjust the size/shape of the swarm using `method =` or the  `geom_quasirandom()` function from `ggbeeswarm`
+:::
+
+```{r}
+#| label: create_graph_beeswarm
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_beeswarm <- labs(
+  title = "Adult Foraging Penguins",
+  x = "Penguin Species",
+  y = "Body mass (grams)")
+ggp2_beeswarm <- ggplot(data = penguins, 
+       aes(x = species, 
+           y = body_mass_g, 
+           color = species)) + 
+  ggbeeswarm::geom_beeswarm(
+      alpha = 2/3, 
+    show.legend = FALSE) 
+ggp2_beeswarm + 
+  labs_beeswarm
+```
+
+::::

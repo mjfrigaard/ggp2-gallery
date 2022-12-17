@@ -48,24 +48,14 @@ install.packages("palmerpenguins")
 #| out-width: '60%'
 #| fig-align: right
 library(palmerpenguins) 
+library(ggplot2movies)
+library(fivethirtyeight)
 library(ggplot2)
-penguins_bar <- palmerpenguins::penguins |> 
-    filter(!is.na(species))
-labs_bar <- labs(
-  title = "Adult foraging penguins",
-  x = "Species", y = "Count", 
-  fill = "Species")
-ggp2_bar <- ggplot(data = penguins_bar,
-       aes(x = species)) +
-    geom_bar(aes(fill = species), 
-        show.legend = FALSE)
-ggp2_bar +
-  labs_bar
 ```
 
-Description
+<!-- Description -->
 
-More_description.
+<!-- More_description -->
 
 ::::
 
@@ -104,7 +94,7 @@ Install packages.
 :::
 
 ::: {style="font-size: 0.85em;"}
-Description of data
+<!-- Description of data -->
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -128,13 +118,9 @@ Description of data
 
 ::: {style="font-size: 0.85em;"}
 
-1. Create the labels
+Create the labels
 
-2. 
 
-3. 
-
-4. 
 :::
 
 ::: {style="font-size: 0.75em;"}

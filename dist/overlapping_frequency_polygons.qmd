@@ -1,0 +1,181 @@
+---
+title: "Overlapping Frequency Polygons"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+penguins <- palmerpenguins::penguins
+labs_ovrlp_freq_poly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  color = "Species")
+ggp2_ovrlp_freq_poly <- ggplot(data = penguins, 
+       aes(x = flipper_length_mm,
+           group = species)) + 
+  geom_freqpoly(aes(color = species))
+ggp2_ovrlp_freq_poly + 
+  labs_ovrlp_freq_poly
+```
+
+Overlapping frequency polygons are similar to overlapping histograms--they allow us to compare distributions of a continuous variable across the levels of a categorical variable.
+
+Instead of using bars, frequency polygons use lines to show the shape of the distribution. 
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `flipper_length_mm` to the `x` and `species` to `group`  
+
+Map `species` to the `color` aesthetic *inside* the `geom_freqpoly()`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_ovrlp_freq_poly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  color = "Species")
+ggp2_ovrlp_freq_poly <- ggplot(data = penguins, 
+       aes(x = flipper_length_mm,
+           group = species)) + 
+  geom_freqpoly(aes(color = species))
+ggp2_ovrlp_freq_poly + 
+  labs_ovrlp_freq_poly
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_ovrlp_freq_poly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  color = "Species")
+ggp2_ovrlp_freq_poly <- ggplot(data = penguins, 
+       aes(x = flipper_length_mm,
+           group = species)) + 
+  geom_freqpoly(aes(color = species))
+ggp2_ovrlp_freq_poly + 
+  labs_ovrlp_freq_poly
+```
+
+::::

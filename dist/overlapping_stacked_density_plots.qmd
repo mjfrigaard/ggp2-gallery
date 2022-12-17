@@ -1,0 +1,285 @@
+---
+title: "Overlapping Densities"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+library(patchwork)
+peng_density <- filter(penguins, !is.na(sex))
+labs_ovrlp_density <- labs(
+  subtitle = "position = 'identity'",
+  x = "Flipper length (mm)",
+  fill = "Sex")
+ggp2_ovrlp_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           fill = sex)) +
+      geom_density(alpha = 1/3) 
+
+ovrlp_density <- ggp2_ovrlp_density + 
+  labs_ovrlp_density + 
+    ggplot2::theme_minimal(base_size = 11)
+
+labs_stack_density <- labs(
+  subtitle = "position = 'stack'",
+  x = "Flipper length (mm)", 
+  fill = "Sex")
+ggp2_stack_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+           fill = sex)) +
+      geom_density(position = "stack", 
+                   alpha = 1/3) 
+stack_density <- ggp2_stack_density + 
+  labs_stack_density + 
+    ggplot2::theme_minimal(base_size = 11)
+ovrlp_density + stack_density + 
+    patchwork::plot_layout(ncol = 1)
+```
+
+The `geom_density()` creates a [*smoothed version of the histogram*](https://ggplot2.tidyverse.org/reference/geom_density.html) and allows us to compare the distributions of a continuous variable across the levels of a categorical variable. 
+
+`geom_density()`s default `position` is `"identity"`, but we can choose to overlap or `"stack"` the smoothed distributions.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_ovrlp_density
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins)
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove missing `sex` from the `penguins` data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_ovrlp_density
+#| eval: true
+#| echo: true
+peng_density <- filter(penguins, !is.na(sex))
+glimpse(peng_density)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map the `flipper_length_mm` to the `x` and `sex` to `fill` 
+
+Add the `geom_density()`  
+
+Set the `alpha` to `1/3` (to handle the overlapping areas)
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_ovrlp_density
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_ovrlp_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Sex")
+ggp2_ovrlp_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           fill = sex)) +
+      geom_density(alpha = 1/3) 
+ggp2_ovrlp_density + 
+  labs_ovrlp_density
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.85em;"}
+*A downside of density plots is the lack of interpretability of the **y** axis*
+
+Make density area slightly transparent to handle over-plotting.
+:::
+
+```{r}
+#| label: create_graph_ovrlp_density
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_ovrlp_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)",
+  fill = "Sex")
+ggp2_ovrlp_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           fill = sex)) +
+      geom_density(alpha = 1/3) 
+ggp2_ovrlp_density + 
+  labs_ovrlp_density
+```
+
+::::
+
+### STACKED DENSITY PLOTS 
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map the `flipper_length_mm` to the `x`, add  `after_stat(count)`, and map `sex` to `fill` 
+
+*Inside* `geom_density()`, set `position` to `"stack"`
+
+Set the `alpha` to `1/3`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_stack_density
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_stack_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_stack_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+           fill = sex)) +
+      geom_density(position = "stack", 
+                   alpha = 1/3) 
+ggp2_stack_density + 
+  labs_stack_density
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:** 
+:::
+
+::: {style="font-size: 0.85em;"}
+Adding `after_stat(count)` uses the *`density * n` instead of the default density* which [*'preserves marginal densities'*](https://ggplot2.tidyverse.org/reference/geom_density.html#computed-variables).
+:::
+
+```{r}
+#| label: create_graph_stack_density
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_stack_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)", 
+  fill = "Sex")
+ggp2_stack_density <- ggplot(data = peng_density, 
+       aes(x = flipper_length_mm, 
+           after_stat(count),
+           fill = sex)) +
+      geom_density(position = "stack", 
+                   alpha = 1/3) 
+ggp2_stack_density + 
+  labs_stack_density
+```
+
+::::

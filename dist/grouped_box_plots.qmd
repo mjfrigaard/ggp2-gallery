@@ -1,0 +1,194 @@
+---
+title: "Grouped Box-plots"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+peng_box <- filter(penguins, !is.na(island))
+labs_grp_boxplots <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_boxplots <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_boxplot(alpha = 2/3) 
+ggp2_grp_boxplots + 
+  labs_grp_boxplots
+```
+
+Grouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
+
+The five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_grp_boxplots
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove the missing `island` values from the `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_grp_boxplots
+#| eval: true
+#| echo: true
+peng_box <- filter(penguins, !is.na(island))
+glimpse(peng_box)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `island` to the `x` axis and to `fill`
+
+Map `bill_length_mm` to the `y` axis
+
+Add `geom_boxplot()` and set the `alpha` to `2/3`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_grp_boxplots
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_grp_boxplots <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_boxplots <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_boxplot(alpha = 2/3) 
+ggp2_grp_boxplots + 
+  labs_grp_boxplots
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.85em;"}
+When a categorical variable is supplied, the plot will contain a box for each level or group.
+:::
+
+```{r}
+#| label: create_graph_grp_boxplots
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_grp_boxplots <- labs(
+  title = "Adult foraging penguins", 
+  subtitle = "Palmer Archipelago, Antarctica",
+  x = "Island", fill = "Island",
+  y = "Bill length (millimeters)")
+ggp2_grp_boxplots <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_boxplot(alpha = 2/3) 
+ggp2_grp_boxplots + 
+  labs_grp_boxplots
+```
+
+::::

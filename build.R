@@ -1,3 +1,3 @@
 source("R/new_graph.R")
 
-new_graph(name = "more Heatmaps", section = "amt")
+# new_graph(name = "Bump charts", section = "rela")

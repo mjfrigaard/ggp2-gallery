@@ -31,9 +31,30 @@ website:
           - amt/heatmaps.qmd
           - amt/more_heatmaps.qmd
       - section: "Proportions"
+        contents:
+          - prp/pie_charts.qmd
+          - prp/diverging_bar_graphs.qmd
+          - prp/diverging_bar_graphs_vertical.qmd
+          - prp/mosaic_plot.qmd
       - section: "Distributions"
+        contents:
+          - dist/overlapping_histograms.qmd
+          - dist/overlapping_frequency_polygons.qmd
+          - dist/overlapping_dot_plots.qmd
+          - dist/bee_swarm_plots.qmd
+          - dist/overlapping_stacked_density_plots.qmd
+          - dist/ridgeline_plots.qmd
+          - dist/grouped_box_plots.qmd
+          - dist/grouped_violin_plots.qmd
       - section: "Relationships"
-      - section: "Stat-Graphs"
+        contents:
+          - rela/scatter_plot.qmd
+          - rela/grouped_scatter_plots.qmd
+          - rela/bubble_charts.qmd
+          - rela/grouped_bubble_charts.qmd
+          - rela/alluvial_charts.qmd
+          - rela/bump_charts.qmd
+      #- section: "Stat-Graphs"
 
 
 format:
