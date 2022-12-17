@@ -711,9 +711,14 @@
     "ggalluvial": {
       "Package": "ggalluvial",
       "Version": "0.12.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "8e8537ec2a70017be8e5e20b1bbf4e98",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ggalluvial",
+      "RemoteUsername": "corybrunson",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "aa0d6aeb7fbb28bccd0da27fc2eda99b754b5165",
+      "Hash": "34ff09369ceef698db3c8b485aaecb82",
       "Requirements": [
         "dplyr",
         "ggplot2",
@@ -743,13 +748,19 @@
     },
     "ggbump": {
       "Package": "ggbump",
-      "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "695abfc5a4bf0049b128e2d9f08ac7ef",
+      "Version": "0.1.99999",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ggbump",
+      "RemoteUsername": "davidsjoberg",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "3aadf3dc3636a59b0075aa12ade8aaf33ab085f8",
+      "Hash": "90368a4468be899fd9a668b2545d32ea",
       "Requirements": [
         "dplyr",
         "ggplot2",
+        "magrittr",
         "purrr",
         "tidyr"
       ]
@@ -1139,6 +1150,26 @@
       "Repository": "CRAN",
       "Hash": "cfdea9dea85c1a973991c8cbe299f4da",
       "Requirements": []
+    },
+    "janitor": {
+      "Package": "janitor",
+      "Version": "2.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "6de84a8c67fb247e721166049c84695f",
+      "Requirements": [
+        "dplyr",
+        "lifecycle",
+        "lubridate",
+        "magrittr",
+        "purrr",
+        "rlang",
+        "snakecase",
+        "stringi",
+        "stringr",
+        "tidyr",
+        "tidyselect"
+      ]
     },
     "jquerylib": {
       "Package": "jquerylib",
@@ -2096,6 +2127,17 @@
         "tidyr",
         "tidyselect",
         "vctrs"
+      ]
+    },
+    "snakecase": {
+      "Package": "snakecase",
+      "Version": "0.11.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4079070fc210c7901c0832a3aeab894f",
+      "Requirements": [
+        "stringi",
+        "stringr"
       ]
     },
     "sourcetools": {

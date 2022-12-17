@@ -59,7 +59,8 @@ ggp2_grp_violin <- ggplot(data = peng_violin,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_violin(alpha = 2/3) 
+  geom_violin(alpha = 2/3, 
+      show.legend = FALSE) 
 ggp2_grp_violin + 
   labs_grp_violin
 ```
@@ -133,6 +134,8 @@ Map `island` to the `x`, `bill_length_mm` to the `y`, and  `island` to `fill`
 
 Set `alpha` to `2/3`
 
+Remove the legend with `show.legend = FALSE`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -151,7 +154,8 @@ ggp2_grp_violin <- ggplot(data = peng_violin,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_violin(alpha = 2/3) 
+  geom_violin(alpha = 2/3, 
+      show.legend = FALSE) 
 ggp2_grp_violin + 
   labs_grp_violin
 ```
@@ -182,7 +186,8 @@ ggp2_grp_violin <- ggplot(data = peng_violin,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_violin(alpha = 2/3) 
+  geom_violin(alpha = 2/3, 
+      show.legend = FALSE) 
 ggp2_grp_violin + 
   labs_grp_violin
 ```

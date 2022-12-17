@@ -10,7 +10,6 @@ library(reactable)
 library(palmerpenguins)
 library(ggplot2movies)
 library(ggalluvial)
-library(fivethirtyeight)
 
 # options ----
 options(scipen = 9999999)
@@ -19,9 +18,9 @@ options(scipen = 9999999)
 # ggplot2 theme ----
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
 # funs ----
-ds538 <- readr::read_rds("slides/data/ds538.rds")
+ds538 <- readr::read_rds("data/ds538.rds")
 # movies_data ----
-movies_data <- readr::read_rds("slides/data/movies_data.rds")
+movies_data <- readr::read_rds("data/movies_data.rds")
 # penguins ----
 penguins <- palmerpenguins::penguins
 # movies ----
@@ -231,3 +230,157 @@ ggp2_grp_violin <- ggplot(data = peng_violin,
 ## GRAPH ----
 ggp2_grp_violin + 
   labs_grp_violin
+
+
+# RAINCLOUD PLOTS ---------------------------------------------------------
+# remotes::install_github('jorvlan/raincloudplots')
+library(raincloudplots)
+library(ggbeeswarm)
+library(ggforce)
+library(ggdist)
+library(gghalves)
+peng_raincloud <- palmerpenguins::penguins
+raincloud_data <- peng_raincloud  |> 
+    group_by(species) |> 
+    mutate(bill_ratio = bill_length_mm / bill_depth_mm) |> 
+    filter(!is.na(bill_ratio)) |> 
+    rename(value = bill_ratio, 
+        group = species)
+
+## Box ---------------------------------------------------------------------
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_boxplot(fill = "grey92")
+
+## Box + jitter -------------------------------------------------------------
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_boxplot(fill = "grey92") +
+  ## use either geom_point() or geom_jitter()
+  geom_point(
+    ## draw bigger points
+    size = 2,
+    ## add some transparency
+    alpha = .3,
+    ## add some jittering
+    position = position_jitter(
+      ## control randomness and range of jitter
+      seed = 1, width = .2
+    )
+  )
+
+
+## ggbeeswarm::geom_quasirandom --------------------------------------------
+
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_boxplot(fill = "grey92") + 
+  ggbeeswarm::geom_quasirandom(
+    ## draw bigger points
+    size = 2,
+    ## add some transparency
+    alpha = .3,
+    width = 0.1
+  )
+
+
+## ggforce::geom_sina ------------------------------------------------------
+
+
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_boxplot(fill = "grey92") + 
+  ggforce::geom_sina(
+    ## draw bigger points
+    size = 2,
+    ## add some transparency
+    alpha = .3,
+    maxwidth = 0.26
+  )
+
+
+## Violin ------------------------------------------------------------------
+
+
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_violin(fill = "grey92")
+
+
+## scale = "count" ---------------------------------------------------------
+
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_violin(fill = "grey92", scale = "count", bw = 0.01)
+
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_violin(fill = "grey92", scale = "count", bw = 0.03)
+
+ggplot(raincloud_data, aes(x = group, y = value)) +
+  geom_violin(fill = "grey92", scale = "count", bw = 0.09)
+
+
+
+## ggdist::stat_halfeye ----------------------------------------------------
+ggp2_stat_halfeye <- ggplot(raincloud_data, aes(x = group, y = value)) + 
+  ## add half-violin from {ggdist} package
+  ggdist::stat_halfeye(
+    ## custom bandwidth
+    adjust = .5, 
+    ## adjust height
+    width = .6, 
+    ## move geom to the right
+    justification = -.2, 
+    ## remove slab interval
+    .width = 0, 
+    size = 0.1,
+    point_colour = NA
+  ) 
+
+ggp2_stat_halfeye
+
+## ggdist::stat_halfeye + geom_boxplot() -----------------------------------
+ggp2_stat_halfeye_box <- ggp2_stat_halfeye + 
+  geom_boxplot(
+    width = .12,
+    ## remove outliers
+    outlier.color = NA ## `outlier.shape = NA` works as well
+  )
+ggp2_stat_halfeye_box
+
+
+## ggdist::stat_dots -------------------------------------------------------
+ggp2_stat_halfeye_box + 
+  ## add dot plots from {ggdist} package
+  ggdist::stat_dots(
+    dotsize = 0.05,
+    ## orientation to the left
+    side = "left",
+    ## move geom to the left
+    justification = 1.1,
+    ## adjust grouping (binning) of observations
+    binwidth = .12
+  ) +
+  ## remove white space on the left
+  coord_cartesian(xlim = c(1.2, NA))
+
+
+## gghalves::geom_half_point -----------------------------------------------
+ggp2_stat_halfeye_box + 
+  ## add justified jitter from the {gghalves} package
+  gghalves::geom_half_point(
+    ## draw jitter on the left
+    side = "l", 
+    ## control range of jitter
+    range_scale = .3, 
+    ## add some transparency
+    alpha = .3
+  ) +
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+## gghalves::geom_half_point + geom_point(position = position_jitter()) -------
+ggp2_stat_halfeye_box +
+  geom_point(
+    size = 1.3,
+    alpha = .3,
+    position = position_jitter(
+      seed = 1, width = .05
+    )
+  ) + 
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+

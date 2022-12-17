@@ -1,20 +1,5 @@
 ---
-title: "[Category]"
-format:
-  html:
-    dpi: 320
-    fig-format: retina
-    fig-asp: 0.618
-    toc: true
-    toc-location: left
-    toc-title: Contents
-    html-math-method: katex
-    css: styles.css
-    theme:
-      light: materia    
-      dark: superhero
-      
-      
+title: "Raincloud Plots"
 execute:
   warning: false
   message: false
@@ -32,9 +17,6 @@ library(knitr)
 library(kableExtra)
 library(colorblindr)
 library(downlit)
-library(xml2)
-library(reactable)
-library(ggalluvial)
 # options ----
 options(
   repos = "https://cloud.r-project.org",
@@ -42,21 +24,40 @@ options(
   dplyr.print_max = 6, 
   scipen = 9999)
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+remotes::install_github('jorvlan/raincloudplots')
 ```
 
-## Graph_Description
 
-:::: {.callout-note}
-::: {style="font-size: 1.25em; color: #ffd500;"}
+
+:::: {.callout-tip collapse="false"}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
 **When would I use this graph?**
 :::
-<br>
-
-Description
 
 <br>
 
-More_description.
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2movies)
+library(fivethirtyeight)
+library(ggplot2)
+```
+
+<!-- Description -->
+
+<!-- More_description -->
+
 ::::
 
 
@@ -81,8 +82,9 @@ Install packages.
 #| warning: false
 #| message: false
 #| results: hide
-install.packages("palmerpenguins")
-library(palmerpenguins) 
+remotes::install_github('jorvlan/raincloudplots')
+library(raincloudplots)
+library(palmerpenguins)
 library(ggplot2)
 ```
 :::
@@ -94,7 +96,7 @@ library(ggplot2)
 :::
 
 ::: {style="font-size: 0.85em;"}
-Description of data
+<!-- Description of data -->
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -102,8 +104,8 @@ Description of data
 #| label: data_code_
 #| eval: true
 #| echo: true
-penguins <- palmerpenguins::penguins
-glimpse(penguins)
+# penguins <- palmerpenguins::penguins
+# glimpse(penguins)
 ```
 :::
 ::::
@@ -118,13 +120,9 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-1. Create the labels
+Create the labels
 
-2. 
 
-3. 
-
-4. 
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -134,17 +132,7 @@ glimpse(penguins)
 #| echo: true 
 #| warning: false
 #| message: false
-labs_scatter <- labs(
-  title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)")
-ggp2_scatter <- penguins |>
-  ggplot(
-    aes(x = bill_length_mm, 
-      y = flipper_length_mm)) +
-  geom_point()
 
-ggp2_scatter + 
-  labs_scatter
 ```
 :::
 
@@ -160,16 +148,7 @@ ggp2_scatter +
 #| echo: false
 #| warning: false
 #| message: false
-labs_scatter <- labs(
-    title = "Bill Length vs. Flipper Length",
-    x = "Bill Length (mm)", 
-    y = "Flipper length (mm)")
-ggp2_scatter <- penguins |> 
-  ggplot(aes(x = bill_length_mm,
-      y = flipper_length_mm)) + 
-  geom_point() 
-ggp2_scatter + 
-  labs_scatter
+
 ```
 
 ::::

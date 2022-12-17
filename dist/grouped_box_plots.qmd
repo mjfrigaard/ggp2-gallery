@@ -59,7 +59,8 @@ ggp2_grp_boxplots <- ggplot(data = peng_box,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_boxplot(alpha = 2/3) 
+  geom_boxplot(alpha = 2/3, 
+      show.legend = FALSE) 
 ggp2_grp_boxplots + 
   labs_grp_boxplots
 ```
@@ -137,6 +138,8 @@ Map `bill_length_mm` to the `y` axis
 
 Add `geom_boxplot()` and set the `alpha` to `2/3`
 
+Remove the legend with `show.legend = FALSE`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -155,7 +158,8 @@ ggp2_grp_boxplots <- ggplot(data = peng_box,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_boxplot(alpha = 2/3) 
+  geom_boxplot(alpha = 2/3, 
+      show.legend = FALSE) 
 ggp2_grp_boxplots + 
   labs_grp_boxplots
 ```
@@ -186,7 +190,8 @@ ggp2_grp_boxplots <- ggplot(data = peng_box,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_boxplot(alpha = 2/3) 
+  geom_boxplot(alpha = 2/3, 
+      show.legend = FALSE) 
 ggp2_grp_boxplots + 
   labs_grp_boxplots
 ```
