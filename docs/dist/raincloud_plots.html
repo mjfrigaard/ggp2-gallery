@@ -402,7 +402,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#raincloudplots" id="toc-raincloudplots" class="nav-link active" data-scroll-target="#raincloudplots"><code>raincloudplots</code></a></li>
-  <li><a href="#geom_boxplot-ggdiststat_halfeye-geom_point" id="toc-geom_boxplot-ggdiststat_halfeye-geom_point" class="nav-link" data-scroll-target="#geom_boxplot-ggdiststat_halfeye-geom_point"><code>geom_boxplot</code>, <code>ggdist::stat_halfeye()</code> &amp; <code>geom_point</code></a></li>
+  <li><a href="#raincloud-plots-layer-by-layer" id="toc-raincloud-plots-layer-by-layer" class="nav-link" data-scroll-target="#raincloud-plots-layer-by-layer">Raincloud plots (layer-by-layer)</a></li>
+  <li><a href="#even-more-rainclouds" id="toc-even-more-rainclouds" class="nav-link" data-scroll-target="#even-more-rainclouds">Even more Rainclouds!</a></li>
   </ul>
 </nav>
 </nav>
@@ -454,7 +455,7 @@ Graph info
 </div>
 </div>
 <p>Raincloud plots are a combination of density graph, a box-plot, and a beeswarm (or jitter) plot, and are used to compare distributions of quantitative/numerical variables across the levels of a categorical (or discrete) grouping variable.</p>
-<p>The user-written package for creating raincloud plots (<a href="https://github.com/jorvlan/raincloudplots"><code>raincloudplots</code></a>), or they can be built using the geoms from the <a href="https://github.com/eclarke/ggbeeswarm"><code>ggbeeswarm</code></a>, <a href="https://mjskay.github.io/ggdist/"><code>ggdist</code></a>, and <a href="https://erocoar.github.io/gghalves/"><code>gghalves</code> packages</a>.</p>
+<p>The user-written package for creating raincloud plots (<a href="https://github.com/jorvlan/raincloudplots"><code>raincloudplots</code></a>), or they can be built using the <a href="https://mjskay.github.io/ggdist/"><code>ggdist</code></a> and package and geoms from <code>ggplot2</code>.</p>
 </div>
 </div>
 </div>
@@ -471,15 +472,11 @@ Graph info
 <div style="font-size: 0.75em;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'jorvlan/raincloudplots'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'eclarke/ggbeeswarm'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'mjskay/ggdist'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'erocoar/gghalves'</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raincloudplots)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghalves)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'mjskay/ggdist'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raincloudplots)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -569,10 +566,10 @@ $ jit    &lt;dbl&gt; 1.0200375, 0.9498208, 0.8820888, 0.9516411, 0.9689052, 1.05
 </div>
 </div>
 </section>
-<section id="geom_boxplot-ggdiststat_halfeye-geom_point" class="level2">
-<h2 class="anchored" data-anchor-id="geom_boxplot-ggdiststat_halfeye-geom_point"><code>geom_boxplot</code>, <code>ggdist::stat_halfeye()</code> &amp; <code>geom_point</code></h2>
+<section id="raincloud-plots-layer-by-layer" class="level2">
+<h2 class="anchored" data-anchor-id="raincloud-plots-layer-by-layer">Raincloud plots (layer-by-layer)</h2>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><code>geom_boxplot()</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><code>stat_halfeye()</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false"><code>geom_point()</code></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Box-plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Density</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Points</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
@@ -606,9 +603,9 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong><code>ggplot2::geom_boxplot()</code></strong></p>
 </div>
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 <p>Create the labels</p>
-<p>First we create a box-plot with <code>geom_boxplot()</code>, but include notches and removing the outliers.</p>
+<p>For the first layer, we create a box-plot with <code>geom_boxplot()</code>, but include notches and removing the outliers.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
@@ -634,8 +631,10 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong><code>ggdist::stat_halfeye()</code></strong></p>
 </div>
+<div style="font-size: 0.85em;">
+<p>We then add the density with a <code>ggdist::stat_halfeye()</code> layer, mapping <code>species</code> to <code>fill</code>, and adjusting the size and shape of the density curve and shifting it slightly above the box-plot.</p>
+</div>
 <div style="font-size: 0.75em;">
-<p>We add a <code>ggdist::stat_halfeye()</code> layer, mapping <code>species</code> to <code>fill</code>, and adjusting the size and shape of the density curve and moving it vertically above the box-plot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ggp2_stat_halfeye <span class="ot">&lt;-</span> ggp2_box <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  ggdist<span class="sc">::</span><span class="fu">stat_halfeye</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species),</span>
@@ -658,13 +657,15 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong><code>ggplot2::geom_point()</code></strong></p>
 </div>
-<div style="font-size: 0.75em;">
-<p>The final layer is a <code>geom_point()</code>, mapping <code>fill</code> to <code>species</code> and setting <code>position</code> to <code>position_jitter()</code>.</p>
+<div style="font-size: 0.85em;">
+<p>The final layer is a <code>geom_point()</code>, mapping <code>fill</code> to <code>species</code> and setting <code>position</code> to <code>position_jitter()</code>. Additional adjustments to the points include:</p>
 <ul>
 <li><p>Using <code>shape = 21</code>, we can <code>color</code> the outside of the point (white makes it appear to glow).</p></li>
-<li><p>The <code>height</code> refers to the vertical area for the points</p></li>
-<li><p>We also remove the legend for the entire graph with <code>theme(legend.position = "none")</code></p></li>
+<li><p>Manually set the <code>height</code>, which refers to the vertical area for the points</p></li>
+<li><p>Remove the legend for the entire graph with <code>theme(legend.position = "none")</code></p></li>
 </ul>
+</div>
+<div style="font-size: 0.75em;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ggp2_jitter <span class="ot">&lt;-</span> ggp2_stat_halfeye <span class="sc">+</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species),</span>
@@ -681,6 +682,60 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><img src="raincloud_plots_files/figure-html/create_graph_raincloud2_jitter-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="even-more-rainclouds" class="level2">
+<h2 class="anchored" data-anchor-id="even-more-rainclouds">Even more Rainclouds!</h2>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">More examples</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">#TidyTuesday example</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">More resources</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div style="font-size: 0.85em;">
+<p>Cédric Scherer covered raincloud plots in <a href="https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/">this great write-up</a> for <a href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday</a>.</p>
+<p>Cédric also covers some alternative methods for plotting the points (I particularly like using bands instead of points when displaying the rainclouds vertically).</p>
+<p>We can switch to this layout by applying <code>ggplot2::coord_flip()</code> to the <code>ggp2_stat_halfeye</code> layer, then adding <code>geom_point()</code> with <code>shape</code> set to <code>95</code></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ggp2_stat_halfeye <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">95</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">2</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    labs_raincloud_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="raincloud_plots_files/figure-html/create_graph_raincloud2_point_lines-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>Polished Graph</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>The code to re-create the #TidyTuesday graph is contained in this <a href="https://gist.github.com/z3tt/8b2a06d05e8fae308abbf027ce357f01">gist.</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../www/rainclouds_gist.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>Read more</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/">Raincloud plots: a multi-platform tool for robust data visualization</a></p>
+<p><a href="https://r-graphics.org/recipe-scatter-shapes">Shape and point sizes in R</a></p>
+<p><a href="https://github.com/RainCloudPlots/RainCloudPlots">RainCloudPlots package on GitHub</a></p>
 </div>
 </div>
 </div>

@@ -109,12 +109,14 @@ ggplot2movies::movies |> glimpse()
 
 :::
 
-### `fivethirtyeight`
+### Additional datasets
+
+A few of the graphs use data from the `fivethirtyeight` package. 
 
 :::: {.callout-note collapse="true"}
 ## `fivethirtyeight` data
 
-A few of the graphs use data from the `fivethirtyeight` package. 
+To view a table of available datasets in the `fivethirtyeight` package, view the `Data Frame Name` and `Article Title` columns in the `datasets_master` table. 
 
 ```{r}
 #| eval: false
@@ -280,7 +282,19 @@ These graphs can be used to compare **multiple variable distributions:**
 
 -   [x] Violin plots
 
--   [ ] *Rain-cloud plots*
+-   [x] Rain-cloud plots
+
+    -   [`raincloudplots`](https://github.com/jorvlan/raincloudplots) and [`ggdist`](https://mjskay.github.io/ggdist/reference/index.html) packages
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Rain-cloud plots 
+        remotes::install_github('jorvlan/raincloudplots')
+        remotes::install_github('mjskay/ggdist')
+        library(raincloudplots)
+        library(ggdist)
+        ```
 
 
 

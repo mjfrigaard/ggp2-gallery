@@ -2,7 +2,6 @@ library(palmerpenguins)
 library(ggtext)
 library(colorspace)
 library(ragg)
-library(tidyverse)
 
 url <- "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png"
 img <- magick::image_read((url))
@@ -15,7 +14,7 @@ add_sample <- function(x){
             label = length(x)))
 }
 
-penguins %>% 
+rainclouds_gist <- penguins %>% 
   group_by(species) %>% 
   mutate(bill_ratio = bill_length_mm / bill_depth_mm) %>% 
   filter(!is.na(bill_ratio)) %>% 
@@ -113,3 +112,8 @@ penguins %>%
       margin = margin(20, 0, 0, 0)),
     plot.margin = margin(15, 15, 10, 15)
   )
+
+ggsave(
+    filename = "./www/rainclouds_gist.png",
+    width = 9, height = 7, 
+    units = "in", device = "png")
