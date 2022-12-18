@@ -281,9 +281,7 @@ ggplot(raincloud_data, aes(x = group, y = value)) +
   )
 
 
-## ggforce::geom_sina ------------------------------------------------------
-
-
+## ggforce::geom_sina ----------------------
 ggplot(raincloud_data, aes(x = group, y = value)) +
   geom_boxplot(fill = "grey92") + 
   ggforce::geom_sina(
@@ -302,7 +300,7 @@ ggplot(raincloud_data, aes(x = group, y = value)) +
   geom_violin(fill = "grey92")
 
 
-## scale = "count" ---------------------------------------------------------
+## scale = "count", bandwidth ----------------------------------------------
 
 ggplot(raincloud_data, aes(x = group, y = value)) +
   geom_violin(fill = "grey92", scale = "count", bw = 0.01)
@@ -311,12 +309,13 @@ ggplot(raincloud_data, aes(x = group, y = value)) +
   geom_violin(fill = "grey92", scale = "count", bw = 0.03)
 
 ggplot(raincloud_data, aes(x = group, y = value)) +
-  geom_violin(fill = "grey92", scale = "count", bw = 0.09)
+  geom_violin(fill = "grey92", scale = "count", bw = 1)
 
 
 
 ## ggdist::stat_halfeye ----------------------------------------------------
-ggp2_stat_halfeye <- ggplot(raincloud_data, aes(x = group, y = value)) + 
+ggp2_stat_halfeye <- ggplot(raincloud_data,
+    aes(x = group, y = value)) + 
   ## add half-violin from {ggdist} package
   ggdist::stat_halfeye(
     ## custom bandwidth
@@ -331,7 +330,8 @@ ggp2_stat_halfeye <- ggplot(raincloud_data, aes(x = group, y = value)) +
     point_colour = NA
   ) 
 
-ggp2_stat_halfeye
+ggp2_stat_halfeye + 
+    coord_flip()
 
 ## ggdist::stat_halfeye + geom_boxplot() -----------------------------------
 ggp2_stat_halfeye_box <- ggp2_stat_halfeye + 
@@ -340,7 +340,10 @@ ggp2_stat_halfeye_box <- ggp2_stat_halfeye +
     ## remove outliers
     outlier.color = NA ## `outlier.shape = NA` works as well
   )
-ggp2_stat_halfeye_box
+
+ggp2_stat_halfeye_box 
+
+ggp2_stat_halfeye_box + coord_flip()
 
 
 ## ggdist::stat_dots -------------------------------------------------------
@@ -356,7 +359,7 @@ ggp2_stat_halfeye_box +
     binwidth = .12
   ) +
   ## remove white space on the left
-  coord_cartesian(xlim = c(1.2, NA))
+  coord_cartesian(xlim = c(1.2, NA)) + coord_flip()
 
 
 ## gghalves::geom_half_point -----------------------------------------------
@@ -370,17 +373,26 @@ ggp2_stat_halfeye_box +
     ## add some transparency
     alpha = .3
   ) +
-  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+  coord_cartesian(xlim = c(1.2, NA), clip = "off") + coord_flip()
 
-## gghalves::geom_half_point + geom_point(position = position_jitter()) -------
+## geom_point(position = position_jitter()) -------
 ggp2_stat_halfeye_box +
   geom_point(
     size = 1.3,
     alpha = .3,
     position = position_jitter(
-      seed = 1, width = .05
+      seed = 321, width = .03,
     )
   ) + 
-  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+  coord_cartesian(xlim = c(1.2, NA), clip = "off") + coord_flip()
 
+## horizontal lines instead of points -------
+ggp2_stat_halfeye_box +
+geom_point(
+    ## draw horizontal lines instead of points
+    shape = 95,
+    size = 10,
+    alpha = .2
+  ) +
+  coord_cartesian(xlim = c(1.2, NA), clip = "off") 
 

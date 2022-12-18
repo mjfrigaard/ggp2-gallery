@@ -46,6 +46,7 @@ website:
           - dist/ridgeline_plots.qmd
           - dist/grouped_box_plots.qmd
           - dist/grouped_violin_plots.qmd
+          - dist/raincloud_plots.qmd
       - section: "Relationships"
         contents:
           - rela/scatter_plot.qmd

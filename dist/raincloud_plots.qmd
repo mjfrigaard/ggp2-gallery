@@ -24,9 +24,11 @@ options(
   dplyr.print_max = 6, 
   scipen = 9999)
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
-install.packages("palmerpenguins")
 remotes::install_github('jorvlan/raincloudplots')
+remotes::install_github('eclarke/ggbeeswarm')
+remotes::install_github('mjskay/ggdist')
+remotes::install_github('erocoar/gghalves')
+install.packages("palmerpenguins")
 ```
 
 
@@ -48,15 +50,45 @@ remotes::install_github('jorvlan/raincloudplots')
 #| out-height: '60%'
 #| out-width: '60%'
 #| fig-align: right
-library(palmerpenguins) 
-library(ggplot2movies)
-library(fivethirtyeight)
+library(raincloudplots)
+library(ggbeeswarm)
+library(ggdist)
+library(gghalves)
+library(palmerpenguins)
 library(ggplot2)
+# remove missing
+peng_raincloud <- palmerpenguins::penguins |> 
+    filter(!is.na(sex) & !is.na(species))
+# filter flipper length by years 2008 & 2009
+peng_1x1 <- raincloudplots::data_1x1(
+  array_1 = dplyr::filter(peng_raincloud, year == 2008)$flipper_length_mm,
+  array_2 = dplyr::filter(peng_raincloud, year == 2009)$flipper_length_mm,
+  jit_distance = 0.2, # distance between points
+  jit_seed = 2736) # used in set.seed() 
+
+ggp2_raincloud <- raincloud_1x1(
+    data_1x1 = peng_1x1,
+    colors = (c('#0bd3d3', '#f890e7')),
+    fills = (c('#0bd3d3', '#f890e7')),
+    size = 0.8,
+    alpha = 3/4,
+    ort = 'h'
+) 
+ggp2_raincloud_x <- ggp2_raincloud +
+    scale_x_continuous(
+        breaks = c(1, 2),
+        labels = c("2008", "2009"),
+        limits = c(0, 3))
+
+ggp2_raincloud_x + 
+    labs(title = "Flipper length of Palmer penguins",
+        subtitle = "Years 2008 & 2009", 
+         x = "Year", y = "Flipper length (mm)")
 ```
 
-<!-- Description -->
+Raincloud plots are a combination of density graph, a box-plot, and a beeswarm (or jitter) plot, and are used to compare distributions of quantitative/numerical variables across the levels of a categorical (or discrete) grouping variable.
 
-<!-- More_description -->
+The user-written package for creating raincloud plots ([`raincloudplots`](https://github.com/jorvlan/raincloudplots)), or they can be built using the geoms from the [`ggbeeswarm`](https://github.com/eclarke/ggbeeswarm), [`ggdist`](https://mjskay.github.io/ggdist/), and [`gghalves` packages](https://erocoar.github.io/gghalves/).
 
 ::::
 
@@ -76,14 +108,20 @@ Install packages.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_
+#| label: pkg_code_raincloud
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
 #| results: hide
 remotes::install_github('jorvlan/raincloudplots')
+remotes::install_github('eclarke/ggbeeswarm')
+remotes::install_github('mjskay/ggdist')
+remotes::install_github('erocoar/gghalves')
 library(raincloudplots)
+library(ggbeeswarm)
+library(ggdist)
+library(gghalves)
 library(palmerpenguins)
 library(ggplot2)
 ```
@@ -96,19 +134,33 @@ library(ggplot2)
 :::
 
 ::: {style="font-size: 0.85em;"}
-<!-- Description of data -->
+Remove the missing values from `year` and `flipper_length_mm` the `penguins` data. The `raincloudplots` package has a `data_1x1()` function we can use to build the dataset for a 1x1 repeated measure graph (`peng_1x1`).
+
+This function takes two array arguments (`array_1` and `array_2`), which we create with the flipper length (`flipper_length_mm`) for two levels of `year` in the `peng_raincloud` data. 
+
+The `jit_distance` and `jit_seed` refer to the points in the plot.
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_
+#| label: data_code_raincloud
 #| eval: true
 #| echo: true
-# penguins <- palmerpenguins::penguins
-# glimpse(penguins)
+# remove missing
+peng_raincloud <- palmerpenguins::penguins |> 
+    filter(!is.na(year) & !is.na(body_mass_g))
+# filter flipper length by years 2008 & 2009
+peng_1x1 <- raincloudplots::data_1x1(
+  array_1 = dplyr::filter(peng_raincloud, year == 2008)$flipper_length_mm,
+  array_2 = dplyr::filter(peng_raincloud, year == 2009)$flipper_length_mm,
+  jit_distance = 0.2, # distance between points
+  jit_seed = 2736) # used in set.seed() 
+glimpse(peng_1x1)
 ```
 :::
 ::::
+
+## `raincloudplots`
 
 :::: {.panel-tabset}
 
@@ -122,17 +174,41 @@ library(ggplot2)
 
 Create the labels
 
+Use the `raincloudplots::raincloud_1x1()` to build the plot, assigning `peng_1x1` to `data_1x1`  
+  - assign `colors` and `fills`  
+  - set the size (of the points) and alpha (for opacity)
+
+
+
 
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_
+#| label: code_graph_raincloud
 #| eval: false
 #| echo: true 
 #| warning: false
 #| message: false
+ggp2_raincloud <- raincloudplots::raincloud_1x1(
+    data_1x1 = peng_1x1,
+    colors = (c('#0bd3d3', '#f890e7')),
+    fills = (c('#0bd3d3', '#f890e7')),
+    size = 0.8,
+    alpha = 3/4,
+    ort = 'h'
+) 
 
+ggp2_raincloud_x <- ggp2_raincloud +
+    ggplot2::scale_x_continuous(
+        breaks = c(1, 2),
+        labels = c("2008", "2009"),
+        limits = c(0, 3))
+
+ggp2_raincloud_x + 
+    ggplot2::labs(title = "Flipper length of Palmer penguins",
+        subtitle = "Years 2008 & 2009", 
+         x = "Year", y = "Flipper length (mm)")
 ```
 :::
 
@@ -143,12 +219,162 @@ Create the labels
 :::
 
 ```{r}
-#| label: create_graph_
+#| label: create_graph_raincloud
 #| eval: true
 #| echo: false
 #| warning: false
 #| message: false
+ggp2_raincloud <- raincloudplots::raincloud_1x1(
+    data_1x1 = peng_1x1,
+    colors = (c('#0bd3d3', '#f890e7')),
+    fills = (c('#0bd3d3', '#f890e7')),
+    size = 0.8,
+    alpha = 3/4,
+    ort = 'h'
+) 
 
+ggp2_raincloud_x <- ggp2_raincloud +
+    ggplot2::scale_x_continuous(
+        breaks = c(1, 2),
+        labels = c("2008", "2009"),
+        limits = c(0, 3))
+
+ggp2_raincloud_x + 
+    ggplot2::labs(title = "Flipper length of Palmer penguins",
+        subtitle = "Years 2008 & 2009", 
+         x = "Year", y = "Flipper length (mm)")
 ```
+
+::::
+
+## `geom_boxplot`, `ggdist::stat_halfeye()` & `geom_point`
+
+:::: {.panel-tabset}
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+We'll use the `peng_raincloud` data (with the missing values removed from `species` and `body_mass_g`).
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_ggdist
+#| eval: true
+#| echo: true
+# remove missing
+peng_raincloud <- palmerpenguins::penguins |> 
+    filter(!is.na(species) & !is.na(body_mass_g))
+glimpse(peng_raincloud)
+```
+:::
+
+
+### `geom_boxplot()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggplot2::geom_boxplot()`**
+:::
+
+::: {style="font-size: 0.75em;"}
+
+Create the labels
+
+First we create a box-plot with `geom_boxplot()`, but include notches and removing the outliers. 
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: create_graph_raincloud2_box
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+labs_raincloud_2 <- ggplot2::labs(
+    title = "Flipper length of Palmer penguins",
+         x = "Species", y = "Flipper length (mm)")
+ggp2_box <- ggplot(peng_raincloud,
+    aes( x = flipper_length_mm, y = species)) + 
+  geom_boxplot(aes(fill = species),
+    notch = TRUE, 
+    notchwidth = 0.9,
+    width = .15, 
+    outlier.shape = NA)
+ggp2_box + 
+    labs_raincloud_2
+```
+:::
+
+### `stat_halfeye()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggdist::stat_halfeye()`**
+:::
+
+::: {style="font-size: 0.75em;"}
+
+We add a `ggdist::stat_halfeye()` layer, mapping `species` to `fill`, and adjusting the size and shape of the density curve and moving it vertically above the box-plot.
+
+```{r}
+#| label: create_graph_raincloud2_halfeye
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ggp2_stat_halfeye <- ggp2_box +
+  ggdist::stat_halfeye(aes(fill = species),
+    adjust = 0.6, # shape = adjust * density estimator
+    .width = 0, # can use probabilities or 0
+    point_colour = NA, # removes the point in center
+    orientation = "horizontal", # like the box-plot
+    height = 0.5, # height of curve
+    justification = -0.3 # shift vertically above box
+) 
+ggp2_stat_halfeye + 
+    labs_raincloud_2
+```
+:::
+
+
+### `geom_point()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggplot2::geom_point()`**
+:::
+
+
+::: {style="font-size: 0.75em;"}
+The final layer is a `geom_point()`, mapping `fill` to `species` and setting `position` to `position_jitter()`. 
+
+- Using `shape = 21`, we can `color` the outside of the point (white makes it appear to glow). 
+
+- The `height` refers to the vertical area for the points 
+
+- We also remove the legend for the entire graph with `theme(legend.position = "none")`
+
+```{r}
+#| label: create_graph_raincloud2_jitter
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ggp2_jitter <- ggp2_stat_halfeye + 
+    geom_point(aes(fill = species),
+        shape = 21, 
+        color = "#ffffff", 
+        alpha = 1/3, size = 1.8,
+    position = position_jitter(
+      seed = 321, 
+      height = .07)) + 
+    theme(legend.position = "none")
+ggp2_jitter + 
+    labs_raincloud_2
+```
+:::
 
 ::::

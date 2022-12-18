@@ -65,7 +65,7 @@ ggp2_grp_violin +
   labs_grp_violin
 ```
 
-A ‘violin plot’ is a variation of a density or ridgeline plot,  where the distribution is plotted symmetrically creating a two-sided, smoothed distribution.
+A ‘violin plot’ is a variation of a density or ridgeline plot,  where the distribution is plotted symmetrically, creating a two-sided, smoothed distribution.
 
 ::::
 
