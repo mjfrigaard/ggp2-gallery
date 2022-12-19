@@ -61,7 +61,7 @@ An effort has been made to keep the number of additional packages at a minimum, 
 
 ### `penguins`
 
-![](www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
+![Artwork by @allison_horst](www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
 
 The majority of the graphs are built using the `palmerpenguins::penguins` data. 
 

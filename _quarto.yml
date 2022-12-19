@@ -56,7 +56,7 @@ website:
           - rela/bump_charts.qmd
           - rela/parallel_sets.qmd
           - rela/slope_graphs.qmd
-          - rela/density_coutours.qmd
+          - rela/density_contours.qmd
           - rela/x2d_bins.qmd
           - rela/hex_bins.qmd
           - rela/correlograms.qmd
