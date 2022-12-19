@@ -29,7 +29,6 @@ website:
           - amt/dodge2_bar_graphs.qmd
           - amt/waffle_chart.qmd
           - amt/heatmaps.qmd
-          - amt/more_heatmaps.qmd
       - section: "Proportions"
         contents:
           - prp/pie_charts.qmd
@@ -56,6 +55,11 @@ website:
           - rela/alluvial_charts.qmd
           - rela/bump_charts.qmd
           - rela/parallel_sets.qmd
+          - rela/slope_graphs.qmd
+          - rela/density_coutours.qmd
+          - rela/x2d_bins.qmd
+          - rela/hex_bins.qmd
+          - rela/correlograms.qmd
       #- section: "Stat-Graphs"
 
 

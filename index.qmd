@@ -354,7 +354,7 @@ The following graphs are used to display relationships between two (or more) var
         library(ggforce)
         ```
 
--   [ ] *Slope-graphs*
+-   [ ] *Slope graphs*
 
 -   [ ] *Density Contours*
 

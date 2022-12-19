@@ -214,3 +214,79 @@ ggp2_heatmap_tile +
 ```
 
 ::::
+
+
+## More heatmaps!
+
+In addition to `geom_tile()`, heatmaps can also be created with the `geom_raster()` function.
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Assign `season` to `x`, `object` to `y`, and `occurrences` to fill
+
+Add the `geom_raster()`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_raster
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_heatmap_raster <- labs(
+  title = "Bob Ross' plants & clouds", 
+  x = "Season", 
+  y = "Plant/Cloud Object", 
+  fill = "Occurrences")
+ggp2_heatmap_raster <- ggplot(data = heatmap_ross, 
+       aes(x = season, 
+           y = object, 
+           fill = occurrences)) + 
+       geom_raster() 
+ggp2_heatmap_raster + 
+  labs_heatmap_raster
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_raster
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_heatmap_raster <- labs(
+  title = "Bob Ross' plants & clouds", 
+  x = "Season", 
+  y = "Plant/Cloud Object", 
+  fill = "Occurrences")
+ggp2_heatmap_raster <- ggplot(data = heatmap_ross, 
+       aes(x = season, 
+           y = object, 
+           fill = occurrences)) + 
+       geom_raster() 
+ggp2_heatmap_raster + 
+  labs_heatmap_raster
+```
+
+
+::::
+
+

@@ -244,6 +244,8 @@ ggp2_raincloud_x +
 **DATA:**
 :::
 
+![](../www/lter_penguins.png){fig-align="right" width="40%" height="40%"}
+
 ::: {style="font-size: 0.85em;"}
 We'll use the `peng_raincloud` data (with the missing values removed from `species` and `body_mass_g`).
 :::
