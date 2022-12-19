@@ -94,7 +94,7 @@ Install packages.
 :::
 
 <!-- 
-![Artwork by @allison_horst](www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
 ![](../www/538.png){fig-align="right" width="15%" height="15%"}
 ![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
 -->
