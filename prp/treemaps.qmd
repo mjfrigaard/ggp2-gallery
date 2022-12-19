@@ -176,17 +176,18 @@ glimpse(treemap_peng)
 
 Create the labels
 
-Map the `n` to `area`, `sex` to `fill` and `label`, `species` to `subgroup`, and `island` to `subgroup2`
+- Map the `n` to `area`, `sex` to `fill` and `label`, `species` to `subgroup`, and `island` to `subgroup2`
 
-Add `geom_treemap()`
+- Add `geom_treemap()`
 
-Add `geom_treemap_text()`    
-  - `place`   
-  - `color`   
-  - `min.size`    
-  - `alpha`    
-  - `fontface`  
-  - `family`
+- Add `geom_treemap_text()`   
+
+  - `place`: this controls where the boxes start      
+  - `color`: text color    
+  - `min.size`: the minimum font size (when re-sizing)    
+  - `alpha`: opacity      
+  - `fontface`: `itlalic`/`bond`    
+  - `family`: `"sans"`/`"sansserif"`/`"mono"`  
 
 :::
 
@@ -258,18 +259,20 @@ ggp2_treemap +
 :::
 
 ::: {style="font-size: 0.85em;"}
+
 Add `geom_treemap_subgroup_border()`
 
-  - `color`    
-  - `size`    
+  - Set the `size` and `color`    
 
 Add `geom_treemap_subgroup_text()`
 
-  - `place`  
-  - `alpha`  
-  - `color`  
-  - `min.size`  
-  - `family`  
+  - `place`: this controls where the boxes start      
+  - `color`: text color    
+  - `min.size`: the minimum font size (when re-sizing)    
+  - `alpha`: opacity      
+  - `fontface`: `itlalic`/`bond`    
+  - `family`: `"sans"`/`"sansserif"`/`"mono"`  
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -302,18 +305,18 @@ ggp2_tm_subgroup +
 
 ::: {style="font-size: 0.85em;"}
 
-Add `geom_treemap_subgroup2_border()`
+- Add `geom_treemap_subgroup2_border()`
 
-  - `color`  
-  - `size`  
+  - Set the `size` and `color`  
 
-Add `geom_treemap_subgroup2_text()`
+- Add `geom_treemap_subgroup2_text()`
 
-  - `place`  
-  - `alpha`  
-  - `color`  
-  - `min.size`  
-  - `family`  
+  - `place`: this controls where the boxes start      
+  - `color`: text color    
+  - `min.size`: the minimum font size (when re-sizing)    
+  - `alpha`: opacity      
+  - `fontface`: `itlalic`/`bond`    
+  - `family`: `"sans"`/`"sansserif"`/`"mono"`  
 
 
 See full list of arguments [here](http://wilkox.org/treemapify/).
