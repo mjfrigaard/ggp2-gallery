@@ -107,6 +107,8 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
+
 ::: {style="font-size: 0.85em;"}
 Remove the missing values and reduce the `ggplot2movies::movies` dataset to only `budget` and `mpaa`, then group the data by `mpaa` and calculate the mean `budget` (as `avg_budget`). 
 :::

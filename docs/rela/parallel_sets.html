@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ggplot2 gallery - Diverging Bar-graphs (vertical)</title>
+<title>ggplot2 gallery - Parallel Sets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Diverging Bar-graphs (vertical)</h1>
+      <h1 class="quarto-secondary-nav-title">Parallel Sets</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -290,12 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prp/diverging_bar_graphs_vertical.html" class="sidebar-item-text sidebar-link active">Diverging Bar-graphs (vertical)</a>
+  <a href="../prp/mosaic_plot.html" class="sidebar-item-text sidebar-link">Mosaic Plots</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prp/mosaic_plot.html" class="sidebar-item-text sidebar-link">Mosaic Plots</a>
+  <a href="../prp/treemaps.html" class="sidebar-item-text sidebar-link">Treemaps</a>
   </div>
 </li>
       </ul>
@@ -393,6 +393,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../rela/bump_charts.html" class="sidebar-item-text sidebar-link">Bump Charts</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rela/parallel_sets.html" class="sidebar-item-text sidebar-link active">Parallel Sets</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -407,7 +412,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Diverging Bar-graphs (vertical)</h1>
+<h1 class="title d-none d-lg-block">Parallel Sets</h1>
 </div>
 
 
@@ -441,13 +446,15 @@ Graph info
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="diverging_bar_graphs_vertical_files/figure-html/full_code_display-1.png" style="width:60.0%;height:60.0%" class="figure-img"></p>
+<p><img src="parallel_sets_files/figure-html/full_code_display-1.png" style="width:60.0%;height:60.0%" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Diverging bar-charts can be arranged vertically, too.</p>
-<p>For vertically arranged bars, we switch the <code>x</code> and <code>y</code> axis variables.</p>
+<p>Parallel sets (also referred to as Sankey diagrams or Alluvial charts) show the counts of categorical variables connected via a two-sided parallel display (or ‘sets’). Parallel sets can also be used to show different states of paired dependent relationships (such as input vs output), or time 1 vs time 2.</p>
+<p>The height of the connecting bands <em>between</em> the categories on the <code>x</code> axis represent the relative counts for each discrete level (displayed on the <code>y</code> axis). The levels <em>within</em> each variable are represented with color.</p>
+<p>We can build parallel set diagrams with the <a href="https://ggforce.data-imaginist.com/index.html"><code>ggforce</code> package</a>.</p>
+<p>Also check out <a href="https://mjfrigaard.github.io/ggp2-gallery/rela/alluvial_charts.html">alluvial charts.</a></p>
 </div>
 </div>
 </div>
@@ -463,9 +470,11 @@ Graph info
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"fivethirtyeight"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight) </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"thomasp85/ggforce"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -473,33 +482,35 @@ Graph info
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>DATA:</strong></p>
 </div>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../www/lter_penguins.png" style="width:40.0%;height:40.0%" class="figure-img"></p>
+</figure>
+</div>
 <div style="font-size: 0.85em;">
-<p>Create <code>trump_approval_diverg</code> from the <code>trump_approval_trend</code> dataset in the <code>fivethirtyeight</code> package.</p>
+<p>We’re going to remove the missing values from <code>palmerpenguins::penguins</code>, count the categorical variables (<code>island</code>, <code>sex</code>, <code>species</code>), and rename the <code>n</code> column (produced by the <code>count()</code> function) to <code>value</code>.</p>
+<p><code>ggforce</code> has a special <a href="https://ggforce.data-imaginist.com/reference/gather_set_data.html"><code>gather_set_data()</code></a> function that <em>changes tidy data into a tidy(er) format</em></p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fivethirtyeight<span class="sc">::</span>trump_approval_trend <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subgroup <span class="sc">==</span> <span class="st">"All polls"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(modeldate,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">approve =</span> approve_estimate<span class="sc">*</span><span class="fl">0.01</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">disapprove =</span> disapprove_estimate<span class="sc">*</span><span class="fl">0.01</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">disapprove =</span> disapprove <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(approve, disapprove), </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"poll"</span>, <span class="at">values_to =</span> <span class="st">"values"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, poll) <span class="sc">|&gt;</span> </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">month_avg =</span> <span class="fu">mean</span>(values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="ot">-&gt;</span> trump_approval_diverg</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(trump_approval_diverg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>peng_wide <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(island, species, sex) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">value =</span> n)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>para_set_peng <span class="ot">&lt;-</span> ggforce<span class="sc">::</span><span class="fu">gather_set_data</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> peng_wide, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(para_set_peng)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 24
-Columns: 3
-$ month     &lt;ord&gt; Jan, Jan, Feb, Feb, Mar, Mar, Apr, Apr, May, May, Jun, Jun, …
-$ poll      &lt;chr&gt; "approve", "disapprove", "approve", "disapprove", "approve",…
-$ month_avg &lt;dbl&gt; 0.4029758, -0.5234634, 0.4226055, -0.5158645, 0.4182011, -0.…</code></pre>
+<pre><code>Rows: 30
+Columns: 7
+$ island  &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Dream, Dream, Dream, Dream, To…
+$ species &lt;fct&gt; Adelie, Adelie, Gentoo, Gentoo, Adelie, Adelie, Chinstrap, Chi…
+$ sex     &lt;fct&gt; female, male, female, male, female, male, female, male, female…
+$ value   &lt;int&gt; 22, 22, 58, 61, 27, 28, 34, 34, 24, 23, 22, 22, 58, 61, 27, 28…
+$ id      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, …
+$ x       &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,…
+$ y       &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Dream, Dream, Dream, Dream, To…</code></pre>
 </div>
 </div>
 </div>
@@ -507,7 +518,7 @@ $ month_avg &lt;dbl&gt; 0.4029758, -0.5234634, 0.4226055, -0.5158645, 0.4182011,
 </div>
 </div>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Sets Labels</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
@@ -515,32 +526,44 @@ $ month_avg &lt;dbl&gt; 0.4029758, -0.5234634, 0.4226055, -0.5158645, 0.4182011,
 </div>
 <div style="font-size: 0.85em;">
 <p>Create the labels</p>
-<p>Map the <code>month_avg</code> to the <code>x</code> and <code>month</code> to the <code>y</code></p>
-<p><em>Inside</em> <code>geom_bar()</code></p>
-<ul>
-<li><p>map <code>poll</code> to <code>fill</code></p></li>
-<li><p>use <code>stat = "identity"</code> and <code>width = .5</code></p></li>
-</ul>
-<p>Add <code>scale_y_continuous()</code> to manually set the limits and format the axis with <code>scales::percent</code></p>
+<p>Map <code>x</code> to <code>x</code>, <code>id</code> to <code>id</code>, <code>y</code> to <code>split</code>, and <code>value</code> to <code>value</code></p>
+<p>In the <code>geom_parallel_sets()</code> function, map <code>sex</code> to <code>fill</code> and manually set the <code>alpha</code> (opacity) and the <code>axis.width</code></p>
+<p>In the <code>geom_parallel_sets_axes()</code> function, set the <code>axis.width</code> to the same value as the <code>geom_parallel_sets()</code> above</p>
+<p>For labeling, adjust the <code>size</code> manually and set the <code>color</code> to something that stands out against the black vertical axes</p>
+<p>Manually label the <code>x</code> axis with <code>scale_x_continuous()</code>, setting the <code>breaks</code> and <code>labels</code> to the variable names in the <code>peng_wide</code> dataset</p>
+<p>Finally, move the legend to the bottom of the graph with <code>theme(legend.position =)</code> and remove the <code>x</code> title with <code>axis.title.x = element_blank()</code></p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_geom_bar_diverg_vert <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Trump Approval Ratings"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"From 'How Popular is Donald Trump'"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Monthly average percent"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Month"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Estimate"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ggp2_bar_diverg_vert <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> trump_approval_diverg,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> month_avg, <span class="at">y =</span>  month)) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">fill =</span> poll), </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ggp2_bar_diverg_vert <span class="sc">+</span> </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  labs_geom_bar_diverg_vert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_psets <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Categories of Palmer Penguins"</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">fill =</span> <span class="st">"Sex"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ggp2_psets <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> para_set_peng, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">id =</span> id, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">split =</span> y, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">value =</span> value)) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets</span>(<span class="fu">aes</span>(<span class="at">fill =</span> sex), </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.3</span>, </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.width =</span> <span class="fl">0.07</span>) </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ggp2_psets_axes <span class="ot">&lt;-</span> ggp2_psets <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_axes</span>(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.width =</span> <span class="fl">0.07</span>) </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ggp2_psets_labs <span class="ot">&lt;-</span> ggp2_psets_axes <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_labels</span>(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">2.0</span>, </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">'#ffffff'</span>) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Island"</span>, <span class="st">"Species"</span>, <span class="st">"Sex"</span>)) <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>ggp2_psets_labs <span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    labs_psets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -550,7 +573,37 @@ $ month_avg &lt;dbl&gt; 0.4029758, -0.5234634, 0.4226055, -0.5158645, 0.4182011,
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="diverging_bar_graphs_vertical_files/figure-html/create_graph_vert_diverg_bars-1.png" class="img-fluid" width="672"></p>
+<p><img src="parallel_sets_files/figure-html/create_graph_parallel_sets-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>PARALLEL SETS LABELS:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>If the categories have long names, use the <code>angle</code>, <code>nudge_x</code>/<code>nudge_y</code> and <code>hjust</code>/<code>vjust</code> in <code>geom_parallel_sets_labels()</code> to adjust the size, location, and color of the labels.</p>
+<p>Manually setting the <code>limits</code> of the <code>x</code> axis in <code>scale_x_continuous()</code> and moving the legend with <code>theme(legend.position = )</code> will also give more room to the labels.</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggp2_psets_axes <span class="sc">+</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_labels</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fl">3.2</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">'black'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">nudge_x =</span> <span class="fl">0.1</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">3.2</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Island"</span>, <span class="st">"Species"</span>, <span class="st">"Sex"</span>)) <span class="sc">+</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    labs_psets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="parallel_sets_files/figure-html/create_graph_parallel_sets_labs-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>

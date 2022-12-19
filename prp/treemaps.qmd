@@ -23,7 +23,7 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
 devtools::install_github("wilkox/treemapify")
 install.packages("palmerpenguins")
 ```
@@ -51,50 +51,58 @@ library(treemapify)
 library(palmerpenguins)
 library(ggplot2)
 treemap_peng <- penguins |> 
-                  filter(!is.na(sex)) |> 
+                  select(species, island, sex) |> 
+                  tidyr::drop_na() |> 
                   group_by(species, island, sex) |>
-  count(species, island) |> 
+  count(species, island, sex) |> 
   ungroup()
 labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins")
-# geom_treemap
+  title = "Species, island, and sex of adult penguins",
+    fill = "Sex")
 ggp2_treemap <- ggplot(treemap_peng, 
        aes(area = n, 
            fill = sex, 
-           label = species,
-           subgroup = island)) +
-       treemapify::geom_treemap() 
-labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins")
-# geom_treemap_subgroup_border
-ggp2_treemap <- ggplot(treemap_peng, 
-       aes(area = n, 
-           fill = sex, 
-           label = species,
-           subgroup = island)) +
-       treemapify::geom_treemap()
-ggp2_treemap_sgb <- ggp2_treemap + 
-       treemapify::geom_treemap_subgroup_border()
-# geom_treemap_subgroup_text
-ggp2_treemap_sgb <- ggp2_treemap + 
-       treemapify::geom_treemap_subgroup_border()
-ggp2_tmap_sgb_txt <- 
-  treemapify::geom_treemap_subgroup_text(
-         place = "center", 
-         grow = TRUE, 
-         alpha = 0.9, 
-         color = "white",
-         fontface = "bold",
-         family = "sans",
-         min.size = 0)
-ggp2_treemap_sgb + 
-  ggp2_tmap_sgb_txt + 
+           label = sex,
+           subgroup = species,
+           subgroup2 = island)) +
+       treemapify::geom_treemap() +
+       treemapify::geom_treemap_text(
+           place = "bottomright",
+           color = "#d0d0d0",
+           min.size = 0,
+           alpha = 0.90,
+           fontface = "italic",
+           family = "sans") 
+ggp2_tm_subgroup <- ggp2_treemap +
+    treemapify::geom_treemap_subgroup2_border(
+           color = "#282b2d",
+           size = 4.0) + 
+       treemapify::geom_treemap_subgroup2_text(
+           place = "center",
+           alpha = 0.65,
+           color = "#282b2d",
+           min.size = 0,
+           family = "sans")
+ggp2_tm_subgroup2 <- ggp2_tm_subgroup + 
+       treemapify::geom_treemap_subgroup_border(
+           color = "#ffffff", 
+           size = 4) + 
+       treemapify::geom_treemap_subgroup_text(
+           place = "topleft",
+           alpha = 0.65,
+           grow = TRUE,
+           color = "#ffffff",
+           min.size = 0,
+           family = "mono",
+           fontface = "bold")
+
+ggp2_tm_subgroup2 + 
   labs_treemap
 ```
 
-Treemaps display how numerical hierarchical values make up a whole in a rectangular layout.
+Treemaps display proportionally divided rectangular hierarchies for levels of categorical variables. The layout consists of 'squarified' tiles, which display the relative contribution of each categorical value to the overall graph space. 
 
-We'll build a treemap using the [`treemapify` package.](http://wilkox.org/treemapify/) 
+We'll build a treemap using the [`treemapify` package.](http://wilkox.org/treemapify/) Also check out [mosaic plots](https://mjfrigaard.github.io/ggp2-gallery/prp/mosaic_plot.html).
 
 ::::
 
@@ -134,6 +142,8 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/lter_penguins.png){fig-align="right" width="40%" height="40%"}
+
 ::: {style="font-size: 0.85em;"}
 Filter the missing values from `sex`, group the data by `species`, `island`, and `sex`, then count the `species` and `island` (then `ungroup()`).
 :::
@@ -144,9 +154,10 @@ Filter the missing values from `sex`, group the data by `species`, `island`, and
 #| eval: true
 #| echo: true
 treemap_peng <- penguins |> 
-                  filter(!is.na(sex)) |> 
+                  select(species, island, sex) |> 
+                  tidyr::drop_na() |> 
                   group_by(species, island, sex) |>
-  count(species, island) |> 
+  count(species, island, sex) |> 
   ungroup()
 glimpse(treemap_peng)
 ```
@@ -158,14 +169,24 @@ glimpse(treemap_peng)
 ### Code
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**BASIC TREEMAP:**
 :::
 
 ::: {style="font-size: 0.85em;"}
 
 Create the labels
 
-Map the `n` to `area`, `sex` to `fill`, `species` to `label`, and `island` to `subgroup`
+Map the `n` to `area`, `sex` to `fill` and `label`, `species` to `subgroup`, and `island` to `subgroup2`
+
+Add `geom_treemap()`
+
+Add `geom_treemap_text()`    
+  - `place`   
+  - `color`   
+  - `min.size`    
+  - `alpha`    
+  - `fontface`  
+  - `family`
 
 :::
 
@@ -181,18 +202,26 @@ labs_treemap <- labs(
 ggp2_treemap <- ggplot(treemap_peng, 
        aes(area = n, 
            fill = sex, 
-           label = species,
-           subgroup = island)) +
-       treemapify::geom_treemap() 
+           label = sex,
+           subgroup = species,
+           subgroup2 = island)) +
+       treemapify::geom_treemap() +
+       treemapify::geom_treemap_text(
+           place = "bottomright",
+           color = "#282b2d",
+           min.size = 0,
+           alpha = 0.75,
+           fontface = "italic",
+           family = "sans") 
 ggp2_treemap + 
   labs_treemap
 ```
 :::
 
-### Graph
+### Treemap
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
+**TREEMAP:**
 :::
 
 ```{r}
@@ -202,151 +231,117 @@ ggp2_treemap +
 #| warning: false
 #| message: false
 labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins")
+  title = "Species, island, and sex of adult penguins",
+    fill = "Sex")
 ggp2_treemap <- ggplot(treemap_peng, 
        aes(area = n, 
            fill = sex, 
-           label = species,
-           subgroup = island)) +
-       treemapify::geom_treemap() 
+           label = sex,
+           subgroup = species,
+           subgroup2 = island)) +
+       treemapify::geom_treemap() +
+       treemapify::geom_treemap_text(
+           place = "bottomright",
+           color = "#d0d0d0",
+           min.size = 0,
+           alpha = 0.90,
+           fontface = "italic",
+           family = "sans") 
 ggp2_treemap + 
   labs_treemap
 ```
 
-::::
-
-### MORE TREEMAPS
-
-:::: {.panel-tabset}
-
-### Code
+### Subgroup 
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**SUBGROUP:**
 :::
 
 ::: {style="font-size: 0.85em;"}
+Add `geom_treemap_subgroup_border()`
 
-Add the borders with `geom_treemap_subgroup_border()`
+  - `color`    
+  - `size`    
 
+Add `geom_treemap_subgroup_text()`
+
+  - `place`  
+  - `alpha`  
+  - `color`  
+  - `min.size`  
+  - `family`  
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_treemap_sgb
-#| eval: false
+#| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins")
-ggp2_treemap <- ggplot(treemap_peng, 
-       aes(area = n, 
-           fill = sex, 
-           label = species,
-           subgroup = island)) +
-       treemapify::geom_treemap()
-ggp2_treemap_sgb <- ggp2_treemap + 
-       treemapify::geom_treemap_subgroup_border()
-ggp2_treemap_sgb + 
+ggp2_tm_subgroup <- ggp2_treemap +
+    treemapify::geom_treemap_subgroup2_border(
+           color = "#282b2d",
+           size = 4.0) + 
+       treemapify::geom_treemap_subgroup2_text(
+           place = "center",
+           alpha = 0.65,
+           color = "#282b2d",
+           min.size = 0,
+           family = "sans")
+ggp2_tm_subgroup +
   labs_treemap
 ```
 :::
 
-### Graph
+### Subgroup 2
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
-:::
-
-```{r}
-#| label: create_graph_treemap_sgb
-#| eval: true
-#| echo: false
-#| warning: false
-#| message: false
-labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins")
-ggp2_treemap <- ggplot(treemap_peng, 
-       aes(area = n, 
-           fill = sex, 
-           label = species,
-           subgroup = island)) +
-       treemapify::geom_treemap()
-ggp2_treemap_sgb <- ggp2_treemap + 
-       treemapify::geom_treemap_subgroup_border()
-ggp2_treemap_sgb + 
-  labs_treemap
-```
-
-::::
-
-### EVEN MORE TREEMAPS
-
-:::: {.panel-tabset}
-
-### Code
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**SUBGROUP 2:**
 :::
 
 ::: {style="font-size: 0.85em;"}
 
-Include labels for subgroup with `geom_treemap_subgroup_text()` (see full list of arguments [here](http://wilkox.org/treemapify/))
+Add `geom_treemap_subgroup2_border()`
 
+  - `color`  
+  - `size`  
+
+Add `geom_treemap_subgroup2_text()`
+
+  - `place`  
+  - `alpha`  
+  - `color`  
+  - `min.size`  
+  - `family`  
+
+
+See full list of arguments [here](http://wilkox.org/treemapify/).
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_tmap_sgb_txt
-#| eval: false
+#| label: code_graph_tmap_sgb_2
+#| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-ggp2_treemap_sgb <- ggp2_treemap + 
-       treemapify::geom_treemap_subgroup_border()
-ggp2_tmap_sgb_txt <- 
-  treemapify::geom_treemap_subgroup_text(
-         place = "center", 
-         grow = TRUE, 
-         alpha = 0.9, 
-         color = "white",
-         fontface = "bold",
-         family = "sans",
-         min.size = 0)
-ggp2_treemap_sgb + 
-  ggp2_tmap_sgb_txt + 
+ggp2_tm_subgroup2 <- ggp2_tm_subgroup + 
+       treemapify::geom_treemap_subgroup_border(
+           color = "#ffffff", 
+           size = 4) + 
+       treemapify::geom_treemap_subgroup_text(
+           place = "topleft",
+           alpha = 0.65,
+           grow = TRUE,
+           color = "#ffffff",
+           min.size = 0,
+           family = "mono",
+           fontface = "bold")
+
+ggp2_tm_subgroup2 + 
   labs_treemap
 ```
 :::
-
-### Graph
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
-:::
-
-```{r}
-#| label: create_graph_tmap_sgb_txt
-#| eval: true
-#| echo: false
-#| warning: false
-#| message: false
-ggp2_treemap_sgb <- ggp2_treemap + 
-       treemapify::geom_treemap_subgroup_border()
-ggp2_tmap_sgb_txt <- 
-  treemapify::geom_treemap_subgroup_text(
-         place = "center", 
-         grow = TRUE, 
-         alpha = 0.9, 
-         color = "white",
-         fontface = "bold",
-         family = "sans",
-         min.size = 0)
-ggp2_treemap_sgb + 
-  ggp2_tmap_sgb_txt + 
-  labs_treemap
-```
 
 ::::

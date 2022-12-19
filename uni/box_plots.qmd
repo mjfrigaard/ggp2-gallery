@@ -105,6 +105,8 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
+
 ::: {style="font-size: 0.85em;"}
 Filter `ggplot2movies::movies` to only include films after the made after `2000`, and remove missing values from `mpaa` and `budget`.
 :::

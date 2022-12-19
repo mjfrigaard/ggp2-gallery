@@ -14,7 +14,7 @@ add_sample <- function(x){
             label = length(x)))
 }
 
-rainclouds_gist <- penguins %>% 
+penguins %>% 
   group_by(species) %>% 
   mutate(bill_ratio = bill_length_mm / bill_depth_mm) %>% 
   filter(!is.na(bill_ratio)) %>% 
@@ -112,8 +112,3 @@ rainclouds_gist <- penguins %>%
       margin = margin(20, 0, 0, 0)),
     plot.margin = margin(15, 15, 10, 15)
   )
-
-ggsave(
-    filename = "./www/rainclouds_gist.png",
-    width = 9, height = 7, 
-    units = "in", device = "png")

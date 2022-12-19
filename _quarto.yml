@@ -34,8 +34,8 @@ website:
         contents:
           - prp/pie_charts.qmd
           - prp/diverging_bar_graphs.qmd
-          - prp/diverging_bar_graphs_vertical.qmd
           - prp/mosaic_plot.qmd
+          - prp/treemaps.qmd
       - section: "Distributions"
         contents:
           - dist/overlapping_histograms.qmd
@@ -55,6 +55,7 @@ website:
           - rela/grouped_bubble_charts.qmd
           - rela/alluvial_charts.qmd
           - rela/bump_charts.qmd
+          - rela/parallel_sets.qmd
       #- section: "Stat-Graphs"
 
 

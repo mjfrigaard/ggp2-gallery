@@ -198,4 +198,64 @@ ggp2_bump +
   labs_bump
 
 
+# PARALLEL SETS -----------------------------------------------------
+remotes::install_github("thomasp85/ggforce")
+library(ggforce)
+ggplot2::theme_set(
+    ggplot2::theme_void(base_size = 16) + 
+        theme(axis.title.y = element_text(size = 12), 
+              axis.text.y = element_text(size = 10),
+              axis.text.x = element_text(size = 10)))
+peng_wide <- palmerpenguins::penguins |> 
+  drop_na() |> 
+  count(island, species, sex) |> 
+  rename(value = n)
+para_set_peng <- ggforce::gather_set_data(
+                            data = peng_wide, 
+                            x = 1:3)
+labs_psets <- labs(
+        title = "Categories of Palmer Penguins", 
+        y = "Count", fill = "Sex")
+
+ggp2_psets <- ggplot(data = para_set_peng, 
+    mapping = aes(x = x, 
+        id = id, 
+        split = y, 
+        value = value)) +
+  geom_parallel_sets(aes(fill = sex), 
+        alpha = 0.3, 
+        axis.width = 0.07) 
+
+ggp2_psets_axes <- ggp2_psets +
+  geom_parallel_sets_axes(
+        axis.width = 0.07) 
+
+ggp2_psets_labs <- ggp2_psets_axes +
+  geom_parallel_sets_labels(
+        size = 2.0, 
+        color = '#ffffff') +
+  scale_x_continuous(
+        breaks = c(1, 2, 3), 
+        labels = c("Island", "Species", "Sex")) +
+  theme(legend.position = "bottom", 
+        axis.title.x = element_blank())
+
+ggp2_psets_labs +
+    labs_psets
+## labels ----
+ggp2_psets_axes + 
+  geom_parallel_sets_labels(
+      size = 2.0, 
+      colour = 'black',
+      angle = 0, 
+      nudge_x = 0.1, 
+      hjust = 0) + 
+  scale_x_continuous(
+        limits = c(0.9, 3.2),
+        breaks = c(1, 2, 3), 
+        labels = c("Island", "Species", "Sex")) + 
+  theme(legend.position = "bottom", 
+        axis.title.x = element_blank()) + 
+    labs_psets
+
 

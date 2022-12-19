@@ -115,6 +115,8 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/538.png){fig-align="right" width="15%" height="15%"}
+
 ::: {style="font-size: 0.85em;"}
 We’re going to use the same re-structured version of the `fivethirtyeight::bob_ross` data, `heatmap_ross`
 :::

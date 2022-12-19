@@ -101,6 +101,8 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/lter_penguins.png){fig-align="right" width="40%" height="40%"}
+
 ::: {style="font-size: 0.85em;"}
 The `penguins` data
 :::

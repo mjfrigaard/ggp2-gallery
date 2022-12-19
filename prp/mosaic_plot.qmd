@@ -17,16 +17,17 @@ library(knitr)
 library(kableExtra)
 library(colorblindr)
 library(downlit)
+library(patchwork)
 # options ----
 options(
   repos = "https://cloud.r-project.org",
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 15))
 install.packages("fivethirtyeight")
 devtools::install_github("haleyjeppson/ggmosaic")
-library()
+library(ggmosaic)
 ```
 
 
@@ -64,7 +65,7 @@ labs_mosaic <- labs(
 ggp2_mosaic <- ggplot(data = fly_mosaic) +
   geom_mosaic(aes(x = product(unruly_child, baby), 
       fill = baby)) +
-  theme_mosaic()
+  theme_mosaic(base_size = 10)
 ggp2_mosaic + 
     labs_mosaic
 ```
@@ -111,8 +112,10 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/538.png){fig-align="right" width="15%" height="15%"}
+
 ::: {style="font-size: 0.85em;"}
-Description of data
+For this graph, we'll be using the `fivethirtyeight::flying` dataset, after removing the missing values from `baby` and `unruly_child`. 
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -204,5 +207,68 @@ ggp2_mosaic <- ggplot(data = fly_mosaic) +
 ggp2_mosaic + 
     labs_mosaic
 ```
+
+### Notes
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**NOTES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+It's a good idea to read the [`ggmosaic` vignette](https://haleyjeppson.github.io/ggmosaic/articles/ggmosaic.html), particularly the section on ordering and conditioning. 
+
+For example, if we set the `product()` variable as `unruly_child` and the conditional variable as `baby`, we see a very different display than if we follow the stanard two-variable syntax:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: create_graph_cond_mosaic
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| fig-height: 8
+#| fig-width: 8
+# build conditional mosiac plot
+labs_mosaic_cond <- labs(
+  subtitle = "Conditional plot",
+  x = "..,knowingly bring unruly children on a plane?",
+  y = "... bring a baby on a plane?",
+  fill = "Responses")
+ggp2_mosaic_cond <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(
+    x = product(unruly_child), # product variable
+    fill = unruly_child,
+    conds = product(baby))) + # conditional variable
+  theme_mosaic(base_size = 9)
+mosaic_cond <- ggp2_mosaic_cond + labs_mosaic_cond
+# build 2-variable mosiac plot
+labs_mosaic_2var <- labs(
+  subtitle = "2-Variable plot",
+  x = "..,knowingly bring unruly children on a plane?",
+  y = "... bring a baby on a plane?",
+  fill = "Responses")
+ggp2_mosaic_2var <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(
+    x = product(unruly_child, baby),
+    fill = unruly_child)) +
+  theme_mosaic(base_size = 9)
+mosaic_2var <- ggp2_mosaic_2var + labs_mosaic_2var
+# patch both together
+patchwork::plot_spacer() + # pad the area in front of the plot 1
+  mosaic_cond +
+  patchwork::plot_spacer() + # pad the area in front of the plot 2
+  mosaic_2var +
+  patchwork::plot_layout(
+    # limit to 2 rows
+    nrow = 2,
+    # make plots in column 2 5x the width of column 1
+    widths = c(1, 5)) +
+  patchwork::plot_annotation(
+    # adjust title text size
+    theme = theme_mosaic(base_size = 11),
+    title = "In general...is it rude to...")
+```
+:::
 
 ::::

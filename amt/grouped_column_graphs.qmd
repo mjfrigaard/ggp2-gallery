@@ -106,6 +106,8 @@ library(ggplot2)
 **DATA:**
 :::
 
+![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
+
 ::: {style="font-size: 0.85em;"}
 Remove the missing values from `budget` and `mpaa` in the `ggplot2movies::movies` data.
 

@@ -290,12 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prp/diverging_bar_graphs_vertical.html" class="sidebar-item-text sidebar-link">Diverging Bar-graphs (vertical)</a>
+  <a href="../prp/mosaic_plot.html" class="sidebar-item-text sidebar-link">Mosaic Plots</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prp/mosaic_plot.html" class="sidebar-item-text sidebar-link">Mosaic Plots</a>
+  <a href="../prp/treemaps.html" class="sidebar-item-text sidebar-link">Treemaps</a>
   </div>
 </li>
       </ul>
@@ -393,11 +393,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../rela/bump_charts.html" class="sidebar-item-text sidebar-link">Bump Charts</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rela/parallel_sets.html" class="sidebar-item-text sidebar-link">Parallel Sets</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#vertical-diverging-bar-graphs" id="toc-vertical-diverging-bar-graphs" class="nav-link active" data-scroll-target="#vertical-diverging-bar-graphs">Vertical diverging Bar-graphs</a></li>
+  </ul>
+</nav>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -441,12 +452,33 @@ Graph info
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="diverging_bar_graphs_files/figure-html/full_code_display-1.png" style="width:60.0%;height:60.0%" class="figure-img"></p>
+<p><img src="diverging_bar_graphs_files/figure-html/full_code_display-1.png" style="width:80.0%;height:80.0%" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>If you have two proportions that contain positive and negative values, consider using diverging bars with <code>geom_bar()</code></p>
+<p>If you have two proportions that contain positive and negative values, consider using diverging bars with <code>geom_bar()</code>.</p>
+<p>Unlike a standard or stacked bar graphs, diverging bar graphs display positive and negative quantities on both sides of a reference or baseline value (zero in this example). Color, length and position are used to compare the quantities across categorical levels (and within variable values).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diverging_bar_graphs_files/figure-html/diverg-1.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For example, we can use the length of the bar from the reference line to compare disapproval estimates across all months (i.e., comparing red bars to each other).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diverging_bar_graphs_files/figure-html/diverg_vert-1.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also compare approval vs.&nbsp;disapproval for each month (i.e., compare the blue vs.&nbsp;red bars to each other within each month).</p>
 </div>
 </div>
 </div>
@@ -471,6 +503,11 @@ Graph info
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>DATA:</strong></p>
+</div>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../www/538.png" style="width:15.0%;height:15.0%" class="figure-img"></p>
+</figure>
 </div>
 <div style="font-size: 0.85em;">
 <p>Create <code>trump_approval_diverg</code> from the <code>trump_approval_trend</code> dataset in the <code>fivethirtyeight</code> package.</p>
@@ -557,8 +594,62 @@ $ month_avg &lt;dbl&gt; 0.4029758, -0.5234634, 0.4226055, -0.5158645, 0.4182011,
 </div>
 </div>
 </div>
+<section id="vertical-diverging-bar-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="vertical-diverging-bar-graphs">Vertical diverging Bar-graphs</h2>
+<p>For vertically arranged bars, we switch the <code>x</code> and <code>y</code> axis variables.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Graph</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>CODE:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Create the labels</p>
+<p>Map the <code>month_avg</code> to the <code>x</code> and <code>month</code> to the <code>y</code></p>
+<p><em>Inside</em> <code>geom_bar()</code></p>
+<ul>
+<li><p>map <code>poll</code> to <code>fill</code></p></li>
+<li><p>use <code>stat = "identity"</code> and <code>width = .5</code></p></li>
+</ul>
+<p>Add <code>scale_y_continuous()</code> to manually set the limits and format the axis with <code>scales::percent</code></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>labs_geom_bar_diverg_vert <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Trump Approval Ratings"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"From 'How Popular is Donald Trump'"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Monthly average percent"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Month"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Estimate"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ggp2_bar_diverg_vert <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> trump_approval_diverg,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> month_avg, <span class="at">y =</span>  month)) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">fill =</span> poll), </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>ggp2_bar_diverg_vert <span class="sc">+</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  labs_geom_bar_diverg_vert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>GRAPH:</strong></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="diverging_bar_graphs_files/figure-html/create_graph_vert_diverg_bars-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
