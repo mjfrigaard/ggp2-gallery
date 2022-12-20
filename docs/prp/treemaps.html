@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">ggplot2 gallery</a> 
@@ -597,11 +597,13 @@ $ n       &lt;int&gt; 22, 22, 27, 28, 24, 23, 34, 34, 58, 61</code></pre>
 <p><strong>SUBGROUP:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
-<p>Add <code>geom_treemap_subgroup_border()</code></p>
+<p><code>ggplot2</code> build layers in the order they’re written, so it’s <a href="https://cran.r-project.org/web/packages/treemapify/vignettes/introduction-to-treemapify.html">advised</a> to build the subgroups in order from “<em>from deepest to shallowest</em>”, with <code>subgroups2</code> first (ending on <code>subgroup</code>)</p>
+<ul>
+<li><p>Add <code>geom_treemap_subgroup2_border()</code></p>
 <ul>
 <li>Set the <code>size</code> and <code>color</code></li>
-</ul>
-<p>Add <code>geom_treemap_subgroup_text()</code></p>
+</ul></li>
+<li><p>Add <code>geom_treemap_subgroup2_text()</code></p>
 <ul>
 <li><code>place</code>: this controls where the boxes start<br>
 </li>
@@ -614,7 +616,9 @@ $ n       &lt;int&gt; 22, 22, 27, 28, 24, 23, 34, 34, 58, 61</code></pre>
 <li><code>fontface</code>: <code>itlalic</code>/<code>bond</code><br>
 </li>
 <li><code>family</code>: <code>"sans"</code>/<code>"sansserif"</code>/<code>"mono"</code></li>
+</ul></li>
 </ul>
+<p>See full list of arguments <a href="http://wilkox.org/treemapify/">here</a>.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
@@ -641,12 +645,11 @@ $ n       &lt;int&gt; 22, 22, 27, 28, 24, 23, 34, 34, 58, 61</code></pre>
 <p><strong>SUBGROUP 2:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
-<ul>
-<li><p>Add <code>geom_treemap_subgroup2_border()</code></p>
+<p>Add <code>geom_treemap_subgroup_border()</code></p>
 <ul>
 <li>Set the <code>size</code> and <code>color</code></li>
-</ul></li>
-<li><p>Add <code>geom_treemap_subgroup2_text()</code></p>
+</ul>
+<p>Add <code>geom_treemap_subgroup_text()</code></p>
 <ul>
 <li><code>place</code>: this controls where the boxes start<br>
 </li>
@@ -659,9 +662,7 @@ $ n       &lt;int&gt; 22, 22, 27, 28, 24, 23, 34, 34, 58, 61</code></pre>
 <li><code>fontface</code>: <code>itlalic</code>/<code>bond</code><br>
 </li>
 <li><code>family</code>: <code>"sans"</code>/<code>"sansserif"</code>/<code>"mono"</code></li>
-</ul></li>
 </ul>
-<p>See full list of arguments <a href="http://wilkox.org/treemapify/">here</a>.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">

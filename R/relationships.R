@@ -16,9 +16,9 @@ options(scipen = 9999999)
 # ggplot2 theme ----
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
 # funs ----
-ds538 <- readr::read_rds("slides/data/ds538.rds")
+ds538 <- readr::read_rds("data/ds538.rds")
 # movies_data ----
-movies_data <- readr::read_rds("slides/data/movies_data.rds")
+movies_data <- readr::read_rds("data/movies_data.rds")
 # penguins ----
 penguins <- palmerpenguins::penguins
 # movies ----
@@ -259,3 +259,75 @@ ggp2_psets_axes +
     labs_psets
 
 
+
+# SLOPE GRAPHS ------------------------------------------------------------
+library(palmerpenguins)
+
+# we need data with two time-points, summarizing some value across groups
+peng_slope <- palmerpenguins::penguins |>
+    dplyr::filter(year < 2009) |>
+    dplyr::group_by(year, island) |>
+    dplyr::summarise(across(
+        .cols = contains("mm"), 
+        .fns = mean, 
+            na.rm = TRUE, 
+        .names = "avg_{.col}")) |>
+    dplyr::ungroup()
+glimpse(peng_slope)
+
+labs_slope <- labs(
+        title = "Changes in Bill Depth of Palmer Penguins", 
+        subtitle = "Years 2007 & 2008",
+        x = "Year", y = "Bill Depth (mm)", 
+        color = "Island")
+
+ggp2_slope <- ggplot(data = peng_slope, 
+    mapping = aes(x = year,
+                  y = avg_bill_depth_mm, 
+              group = island)) +
+  geom_line(aes(color = island), alpha = 1, size = 2, 
+      show.legend = FALSE) +
+  geom_point(aes(color = island), alpha = 1, size = 4) + 
+  scale_x_continuous(breaks = c(2007, 2008), position = "top")
+
+ggp2_slope + 
+    labs_slope
+
+# we can also use facets 
+peng_grp_slope <- palmerpenguins::penguins |>
+    dplyr::select(year, sex, island,
+                  contains("mm")) |> 
+    tidyr::drop_na() |> 
+    dplyr::filter(year != 2007) |>
+    dplyr::group_by(year, sex, island) |>
+    dplyr::summarise(across(
+        .cols = contains("mm"), 
+        .fns = mean, 
+            na.rm = TRUE, 
+        .names = "avg_{.col}")) |>
+    dplyr::ungroup()
+glimpse(peng_grp_slope)
+
+
+labs_grp_slope <- labs(
+    title = "Changes in Bill Depth of Palmer Penguins", 
+    subtitle = "Years 2008 & 2009",
+    x = "", 
+    color = "Island")
+
+ggp2_grp_slope <- ggplot(data = peng_grp_slope, 
+    mapping = aes(x = year,
+                  y = avg_bill_depth_mm, 
+              group = island)) +
+  geom_line(aes(color = island), alpha = 1, size = 2, 
+      show.legend = FALSE) +
+  geom_point(aes(color = island), alpha = 1, size = 4) + 
+  scale_x_continuous(breaks = c(2008, 2009), position = "top") + 
+  scale_y_continuous(
+    name = "Bill Depth (mm)",
+    sec.axis = dup_axis(name = "Bill Depth (mm)")) + 
+    facet_wrap(. ~ sex) + 
+    theme(legend.position = "bottom")
+
+ggp2_grp_slope + 
+    labs_grp_slope

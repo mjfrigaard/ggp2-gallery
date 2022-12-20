@@ -260,11 +260,13 @@ ggp2_treemap +
 
 ::: {style="font-size: 0.85em;"}
 
-Add `geom_treemap_subgroup_border()`
+`ggplot2` build layers in the order they're written, so it's [advised](https://cran.r-project.org/web/packages/treemapify/vignettes/introduction-to-treemapify.html) to build the subgroups in order from "*from deepest to shallowest*", with `subgroups2` first (ending on `subgroup`)
 
-  - Set the `size` and `color`    
+- Add `geom_treemap_subgroup2_border()`
 
-Add `geom_treemap_subgroup_text()`
+  - Set the `size` and `color`  
+
+- Add `geom_treemap_subgroup2_text()`
 
   - `place`: this controls where the boxes start      
   - `color`: text color    
@@ -272,6 +274,9 @@ Add `geom_treemap_subgroup_text()`
   - `alpha`: opacity      
   - `fontface`: `itlalic`/`bond`    
   - `family`: `"sans"`/`"sansserif"`/`"mono"`  
+
+
+See full list of arguments [here](http://wilkox.org/treemapify/).
 
 :::
 
@@ -305,21 +310,19 @@ ggp2_tm_subgroup +
 
 ::: {style="font-size: 0.85em;"}
 
-- Add `geom_treemap_subgroup2_border()`
+Add `geom_treemap_subgroup_border()`
 
-  - Set the `size` and `color`  
+  - Set the `size` and `color`    
 
-- Add `geom_treemap_subgroup2_text()`
+Add `geom_treemap_subgroup_text()`
 
   - `place`: this controls where the boxes start      
   - `color`: text color    
   - `min.size`: the minimum font size (when re-sizing)    
   - `alpha`: opacity      
   - `fontface`: `itlalic`/`bond`    
-  - `family`: `"sans"`/`"sansserif"`/`"mono"`  
+  - `family`: `"sans"`/`"sansserif"`/`"mono"` 
 
-
-See full list of arguments [here](http://wilkox.org/treemapify/).
 :::
 
 ::: {style="font-size: 0.75em;"}

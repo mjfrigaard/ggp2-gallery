@@ -5,8 +5,9 @@ project:
 website:
   title: "ggplot2 gallery"
   sidebar:
-    style: "floating"
+    style: "docked"
     search: true
+    border: true
     contents:
       - section: "Welcome"
         contents:

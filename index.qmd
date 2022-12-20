@@ -3,7 +3,7 @@ title: "Overview"
 format:
   html:
     toc: true
-    toc-depth: 2
+    toc-depth: 3
     embed-resources: true
     smooth-scroll: true
     code-fold: true
@@ -31,7 +31,7 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
 ```
 
 
@@ -69,6 +69,7 @@ The majority of the graphs are built using the `palmerpenguins::penguins` data.
 ## `penguins` data
 
 ```{r}
+#| label: penguins-pkg-show
 #| eval: false
 #| echo: true
 install.packages("palmerpenguins")
@@ -97,6 +98,7 @@ Some of the graphs are built using the `ggplot2movies::movies` data.
 ## `movies` data
 
 ```{r}
+#| label: movies-pkg-show
 #| eval: false
 #| echo: true
 install.packages("ggplot2movies")
@@ -129,6 +131,7 @@ A *few* of the graphs using datasets from the `fivethirtyeight` package.
 To view a table of available datasets in the `fivethirtyeight` package, view the `Data Frame Name` and `Article Title` columns in the `datasets_master` table. 
 
 ```{r}
+#| label: 538-pkg-show
 #| eval: false
 #| echo: true
 install.packages("fivethirtyeight")
@@ -151,13 +154,122 @@ reactable::reactable(fivethirtyeight::datasets_master |>
 
 :::
 
+## Code style & structure 
 
+The gallery follows a [Rule of Least Power Principle](https://www.w3.org/2001/tag/doc/leastPower.html), in the sense that "*a language with a straightforward syntax may be easier to analyze than an otherwise equivalent one with more complex structure.*" In other words, assuming the reader has some understanding of R and the `tidyverse`, the code for each graph is meant to be read and understood *without* having to run it. 
 
-## Graph Packages
+Each graph has the same four sections and structure: 
 
-Most of the graphs in this gallery can be built using on of `ggplot2` 's many `geom_*` functions. If a graph requires additional `geom`s or functions, the development version for these packages have been listed.
+:::: {.callout-note collapse="false"}
+### Graph code structure 
 
-## Univariate Graphs
+#### Packages 
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg-str
+#| eval: false
+#| echo: true
+#| code-fold: show
+# packages 
+library(ggplot2)
+```
+:::
+
+#### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data-str
+#| eval: true
+#| echo: true
+#| code-fold: show
+# data
+df <- tibble::tibble(X = sample(x = 1:100, 10, FALSE),
+                     Y = rlnorm(10, 1, 3))
+```
+:::
+
+#### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code-str
+#| eval: false
+#| echo: true
+#| code-fold: show
+# labels
+labs_graph <- ggplot2::labs(title = "Title", 
+                            subtitle = "subtitle", 
+                            x = "X", y = "Y")
+# layers
+ggp2_graph <- ggplot2::ggplot(data = df, 
+    mapping = aes(x = X, y = Y)) + 
+    ggplot2::geom_blank()
+# graph
+ggp2_graph + 
+    labs_graph
+```
+:::
+
+#### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: graph-str
+#| eval: true
+#| echo: false
+#| fig-width: 5
+#| fig-height: 3
+#| code-fold: show
+# labels
+labs_graph <- ggplot2::labs(title = "Title", 
+                            subtitle = "subtitle", 
+                            x = "X", y = "Y")
+# layers
+ggp2_graph <- ggplot2::ggplot(data = df, 
+    mapping = aes(x = X, y = Y)) + 
+    ggplot2::geom_blank()
+# graph
+ggp2_graph + 
+    labs_graph
+```
+:::
+::::
+
+I've attempted to balance brevity and clarity, but with the assumption that its best to err on the latter. I've also followed the general principle that if a graph can be *easily* built using one of `ggplot2` 's `geom_*` functions, that method is shown first. 
+
+If the graph can't be built with `ggplot2`'s geoms and requires additional packages/geoms/functions, instructions for installing the development version for these packages has been provided.
+
+## Graph Categories 
+
+Graphs have been categorized into the following types:
+
+- Univariate graphs  
+- Amounts 
+- Proportions  
+- Comparing Distributions  
+- Relationships  
+
+Some graphs would justifiably belong in more than one category, and wherever this is the cases, I've tried to include other uses in the notes. 
+
+### Univariate Graphs
 
 The following graphs are used to display **single variable** **distributions**:
 
@@ -175,7 +287,7 @@ The following graphs are used to display **single variable** **distributions**:
 
 -   [x] Box-Plots
 
-## Comparing Amounts
+### Amounts
 
 The following graphs are used to display **amounts**:
 
@@ -203,7 +315,7 @@ The following graphs are used to display **amounts**:
 
 -   [x] Heatmaps
 
-## Comparing Proportions
+### Proportions
 
 The following graphs are used to compare **proportions**:
 
@@ -250,7 +362,7 @@ The following graphs are used to compare **proportions**:
         ```
 
 
-## Comparing Distributions
+### Comparing Distributions
 
 These graphs can be used to compare **multiple variable distributions:**
 
@@ -306,7 +418,7 @@ These graphs can be used to compare **multiple variable distributions:**
 
 
 
-## Relationships
+### Relationships
 
 The following graphs are used to display relationships between two (or more) variables:
 
@@ -354,7 +466,7 @@ The following graphs are used to display relationships between two (or more) var
         library(ggforce)
         ```
 
--   [ ] *Slope graphs*
+-   [x] Slope graphs
 
 -   [ ] *Density Contours*
 
