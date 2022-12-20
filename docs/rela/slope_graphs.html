@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/treemaps.html" class="sidebar-item-text sidebar-link">Treemaps</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked-densities</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -511,7 +516,7 @@ Graph info
 </figure>
 </div>
 <!-- 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
 ![](../www/538.png){fig-align="right" width="15%" height="15%"}
 ![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
 -->
@@ -645,9 +650,9 @@ $ avg_flipper_length_mm &lt;dbl&gt; 205.3226, 190.9412, 190.0000, 213.7812, 199.
 <p>Map <code>year</code> to the <code>x</code>, <code>avg_bill_depth_mm</code> to <code>y</code>, and <code>island</code> to <code>group</code></p>
 <p>Add a <code>geom_line()</code> layer, mapping <code>island</code> to <code>color</code>, and setting the <code>size</code> to <code>2</code></p>
 <p>Add a <code>geom_point()</code> layer, mapping <code>color</code> to <code>island</code>, and setting <code>size</code> to <code>4</code></p>
-<p>We’ll adjust the x axis with <code>scale_x_continuous()</code>, manually setting the <code>breaks</code> and moving the <code>position</code> to the <code>"top"</code> of the graph</p>
+<p>We’ll adjust the <code>x</code> axis with <code>scale_x_continuous()</code>, manually setting the <code>breaks</code> and moving the <code>position</code> to the <code>"top"</code> of the graph</p>
 <p>We’ll duplicate the the <code>y</code> axis with <code>sec.axis</code>, setting <code>dup_axis()</code> to the same <code>name</code> of the previous <code>y</code> label.</p>
-<p>Finally, we facet the graph by <code>sex</code>, adjust the size of the text, and move the legend to the <code>"bottom"</code> of the graph.</p>
+<p>Finally, we facet the graph by <code>sex</code>, adjust the <code>size</code> of the text, and move the legend to the <code>"bottom"</code> of the graph.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">

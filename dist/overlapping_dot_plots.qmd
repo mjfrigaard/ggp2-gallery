@@ -105,7 +105,7 @@ library(ggplot2)
 **DATA:**
 :::
 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
 
 ::: {style="font-size: 0.85em;"}
 Remove missing `sex` from `penguins`

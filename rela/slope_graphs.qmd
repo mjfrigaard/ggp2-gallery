@@ -120,7 +120,7 @@ library(ggplot2)
 ![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="40%" height="40%"}
 
 <!-- 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="60%" height="60%"}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
 ![](../www/538.png){fig-align="right" width="15%" height="15%"}
 ![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
 -->
@@ -292,11 +292,11 @@ Add a `geom_line()` layer, mapping `island` to `color`, and setting the `size` t
 
 Add a `geom_point()` layer, mapping `color` to `island`, and setting `size` to `4`
 
-We'll adjust the x axis with `scale_x_continuous()`, manually setting the `breaks` and moving the `position` to the `"top"` of the graph
+We'll adjust the `x` axis with `scale_x_continuous()`, manually setting the `breaks` and moving the `position` to the `"top"` of the graph
 
 We'll duplicate the the `y` axis with `sec.axis`, setting `dup_axis()` to the same `name` of the previous `y` label.
 
-Finally, we facet the graph by `sex`, adjust the size of the text, and move the legend to the `"bottom"` of the graph.
+Finally, we facet the graph by `sex`, adjust the `size` of the text, and move the legend to the `"bottom"` of the graph.
 :::
 
 ::: {style="font-size: 0.75em;"}

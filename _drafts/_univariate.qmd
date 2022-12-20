@@ -1,0 +1,1132 @@
+---
+title: "Univariate"
+format:
+  html:
+    dpi: 320
+    fig-format: retina
+    fig-asp: 0.618
+    toc: true
+    toc-location: left
+    toc-title: Contents
+    html-math-method: katex
+    css: styles.css
+    theme:
+      light: materia    
+      dark: superhero
+      
+      
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+library(xml2)
+library(reactable)
+library(ggalluvial)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+```
+
+# UNIVARIATE
+
+Single variable graphs with `ggplot2` (and friends!)
+
+## BAR-GRAPHS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+The bar-graph (or bar-chart) is used to display counts for the levels of a categorical variable.
+
+<br>
+
+Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each level value.
+
+<br>
+
+In `ggplot2`, bar charts can be built using `geom_bar()`.
+
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_bar
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2movies")
+library(ggplot2movies) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Filter the missing values from `mpaa` in the `ggplot2movies::movies` data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_bar
+#| eval: true
+#| echo: true
+movies_bar <- ggplot2movies::movies |> 
+                    filter(mpaa != "")
+glimpse(movies_bar)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `mpaa` to the `x` axis
+
+Map `mpaa` to the `fill` aesthetic inside the `aes()` of `geom_bar()`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_bar
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_bar <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", y = "Count", 
+  fill = "MPAA")
+ggp2_bar <- ggplot(data = movies_bar, 
+       aes(x = mpaa)) + 
+    geom_bar(aes(fill = mpaa)) 
+ggp2_bar + 
+  labs_bar
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_bar
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_bar <- labs(
+  title = "IMDB movie information/user ratings",
+  x = "MPAA rating", y = "Count", 
+  fill = "MPAA")
+ggp2_bar <- ggplot(data = movies_bar, 
+       aes(x = mpaa)) + 
+    geom_bar(aes(fill = mpaa)) 
+ggp2_bar + 
+  labs_bar
+```
+
+::::
+
+## HISTOGRAMS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Histograms use bars, but the `x` axis is divided into ‘bins’ that cover the range of the variable.
+
+<br>
+
+The standard number of bins is `30`
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_histogram
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_histogram
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_histogram
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_histogram <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+
+ggp2_hist <- ggplot(data = penguins,
+     aes(x = flipper_length_mm)) + 
+     geom_histogram() 
+ggp2_hist + 
+  labs_histogram
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_histogram
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_histogram <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+
+ggp2_hist <- ggplot(data = penguins,
+     aes(x = flipper_length_mm)) + 
+     geom_histogram() 
+ggp2_hist + 
+  labs_histogram
+```
+
+::::
+
+## FREQUENCY POLYGONS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Frequency polygons (`geom_freqpoly()`) are similar to histograms,
+
+<br>
+
+but they use lines instead of bars to represent the variable distribution.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_freq_poly
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_freq_poly
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `flipper_length_mm` to the `x` axis
+
+Add the `geom_freqpoly()` layer
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_freq_poly
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_freqpoly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_freqpoly <- ggplot(data = penguins,
+      aes(x = flipper_length_mm)) + 
+    geom_freqpoly()
+ggp2_freqpoly + 
+  labs_freqpoly
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:** Experiment to see how many `bins` fit your variable’s distribution
+:::
+
+```{r}
+#| label: create_graph_freq_poly
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_freqpoly <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_freqpoly <- ggplot(data = penguins,
+      aes(x = flipper_length_mm)) + 
+    geom_freqpoly()
+ggp2_freqpoly + 
+  labs_freqpoly
+```
+
+::::
+
+## DOT-PLOTS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Dot-plots (`geom_dotplot()`) are similar to histograms and frequency polygons,
+
+
+<br>
+
+except instead of using bars or lines, they use dots to represent the values of a given variable.
+
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_dot_plot
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Description of data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_dot_plot
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `flipper_length_mm` to the `x` axis
+
+Add the `geom_dotplot()` layer
+
+Adjust the `dotsize`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_dot_plot
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_dotplot <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_dotplot <- ggplot(data = penguins,
+      aes(x = flipper_length_mm)) + 
+    geom_dotplot(dotsize = 0.5) 
+ggp2_dotplot + 
+  labs_dotplot
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_dot_plot
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_dotplot <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_dotplot <- ggplot(data = penguins,
+      aes(x = flipper_length_mm)) + 
+    geom_dotplot(dotsize = 0.5) 
+ggp2_dotplot + 
+  labs_dotplot
+```
+
+::::
+
+## DENSITY PLOTS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Density plots are similar to frequency polygons and histograms, except the line has been ‘smoothed.’
+
+<br>
+
+Instead of dividing the x axis into discrete quantitative ‘bins’ to create groups for the variable values, density plots transform the distribution according to a ‘bandwidth’ parameter.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_density
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_density
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `flipper_length_mm` to the `x` axis
+
+Add the `geom_density()` layer
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_density
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_density <- ggplot(data = penguins, 
+        aes(x = flipper_length_mm)) + 
+      geom_density() 
+
+ggp2_density +
+  labs_density
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_density
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_density <- labs(
+  title = "Adult foraging penguins",
+  x = "Flipper length (millimeters)")
+ggp2_density <- ggplot(data = penguins, 
+        aes(x = flipper_length_mm)) + 
+      geom_density() 
+
+ggp2_density +
+  labs_density
+```
+
+::::
+
+## VIOLIN PLOTS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+A ‘violin plot’ is a variation of a density plot, where the distribution is plotted symmetrically creating a two-sided area.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_violin
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_violin
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+  - Place an empty string (`""`) in the `x` argument
+
+Map and empty string (`""`) to the `x` and `bill_length_mm` to the `y`
+
+Add `geom_violin()`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_violin
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_violin <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "Distribution of bill length",
+  x = "",
+  y = "Bill length (millimeters)")
+ggp2_violin <- ggplot(data = penguins,
+       aes(x = '', 
+           y = bill_length_mm)) +
+       geom_violin() 
+ggp2_violin + 
+  labs_violin
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_violin
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_violin <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "Distribution of bill length",
+  x = "",
+  y = "Bill length (millimeters)")
+ggp2_violin <- ggplot(data = penguins,
+       aes(x = '', 
+           y = bill_length_mm)) +
+       geom_violin() 
+ggp2_violin + 
+  labs_violin
+```
+
+::::
+
+
+## BOX-PLOTS
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Box-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
+
+<br>
+
+In `ggplot2`, we can create a box-plot for a single numeric variable using `geom_boxplot()`
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_boxplot
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2movies")
+library(ggplot2movies) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Filter `ggplot2movies::movies` to only include films after the made after `2000`, and remove missing values from `mpaa` and `budget`.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_boxplot
+#| eval: true
+#| echo: true
+movies_box <- ggplot2movies::movies |> 
+                dplyr::filter(year > 2000 & 
+                                mpaa != "" & 
+                                    !is.na(budget))
+glimpse(movies_box)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+  - Assign a blank character string (`""`) to the `x` axis in `labs()`
+
+Map `length` to the `y` axis and an empty string (`""`) to the `x` axis
+
+Add the `geom_boxplot()` layer
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_boxplot
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_boxplot <- labs(
+  title = "IMDB Movie information and user ratings",
+  y = "Length", x = "")
+ggp2_boxplot <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot() 
+
+ggp2_boxplot + 
+  labs_boxplot
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_boxplot
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_boxplot <- labs(
+  title = "IMDB Movie information and user ratings",
+  y = "length", x = "")
+ggp2_boxplot <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot() 
+
+ggp2_boxplot + 
+  labs_boxplot
+```
+
+::::
+
+### MORE ON BOX-PLOTS
+
+:::: {.panel-tabset}
+
+### Summary Statistics
+
+::: {style="font-size: 0.85em;"}
+The table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the length column from the `movies_box` dataset.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: box_table_stats
+#| eval: true
+#| echo: false 
+lgnth_skim <- skimr::skim(movies_box$length)
+LengthBoxStats <- select(lgnth_skim,
+     `25th` = numeric.p25, Median = numeric.p50,
+     `75th` = numeric.p75, Histogram = numeric.hist) %>%
+     mutate(IQR = IQR(movies_box$length, na.rm = TRUE)) %>%
+     select(`25th`, Median, `75th`, IQR, Histogram)
+kableExtra::kable_paper(
+  kable_input = knitr::kable(LengthBoxStats), 
+  font_size = 14
+  )
+```
+:::
+
+### How to read a box-plot
+
+::: {style="font-size: 0.85em;"}
+In the figure below we can see how the box-plot represents each of these numbers using lines and points.
+:::
+
+![](www/boxplot-diagram.png){fig-align="center" width="100%" height="100%"}
+
+::: {style="font-size: 0.85em;"}
+In `ggplot2`, values that fall more than 1.5 times the IQR are displayed as individual points (aka outliers). The lines extending from the bottom and top of the main box represent the last non-outlier value in the distribution.
+:::
+
+### Compare 
+
+::: {style="font-size: 0.85em;"}
+Compare the four graphs of `length` from `movie_box` below to the box-plot:
+:::
+
+![](www/boxplot-comparisons.png){fig-align="center" width="100%" height="100%"}
+
+::::
+
+
+<!--
+
+## Graph_Description
+
+:::: {.callout-note}
+::: {style="font-size: 1.25em; color: #ffd500;"}
+**When would I use this graph?**
+:::
+<br>
+
+Description
+
+<br>
+
+More_description.
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Description of data
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_
+#| eval: true
+#| echo: true
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_scatter <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", y = "Flipper length (mm)")
+ggp2_scatter <- penguins |>
+  ggplot(
+    aes(x = bill_length_mm, 
+      y = flipper_length_mm)) +
+  geom_point()
+
+ggp2_scatter + 
+  labs_scatter
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_scatter <- labs(
+    title = "Bill Length vs. Flipper Length",
+    x = "Bill Length (mm)", 
+    y = "Flipper length (mm)")
+ggp2_scatter <- penguins |> 
+  ggplot(aes(x = bill_length_mm,
+      y = flipper_length_mm)) + 
+  geom_point() 
+ggp2_scatter + 
+  labs_scatter
+```
+
+::::
+
+-->

@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/treemaps.html" class="sidebar-item-text sidebar-link">Treemaps</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked-densities</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -426,7 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#stacked-density-plots" id="toc-stacked-density-plots" class="nav-link active" data-scroll-target="#stacked-density-plots">STACKED DENSITY PLOTS</a></li>
+  <li><a href="#stacking-density-plots" id="toc-stacking-density-plots" class="nav-link active" data-scroll-target="#stacking-density-plots">Stacking density plots</a></li>
   </ul>
 </nav>
 </nav>
@@ -506,7 +511,7 @@ Graph info
 </div>
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="../www/lter_penguins.png" style="width:60.0%;height:60.0%" class="figure-img"></p>
+<p><img src="../www/lter_penguins.png" style="width:30.0%;height:30.0%" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption><p></p>
 </figure>
 </div>
@@ -568,7 +573,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 <div style="font-size: 0.85em;">
 <p><em>A downside of density plots is the lack of interpretability of the <strong>y</strong> axis</em></p>
-<p>Make density area slightly transparent to handle over-plotting.</p>
+<p>Make density area slightly transparent to handle over-plotting</p>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -578,18 +583,19 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div>
-<section id="stacked-density-plots" class="level3">
-<h3 class="anchored" data-anchor-id="stacked-density-plots">STACKED DENSITY PLOTS</h3>
+<section id="stacking-density-plots" class="level3">
+<h3 class="anchored" data-anchor-id="stacking-density-plots">Stacking density plots</h3>
+<p><code>ggplot2</code> has multiple options for stacking density plots, so which one to use will depend on how you’d like to display the relative distributions in your data.</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Graph</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><code>position = "stack"</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><code>after_stat(count)</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><code>position = "fill"</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
-<p><strong>CODE:</strong></p>
+<p><strong>STACK:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
 <p>Create the labels</p>
-<p>Map the <code>flipper_length_mm</code> to the <code>x</code>, add <code>after_stat(count)</code>, and map <code>sex</code> to <code>fill</code></p>
+<p>Map the <code>flipper_length_mm</code> to the <code>x</code> and map <code>sex</code> to <code>fill</code></p>
 <p><em>Inside</em> <code>geom_density()</code>, set <code>position</code> to <code>"stack"</code></p>
 <p>Set the <code>alpha</code> to <code>1/3</code></p>
 </div>
@@ -601,25 +607,80 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Sex"</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ggp2_stack_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_density, </span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">after_stat</span>(count),</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">position =</span> <span class="st">"stack"</span>, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ggp2_stack_density <span class="sc">+</span> </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  labs_stack_density</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">position =</span> <span class="st">"stack"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ggp2_stack_density <span class="sc">+</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  labs_stack_density</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="overlapping_stacked_density_plots_files/figure-html/code_graph_stack_density-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
-<p><strong>GRAPH:</strong></p>
+<p><strong>AFTER STAT:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
-<p>Adding <code>after_stat(count)</code> uses the <em><code>density * n</code> instead of the default density</em> which <a href="https://ggplot2.tidyverse.org/reference/geom_density.html#computed-variables"><em>‘preserves marginal densities’</em></a>.</p>
+<!--
+should use the after_stat() function to flag that evaluation of the aesthetic mapping should be postponed until after stat transformation
+-->
+<p>Create the labels</p>
+<p>Map the <code>flipper_length_mm</code> to the <code>x</code>, add <code>after_stat(count)</code>, and map <code>sex</code> to <code>fill</code></p>
+<ul>
+<li>Adding <code>after_stat(count)</code> uses the <em><code>density * n</code> instead of the default density</em> which <a href="https://ggplot2.tidyverse.org/reference/geom_density.html#computed-variables"><em>‘preserves marginal densities’</em></a>.</li>
+</ul>
+<p><em>Inside</em> <code>geom_density()</code>, set <code>position</code> to <code>"stack"</code></p>
+<p>Set the <code>alpha</code> to <code>1/3</code></p>
+<p>This might be more a interpretable <code>y</code> axis (depending on the audience).</p>
 </div>
+<div style="font-size: 0.75em;">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>labs_after_stat_density <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Sex"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ggp2_after_stat_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_density, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">after_stat</span>(count),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">position =</span> <span class="st">"stack"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ggp2_after_stat_density <span class="sc">+</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  labs_after_stat_density</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="overlapping_stacked_density_plots_files/figure-html/create_graph_stack_density-1.png" class="img-fluid" width="672"></p>
+<p><img src="overlapping_stacked_density_plots_files/figure-html/code_graph_after_stat_density-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>FILL:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Another option is to build a conditional density estimate by using <code>after_stat(count)</code> with <code>position = "fill"</code></p>
+<p>This results in a plot with the same <code>y</code> axis ranging from 0-1, and the area filled with the relative proportional values.</p>
+<p>See also <a href="https://mjfrigaard.github.io/ggp2-gallery/prp/stacked_filled_density_graphs.html">Stacked-densities</a></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>labs_fill_density <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Sex"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ggp2_fill_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_density, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">after_stat</span>(count),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">position =</span> <span class="st">"fill"</span>, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>) </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ggp2_fill_density <span class="sc">+</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  labs_fill_density</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="overlapping_stacked_density_plots_files/figure-html/code_graph_fill_density-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>

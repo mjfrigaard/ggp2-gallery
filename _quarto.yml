@@ -36,6 +36,7 @@ website:
           - prp/diverging_bar_graphs.qmd
           - prp/mosaic_plot.qmd
           - prp/treemaps.qmd
+          - prp/stacked_filled_density_graphs.qmd
       - section: "Distributions"
         contents:
           - dist/overlapping_histograms.qmd
