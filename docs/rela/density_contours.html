@@ -410,12 +410,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rela/x2d_bins.html" class="sidebar-item-text sidebar-link">2D-Bins</a>
+  <a href="../rela/bins_2d.html" class="sidebar-item-text sidebar-link">2D Histograms</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rela/hex_bins.html" class="sidebar-item-text sidebar-link">Hex Bins</a>
+  <a href="../rela/hex_bins.html" class="sidebar-item-text sidebar-link">Hexagon bin map</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -427,7 +427,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#layer-by-layer" id="toc-layer-by-layer" class="nav-link active" data-scroll-target="#layer-by-layer">Layer-by-layer</a></li>
+  <li><a href="#adding-groups" id="toc-adding-groups" class="nav-link" data-scroll-target="#adding-groups">Adding groups</a></li>
+  <li><a href="#more-2-d-densities" id="toc-more-2-d-densities" class="nav-link" data-scroll-target="#more-2-d-densities">More 2-D densities</a></li>
+  </ul>
+</nav>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -468,10 +476,21 @@ Graph info
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="right">
-
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="density_contours_files/figure-html/full_code_display-1.png" style="width:60.0%;height:60.0%" class="figure-img"></p>
+</figure>
 </div>
-<!-- Description -->
-<!-- More_description -->
+</div>
+</div>
+<p>Density contours (or 2-D density plots) are helpful for displaying differences in values between two numeric (continuous) variables.</p>
+<p>In <a href="https://en.wikipedia.org/wiki/Topography">topographical maps</a>, contour lines are drawn around areas of equal elevation above sea-level. In density contours, the contour lines are drawn around the areas our data occupy (essentially replacing sea-level as ‘<em>an area without any x or y values.</em>’)</p>
+<p>Specifically, the contour lines outline areas on the graph with differing point densities, and semi-transparent colors (gradient) can be added to further highlight the separate regions.</p>
+<!--
+This technique works well when the point density changes slowly
+across both the x and the y dimensions.
+-->
 </div>
 </div>
 </div>
@@ -487,9 +506,9 @@ Graph info
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("palmerpenguins")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(palmerpenguins) </span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggplot2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -497,18 +516,35 @@ Graph info
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>DATA:</strong></p>
 </div>
-<!-- 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
-![](../www/538.png){fig-align="right" width="15%" height="15%"}
-![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
--->
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../www/lter_penguins.png" style="width:30.0%;height:30.0%" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption><p></p>
+</figure>
+</div>
 <div style="font-size: 0.85em;">
-<!-- Description of data -->
+<p>We’ll use the <code>penguins</code> data from the <code>palmerpenguins</code> package, but remove the missing values from <code>bill_length_mm</code>, <code>flipper_length_mm</code>, and <code>species</code>.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># penguins &lt;- palmerpenguins::penguins</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(penguins)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>peng_dnsty_2d <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm) <span class="sc">&amp;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(flipper_length_mm) <span class="sc">&amp;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">factor</span>(species))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(peng_dnsty_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 342
+Columns: 8
+$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 34.1, 42.0…
+$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 18.1, 20.2…
+$ flipper_length_mm &lt;int&gt; 181, 186, 195, 193, 190, 181, 195, 193, 190, 186, 18…
+$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3475, 4250…
+$ sex               &lt;fct&gt; male, female, female, female, male, female, male, NA…
+$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -523,10 +559,43 @@ Graph info
 </div>
 <div style="font-size: 0.85em;">
 <p>Create the labels</p>
+<p>Create two values for extending the range of the <code>x</code> and <code>y</code> axis (<code>x_min</code>/<code>x_max</code> and <code>y_min</code>/<code>y_max</code>)</p>
+<p>Map <code>bill_length_mm</code> to <code>x</code> and <code>flipper_length_mm</code> to <code>y</code></p>
+<p>Add the <code>expand_limits()</code> function, assigning our stored values to <code>x</code> and <code>y</code></p>
+<p>Add the <code>geom_density_2d()</code></p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># labels</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>labs_dnsty_2d <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># x limits</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x_min <span class="ot">&lt;-</span> <span class="fu">min</span>(peng_dnsty_2d<span class="sc">$</span>bill_length_mm) <span class="sc">-</span> <span class="dv">5</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>x_max <span class="ot">&lt;-</span> <span class="fu">max</span>(peng_dnsty_2d<span class="sc">$</span>bill_length_mm) <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># y limits</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y_min <span class="ot">&lt;-</span> <span class="fu">min</span>(peng_dnsty_2d<span class="sc">$</span>flipper_length_mm) <span class="sc">-</span> <span class="dv">10</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>y_max <span class="ot">&lt;-</span> <span class="fu">max</span>(peng_dnsty_2d<span class="sc">$</span>flipper_length_mm) <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> peng_dnsty_2d,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> flipper_length_mm</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># use our stored values</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x_min, x_max),</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(y_min, y_max)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>()</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d <span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  labs_dnsty_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -535,13 +604,337 @@ Graph info
 <p><strong>GRAPH:</strong></p>
 </div>
 <div class="cell">
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/create_graph_geom_density_2d-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="layer-by-layer" class="level2">
+<h2 class="anchored" data-anchor-id="layer-by-layer">Layer-by-layer</h2>
+<p>We’re going to break down how to create the density contour layer-by-layer using the <code>stat_density_2d()</code> function (which allows us to access some of the inner-workings of <code>geom_density_2d()</code>)</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Base</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Stat</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Fill</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Points</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>BASE:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Create a new set of labels</p>
+<p>Build a base layer:</p>
+<ul>
+<li><p>Map <code>bill_length_mm</code> to <code>x</code> and <code>flipper_length_mm</code> to <code>y</code></p></li>
+<li><p>Expand the <code>x</code> and <code>y</code> values with <code>expand_limits()</code> (using the values we created above)</p></li>
+</ul>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>labs_sdens_2d <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"Species"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># base</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>base_sdens_2d <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> peng_dnsty_2d,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> flipper_length_mm</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x_min, x_max),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(y_min, y_max)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>base_sdens_2d <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  labs_sdens_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_base_layer-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>STAT:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Add the <code>stat_density_2d()</code> layer:</p>
+<ul>
+<li><p><em>Inside</em> <code>aes()</code>, use <a href="https://ggplot2.tidyverse.org/reference/aes_eval.html"><code>after_stat()</code></a> to map <code>level</code> to <code>fill</code> (from Help, “<em>Evaluation after stat transformation will have access to the variables calculated by the stat, not the original mapped values.</em>”)</p></li>
+<li><p>Set the <code>geom</code> to <code>"polygon"</code></p></li>
+<li><p>Change the <code>color</code> to black (<code>#000000</code>)</p></li>
+<li><p>adjust the <code>linewidth</code> to <code>0.35</code></p></li>
+</ul>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stat_sdens_2d <span class="ot">&lt;-</span> base_sdens_2d <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density_2d</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(level)),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"polygon"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#000000"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.35</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>stat_sdens_2d <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  labs_sdens_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_stat_layer-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
 
 </div>
 </div>
 </div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>FILL:</strong></p>
+</div>
+<div style="font-size: 0.85em; color: #9d40f5;">
+<p><strong><em>Where did levels come from?</em></strong></p>
+<p><em>You probably noticed the <code>stat_density_2d()</code> produced a legend with <code>level</code>, and a series of values for the color gradient. These numbers are difficult to interpret directly, but you can think of them as ‘elevation changes’ in point density. Read more <a href="https://stackoverflow.com/questions/53172200/stat-density2d-what-does-the-legend-mean">here on SO.</a></em></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Now that we have a color gradient for our contour lines, we can adjust it’s the range of colors using <code>scale_fill_gradient()</code></p>
+<ul>
+<li><code>low</code> is the color for the low values of <code>level</code><br>
+</li>
+<li><code>high</code> is the color for the high values of <code>level</code><br>
+</li>
+<li><code>guide</code> let’s us control the <code>legend</code></li>
+</ul>
+<p>We’ll set these to white (<code>"#ffffff"</code>) and dark gray (<code>"#404040"</code>)</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fill_sdens_2d <span class="ot">&lt;-</span> stat_sdens_2d <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"#ffffff"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"#404040"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="st">"legend"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fill_sdens_2d <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  labs_sdens_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_fill_layer_pw-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>POINTS:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>The dark areas in the contour lines are the areas with higher value density, but why don’t we test that by adding some data points?</p>
+<p>Add a <code>geom_point()</code> layer</p>
+<ul>
+<li><p><em>Inside</em> <code>aes()</code>, map <code>species</code> to <code>color</code> (this will tell us if the three dark areas represent differences in the three species in the dataset)</p></li>
+<li><p>set <code>size</code> to <code>2</code></p></li>
+<li><p>Change the <code>alpha</code> to <code>2/3</code></p></li>
+</ul>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_point()</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pnts_sdens_2d <span class="ot">&lt;-</span> fill_sdens_2d <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># final</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>pnts_sdens_2d <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  labs_sdens_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_points_layer_pw-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-groups" class="level2">
+<h2 class="anchored" data-anchor-id="adding-groups">Adding groups</h2>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Groups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Facets</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>GROUPS:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Create the labels</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>labs_dnsty_2d_grp <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"Species"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_grp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> peng_dnsty_2d,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> flipper_length_mm</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x_min, x_max),</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(y_min, y_max)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>(<span class="fu">aes</span>(<span class="at">color =</span> species))</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_pnts <span class="ot">&lt;-</span> ggp2_dnsty_2d_grp <span class="sc">+</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species),</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_pnts <span class="sc">+</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  labs_dnsty_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_points-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>FACETING:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Create the labels</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_facet <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> peng_dnsty_2d,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> flipper_length_mm</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x_min, x_max),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(y_min, y_max)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d_filled</span>(</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.30</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">contour_var =</span> <span class="st">"ndensity"</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_discrete_manual</span>(</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">aesthetics =</span> <span class="st">"fill"</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"#18507a"</span>, <span class="st">"#2986cc"</span>, <span class="st">"#3e92d1"</span>, <span class="st">"#539ed6"</span>, <span class="st">"#69aadb"</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">"#7eb6e0"</span>, <span class="st">"#a9ceea"</span>, <span class="st">"#bedaef"</span>, <span class="st">"#d4e6f4"</span>, <span class="st">"#e9f2f9"</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(species))</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_facet <span class="sc">+</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  labs_dnsty_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_facets_run-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-2-d-densities" class="level2">
+<h2 class="anchored" data-anchor-id="more-2-d-densities">More 2-D densities</h2>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Fill</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Lines</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>Fill:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Create the labels</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>labs_dnsty_2d <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> peng_dnsty_2d,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> flipper_length_mm</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># use our stored values</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(x_min, x_max),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(y_min, y_max)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>()</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_fill <span class="ot">&lt;-</span> ggp2_dnsty_2d <span class="sc">+</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d_filled</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_fill <span class="sc">+</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  labs_dnsty_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_fill_run-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>LINES:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Create the labels</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_fill_lns <span class="ot">&lt;-</span> ggp2_dnsty_2d_fill <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.30</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#ffffff"</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ggp2_dnsty_2d_fill_lns <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  labs_dnsty_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="density_contours_files/figure-html/code_graph_lines_run-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

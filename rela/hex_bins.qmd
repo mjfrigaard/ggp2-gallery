@@ -1,5 +1,5 @@
 ---
-title: "Hex Bins"
+title: "Hexagon bin map"
 execute:
   warning: false
   message: false

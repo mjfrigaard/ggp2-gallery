@@ -9,12 +9,11 @@ library(reactable)
 library(palmerpenguins)
 library(ggplot2movies)
 library(ggalluvial)
-
+library(patchwork)
 options(scipen = 9999999)
-
-
 # ggplot2 theme ----
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
 # funs ----
 ds538 <- readr::read_rds("data/ds538.rds")
 # movies_data ----
@@ -28,7 +27,8 @@ movies <- ggplot2movies::movies
 # SCATTER -----------------------------------------------------------------
 
 labs_scatter <- labs(title = "Bill Length vs. Flipper Length",
-                      x = "Bill Length (mm)", y = "Flipper length (mm)")
+                      x = "Bill Length (mm)", 
+                      y = "Flipper length (mm)")
 
 ggp2_scatter <- penguins |> 
   ggplot(aes(x = bill_length_mm, y = flipper_length_mm)) + 
@@ -331,3 +331,198 @@ ggp2_grp_slope <- ggplot(data = peng_grp_slope,
 
 ggp2_grp_slope + 
     labs_grp_slope
+
+
+# DENSITY CONTOURS -------------------------------------------------
+# use penguins data 
+peng_dnsty_2d <- palmerpenguins::penguins |> 
+    filter(!is.na(bill_length_mm) & 
+            !is.na(flipper_length_mm) & 
+            !is.na(species)) |> 
+    mutate(species = factor(species))
+glimpse(peng_dnsty_2d)
+
+## full_code_display ---- 
+# x limits
+x_min <- min(peng_dnsty_2d$bill_length_mm) - 5
+x_max <- max(peng_dnsty_2d$bill_length_mm) + 5
+# y limits
+y_min <- min(peng_dnsty_2d$flipper_length_mm) - 10
+y_max <- max(peng_dnsty_2d$flipper_length_mm) + 10
+labs_dnsty_2d <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)",
+  y = "Flipper length (mm)"
+)
+ggp2_dnsty_2d_fill <- ggplot(
+  data = peng_dnsty_2d,
+  mapping = aes(
+    x = bill_length_mm,
+    fill = after_stat(level),
+    y = flipper_length_mm
+  )
+) +
+  # expand limits
+  expand_limits(
+    x = c(x_min, x_max),
+    y = c(y_min, y_max)
+  ) +
+  # stat polygon
+  stat_density_2d(
+    geom = "polygon",
+    color = "#000000",
+    linewidth = 0.15
+  ) +
+  # gradient
+  scale_fill_gradient(
+    low = "#02577A",
+    high = "#ffffff",
+    guide = "none"
+  )
+ggp2_dnsty_2d_fill +
+  labs_dnsty_2d
+
+## create_graph_geom_density_2d ----
+# x limits
+x_min <- min(peng_dnsty_2d$bill_length_mm) - 5
+x_max <- max(peng_dnsty_2d$bill_length_mm) + 5
+# y limits
+y_min <- min(peng_dnsty_2d$flipper_length_mm) - 10
+y_max <- max(peng_dnsty_2d$flipper_length_mm) + 10
+
+# labels
+labs_dnsty_2d <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)",
+  y = "Flipper length (mm)"
+)
+
+ggp2_dnsty_2d <- ggplot(
+  data = peng_dnsty_2d,
+  mapping = aes(
+    x = bill_length_mm,
+    y = flipper_length_mm
+  )
+) +
+  # use our stored values
+  expand_limits(
+    x = c(x_min, x_max),
+    y = c(y_min, y_max)
+  ) +
+  geom_density_2d()
+# plot
+ggp2_dnsty_2d +
+  labs_dnsty_2d
+
+## code_graph_base_layer ----
+labs_sdens_2d <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)",
+  y = "Flipper length (mm)",
+  color = "Species"
+)
+# base
+base_sdens_2d <- ggplot(
+  data = peng_dnsty_2d,
+  mapping = aes(
+    x = bill_length_mm,
+    y = flipper_length_mm
+  )
+) +
+  expand_limits(
+    x = c(x_min, x_max),
+    y = c(y_min, y_max)
+  )
+base_sdens_2d +
+  labs_sdens_2d
+
+## code_graph_stat_layer ----
+stat_sdens_2d <- base_sdens_2d +
+  stat_density_2d(
+    aes(fill = after_stat(level)),
+    geom = "polygon",
+    color = "#000000",
+    linewidth = 0.35
+  )
+stat_sdens_2d +
+  labs_sdens_2d
+
+ggp1 <- stat_sdens_2d +
+  labs(
+    x = "Bill Length (mm)",
+    y = "Flipper length (mm)"
+  ) +
+  theme(
+    axis.title = element_text(size = 8),
+    axis.text = element_text(size = 6),
+    legend.text = element_text(size = 7),
+    legend.title = element_text(size = 9, face = "bold")
+  )
+ggp1
+
+## code_graph_fill_layer ----
+fill_sdens_2d <- stat_sdens_2d +
+  scale_fill_gradient(
+    low = "#ffffff",
+    high = "#404040",
+    guide = "legend"
+  )
+fill_sdens_2d +
+  labs_sdens_2d
+
+## code_graph_fill_layer_pw ----
+fill_sdens_2d <- stat_sdens_2d +
+  scale_fill_gradient(
+    low = "#ffffff",
+    high = "#404040",
+    guide = "legend"
+  )
+# patchwork plot 2
+ggp2 <- fill_sdens_2d +
+  labs(
+    x = "Bill Length (mm)",
+    y = "Flipper length (mm)"
+  ) +
+  theme(
+    axis.title = element_text(size = 8),
+    axis.text = element_text(size = 6),
+    legend.text = element_text(size = 6),
+    legend.title = element_text(size = 7, face = "bold")
+  )
+# patch
+ggp1 + patchwork::guide_area() +
+  ggp2 + patchwork::guide_area() +
+  patchwork::plot_layout(ncol = 2, guides = "keep") +
+  plot_annotation(
+    title = "stat_density_2d() +  scale_fill_gradient()"
+  )
+
+## code_graph_points_layer ----
+pnts_sdens_2d <- fill_sdens_2d +
+  geom_point(aes(color = species),
+    size = 2,
+    alpha = 2 / 3
+  )
+# final
+pnts_sdens_2d +
+  labs_sdens_2d
+
+### other density option ---------------------------------------
+# ggp2_dnsty_2d_fill <- ggplot(data = peng_dnsty_2d,
+#     mapping = aes(x = bill_length_mm,
+#         fill = after_stat(level),
+#         y = flipper_length_mm)) +
+#     # expand limits 
+#     expand_limits(x = c(x_min, x_max),
+#         y = c(y_min, y_max)) +
+#     # stat polygon
+#     stat_density_2d(
+#         geom = "polygon",
+#         contour_var = "density",
+#         color = "#000000",
+#         linewidth = 0.15) +
+#     # gradient
+#     scale_fill_gradient(low = "#02577A",
+#         high = "#ffffff",
+#         guide = "none") 
+# ggp2_dnsty_2d_fill + labs_dnsty_2d 
