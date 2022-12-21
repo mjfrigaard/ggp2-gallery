@@ -468,7 +468,7 @@ The following graphs are used to display relationships between two (or more) var
 
 -   [x] Slope graphs
 
--   [ ] *Density Contours*
+-   [x] Density Contours
 
 -   [ ] *2D Bins*
 

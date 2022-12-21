@@ -560,6 +560,8 @@ ggp2 + patchwork::guide_area() +
 
 ## Adding groups
 
+In the previous plot, we used the `species` variable in the `geom_point()` layer to identify the points using color. In the section below, we'll show more methods of displaying groups with density contour lines. 
+
 :::: {.panel-tabset}
 
 ### Groups
@@ -571,7 +573,21 @@ ggp2 + patchwork::guide_area() +
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Re-create the labels 
+
+Build a `geom_density_2d()` layer:   
+
+  - Map `bill_length_mm` to `x` and `flipper_length_mm` to `y`  
+  
+  - Expand the limits using our adjusted min/max `x` and `y` values 
+  
+  - Add the `geom_density_2d()`, mapping `species` to `color`  
+
+Build the `geom_point()` layer:  
+
+  - Map `species` to `color` 
+  
+  - set the `alpha` and remove the `legend` 
 
 :::
 
@@ -610,7 +626,7 @@ ggp2_dnsty_2d_pnts <- ggp2_dnsty_2d_grp +
   )
 
 ggp2_dnsty_2d_pnts +
-  labs_dnsty_2d
+  labs_dnsty_2d_grp
 ```
 :::
 
@@ -622,7 +638,27 @@ ggp2_dnsty_2d_pnts +
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Re-create the labels
+
+Build the base/limits: 
+
+  - Map `bill_length_mm` to `x` and `flipper_length_mm` to `y`  
+  
+  - Expand the limits using our adjusted min/max `x` and `y` values 
+
+Build the `geom_density_2d_filled()` layer: 
+
+  - Add the `geom_density_2d_filled()`, setting `linewidth` to `0.30` and `contour_var` to `"ndensity"`
+  
+Add the `scale_discrete_manual()`:
+
+  - set `aesthetics` to `"fill"`  
+  
+  - Provide a set of color `values` (this plot needed 10 values, and I grabbed them all from [color-hex](https://www.color-hex.com/).
+  
+Facet: 
+
+  - Add `facet_wrap()`, and place `species` in the [`vars()`](https://ggplot2.tidyverse.org/reference/vars.html)
 
 :::
 
@@ -633,6 +669,12 @@ Create the labels
 #| echo: true
 #| warning: false
 #| message: false
+labs_dnsty_2d_facet <- labs(
+  title = "Bill Length vs. Flipper Length",
+  subtitle = "By Species",
+  x = "Bill Length (mm)",
+  y = "Flipper length (mm)"
+)
 ggp2_dnsty_2d_facet <- ggplot(
   data = peng_dnsty_2d,
   mapping = aes(
@@ -658,7 +700,7 @@ ggp2_dnsty_2d_facet <- ggplot(
   facet_wrap(vars(species))
 
 ggp2_dnsty_2d_facet +
-  labs_dnsty_2d
+  labs_dnsty_2d_facet
 ```
 
 ```{r}
@@ -667,6 +709,13 @@ ggp2_dnsty_2d_facet +
 #| echo: false
 #| warning: false
 #| message: false
+labs_dnsty_2d_facet <- labs(
+  title = "Bill Length vs. Flipper Length",
+  subtitle = "By Species",
+  x = "Bill Length (mm)",
+  y = "Flipper length (mm)"
+)
+
 ggp2_dnsty_2d_facet <- ggplot(
   data = peng_dnsty_2d,
   mapping = aes(
@@ -692,7 +741,7 @@ ggp2_dnsty_2d_facet <- ggplot(
   facet_wrap(vars(species))
 
 ggp2_dnsty_2d_facet +
-  labs_dnsty_2d +
+  labs_dnsty_2d_facet +
   theme(
     axis.title = element_text(size = 9),
     axis.text = element_text(size = 7),
@@ -711,6 +760,8 @@ ggp2_dnsty_2d_facet +
 
 ## More 2-D densities  
 
+In the previous section, we defined the color values used in `geom_density_2d_filled()` with `scale_discrete_manual()`. Below we give an example using the default colors: 
+
 :::: {.panel-tabset}
 
 ### Fill 
@@ -722,7 +773,18 @@ ggp2_dnsty_2d_facet +
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Re-create the labels
+
+Build the base/limits: 
+
+  - Map `bill_length_mm` to `x` and `flipper_length_mm` to `y`  
+  
+  - Expand the limits using our adjusted min/max `x` and `y` values 
+
+Add the `geom_density_2d()` layer
+
+Add the `geom_density_2d_filled()`, setting `alpha` to `0.8`
+
 
 :::
 
@@ -811,7 +873,12 @@ ggp2_dnsty_2d_fill +
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+We can also outline the contours by adding color to the lines using another `geom_density_2d()` layer: 
+
+  - set `linewidth` to `0.30`
+  
+  - set `color` to `"#ffffff"`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
