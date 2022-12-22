@@ -17,11 +17,11 @@ options(scipen = 9999999)
 
 
 # ggplot2 theme ----
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
 # funs ----
-ds538 <- readr::read_rds("slides/data/ds538.rds")
+ds538 <- readr::read_rds("data/ds538.rds")
 # movies_data ----
-movies_data <- readr::read_rds("slides/data/movies_data.rds")
+movies_data <- readr::read_rds("data/movies_data.rds")
 # penguins ----
 penguins <- palmerpenguins::penguins
 # movies ----
@@ -116,32 +116,40 @@ ggp2_density +
 # VIOLIN PLOTS ------------------------------------------------------------
 
 ## DATA ----
-penguins |> glimpse()
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
 ## CODE ----
 labs_violin <- labs(
   title = "Adult foraging penguins",
-  subtitle = "Distribution of bill length",
+  subtitle = "Distribution of flipper length",
   x = "",
-  y = "Bill length (millimeters)")
+  y = "Flipper length (millimeters)")
 ggp2_violin <- ggplot(data = penguins,
        aes(x = '', 
-           y = bill_length_mm)) +
+           y = flipper_length_mm)) +
        geom_violin() 
 ## GRAPH ----
 ggp2_violin + 
   labs_violin
 
-# BOX-PLOTS ---------------------------------------------------------------
-
+# BOX-PLOTS --------------------------------------------------------
+  # group_by(species) |> 
+  # mutate(bill_ratio = bill_length_mm / bill_depth_mm) |>  
+  # filter(!is.na(bill_ratio))
 ## DATA ----
-movies_data |> glimpse()
+penguins <- palmerpenguins::penguins 
+glimpse(penguins)
+
+
 ## CODE ----
 labs_boxplot <- labs(
-  title = "IMDB Movie information and user ratings",
-  y = "length", x = "")
-ggp2_boxplot <- ggplot(data = movies_data, 
-           aes(x = " ", 
-               y = length)) +
+  title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
+  x = NULL,
+  y = "Flipper length (millimeters)")
+ggp2_boxplot <- ggplot(data = penguins,
+           aes(x = "", 
+               y = flipper_length_mm)) +
         geom_boxplot() 
 
 ## GRAPH ----
@@ -149,3 +157,61 @@ ggp2_boxplot +
   labs_boxplot
 
 
+movies_box <- ggplot2movies::movies |> 
+                dplyr::filter(year > 2000 & 
+                                mpaa != "" & 
+                                    !is.na(budget))
+glimpse(movies_box)
+
+labs_boxplot <- labs(
+  title = "IMDB Movie information and user ratings",
+  y = "Movie length (min)", x = "")
+ggp2_boxplot <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot() 
+
+ggp2_boxplot + 
+  labs_boxplot
+
+ggp2_pnts <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_point() + 
+    labs(y = "Movie length (min)", x = "") + 
+    theme_void() + 
+    theme(axis.text.y = element_text(size = 12),
+          axis.title.y = element_text(size = 14, 
+              face = "bold", 
+              angle = 90))
+ggp2_freqpoly <- ggplot(data = movies_box, 
+           aes(x = length)) + 
+        geom_freqpoly() + 
+    coord_flip() + 
+    labs(y = "", x = "") + 
+    theme_void() 
+ggp2_hist <- ggplot(data = movies_box, 
+           aes(x = length)) +
+        geom_histogram() + 
+    coord_flip() +
+    labs(y = "", x = "") + 
+    theme_void() 
+ggp2_density <- ggplot(data = movies_box, 
+           aes(x = length)) +
+        geom_density() + 
+    coord_flip() +
+    labs(y = "", x = "") + 
+    theme_void() 
+ggp2_box <- ggplot(data = movies_box, 
+           aes(x = " ", 
+               y = length)) +
+        geom_boxplot(show.legend = FALSE) + 
+    labs(x = "", y = "") + 
+    theme_void() + 
+   theme(axis.text.y = element_text(size = 12)) + 
+    scale_y_continuous(position = "right")
+
+ggp2_pnts + ggp2_freqpoly + 
+    ggp2_hist + ggp2_density + ggp2_box + 
+    patchwork::plot_layout(ncol = 5) + 
+    patchwork::plot_annotation(title = "IMDB Movie information and user ratings")

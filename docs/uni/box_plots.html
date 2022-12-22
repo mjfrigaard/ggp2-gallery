@@ -487,8 +487,8 @@ Graph info
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2movies"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2movies) </span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -499,46 +499,28 @@ Graph info
 </div>
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="../www/imdb.png" style="width:20.0%;height:20.0%" class="figure-img"></p>
+<p><img src="../www/lter_penguins.png" style="width:30.0%;height:30.0%" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption><p></p>
 </figure>
 </div>
 <div style="font-size: 0.85em;">
-<p>Filter <code>ggplot2movies::movies</code> to only include films after the made after <code>2000</code>, and remove missing values from <code>mpaa</code> and <code>budget</code>.</p>
+<p>We’ll be using the <code>penguins</code> data from <code>palmerpenguins</code>.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>movies_box <span class="ot">&lt;-</span> ggplot2movies<span class="sc">::</span>movies <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                mpaa <span class="sc">!=</span> <span class="st">""</span> <span class="sc">&amp;</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">!</span><span class="fu">is.na</span>(budget))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(movies_box)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 838
-Columns: 24
-$ title       &lt;chr&gt; "100 Mile Rule", "13 Going On 30", "15 Minutes", "2 Fast 2…
-$ year        &lt;int&gt; 2002, 2004, 2001, 2003, 2004, 2003, 2002, 2002, 2001, 2002…
-$ length      &lt;int&gt; 98, 98, 120, 107, 129, 124, 135, 113, 125, 96, 99, 92, 110…
-$ budget      &lt;int&gt; 1100000, 37000000, 42000000, 76000000, 12000000, 20000000,…
-$ rating      &lt;dbl&gt; 5.6, 6.4, 6.1, 5.1, 7.6, 8.0, 7.8, 7.3, 5.4, 5.4, 6.8, 6.1…
-$ votes       &lt;int&gt; 181, 7859, 10866, 9556, 2663, 21857, 15788, 24174, 7298, 8…
-$ r1          &lt;dbl&gt; 4.5, 4.5, 4.5, 14.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.…
-$ r2          &lt;dbl&gt; 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5…
-$ r3          &lt;dbl&gt; 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5…
-$ r4          &lt;dbl&gt; 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5…
-$ r5          &lt;dbl&gt; 14.5, 4.5, 14.5, 14.5, 4.5, 4.5, 4.5, 4.5, 14.5, 14.5, 4.5…
-$ r6          &lt;dbl&gt; 24.5, 14.5, 24.5, 14.5, 4.5, 4.5, 4.5, 14.5, 14.5, 24.5, 1…
-$ r7          &lt;dbl&gt; 14.5, 24.5, 24.5, 14.5, 14.5, 14.5, 14.5, 24.5, 14.5, 24.5…
-$ r8          &lt;dbl&gt; 14.5, 14.5, 14.5, 4.5, 24.5, 24.5, 34.5, 24.5, 14.5, 4.5, …
-$ r9          &lt;dbl&gt; 4.5, 4.5, 4.5, 4.5, 14.5, 24.5, 24.5, 14.5, 4.5, 4.5, 4.5,…
-$ r10         &lt;dbl&gt; 14.5, 14.5, 4.5, 4.5, 24.5, 14.5, 14.5, 14.5, 4.5, 4.5, 14…
-$ mpaa        &lt;chr&gt; "R", "PG-13", "R", "PG-13", "R", "R", "R", "R", "R", "R", …
-$ Action      &lt;int&gt; 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1…
-$ Animation   &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ Comedy      &lt;int&gt; 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1…
-$ Drama       &lt;int&gt; 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0…
-$ Documentary &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ Romance     &lt;int&gt; 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ Short       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</code></pre>
+<pre><code>Rows: 344
+Columns: 8
+$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
+$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
 </div>
 </div>
 </div>
@@ -557,21 +539,22 @@ $ Short       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 <ul>
 <li>Assign a blank character string (<code>""</code>) to the <code>x</code> axis in <code>labs()</code></li>
 </ul>
-<p>Map <code>length</code> to the <code>y</code> axis and an empty string (<code>""</code>) to the <code>x</code> axis</p>
+<p>Map <code>flipper_length_mm</code> to the <code>y</code> axis and an empty string (<code>""</code>) to the <code>x</code> axis</p>
 <p>Add the <code>geom_boxplot()</code> layer</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_boxplot <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"IMDB Movie information and user ratings"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Length"</span>, <span class="at">x =</span> <span class="st">""</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ggp2_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> movies_box, </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">" "</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> length)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_boxplot</span>() </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ggp2_boxplot <span class="sc">+</span> </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  labs_boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Distribution of flipper length"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (millimeters)"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ggp2_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_boxplot</span>() </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ggp2_boxplot <span class="sc">+</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  labs_boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -581,7 +564,7 @@ $ Short       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="box_plots_files/figure-html/create_graph_-1.png" class="img-fluid" width="672"></p>
+<p><img src="box_plots_files/figure-html/create_graph_box-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -589,12 +572,73 @@ $ Short       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 </div>
 <section id="more-on-box-plots" class="level3">
 <h3 class="anchored" data-anchor-id="more-on-box-plots">MORE ON BOX-PLOTS</h3>
+<p>Below we provide more information on interpreting box-plots.</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Summary Statistics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">How to read a box-plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Compare</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><code>movies</code> data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Graph</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Interpret</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Compare</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.85em;">
-<p>The table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the length column from the <code>movies_box</code> dataset.</p>
+<p>We’ll use the <code>ggplot2movies::movies</code> data to create a box-plot of the each movie <code>length</code></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2movies"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2movies) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div style="font-size: 0.85em;">
+<p>Filter <code>ggplot2movies::movies</code> to only include films after the made after <code>2000</code>, and remove missing values from <code>mpaa</code> and <code>budget</code></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>movies_box <span class="ot">&lt;-</span> ggplot2movies<span class="sc">::</span>movies <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                mpaa <span class="sc">!=</span> <span class="st">""</span> <span class="sc">&amp;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">!</span><span class="fu">is.na</span>(budget))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(movies_box)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 24
+  title      year length budget rating votes    r1    r2    r3    r4    r5    r6
+  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 100 Mile…  2002     98  1.1e6    5.6   181   4.5   4.5   4.5   4.5  14.5  24.5
+2 13 Going…  2004     98  3.7e7    6.4  7859   4.5   4.5   4.5   4.5   4.5  14.5
+3 15 Minut…  2001    120  4.2e7    6.1 10866   4.5   4.5   4.5   4.5  14.5  24.5
+4 2 Fast 2…  2003    107  7.6e7    5.1  9556  14.5   4.5   4.5   4.5  14.5  14.5
+5 2046       2004    129  1.2e7    7.6  2663   4.5   4.5   4.5   4.5   4.5   4.5
+6 21 Grams   2003    124  2  e7    8   21857   4.5   4.5   4.5   4.5   4.5   4.5
+# … with 12 more variables: r7 &lt;dbl&gt;, r8 &lt;dbl&gt;, r9 &lt;dbl&gt;, r10 &lt;dbl&gt;,
+#   mpaa &lt;chr&gt;, Action &lt;int&gt;, Animation &lt;int&gt;, Comedy &lt;int&gt;, Drama &lt;int&gt;,
+#   Documentary &lt;int&gt;, Romance &lt;int&gt;, Short &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div style="font-size: 0.85em;">
+<p>Below we create a box-plot of the <code>length</code> variable using the methods described above:</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>labs_boxplot <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"IMDB Movie information and user ratings"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Movie length (min)"</span>, <span class="at">x =</span> <span class="st">""</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ggp2_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> movies_box, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">" "</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> length)) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_boxplot</span>() </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ggp2_boxplot <span class="sc">+</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  labs_boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="box_plots_files/figure-html/more_create_graph_box-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div style="font-size: 0.85em;">
+<p>The table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the <code>length</code> variable from the <code>movies_box</code> dataset.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
@@ -624,10 +668,8 @@ $ Short       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div style="font-size: 0.85em;">
-<p>In the figure below we can see how the box-plot represents each of these numbers using lines and points.</p>
+<p>The figure below displays how each element in the box-plot represents each of the statistics using lines and points.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -638,9 +680,9 @@ $ Short       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 <p>In <code>ggplot2</code>, values that fall more than 1.5 times the IQR are displayed as individual points (aka outliers). The lines extending from the bottom and top of the main box represent the last non-outlier value in the distribution.</p>
 </div>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
 <div style="font-size: 0.85em;">
-<p>Compare the four graphs of <code>length</code> from <code>movie_box</code> below to the box-plot:</p>
+<p>Compare the <code>geom_point()</code>, <code>geom_freqpoly()</code>, <code>geom_histogram()</code>, and <code>geom_density()</code> graphs of <code>length</code> from <code>movie_box</code> below to the <code>geom_boxplot()</code>:</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
