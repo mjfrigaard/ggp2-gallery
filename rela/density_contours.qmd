@@ -451,25 +451,28 @@ fill_sdens_2d <- stat_sdens_2d +
     high = "#404040",
     guide = "legend"
   )
-# patchwork plot 2
-ggp2 <- fill_sdens_2d +
-  labs(
-    x = "Bill Length (mm)",
-    y = "Flipper length (mm)"
-  ) +
-  theme(
-    axis.title = element_text(size = 8),
-    axis.text = element_text(size = 6),
-    legend.text = element_text(size = 6),
-    legend.title = element_text(size = 7, face = "bold")
-  )
-# patch
-ggp1 + patchwork::guide_area() +
-  ggp2 + patchwork::guide_area() +
-  patchwork::plot_layout(ncol = 2, guides = "keep") +
-  plot_annotation(
-    title = "stat_density_2d() +  scale_fill_gradient()"
-  )
+fill_sdens_2d +
+  labs_sdens_2d
+
+# # patchwork plot 2
+# ggp2 <- fill_sdens_2d +
+#   labs(
+#     x = "Bill Length (mm)",
+#     y = "Flipper length (mm)"
+#   ) +
+#   theme(
+#     axis.title = element_text(size = 8),
+#     axis.text = element_text(size = 6),
+#     legend.text = element_text(size = 6),
+#     legend.title = element_text(size = 7, face = "bold")
+#   )
+# # patch
+# ggp1 + patchwork::guide_area() +
+#   ggp2 + patchwork::guide_area() +
+#   patchwork::plot_layout(ncol = 2, guides = "keep") +
+#   plot_annotation(
+#     title = "stat_density_2d() +  scale_fill_gradient()"
+#   )
 ```
 
 :::
@@ -521,38 +524,44 @@ pnts_sdens_2d +
 #| echo: false
 #| warning: false
 #| message: false
+pnts_sdens_2d <- fill_sdens_2d +
+  geom_point(aes(color = species),
+    size = 2,
+    alpha = 2 / 3)
+pnts_sdens_2d +
+  labs_sdens_2d
 
 # patchwork 3
-ggp3 <- stat_sdens_2d +
-  scale_fill_gradient(
-    low = "#ffffff",
-    high = "#404040",
-    guide = "none"
-  ) +
-  geom_point(aes(color = species),
-    size = 1.2,
-    alpha = 2 / 3
-  ) +
-  labs(
-    x = "Bill Length (mm)",
-    y = "Flipper length (mm)"
-  ) +
-  theme(
-    axis.title = element_text(size = 8),
-    axis.text = element_text(size = 6),
-    legend.text = element_text(size = 6),
-    legend.title = element_text(size = 7, face = "bold")
-  )
-# patch
-ggp2 + patchwork::guide_area() +
-  ggp3 + patchwork::guide_area() +
-  patchwork::plot_layout(
-    ncol = 2,
-    guides = "keep"
-  ) +
-  patchwork::plot_annotation(
-    title = "scale_fill_gradient() + geom_point()"
-  )
+# ggp3 <- stat_sdens_2d +
+#   scale_fill_gradient(
+#     low = "#ffffff",
+#     high = "#404040",
+#     guide = "none"
+#   ) +
+#   geom_point(aes(color = species),
+#     size = 1.2,
+#     alpha = 2 / 3
+#   ) +
+#   labs(
+#     x = "Bill Length (mm)",
+#     y = "Flipper length (mm)"
+#   ) +
+#   theme(
+#     axis.title = element_text(size = 8),
+#     axis.text = element_text(size = 6),
+#     legend.text = element_text(size = 6),
+#     legend.title = element_text(size = 7, face = "bold")
+#   )
+# # patch
+# ggp2 + patchwork::guide_area() +
+#   ggp3 + patchwork::guide_area() +
+#   patchwork::plot_layout(
+#     ncol = 2,
+#     guides = "keep"
+#   ) +
+#   patchwork::plot_annotation(
+#     title = "scale_fill_gradient() + geom_point()"
+#   )
 ```
 :::
 

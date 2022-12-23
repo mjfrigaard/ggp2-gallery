@@ -260,7 +260,7 @@ ggp2_psets_axes +
 
 
 
-# SLOPE GRAPHS ------------------------------------------------------------
+# SLOPE GRAPHS ------------------------------------------------------
 library(palmerpenguins)
 
 # we need data with two time-points, summarizing some value across groups
@@ -526,3 +526,78 @@ pnts_sdens_2d +
 #         high = "#ffffff",
 #         guide = "none") 
 # ggp2_dnsty_2d_fill + labs_dnsty_2d 
+
+
+# 2-D HISTOGRAMS -----------------------------------------------
+# this is a point plot with a histogram overlay
+penguins <- palmerpenguins::penguins
+penguins_2dhist <- penguins |> 
+    dplyr::select(flipper_length_mm, bill_length_mm, year) |> 
+    tidyr::drop_na()
+glimpse(penguins_2dhist)
+
+labs_2dhist <- labs(
+    title = "Adult Foraging Penguins", 
+    subtitle = "Near Palmer Station, Antarctica", 
+    x = "Bill length (mm)", 
+    y = "Flipper length (mm)")
+
+ggp2_2dhist <- ggplot(data = penguins_2dhist, 
+    mapping = aes(x = bill_length_mm, 
+                  y = flipper_length_mm)) + 
+    geom_bin2d()
+            
+ggp2_2dhist + 
+    labs_2dhist
+
+## bins -------------------------------------------
+ggp2_base <- ggplot(data = penguins_2dhist, 
+    mapping = aes(x = bill_length_mm, 
+                  y = flipper_length_mm)) 
+ggp2_2dbins15 <- ggp2_base + 
+                    geom_bin2d(bins = 15) 
+ggp2_2dbins15 + 
+     labs_2dhist 
+## palettes -------------------------------------------
+ggp2_2dbins15 + 
+    scale_fill_continuous_sequential(
+        palette = "Mako", 
+        rev = TRUE) +
+    labs_2dhist 
+
+ggp2_2dbins15 + 
+    scale_fill_continuous_sequential(
+        palette = "Mako", 
+        rev = FALSE) +
+    labs_2dhist 
+
+## Options -------------------------------------------
+ggp2_2dbins15 + 
+    scale_fill_continuous_sequential(
+        palette = "SunsetDark",
+        rev = TRUE,
+        begin = 0.7, end = 0.2) +
+    geom_point(color = "#007bff",
+        fill = "#FFFFFF", shape = 21,
+        size = 2.2, alpha = 0.75) +
+    labs_2dhist
+
+### patchwork graphs -----
+ggp2_y_hist <- ggplot(data = penguins_2dhist,
+    mapping = aes(x = flipper_length_mm)) + 
+    geom_histogram(alpha = 2/3) + 
+    theme_void() + 
+    coord_flip() + 
+    theme(axis.text.y = element_text(size = 11)) +
+    labs(x = "Flipper length (mm)")
+
+ggp2_x_hist <- ggplot(data = penguins_2dhist,
+    mapping = aes(x = bill_length_mm)) + 
+    geom_histogram(alpha = 2/3) + 
+    theme_void() + 
+    theme(axis.text.x = element_text(size = 11)) +
+    labs(x = "Bill length (mm)")
+
+ggp2_y_hist + ggp2_x_hist + 
+    patchwork::plot_layout(nrow = 1)
+     

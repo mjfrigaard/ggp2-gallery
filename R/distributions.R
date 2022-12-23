@@ -293,7 +293,7 @@ ggplot(raincloud_data, aes(x = group, y = value)) +
   )
 
 
-## Violin ------------------------------------------------------------------
+## Violin ---------------------------------------------------------------
 
 
 ggplot(raincloud_data, aes(x = group, y = value)) +

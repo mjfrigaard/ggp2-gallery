@@ -59,7 +59,7 @@ website:
           - rela/parallel_sets.qmd
           - rela/slope_graphs.qmd
           - rela/density_contours.qmd
-          #- rela/bins_2d.qmd
+          - rela/bins_2d.qmd
           #- rela/hex_bins.qmd
           #- rela/correlograms.qmd
       #- section: "Stat-Graphs"

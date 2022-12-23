@@ -286,7 +286,8 @@ For the first layer, we create a box-plot with `geom_boxplot()`, but include not
 #| message: false
 labs_raincloud_2 <- ggplot2::labs(
     title = "Flipper length of Palmer penguins",
-         x = "Species", y = "Flipper length (mm)")
+         x = "Flipper length (mm)",
+         y = "Species")
 ggp2_box <- ggplot(peng_raincloud,
     aes( x = flipper_length_mm, y = species)) + 
   geom_boxplot(aes(fill = species),
