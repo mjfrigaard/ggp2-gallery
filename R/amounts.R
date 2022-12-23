@@ -88,7 +88,8 @@ ggp2_col +
   labs_col
 
 # OVERLAPPING (STACKED) BAR GRAPHS --------------------
-penguins_ovrlp <- filter(penguins,!is.na(sex) & species == "Adelie")
+penguins_ovrlp <- filter(penguins,!is.na(sex) &
+        species == "Adelie")
 glimpse(penguins_ovrlp)
 
 labs_bar_ovrlp <- labs(title = "Adelie adult foraging penguins",
@@ -101,7 +102,7 @@ ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
 ggp2_bar_ovrlp +
   labs_bar_ovrlp
 
-# DODGE BAR GRAPHS --------------------
+## DODGE BAR GRAPHS --------------------
 penguins_dodge <- filter(penguins, !is.na(sex))
 glimpse(penguins_dodge)
 
@@ -109,32 +110,30 @@ labs_bar_dodge <- labs(
   title = "Adult foraging penguins",
   subtitle = "position = 'dodge'",
   x = "Penguin Species",
-  fill = "Penguin Sex")
+  fill = "Island")
 
 ggp2_bar_dodge <- ggplot(data = penguins_dodge,
-                    aes(x = species,
-                      fill = sex)) +
-                    geom_bar(position = "dodge")
+                    aes(x = species, group = island, 
+                        fill = island)) +
+                    geom_bar(
+                        position = "dodge")
 ggp2_bar_dodge +
   labs_bar_dodge
 
-# DODGE2 BAR GRAPHS --------------------
+## DODGE2 BAR GRAPHS --------------------
 # dodge2 preserves the total width of the elements.
-penguins_dodge2 <- filter(penguins,
-                    !is.na(sex) & !is.na(species))
-
 labs_bar_dodge2 <- labs(
-  title = "Adelie adult foraging penguins",
+  title = "Adult foraging penguins",
   subtitle = "position = 'dodge2'",
   x = "Species",
-  fill = "Penguin Sex")
-ggp2_bar_dodge2 <- ggplot(data = penguins_dodge2,
-                    aes(x = species,
-                      fill = sex)) +
-                    geom_bar(position = "dodge2")
+  fill = "Island")
+
+ggp2_bar_dodge2 <- ggplot(data = penguins_dodge,
+                      aes(x = species,
+                        fill = island)) +
+                      geom_bar(position = "dodge2")
 ggp2_bar_dodge2 +
   labs_bar_dodge2
-
 
 # WAFFLE CHART ------------------------
 penguins <- palmerpenguins::penguins

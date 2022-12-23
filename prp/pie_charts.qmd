@@ -119,7 +119,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
+::: {.column-margin}
+![](../www/imdb.png){fig-align="right" width="80%" height="80%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 Remove the missing values and `"NC-17"` from `mpaa` and summarise the count and percent.

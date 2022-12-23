@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -244,16 +244,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../amt/overlapping_bar_graphs.html" class="sidebar-item-text sidebar-link">Overlapping bar-graphs</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../amt/side_to_side_bar_graphs.html" class="sidebar-item-text sidebar-link">Side-to-side (<code>'dodge'</code>) bar-graphs</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../amt/dodge2_bar_graphs.html" class="sidebar-item-text sidebar-link">Side-to-side (<code>'dodge2'</code>) bar-graphs</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -432,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -480,9 +470,9 @@ Graph info
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data</a></li></ul>
-<div class="tab-content">
+<div class="tab-content page-columns page-full">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>PACKAGES:</strong></p>
@@ -498,17 +488,19 @@ Graph info
 </div>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>DATA:</strong></p>
 </div>
+
+<div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="../www/lter_penguins.png" style="width:30.0%;height:30.0%" class="figure-img"></p>
+<p><img src="../www/lter_penguins.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption><p></p>
 </figure>
 </div>
-<div style="font-size: 0.85em;">
+</div></div><div style="font-size: 0.85em;">
 <p>We’ll be using the <code>penguins</code> data from <code>palmerpenguins</code>.</p>
 </div>
 <div style="font-size: 0.75em;">
@@ -575,12 +567,12 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div>
-<section id="more-on-box-plots" class="level3">
+<section id="more-on-box-plots" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="more-on-box-plots">MORE ON BOX-PLOTS</h3>
 <p>Below we provide more information on interpreting box-plots.</p>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><code>movies</code> data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Graph</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Interpret</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Compare</a></li></ul>
-<div class="tab-content">
+<div class="tab-content page-columns page-full">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.85em;">
 <p>We’ll use the <code>ggplot2movies::movies</code> data to create a box-plot of the each movie <code>length</code></p>
@@ -641,7 +633,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-3-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <div style="font-size: 0.85em;">
 <p>The table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the <code>length</code> variable from the <code>movies_box</code> dataset.</p>
 </div>
@@ -681,10 +673,12 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><img src="../www/boxplot-diagram.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 </figure>
 </div>
+
+<div class="no-row-height column-margin column-container"><div class="">
 <div style="font-size: 0.85em;">
 <p>In <code>ggplot2</code>, values that fall more than 1.5 times the IQR are displayed as individual points (aka outliers). The lines extending from the bottom and top of the main box represent the last non-outlier value in the distribution.</p>
 </div>
-</div>
+</div></div></div>
 <div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
 <div style="font-size: 0.85em;">
 <p>Compare the <code>geom_point()</code>, <code>geom_freqpoly()</code>, <code>geom_histogram()</code>, and <code>geom_density()</code> graphs of <code>length</code> from <code>movie_box</code> below to the <code>geom_boxplot()</code>:</p>

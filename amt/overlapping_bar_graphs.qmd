@@ -102,7 +102,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+::: {.column-margin}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="100%" height="100%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 Remove missing `sex` from `penguins` and filter to only `"Adelie"` penguins.
@@ -178,6 +180,154 @@ ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
                 geom_bar() 
 ggp2_bar_ovrlp + 
   labs_bar_ovrlp
+```
+
+::::
+
+## Side-to-side bar graphs
+
+`geom_bar()` has additional options for arranging overlapping bars. We can set the `position` argument to `"dodge"` or `"dodge2`, depending on how we'd like the data displayed. 
+
+
+:::: {.panel-tabset}
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove any missing values from `sex` and `species` in the `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_bar_penguins_dodge
+#| eval: true
+#| echo: true
+penguins_dodge <- filter(penguins,
+                    !is.na(sex) & !is.na(species))
+glimpse(penguins_dodge)
+```
+:::
+
+
+### `dodge`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`dodge`:**
+:::
+
+::: {.column-margin}
+
+- *`position = "dodge"` preserves the vertical position of a geom while adjusting the horizontal position*
+
+- *requires the grouping variable to be be specified in the global or `⁠geom_`⁠ layer*
+
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `species` to the `x` and `island` to `group` and `fill` 
+
+Inside the `geom_bar()` function, set `position` to `"dodge"`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_dodge
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+labs_bar_dodge <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "position = 'dodge'",
+  x = "Penguin Species",
+  fill = "Island")
+
+ggp2_bar_dodge <- ggplot(data = penguins_dodge,
+                    aes(x = species, group = island, 
+                        fill = island)) +
+                    geom_bar(
+                        position = "dodge")
+ggp2_bar_dodge +
+  labs_bar_dodge
+```
+:::
+
+### `dodge2`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`dodge2`:**
+:::
+
+::: {.column-margin}
+
+- *works without a grouping variable in a layer*
+
+- *works with bars and rectangles*  
+
+- *useful for arranging graphs with variable widths.*
+
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create the labels
+
+Map `species` to `x` and `island` to `fill`
+
+Inside `geom_bar()`, set `position` to `"dodge2"`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: create_graph_dodge2
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+labs_bar_dodge2 <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "position = 'dodge2'",
+  x = "Species",
+  fill = "Island")
+
+ggp2_bar_dodge2 <- ggplot(data = penguins_dodge,
+                      aes(x = species,
+                        fill = island)) +
+                      geom_bar(position = "dodge2")
+ggp2_bar_dodge2 +
+  labs_bar_dodge2
+```
+:::
+
+### Compare
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**COMPARE:**
+:::
+
+```{r}
+#| label: compare_bars
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
+
+ggp2_bar_dodge +
+  labs_bar_dodge
+
+ggp2_bar_dodge2 +
+  labs_bar_dodge2
 ```
 
 ::::

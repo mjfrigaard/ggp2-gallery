@@ -116,7 +116,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![](../www/538.png){fig-align="right" width="15%" height="15%"}
+::: {.column-margin}
+![](../www/538.png){fig-align="right" width="45%" height="45%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 We'll use the `fivethirtyeight::tv_hurricanes` data, but slightly restructured and filtered. 

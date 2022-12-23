@@ -62,7 +62,7 @@ ggp2_hist +
   labs_histogram
 ```
 
-Histograms use bars, but they are a special kind of bar-graph. The `x` axis is divided into ‘bins’ that cover the range of the variable values, and the height of the bars is the frequency (or count) of the measurement.
+Histograms use bars, but they are a special kind of bar-graph. The `x` axis is divided into ‘bins’ that cover the range of the variable values, and the height of the bars is the frequency (or count) of the value occurrence (on the `y` axis).
 
 ::::
 
@@ -100,7 +100,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+::: {.column-margin}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="100%" height="100%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 The `penguins` data.

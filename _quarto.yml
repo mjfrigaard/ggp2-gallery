@@ -26,8 +26,6 @@ website:
           - amt/grouped_column_graphs.qmd
           - amt/summarized_column_graphs.qmd
           - amt/overlapping_bar_graphs.qmd
-          - amt/side_to_side_bar_graphs.qmd
-          - amt/dodge2_bar_graphs.qmd
           - amt/waffle_chart.qmd
           - amt/heatmaps.qmd
       - section: "Proportions"

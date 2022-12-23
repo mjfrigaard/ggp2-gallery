@@ -117,7 +117,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![](../www/538.png){fig-align="right" width="15%" height="15%"}
+::: {.column-margin}
+![](../www/538.png){fig-align="right" width="45%" height="45%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 For the heatmap, we’re going to re-structure and filter the `bob_ross` data from the `fivethirtyeight` package.

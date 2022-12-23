@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -241,16 +241,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../amt/overlapping_bar_graphs.html" class="sidebar-item-text sidebar-link active">Overlapping bar-graphs</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../amt/side_to_side_bar_graphs.html" class="sidebar-item-text sidebar-link">Side-to-side (<code>'dodge'</code>) bar-graphs</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../amt/dodge2_bar_graphs.html" class="sidebar-item-text sidebar-link">Side-to-side (<code>'dodge2'</code>) bar-graphs</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -417,13 +407,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#side-to-side-bar-graphs" id="toc-side-to-side-bar-graphs" class="nav-link active" data-scroll-target="#side-to-side-bar-graphs">Side-to-side bar graphs</a></li>
+  </ul>
+</nav>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -471,9 +467,9 @@ Graph info
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data</a></li></ul>
-<div class="tab-content">
+<div class="tab-content page-columns page-full">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>PACKAGES:</strong></p>
@@ -489,17 +485,19 @@ Graph info
 </div>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>DATA:</strong></p>
 </div>
+
+<div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-right">
 <figure class="figure">
-<p><img src="../www/lter_penguins.png" style="width:30.0%;height:30.0%" class="figure-img"></p>
+<p><img src="../www/lter_penguins.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></figcaption><p></p>
 </figure>
 </div>
-<div style="font-size: 0.85em;">
+</div></div><div style="font-size: 0.85em;">
 <p>Remove missing <code>sex</code> from <code>penguins</code> and filter to only <code>"Adelie"</code> penguins.</p>
 </div>
 <div style="font-size: 0.75em;">
@@ -562,8 +560,131 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div>
+<section id="side-to-side-bar-graphs" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="side-to-side-bar-graphs">Side-to-side bar graphs</h2>
+<p><code>geom_bar()</code> has additional options for arranging overlapping bars. We can set the <code>position</code> argument to <code>"dodge"</code> or <code>"dodge2</code>, depending on how we’d like the data displayed.</p>
+<div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><code>dodge</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><code>dodge2</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Compare</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>DATA:</strong></p>
+</div>
+<div style="font-size: 0.85em;">
+<p>Remove any missing values from <code>sex</code> and <code>species</code> in the <code>penguins</code> data.</p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins_dodge <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    <span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(species))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_dodge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 333
+Columns: 8
+$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6…
+$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2…
+$ flipper_length_mm &lt;int&gt; 181, 186, 195, 193, 190, 181, 195, 182, 191, 198, 18…
+$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800…
+$ sex               &lt;fct&gt; male, female, female, female, male, female, male, fe…
+$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong><code>dodge</code>:</strong></p>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<ul>
+<li><p><em><code>position = "dodge"</code> preserves the vertical position of a geom while adjusting the horizontal position</em></p></li>
+<li><p><em>requires the grouping variable to be be specified in the global or <code>⁠geom_</code>⁠ layer</em></p></li>
+</ul>
+</div></div><div style="font-size: 0.85em;">
+<p>Create the labels</p>
+<p>Map <code>species</code> to the <code>x</code> and <code>island</code> to <code>group</code> and <code>fill</code></p>
+<p>Inside the <code>geom_bar()</code> function, set <code>position</code> to <code>"dodge"</code></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"position = 'dodge'"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Penguin Species"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Island"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_dodge,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">group =</span> island, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> island)) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="overlapping_bar_graphs_files/figure-html/code_graph_dodge-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong><code>dodge2</code>:</strong></p>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<ul>
+<li><p><em>works without a grouping variable in a layer</em></p></li>
+<li><p><em>works with bars and rectangles</em></p></li>
+<li><p><em>useful for arranging graphs with variable widths.</em></p></li>
+</ul>
+</div></div><div style="font-size: 0.85em;">
+<p>Create the labels</p>
+<p>Map <code>species</code> to <code>x</code> and <code>island</code> to <code>fill</code></p>
+<p>Inside <code>geom_bar()</code>, set <code>position</code> to <code>"dodge2"</code></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"position = 'dodge2'"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Species"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Island"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_dodge,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">aes</span>(<span class="at">x =</span> species,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> island)) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="overlapping_bar_graphs_files/figure-html/create_graph_dodge2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
+<p><strong>COMPARE:</strong></p>
+</div>
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="overlapping_bar_graphs_files/figure-html/compare_bars-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="overlapping_bar_graphs_files/figure-html/compare_bars-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

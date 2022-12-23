@@ -139,7 +139,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+::: {.column-margin}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="100%" height="100%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 We're going to remove the missing values from `palmerpenguins::penguins`, count the categorical variables (`island`, `sex`, `species`), and rename the `n` column (produced by the `count()` function) to `value`.

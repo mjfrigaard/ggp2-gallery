@@ -112,7 +112,9 @@ library(ggplot2)
 **DATA:**
 :::
 
-![](../www/538.png){fig-align="right" width="15%" height="15%"}
+::: {.column-margin}
+![](../www/538.png){fig-align="right" width="45%" height="45%"}
+:::
 
 ::: {style="font-size: 0.85em;"}
 For this graph, we'll be using the `fivethirtyeight::flying` dataset, after removing the missing values from `baby` and `unruly_child`. 
