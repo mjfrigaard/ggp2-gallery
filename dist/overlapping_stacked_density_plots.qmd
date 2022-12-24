@@ -150,7 +150,7 @@ glimpse(peng_density)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `flipper_length_mm` to the `x` and `sex` to `fill` 
 
@@ -226,7 +226,7 @@ ggp2_ovrlp_density +
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `flipper_length_mm` to the `x` and map `sex` to `fill` 
 
@@ -269,7 +269,7 @@ should use the after_stat() function to flag that evaluation of the aesthetic ma
 -->
 
 
-Create the labels
+Create labels
 
 Map the `flipper_length_mm` to the `x`, add  `after_stat(count)`, and map `sex` to `fill` 
 

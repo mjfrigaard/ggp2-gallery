@@ -162,7 +162,7 @@ glimpse(peng_slope)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `year` to the `x`, `avg_bill_depth_mm` to `y`, and `island` to `group`
 
@@ -286,7 +286,7 @@ glimpse(peng_grp_slope)
 :::
 
 ::: {style="font-size: 0.85em;"}
-Create the labels 
+Create labels 
 
 Map `year` to the `x`, `avg_bill_depth_mm` to `y`, and `island` to `group`
 

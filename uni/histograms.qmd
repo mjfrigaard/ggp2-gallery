@@ -62,7 +62,7 @@ ggp2_hist +
   labs_histogram
 ```
 
-Histograms use bars, but they are a special kind of bar-graph. The `x` axis is divided into ‘bins’ that cover the range of the variable values, and the height of the bars is the frequency (or count) of the value occurrence (on the `y` axis).
+Histograms are a special kind of bar-graph. The `x` axis is divided into ‘bins’ that cover the range of the variable values, and the height of the bars is the frequency (or count) of the value occurrence (on the `y` axis).
 
 ::::
 
@@ -129,7 +129,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Assign `flipper_length_mm` to the `x`
 
@@ -164,8 +164,11 @@ ggp2_hist +
 **GRAPH:**
 :::
 
-::: {style="font-size: 0.85em;"}
+::: {.column-margin}
+::: {style="font-size: 0.95em;"}
+
 The standard number of bins is `30`, but ['you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+:::
 :::
 
 ```{r}

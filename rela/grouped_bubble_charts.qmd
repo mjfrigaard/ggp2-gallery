@@ -133,7 +133,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `bill_length_mm` to the `x` axis and  `flipper_length_mm` to the `y` axis  
 

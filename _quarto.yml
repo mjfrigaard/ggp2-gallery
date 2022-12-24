@@ -69,6 +69,8 @@ format:
     fig-format: retina
     fig-asp: 0.618
     toc: true
+    code-fold: true
+    code-tools: true
     toc-location: left
     toc-title: Contents
     html-math-method: katex

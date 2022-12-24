@@ -342,7 +342,7 @@ ggp2_pie +
 ::: {.column width="50%"}
 ::: {style="font-size: 0.75em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Assign `"perc"` to `x`
 
@@ -529,7 +529,7 @@ ggp2_bars_diverg +
 
 ::: {.column width="50%"}
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `month` to the `x` and `month_avg` to the `y`  
 
@@ -720,7 +720,7 @@ ggp2_bar_diverg_vert +
 
 ::: {.column width="50%"}
 ::: {style="font-size: 0.75em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `month_avg` to the `x` and `month` to the `y` 
 
@@ -849,7 +849,7 @@ glimpse(peng_density, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `flipper_length_mm` to the `x` and add  `after_stat(count)` 
 
@@ -997,7 +997,7 @@ glimpse(fly_mosaic, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `product()` of `unruly_child` and `baby` to the `x` axis
 
@@ -1158,7 +1158,7 @@ glimpse(treemap_peng, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `n` to `area`, `sex` to `fill`, `species` to `label`, and `island` to `subgroup`
 :::

@@ -289,7 +289,7 @@ glimpse(movies_data, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `mpaa` to the `x` axis
 
@@ -425,7 +425,7 @@ glimpse(penguins, 50)
 
 ::: {style="font-size: 0.80em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` axis 
 
@@ -562,7 +562,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` axis
 
@@ -696,7 +696,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` axis
 
@@ -830,7 +830,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` axis
 
@@ -959,7 +959,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels  
+1. Create labels  
    - Place an empty string (`""`) in the `x` argument   
 
 2. Map and empty string (`""`) to the `x` and `bill_length_mm` to the `y`  
@@ -1098,7 +1098,7 @@ glimpse(movies_data, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map a blank character string (`" "`) to the `x` axis
 

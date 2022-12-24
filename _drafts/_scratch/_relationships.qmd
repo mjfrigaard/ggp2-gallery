@@ -289,7 +289,7 @@ glimpse(penguins, 50)
 
 ::: {style="font-size: 0.75em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map `bill_length_mm` to the `x` axis
 
@@ -428,7 +428,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.75em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `bill_length_mm` to the `x` axis 
 
@@ -565,7 +565,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `bill_length_mm` to `x` axis
 :::
@@ -714,7 +714,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.65em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `bill_length_mm` to the `x` axis and  `flipper_length_mm` to the `y` axis  
 :::
@@ -892,7 +892,7 @@ glimpse(peng_wide, 50)
 :::
 
 ::: {style="font-size: 0.65em;"}
-1. Create the labels (with `ggtitle()`, `ylab()`, and `labs()`)
+1. Create labels (with `ggtitle()`, `ylab()`, and `labs()`)
 :::
 
 :::
@@ -1057,7 +1057,7 @@ glimpse(peng_lodes, 50)
 :::
 
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 :::
 
 :::
@@ -1246,7 +1246,7 @@ glimpse(tidy_hurricanes, 50)
 
 ::: {.column width="50%"}
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map date to the `x`, `rank` to the `y`, and `hurricane` to `color`
 

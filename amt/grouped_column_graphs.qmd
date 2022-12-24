@@ -139,7 +139,7 @@ glimpse(movies_grp_col)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `mpaa` to `x` and `budget` to `y`
 

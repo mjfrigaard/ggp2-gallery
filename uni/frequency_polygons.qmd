@@ -63,7 +63,7 @@ ggp2_freqpoly +
   labs_freqpoly
 ```
 
-Frequency polygons (`geom_freqpoly()`) are similar to histograms, but they use lines instead of bars to represent the variable distribution.
+Frequency polygons are similar to histograms, but they use lines instead of bars to represent the variable distribution. The height of the line represents the frequency (or count) of the value occurrence.
 
 ::::
 
@@ -83,7 +83,7 @@ Install packages.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_
+#| label: pkg_code_freq_poly
 #| eval: true
 #| echo: true
 #| warning: false
@@ -111,7 +111,7 @@ The `penguins` data
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_
+#| label: data_code_freq_poly
 #| eval: true
 #| echo: true
 penguins <- palmerpenguins::penguins
@@ -130,7 +130,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `flipper_length_mm` to the `x` axis
 
@@ -140,7 +140,7 @@ Add the `geom_freqpoly()` layer
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_
+#| label: code_graph_freq_poly
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -162,12 +162,12 @@ ggp2_freqpoly +
 **GRAPH:**
 :::
 
-::: {style="font-size: 0.85em;"}
-**GRAPH:** Experiment to see how many `bins` fit your variable’s distribution
+::: {.column-margin}
+Experiment to see how many `bins` fit your variable’s distribution
 :::
 
 ```{r}
-#| label: create_graph_
+#| label: create_graph_freq_poly
 #| eval: true
 #| echo: false
 #| warning: false

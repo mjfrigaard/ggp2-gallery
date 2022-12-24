@@ -149,7 +149,7 @@ glimpse(waffle_peng)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `x` and `y` to the `x` and `y` axes
 

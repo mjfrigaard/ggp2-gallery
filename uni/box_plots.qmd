@@ -67,8 +67,6 @@ ggp2_boxplot +
 
 Box-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
 
-In `ggplot2`, we can create a box-plot for a single numeric variable using `geom_boxplot()`
-
 ::::
 
 
@@ -134,7 +132,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
   - Assign a blank character string (`""`) to the `x` axis in `labs()`
 

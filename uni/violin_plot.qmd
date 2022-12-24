@@ -62,7 +62,7 @@ ggp2_violin +
   labs_violin
 ```
 
-A ‘violin plot’ is a variation of a density plot, where the distribution is plotted symmetrically creating a two-sided area.
+A violin plot is a variation of the density plot, where the smoothed distribution is plotted symmetrically, creating a mirrored, two-sided area.
 
 ::::
 
@@ -129,7 +129,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
   - Place an empty string (`""`) in the `x` argument
 

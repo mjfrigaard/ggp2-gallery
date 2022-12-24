@@ -141,7 +141,7 @@ glimpse(movies_sum_col)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `mpaa` to the `x` and `avg_budget` to the `y`
 

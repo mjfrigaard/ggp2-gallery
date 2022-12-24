@@ -128,7 +128,7 @@ Install packages.
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 
 :::

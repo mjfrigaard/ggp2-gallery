@@ -291,7 +291,7 @@ glimpse(movies_data, 50)
 
 ::: {style="font-size: 0.70em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map `mpaa` to `x` and `budget` to `y`
 
@@ -467,7 +467,7 @@ glimpse(movies_col, 50)
 :::
 
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `mpaa` to the `x` and `avg_budget` to the `y`
 
@@ -617,7 +617,7 @@ glimpse(penguins_ovrlp, 50)
 :::
 
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` and `sex` to `fill`
 
@@ -748,7 +748,7 @@ glimpse(penguins_dodge, 50)
 
 ::: {style="font-size: 0.70em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map `species` to the `x` and `sex` to `fill`
 
@@ -867,7 +867,7 @@ glimpse(penguins_dodge2, 50)
 
 ::: {style="font-size: 0.70em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map `species` to `x` and `sex` to `fill`
 
@@ -1016,7 +1016,7 @@ glimpse(waffle_peng, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `x` and `y` to the `x` and `y` axes
 
@@ -1221,7 +1221,7 @@ ggp2_heatmap_tile +
 ::: {.column width="50%"}
 ::: {style="font-size: 0.85em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Assign `season` to `x`, `object` to `y`, and `occurances` to `fill`
 
@@ -1313,7 +1313,7 @@ glimpse(heatmap_ross, 50)
 :::
 
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Assign `season` to `x`, `object` to `y`, and `occurances` to `fill`
 

@@ -69,9 +69,7 @@ A bar-graph (or bar-chart) is typically used to display counts for the discrete 
 Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each level value.
 
 In `ggplot2`, bar charts can be built using `geom_bar()` (see also: `geom_col()`).
-
 ::::
-
 
 :::: {.panel-tabset}
 
@@ -111,7 +109,7 @@ library(ggplot2)
 :::
 
 ::: {style="font-size: 0.85em;"}
-Filter the missing values from `species` in the `palmerpenguins::penguins` data
+Filter the missing values from `species` in the `palmerpenguins::penguins` data and store it in `penguins_bar`.
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -120,7 +118,7 @@ Filter the missing values from `species` in the `palmerpenguins::penguins` data
 #| eval: true
 #| echo: true
 penguins_bar <- palmerpenguins::penguins |> 
-    filter(!is.na(species))
+    dplyr::filter(!is.na(species))
 glimpse(penguins_bar)
 ```
 :::
@@ -136,7 +134,7 @@ glimpse(penguins_bar)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `species` to the `x` axis
 

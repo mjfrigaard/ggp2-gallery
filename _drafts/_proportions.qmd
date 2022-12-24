@@ -131,7 +131,7 @@ glimpse(movie_pie)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Assign `"perc"` to `x`
 
@@ -284,7 +284,7 @@ glimpse(trump_approval_diverg)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `month` to the `x` and `month_avg` to the `y`
 
@@ -448,7 +448,7 @@ glimpse(trump_approval_diverg)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `month_avg` to the `x` and `month` to the `y` 
 
@@ -589,7 +589,7 @@ glimpse(peng_density)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `flipper_length_mm` to the `x` and add  `after_stat(count)` 
 
@@ -725,7 +725,7 @@ glimpse(fly_mosaic)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `product()` of `unruly_child` and `baby` to the `x` axis
 
@@ -865,7 +865,7 @@ glimpse(treemap_peng)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `n` to `area`, `sex` to `fill`, `species` to `label`, and `island` to `subgroup`
 
@@ -1130,7 +1130,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 
 :::

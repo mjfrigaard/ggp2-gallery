@@ -223,7 +223,7 @@ glimpse(trump_approval_diverg)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `month` to the `x` and `month_avg` to the `y`
 
@@ -313,7 +313,7 @@ For vertically arranged bars, we switch the `x` and `y` axis variables.
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `month_avg` to the `x` and `month` to the `y` 
 

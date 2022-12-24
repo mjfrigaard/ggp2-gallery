@@ -129,7 +129,7 @@ glimpse(movies_bar)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `mpaa` to the `x` axis
 
@@ -255,7 +255,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 
 :::
@@ -379,7 +379,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `flipper_length_mm` to the `x` axis
 
@@ -506,7 +506,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `flipper_length_mm` to the `x` axis
 
@@ -633,7 +633,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `flipper_length_mm` to the `x` axis
 
@@ -756,7 +756,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
   - Place an empty string (`""`) in the `x` argument
 
@@ -893,7 +893,7 @@ glimpse(movies_box)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
   - Assign a blank character string (`""`) to the `x` axis in `labs()`
 
@@ -1077,7 +1077,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 
 :::

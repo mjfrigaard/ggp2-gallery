@@ -153,7 +153,7 @@ glimpse(tidy_hurricanes)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map date to the `x`, `rank` to the `y`, and `hurricane` to `color`
 

@@ -134,7 +134,7 @@ glimpse(peng_dotplot)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map `flipper_length_mm` to `x`
 

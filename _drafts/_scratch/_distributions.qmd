@@ -278,7 +278,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` axis and `species` to `fill` 
 
@@ -414,7 +414,7 @@ glimpse(penguins, 50)
 
 ::: {style="font-size: 0.80em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to the `x` and `species` to `group`  
 
@@ -548,7 +548,7 @@ glimpse(peng_dotplot, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `flipper_length_mm` to `x`
 
@@ -701,7 +701,7 @@ glimpse(penguins, 50)
 :::
 
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `island` to the `x` axis and `color`
 
@@ -842,7 +842,7 @@ glimpse(peng_density, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.80em;"}
-1. Create the labels
+1. Create labels
 
 2. Map the `flipper_length_mm` to the `x` and `sex` to `fill` 
 
@@ -959,7 +959,7 @@ glimpse(peng_density, 50)
 :::
 ::: {style="font-size: 0.70em;"}
 
-1. Create the labels
+1. Create labels
 
 2. Map the `flipper_length_mm` to the `x`, add  `after_stat(count)`, and map `sex` to `fill` 
 
@@ -1151,7 +1151,7 @@ glimpse(peng_ridges, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `bill_length_mm` to the `x` axis
 
@@ -1288,7 +1288,7 @@ glimpse(peng_box, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `island` to the `x` axis and to `fill`
 
@@ -1422,7 +1422,7 @@ glimpse(peng_violin, 50)
 **GRAPH:**
 :::
 ::: {style="font-size: 0.70em;"}
-1. Create the labels
+1. Create labels
 
 2. Map `island` to the `x`, `bill_length_mm` to the `y`, and  `island` to `fill` 
 
@@ -1561,7 +1561,7 @@ glimpse(penguins, 50)
 
 ::: {style="font-size: 0.75em;"}
 
-1. Create the labels
+1. Create labels
 
 2. 
 

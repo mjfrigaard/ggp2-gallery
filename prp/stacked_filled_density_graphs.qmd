@@ -130,7 +130,7 @@ glimpse(peng_density)
 
 ::: {style="font-size: 0.85em;"}
 
-Create the labels
+Create labels
 
 Map the `flipper_length_mm` to the `x` and add  `after_stat(count)` 
 
