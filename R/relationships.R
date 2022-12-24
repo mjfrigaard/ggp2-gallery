@@ -24,7 +24,7 @@ penguins <- palmerpenguins::penguins
 movies <- ggplot2movies::movies
 
 
-# SCATTER -----------------------------------------------------------------
+# SCATTER ----------------------------------------------------
 
 labs_scatter <- labs(title = "Bill Length vs. Flipper Length",
                       x = "Bill Length (mm)", 
@@ -38,14 +38,16 @@ ggp2_scatter +
   labs_scatter
 
 
-# GROUPED SCATTER ---------------------------------------------------------
+# GROUPED SCATTER -----------------------------------------------
 
 labs_grp_scatter <- labs(title = "Bill Length vs. Flipper Length",
-                      x = "Bill Length (mm)", y = "Flipper length (mm)", 
+                      x = "Bill Length (mm)", 
+                      y = "Flipper length (mm)", 
                       color = "Penguin species")
 
 ggp2_grp_scatter <- penguins |> 
-  ggplot(aes(x = bill_length_mm, y = flipper_length_mm)) + 
+  ggplot(aes(x = bill_length_mm, 
+             y = flipper_length_mm)) + 
   geom_point(aes(color = species)) 
 
 ggp2_grp_scatter + 
@@ -56,16 +58,15 @@ ggp2_grp_scatter +
 # BUBBLE GRAPH ------------------------------------------------------------
 
 labs_bubble <- labs(title = "Bill Length vs. Flipper Length",
-                      x = "Bill Length (mm)", y = "Flipper length (mm)", 
+                      x = "Bill Length (mm)",
+                      y = "Flipper length (mm)", 
                       size = "Body Mass (g)")
 
 ggp2_bubble <- penguins |> 
-  ggplot(
-    aes(x = bill_length_mm, 
-        y = flipper_length_mm)) + 
-  geom_point(
-    aes(size = body_mass_g), 
-      alpha = 1/3) + 
+  ggplot(aes(x = bill_length_mm, 
+             y = flipper_length_mm)) + 
+  geom_point(aes(size = body_mass_g), 
+             alpha = 1/3) + 
   scale_size(
     range = c(.1, 10), 
     name = "Body Mass (g)")
@@ -73,12 +74,12 @@ ggp2_bubble <- penguins |>
 ggp2_bubble + 
   labs_bubble
 
-# GROUPED BUBBLE GRAPH ------------------------------------------------------------
-
+# GROUPED BUBBLE GRAPH -------------------------------------
 labs_grp_bubble <- labs(
-  title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  size = "Body Mass (g)")
+    title = "Bill Length vs. Flipper Length",
+    x = "Bill Length (mm)", 
+    y = "Flipper length (mm)", 
+    size = "Body Mass (g)")
 
 
 ggp2_grp_bubble <- penguins |> 
@@ -532,7 +533,8 @@ pnts_sdens_2d +
 # this is a point plot with a histogram overlay
 penguins <- palmerpenguins::penguins
 penguins_2dhist <- penguins |> 
-    dplyr::select(flipper_length_mm, bill_length_mm, year) |> 
+    dplyr::select(flipper_length_mm, 
+        bill_length_mm, species, sex, island) |> 
     tidyr::drop_na()
 glimpse(penguins_2dhist)
 
@@ -601,3 +603,79 @@ ggp2_x_hist <- ggplot(data = penguins_2dhist,
 ggp2_y_hist + ggp2_x_hist + 
     patchwork::plot_layout(nrow = 1)
      
+
+# HEX BINS ---------------------------------------------------
+# load penguins data (remove missing from sex and species)
+## data ----
+penguins_hex <- palmerpenguins::penguins |> 
+    dplyr::select(flipper_length_mm, bill_depth_mm,
+        bill_length_mm, species, sex, island) |> 
+    tidyr::drop_na()
+glimpse(penguins_hex)
+## labs ----
+labs_hex <- labs(
+    title = "Adult Foraging Penguins", 
+    subtitle = "Near Palmer Station, Antarctica", 
+    x = "Bill length (mm)", 
+    y = "Flipper length (mm)")
+## graph ----
+ggp2_hex <- ggplot(data = penguins_hex, 
+    aes(x = bill_length_mm, y = flipper_length_mm)) + 
+    geom_hex()
+
+ggp2_hex + 
+    labs_hex
+## bins ----
+ggp2_hex_b20 <- ggplot(data = penguins_hex,
+    aes(x = bill_length_mm, y = flipper_length_mm)) +
+    geom_hex(bins = 20)
+
+ggp2_hex_b20 + 
+    labs_hex
+
+ggp2_hex_b15 <- ggplot(data = penguins_hex,
+    aes(x = bill_length_mm, y = flipper_length_mm)) +
+    geom_hex(bins = 15)
+
+ggp2_hex_b15 +
+    labs_hex
+
+# labs 2 
+labs_hex2 <- labs(
+    title = "Adult Foraging Penguins", 
+    subtitle = "Near Palmer Station, Antarctica", 
+    x = "Bill length (mm)", 
+    y = "Flipper length (mm)",
+    fill = "Sex")
+# fill 
+ggplot(data = penguins_hex, 
+    aes(x = bill_length_mm, 
+        y = flipper_length_mm)) + 
+    geom_hex(aes(fill = sex), 
+             bins = 15, 
+             alpha = 3/4) + 
+    scale_color_discrete_sequential(
+        aesthetics = "fill", 
+        rev = FALSE,
+        palette = "Viridis") +
+    labs_hex2
+# labs 3
+labs_hex3 <- labs(
+    title = "Adult Foraging Penguins", 
+    subtitle = "Near Palmer Station, Antarctica", 
+    x = "Bill length (mm)", 
+    y = "Flipper length (mm)",
+    fill = "Species")
+# fill 3
+ggplot(data = penguins_hex, 
+    aes(x = bill_length_mm, 
+        y = flipper_length_mm, 
+        fill = species)) + 
+    geom_hex(binwidth = c(1.2, 4.5),
+        linewidth = 0.5, 
+        alpha = 3/4,
+        color = "#000000") + 
+    scale_color_discrete_sequential(
+        aesthetics = "fill", 
+        palette = "Dark Mint") +
+    labs_hex3

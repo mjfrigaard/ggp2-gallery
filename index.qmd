@@ -525,6 +525,6 @@ The following graphs are used to display relationships between two (or more) var
 
 -   [x] 2D Histograms
 
--   [ ] *Hex Bins*
+-   [x] Hex Bins
 
 -   [ ] *Correlograms*

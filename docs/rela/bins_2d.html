@@ -403,6 +403,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../rela/bins_2d.html" class="sidebar-item-text sidebar-link active">2D Histograms</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rela/hex_bins.html" class="sidebar-item-text sidebar-link">Hexagon bin map</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -411,7 +416,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#bins-fill-and-more-options" id="toc-bins-fill-and-more-options" class="nav-link active" data-scroll-target="#bins-fill-and-more-options">Bins, fill, and more options</a></li>
+  <li><a href="#more-options" id="toc-more-options" class="nav-link active" data-scroll-target="#more-options">More options</a></li>
   </ul>
 </nav>
 </nav>
@@ -568,17 +573,19 @@ $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 
 </div>
 </div>
 </div>
-<section id="bins-fill-and-more-options" class="level2">
-<h2 class="anchored" data-anchor-id="bins-fill-and-more-options">Bins, fill, and more options</h2>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Bins</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Fill</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Options</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<section id="more-options" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="more-options">More options</h2>
+<div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Bins</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Scale</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Options</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-3-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>BINS:</strong></p>
 </div>
-<div style="font-size: 0.85em;">
-<p>The value for bins will be vary depending on the variable values–there is no correct number. If the number of <code>bins</code> is too low, the density may hide important nuances between the variables. If the number of bins is too high, the noise might drown out the signal.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>The value for <code>bins</code> will be vary depending on the variable values–there is no correct number. If the number of <code>bins</code> is too low, the density may hide important nuances between the variables. If the number of <code>bins</code> is too high, the noise might drown out the signal.</p>
+</div></div><div style="font-size: 0.85em;">
 <p>Below we change the <code>bins</code> to <code>15</code> and save this layer as <code>ggp2_2dbins15</code>:</p>
 </div>
 <div style="font-size: 0.75em;">
@@ -596,7 +603,7 @@ $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 
 </div>
 </div>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-3-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>SCALES:</strong></p>
 </div>
@@ -604,8 +611,8 @@ $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 
 <p><code>scale_fill_continuous_sequential()</code> comes with a variety of palettes to choose from (run <code>hcl_palettes(type = "sequential")</code> to view the full list).</p>
 <p>We can also reverse the order of the fill color scale with <code>rev</code> (<code>TRUE</code> or <code>FALSE</code>).</p>
 </div>
-<div style="font-size: 0.75em;">
-<div>
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ggp2_2dbins15 <span class="sc">+</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous_sequential</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">palette =</span> <span class="st">"Mako"</span>, </span>
@@ -616,7 +623,7 @@ $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">palette =</span> <span class="st">"Mako"</span>, </span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">rev =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    labs_2dhist </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel">
+<div class="cell column-page-inset-right quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="bins_2d_files/figure-html/scales_2d_hist-1.png" class="img-fluid" width="672"></p>
@@ -629,13 +636,16 @@ $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 
 </div>
 </div>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-3-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>OPTIONS:</strong></p>
 </div>
-<div style="font-size: 0.85em;">
-<p>In the previous example we showed how to reverse the fill color scale with the <code>rev</code> argument. Below we display how to reverse the color scale and manually set which colors on the scale we want to <code>begin</code> with (i.e., smallest data value) and which color we want to <code>end</code> with (i.e., the largest data value). Possible values range from <code>0</code> - <code>1</code>.</p>
-<p>We also add a <code>geom_point()</code> layer, but set the <code>shape</code> to <code>21</code> (which gives us manual control over the point <code>color</code> and <code>fill</code>) .</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>If you set the point <code>shape</code> to <code>21</code>, you have control over <em>both</em> <code>color</code> and <code>fill</code>.</p>
+</div></div><div style="font-size: 0.85em;">
+<p>In the previous example we showed how to <code>rev</code>erse the color scale for the <code>palette</code> in <code>scale_fill_continuous_sequential()</code>. Below we reverse the color scale, but also manually set which colors on the scale we want to <code>begin</code> with (i.e., smallest data value) and which color we want to <code>end</code> with (i.e., the largest data value). Possible values range from <code>0</code> - <code>1</code>.</p>
+<p>We also add a <code>geom_point()</code> layer.</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">

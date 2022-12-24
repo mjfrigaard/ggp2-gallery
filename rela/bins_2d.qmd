@@ -206,7 +206,7 @@ ggp2_2dhist +
 
 ::::
 
-## Bins, fill, and more options
+## More options
 
 :::: {.panel-tabset}
 
@@ -216,10 +216,11 @@ ggp2_2dhist +
 **BINS:**
 :::
 
+::: {.column-margin}
+The value for `bins` will be vary depending on the variable values--there is no correct number. If the number of `bins` is too low, the density may hide important nuances between the variables. If the number of `bins` is too high, the noise might drown out the signal.
+:::
+
 ::: {style="font-size: 0.85em;"}
-
-The value for bins will be vary depending on the variable values--there is no correct number. If the number of `bins` is too low, the density may hide important nuances between the variables. If the number of bins is too high, the noise might drown out the signal.
-
 Below we change the `bins` to `15` and save this layer as `ggp2_2dbins15`:
 :::
 
@@ -241,7 +242,7 @@ ggp2_2dbins15 +
 
 :::
 
-### Fill
+### Scale
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **SCALES:**
@@ -260,6 +261,7 @@ We can also reverse the order of the fill color scale with `rev` (`TRUE` or `FAL
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
 #| layout-nrow: 1
 ggp2_2dbins15 + 
     scale_fill_continuous_sequential(
@@ -282,11 +284,15 @@ ggp2_2dbins15 +
 **OPTIONS:**
 :::
 
+::: {.column-margin}
+If you set the point `shape` to `21`, you have control over *both* `color` and `fill`. 
+:::
+
 ::: {style="font-size: 0.85em;"}
 
-In the previous example we showed how to reverse the fill color scale with the `rev` argument. Below we display how to reverse the color scale and manually set which colors on the scale we want to `begin` with (i.e., smallest data value) and which color we want to `end` with (i.e., the largest data value). Possible values range from `0` - `1`.
+In the previous example we showed how to `rev`erse the color scale for the `palette` in `scale_fill_continuous_sequential()`. Below we reverse the color scale, but also manually set which colors on the scale we want to `begin` with (i.e., smallest data value) and which color we want to `end` with (i.e., the largest data value). Possible values range from `0` - `1`.
 
-We also add a `geom_point()` layer, but set the `shape` to `21` (which gives us manual control over the point `color` and `fill`) . 
+We also add a `geom_point()` layer. 
 :::
 
 ::: {style="font-size: 0.75em;"}
