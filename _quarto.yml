@@ -53,8 +53,8 @@ website:
           - rela/bubble_charts.qmd
           - rela/grouped_bubble_charts.qmd
           - rela/alluvial_charts.qmd
-          - rela/bump_charts.qmd
           - rela/parallel_sets.qmd
+          - rela/bump_charts.qmd
           - rela/slope_graphs.qmd
           - rela/density_contours.qmd
           - rela/bins_2d.qmd

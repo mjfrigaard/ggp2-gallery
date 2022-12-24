@@ -778,15 +778,16 @@
     },
     "ggdist": {
       "Package": "ggdist",
-      "Version": "3.2.0",
+      "Version": "3.2.0.9000",
       "Source": "GitHub",
+      "Remotes": "stan-dev/posterior",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "ggdist",
       "RemoteUsername": "mjskay",
       "RemoteRef": "HEAD",
-      "RemoteSha": "fe1f5c4d3d06354384872b1d4006e3bbc9ec6c7e",
-      "Hash": "c62eb0b8a84e0fbf5d84984c94f4778b",
+      "RemoteSha": "05d9cc55307aedce2b91907ecfbb80a9c4932181",
+      "Hash": "76521a2f2da0fd8dd1e4f5c346439202",
       "Requirements": [
         "HDInterval",
         "distributional",
@@ -794,6 +795,7 @@
         "ggplot2",
         "glue",
         "numDeriv",
+        "quadprog",
         "rlang",
         "scales",
         "tibble",
@@ -1155,6 +1157,16 @@
         "tibble",
         "tidyselect",
         "vctrs"
+      ]
+    },
+    "hexbin": {
+      "Package": "hexbin",
+      "Version": "1.28.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "76314b69dc54f8c14204063a2fd6d74a",
+      "Requirements": [
+        "lattice"
       ]
     },
     "highr": {
@@ -1886,6 +1898,14 @@
         "rlang",
         "vctrs"
       ]
+    },
+    "quadprog": {
+      "Package": "quadprog",
+      "Version": "1.5-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "5f919ae5e7f83a6f91dcf2288943370d",
+      "Requirements": []
     },
     "quantreg": {
       "Package": "quantreg",
@@ -2726,6 +2746,14 @@
         "jsonlite",
         "magrittr"
       ]
+    },
+    "wesanderson": {
+      "Package": "wesanderson",
+      "Version": "0.3.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "42f92f1e9ef722355959ec1f7c459636",
+      "Requirements": []
     },
     "whisker": {
       "Package": "whisker",

@@ -33,7 +33,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false"}
+:::: {.callout-tip collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #38B44A;"}
 **When would I use this graph?**
@@ -55,6 +55,7 @@ library(ggplot2)
 penguins <- palmerpenguins::penguins
 labs_dotplot <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_dotplot <- ggplot(data = penguins,
       aes(x = flipper_length_mm)) + 
@@ -149,6 +150,7 @@ Adjust the `dotsize`
 #| message: false
 labs_dotplot <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_dotplot <- ggplot(data = penguins,
       aes(x = flipper_length_mm)) + 
@@ -172,6 +174,7 @@ ggp2_dotplot +
 #| message: false
 labs_dotplot <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_dotplot <- ggplot(data = penguins,
       aes(x = flipper_length_mm)) + 

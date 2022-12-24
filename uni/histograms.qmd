@@ -32,7 +32,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false"}
+:::: {.callout-tip collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #38B44A;"}
 **When would I use this graph?**
@@ -54,6 +54,7 @@ library(ggplot2)
 penguins <- palmerpenguins::penguins
 labs_histogram <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm)) + 
@@ -148,11 +149,13 @@ Adjust the `bins` accordingly
 #| message: false
 labs_histogram <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 
 ggp2_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm)) + 
      geom_histogram() 
+
 ggp2_hist + 
   labs_histogram
 ```
@@ -179,11 +182,13 @@ The standard number of bins is `30`, but ['you should always override this value
 #| message: false
 labs_histogram <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 
 ggp2_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm)) + 
      geom_histogram() 
+
 ggp2_hist + 
   labs_histogram
 ```

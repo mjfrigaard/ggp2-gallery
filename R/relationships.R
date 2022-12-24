@@ -1,3 +1,4 @@
+# pkgs ----
 library(tidyverse)
 library(scales)
 library(knitr)
@@ -12,8 +13,9 @@ library(ggalluvial)
 library(patchwork)
 options(scipen = 9999999)
 # ggplot2 theme ----
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
-
+# ggplot2::theme_set(
+#     ggplot2::theme_minimal(base_size = 16))
+source("R/theme_ggp2g.R")
 # funs ----
 ds538 <- readr::read_rds("data/ds538.rds")
 # movies_data ----
@@ -25,7 +27,7 @@ movies <- ggplot2movies::movies
 
 
 # SCATTER ----------------------------------------------------
-
+penguins <- palmerpenguins::penguins
 labs_scatter <- labs(title = "Bill Length vs. Flipper Length",
                       x = "Bill Length (mm)", 
                       y = "Flipper length (mm)")
@@ -39,7 +41,7 @@ ggp2_scatter +
 
 
 # GROUPED SCATTER -----------------------------------------------
-
+penguins <- palmerpenguins::penguins
 labs_grp_scatter <- labs(title = "Bill Length vs. Flipper Length",
                       x = "Bill Length (mm)", 
                       y = "Flipper length (mm)", 
@@ -53,10 +55,8 @@ ggp2_grp_scatter <- penguins |>
 ggp2_grp_scatter + 
   labs_grp_scatter
 
-
-
-# BUBBLE GRAPH ------------------------------------------------------------
-
+# BUBBLE GRAPH ----------------------------------------------------
+penguins <- palmerpenguins::penguins
 labs_bubble <- labs(title = "Bill Length vs. Flipper Length",
                       x = "Bill Length (mm)",
                       y = "Flipper length (mm)", 
@@ -81,7 +81,6 @@ labs_grp_bubble <- labs(
     y = "Flipper length (mm)", 
     size = "Body Mass (g)")
 
-
 ggp2_grp_bubble <- penguins |> 
   ggplot(aes(
     x = bill_length_mm, 
@@ -99,9 +98,7 @@ ggp2_grp_bubble <- penguins |>
 ggp2_grp_bubble + 
   labs_grp_bubble
 
-
 # ALLUVIAL WIDE --------------------------------------------------
-
 # convert to wide
 peng_wide <- penguins |> 
   tidyr::drop_na() |> 
@@ -163,23 +160,22 @@ ggp2_alluvial_lf +
 
 # devtools::install_github("davidsjoberg/ggbump")
 # install.packages("pacman")
-pacman::p_load(padr, hablar, jsonlite, ggbump, 
-               httr, xml2, lubridate, tidyverse)
-library(ggbump)
-pacman::p_load(tidyverse, cowplot, wesanderson)
-
-df <- tibble(
-    country = c("India", "India", "India",
-      "Sweden", "Sweden", "Sweden",
-      "Germany", "Germany", "Germany",
-      "Finland", "Finland", "Finland"),
-    year = c(2011, 2012, 2013, 2011, 2012,
-      2013, 2011, 2012, 2013, 2011, 2012, 2013),
-    value = c(492, 246, 246, 369, 123, 
-      492, 246, 369, 123, 123, 492, 369))
+# pacman::p_load(padr, hablar, jsonlite, ggbump, 
+#                httr, xml2, lubridate, tidyverse)
+# library(ggbump)
+# pacman::p_load(tidyverse, cowplot, wesanderson)
+# df <- tibble(
+#     country = c("India", "India", "India",
+#       "Sweden", "Sweden", "Sweden",
+#       "Germany", "Germany", "Germany",
+#       "Finland", "Finland", "Finland"),
+#     year = c(2011, 2012, 2013, 2011, 2012,
+#       2013, 2011, 2012, 2013, 2011, 2012, 2013),
+#     value = c(492, 246, 246, 369, 123, 
+#       492, 246, 369, 123, 123, 492, 369))
 
 fivethirtyeight::tv_hurricanes |> 
-  filter(date > as_date("2017-09-15")) |> 
+  filter(date > lubridate::as_date("2017-09-15")) |> 
   pivot_longer(cols = -date, names_to = 'hurricane', 
     values_to = 'value') |> 
   group_by(date) |>
@@ -309,7 +305,7 @@ peng_grp_slope <- palmerpenguins::penguins |>
     dplyr::ungroup()
 glimpse(peng_grp_slope)
 
-
+## facets ----
 labs_grp_slope <- labs(
     title = "Changes in Bill Depth of Palmer Penguins", 
     subtitle = "Years 2008 & 2009",

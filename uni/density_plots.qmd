@@ -33,7 +33,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false"}
+:::: {.callout-tip collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #38B44A;"}
 **When would I use this graph?**
@@ -55,6 +55,7 @@ library(ggplot2)
 penguins <- palmerpenguins::penguins
 labs_density <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_density <- ggplot(data = penguins, 
         aes(x = flipper_length_mm)) + 
@@ -150,6 +151,7 @@ Add the `geom_density()` layer
 #| message: false
 labs_density <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_density <- ggplot(data = penguins, 
         aes(x = flipper_length_mm)) + 
@@ -174,6 +176,7 @@ ggp2_density +
 #| message: false
 labs_density <- labs(
   title = "Adult foraging penguins",
+  subtitle = "Distribution of flipper length",
   x = "Flipper length (millimeters)")
 ggp2_density <- ggplot(data = penguins, 
         aes(x = flipper_length_mm)) + 
