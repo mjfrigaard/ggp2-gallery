@@ -8,7 +8,7 @@ new_graph <- function(name, section = c("uni", "amt", "prp", "dist", "rela", "st
     # create path
     grph_pth <- paste0("./", section, "/", clean_name, ".qmd")
     if (section %in% sections) {
-        fs::file_copy(path = "./_drafts/_layout.qmd", 
+        fs::file_copy(path = "./_drafts/_new_graph.qmd", 
             new_path = grph_pth)
         fs::file_show(grph_pth)
     } else {

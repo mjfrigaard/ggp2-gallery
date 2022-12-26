@@ -88,6 +88,14 @@
         "Rcpp"
       ]
     },
+    "Rttf2pt1": {
+      "Package": "Rttf2pt1",
+      "Version": "1.3.11",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "60818466bde87943f750b33b5ef5217b",
+      "Requirements": []
+    },
     "SparseM": {
       "Package": "SparseM",
       "Version": "1.81",
@@ -610,6 +618,25 @@
       "Hash": "5aac3cd0a3ccb1a738941796b28c26fe",
       "Requirements": []
     },
+    "extrafont": {
+      "Package": "extrafont",
+      "Version": "0.18",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "07a8a50195fc77e8690fd8bc4e87e6a0",
+      "Requirements": [
+        "Rttf2pt1",
+        "extrafontdb"
+      ]
+    },
+    "extrafontdb": {
+      "Package": "extrafontdb",
+      "Version": "1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a861555ddec7451c653b40e713166c6f",
+      "Requirements": []
+    },
     "fansi": {
       "Package": "fansi",
       "Version": "1.0.3",
@@ -1128,18 +1155,6 @@
       "Hash": "36b4265fb818f6a342bed217549cd896",
       "Requirements": []
     },
-    "hablar": {
-      "Package": "hablar",
-      "Version": "0.3.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "2330dfd884d745b504b21f72c84c5ac5",
-      "Requirements": [
-        "dplyr",
-        "lubridate",
-        "purrr"
-      ]
-    },
     "haven": {
       "Package": "haven",
       "Version": "2.5.1",
@@ -1588,29 +1603,6 @@
       "Hash": "b04c27110bf367b4daa93f34f3d58e75",
       "Requirements": [
         "askpass"
-      ]
-    },
-    "pacman": {
-      "Package": "pacman",
-      "Version": "0.5.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "b37932b67288bc62bb81686b2f337a7d",
-      "Requirements": [
-        "remotes"
-      ]
-    },
-    "padr": {
-      "Package": "padr",
-      "Version": "0.6.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "87219527db60948eb37e3e9ee35479cf",
-      "Requirements": [
-        "Rcpp",
-        "dplyr",
-        "lubridate",
-        "rlang"
       ]
     },
     "palmerpenguins": {
@@ -2320,12 +2312,33 @@
         "xtable"
       ]
     },
-    "skimr": {
-      "Package": "skimr",
-      "Version": "2.1.4",
+    "showtext": {
+      "Package": "showtext",
+      "Version": "0.9-5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ffdd2d11832e37d92a118d44dc44f50e",
+      "Hash": "b588dee88e238bf811e27f12edee9433",
+      "Requirements": [
+        "showtextdb",
+        "sysfonts"
+      ]
+    },
+    "showtextdb": {
+      "Package": "showtextdb",
+      "Version": "3.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c12e756cf947e58b0f2c2a520521a5a8",
+      "Requirements": [
+        "sysfonts"
+      ]
+    },
+    "skimr": {
+      "Package": "skimr",
+      "Version": "2.1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "8f138ff2c8fbea9e0a523f6c399c0386",
       "Requirements": [
         "cli",
         "dplyr",
@@ -2412,6 +2425,14 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "34c16f1ef796057bfa06d3f4ff818a5d",
+      "Requirements": []
+    },
+    "sysfonts": {
+      "Package": "sysfonts",
+      "Version": "0.8.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7f4dac41a3e348ae12832167e6beb875",
       "Requirements": []
     },
     "systemfonts": {
@@ -2746,14 +2767,6 @@
         "jsonlite",
         "magrittr"
       ]
-    },
-    "wesanderson": {
-      "Package": "wesanderson",
-      "Version": "0.3.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "42f92f1e9ef722355959ec1f7c459636",
-      "Requirements": []
     },
     "whisker": {
       "Package": "whisker",
