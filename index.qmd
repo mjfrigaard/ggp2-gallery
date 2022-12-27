@@ -70,7 +70,11 @@ library(tidyverse)
 
 ## Data
 
-An effort has been made to keep the number of additional packages at a minimum, so most of the graphs have been created with one of two datasets: 
+::: {style="font-size: 1.25em; color: #38B44A;"}
+***So many penguins!***
+:::
+
+To improve reproducibility, the majority of the graphs are built using the `palmerpenguins::penguins` data. : 
 
 ### `penguins`
 
@@ -78,7 +82,7 @@ An effort has been made to keep the number of additional packages at a minimum, 
 ![Artwork by @allison_horst](www/lter_penguins.png){fig-align="center" width="50%" height="50%"}
 :::
 
-The majority of the graphs are built using the `palmerpenguins::penguins` data. 
+Install this package using the code below:
 
 :::: {.callout-note collapse="true"}
 ## `penguins` data
@@ -103,42 +107,7 @@ palmerpenguins::penguins |> glimpse()
 ```
 :::
 
-### `movies`
-
-::: {.column-margin}
-![](www/imdb.png){fig-align="center" width="30%" height="30%"}
-:::
-
-Some of the graphs are built using the `ggplot2movies::movies` data. 
-
-:::: {.callout-note collapse="true"}
-## `movies` data
-
-```{r}
-#| label: movies-pkg-show
-#| eval: false
-#| echo: true
-install.packages("ggplot2movies")
-library(ggplot2movies)
-ggplot2movies::movies |> glimpse()
-```
-
-
-```{r}
-#| label: movies-pkg
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-library(ggplot2movies)
-ggplot2movies::movies |> glimpse()
-```
-
-:::
-
-### Additional datasets
-
-A *few* of the graphs use datasets from the `fivethirtyeight` package.
+Some of the graphs use datasets from the `fivethirtyeight` package.
 
 ::: {.column-margin}
 ![](www/538.png){fig-align="center" width="30%" height="30%"}
@@ -170,6 +139,41 @@ library(fivethirtyeight)
 reactable::reactable(fivethirtyeight::datasets_master |> 
     select(`Data Frame Name`, `Article Title`), 
     defaultPageSize = 5)
+```
+
+:::
+
+### Additional datasets
+
+### `movies`
+
+::: {.column-margin}
+![](www/imdb.png){fig-align="center" width="30%" height="30%"}
+:::
+
+A *few* of the graphs are built using the `ggplot2movies::movies` data. 
+
+:::: {.callout-note collapse="true"}
+## `movies` data
+
+```{r}
+#| label: movies-pkg-show
+#| eval: false
+#| echo: true
+install.packages("ggplot2movies")
+library(ggplot2movies)
+ggplot2movies::movies |> glimpse()
+```
+
+
+```{r}
+#| label: movies-pkg
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+library(ggplot2movies)
+ggplot2movies::movies |> glimpse()
 ```
 
 :::
