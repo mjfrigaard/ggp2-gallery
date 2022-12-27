@@ -1,0 +1,223 @@
+---
+title: "Summarized bar-graphs"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+# install data packages ----
+install.packages("palmerpenguins")
+library(palmerpenguins)
+```
+
+
+
+:::: {.callout-tip collapse="false" icon=false}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**When would I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+peng_sum_col <- palmerpenguins::penguins |>
+    dplyr::select(body_mass_g, island) |> 
+    tidyr::drop_na() |> 
+    dplyr::group_by(island) |>
+    dplyr::summarise(
+        avg_body_mass_g = mean(body_mass_g)
+        ) |>
+    dplyr::ungroup()
+# glimpse(peng_sum_col)
+labs_sum_col <- labs(
+    title = "Average Penguin Mass",
+    subtitle = "What's the average mass of penguins per Island?",
+    x = "Island",
+    y = "Average penguin body mass (g)")
+ggp2_sum_col <- ggplot(data = peng_sum_col,
+              aes(x = island, 
+                  y = avg_body_mass_g)) + 
+        geom_col(aes(fill = island),
+            show.legend = FALSE)
+ggp2_sum_col + 
+    labs_sum_col
+```
+
+`geom_col()` allows us to display numerical variables across levels of a categorical variable.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_sum_col
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {.column-margin}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove the missing values and reduce the `palmerpenguins::penguins` dataset to only `body_mass_g` and `island`, then group the data by `island` and calculate the mean `body_mass_g` (as `avg_body_mass_g`). 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_sum_col
+#| eval: true
+#| echo: true
+peng_sum_col <- palmerpenguins::penguins |>
+    dplyr::select(body_mass_g, island) |> 
+    tidyr::drop_na() |> 
+    dplyr::group_by(island) |>
+    dplyr::summarise(
+        avg_body_mass_g = mean(body_mass_g)
+        ) |>
+    dplyr::ungroup()
+glimpse(peng_sum_col)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create labels
+
+Map `island` to the `x` and `avg_body_mass_g` to the `y`
+
+Map `island` to `fill` *inside* the `aes()` of `geom_col()` 
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_sum_col
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_sum_col <- labs(
+    title = "Average Penguin Mass",
+    subtitle = "What's the average mass of penguins per Island?",
+    x = "Island",
+    y = "Average penguin body mass (g)")
+ggp2_sum_col <- ggplot(data = peng_sum_col,
+              aes(x = island, 
+                  y = avg_body_mass_g)) + 
+        geom_col(aes(fill = island),
+            show.legend = FALSE)
+ggp2_sum_col + 
+    labs_sum_col
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_sum_col
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_sum_col <- labs(
+    title = "Average Penguin Mass",
+    subtitle = "What's the average mass of penguins per Island?",
+    x = "Island",
+    y = "Average penguin body mass (g)")
+ggp2_sum_col <- ggplot(data = peng_sum_col,
+              aes(x = island, 
+                  y = avg_body_mass_g)) + 
+        geom_col(aes(fill = island),
+            show.legend = FALSE)
+ggp2_sum_col + 
+    labs_sum_col
+```
+
+::::

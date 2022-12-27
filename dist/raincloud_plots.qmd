@@ -23,10 +23,29 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-remotes::install_github('jorvlan/raincloudplots')
-remotes::install_github('mjskay/ggdist')
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(base_size = 15))
 install.packages("palmerpenguins")
+library(palmerpenguins)
+remotes::install_github('jorvlan/raincloudplots')
+library(raincloudplots)
+remotes::install_github('mjskay/ggdist')
+library(ggdist)
 ```
 
 
@@ -55,6 +74,44 @@ library(ggplot2)
 # remove missing
 peng_raincloud <- palmerpenguins::penguins |> 
     filter(!is.na(sex) & !is.na(species))
+labs_raincloud_2 <- ggplot2::labs(
+    title = "Flipper length of Palmer penguins",
+         x = "Flipper length (mm)",
+         y = "Species")
+ggplot(peng_raincloud,
+    aes( x = flipper_length_mm, y = species)) + 
+  geom_boxplot(aes(fill = species),
+    notch = TRUE, 
+    notchwidth = 0.9,
+    width = .15, 
+    outlier.shape = NA) +
+  ggdist::stat_halfeye(aes(fill = species),
+    adjust = 0.6, # shape = adjust * density estimator
+    .width = 0, # can use probabilities or 0
+    point_colour = NA, # removes the point in center
+    orientation = "horizontal", # like the box-plot
+    height = 0.5, # height of curve
+    justification = -0.3) + # shift vertically above box
+    geom_point(aes(fill = species),
+        shape = 21, 
+        color = "#ffffff", 
+        alpha = 1/3, size = 1.8,
+    position = position_jitter(
+      seed = 321, 
+      height = .07)) + 
+    theme(legend.position = "none") + 
+    labs_raincloud_2
+```
+
+```{r}
+#| label: full_code_raincloudplots
+#| eval: false
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
 # filter flipper length by years 2008 & 2009
 peng_1x1 <- raincloudplots::data_1x1(
   array_1 = dplyr::filter(peng_raincloud, year == 2008)$flipper_length_mm,
@@ -234,7 +291,7 @@ ggp2_raincloud_x +
 
 ::::
 
-## Raincloud plots (layer-by-layer)
+## More info
 
 :::: {.panel-tabset}
 
@@ -376,7 +433,7 @@ ggp2_jitter +
 
 ::::
 
-## Even more Rainclouds!
+## Even more info
 
 :::: {.panel-tabset}
 
@@ -417,6 +474,16 @@ ggplot2::geom_point(
 
 ### #TidyTuesday example
 
+::: {.column-margin}
+More resources:   
+
+1. Raincloud plots: a multi-platform tool for robust data visualization. [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)
+
+2. Shape and point sizes in R.[2](https://r-graphics.org/recipe-scatter-shapes)
+
+3. RainCloudPlots package on GitHub[3](https://github.com/RainCloudPlots/RainCloudPlots)
+:::
+
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **Polished Graph**
 :::
@@ -426,20 +493,6 @@ The code to re-create the #TidyTuesday graph is contained in this [gist.](https:
 
 ![](../www/rainclouds_gist.png){fig-align="center" width="100%" height="100%"}
 
-:::
-
-### More resources
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**Read more**
-:::
-
-::: {style="font-size: 0.85em;"}
-[Raincloud plots: a multi-platform tool for robust data visualization](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)
-
-[Shape and point sizes in R](https://r-graphics.org/recipe-scatter-shapes)
-
-[RainCloudPlots package on GitHub](https://github.com/RainCloudPlots/RainCloudPlots)
 :::
 
 ::::

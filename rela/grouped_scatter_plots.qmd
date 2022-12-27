@@ -23,8 +23,24 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
 install.packages("palmerpenguins")
 ```
 
@@ -51,8 +67,9 @@ library(palmerpenguins)
 library(ggplot2)
 labs_grp_scatter <- labs(
   title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  color = "Penguin species")
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  color = "Species")
 ggp2_grp_scatter <- penguins |> 
   ggplot(
     aes(x = bill_length_mm, 
@@ -63,7 +80,9 @@ ggp2_grp_scatter +
   labs_grp_scatter
 ```
 
-To display the relationship between **two** continuous variables across a third categorical variable. Use color to distinguish between categorical levels across the two continuous variable. 
+Grouped scatter-plots display the relationships between two continuous variables across a *third* categorical variable.
+
+The `x` and `y` position displays the relationship between the two continuous variables, and color is used to distinguish between the categorical levels.
 
 ::::
 
@@ -149,8 +168,9 @@ Map `species` to `color` inside the `geom_point()`
 #| message: false
 labs_grp_scatter <- labs(
   title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  color = "Penguin species")
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  color = "Species")
 
 ggp2_grp_scatter <- penguins |> 
   ggplot(
@@ -181,9 +201,9 @@ Adjust over-plotting with transparency (`alpha`)
 #| message: false
 labs_grp_scatter <- labs(
   title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  color = "Penguin species")
-
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  color = "Species")
 ggp2_grp_scatter <- penguins |> 
   ggplot(
     aes(x = bill_length_mm, 

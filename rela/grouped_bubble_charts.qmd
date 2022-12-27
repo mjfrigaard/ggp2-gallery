@@ -23,7 +23,24 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
 install.packages("ggplot2movies")
 install.packages("palmerpenguins")
 ```
@@ -51,16 +68,18 @@ library(palmerpenguins)
 library(ggplot2)
 labs_grp_bubble <- labs(
   title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  size = "Body Mass (g)")
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  size = "Body Mass", 
+  fill = "Species")
 
 ggp2_grp_bubble <- penguins |> 
   ggplot(aes(
     x = bill_length_mm, y = flipper_length_mm)) + 
   geom_point(
     aes(size = body_mass_g, fill = species), 
-        alpha = 2/3, shape = 21, color = "black") + 
-  scale_size(range = c(.04, 8), name = "Body Mass (g)") 
+        alpha = 2/3, shape = 21, color = "#000000") + 
+  scale_size(range = c(.04, 8)) 
 
 ggp2_grp_bubble + 
   labs_grp_bubble
@@ -141,7 +160,7 @@ Inside `geom_point()`
 
   - map `body_mass_g` to `size` and `species` to `fill`  
   
-  - set the `alpha` to `2/3`, shape to `21`, and `color` to `"black"`  
+  - set the `alpha` to `2/3`, shape to `21`, and `color` to `"#000000"`  
     
 In the `scale_size()`  
 
@@ -158,16 +177,18 @@ In the `scale_size()`
 #| message: false
 labs_grp_bubble <- labs(
   title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  size = "Body Mass (g)")
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  size = "Body Mass", 
+  fill = "Species")
 
 ggp2_grp_bubble <- penguins |> 
   ggplot(aes(
     x = bill_length_mm, y = flipper_length_mm)) + 
   geom_point(
     aes(size = body_mass_g, fill = species), 
-        alpha = 2/3, shape = 21, color = "black") + 
-  scale_size(range = c(.04, 8), name = "Body Mass (g)") 
+        alpha = 2/3, shape = 21, color = "#000000") + 
+  scale_size(range = c(.04, 8)) 
 
 ggp2_grp_bubble + 
   labs_grp_bubble
@@ -188,16 +209,18 @@ ggp2_grp_bubble +
 #| message: false
 labs_grp_bubble <- labs(
   title = "Bill Length vs. Flipper Length",
-  x = "Bill Length (mm)", y = "Flipper length (mm)", 
-  size = "Body Mass (g)")
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  size = "Body Mass", 
+  fill = "Species")
 
 ggp2_grp_bubble <- penguins |> 
   ggplot(aes(
     x = bill_length_mm, y = flipper_length_mm)) + 
   geom_point(
     aes(size = body_mass_g, fill = species), 
-        alpha = 2/3, shape = 21, color = "black") + 
-  scale_size(range = c(.04, 8), name = "Body Mass (g)") 
+        alpha = 2/3, shape = 21, color = "#000000") + 
+  scale_size(range = c(.04, 8)) 
 
 ggp2_grp_bubble + 
   labs_grp_bubble

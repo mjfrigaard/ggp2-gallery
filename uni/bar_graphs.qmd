@@ -27,9 +27,9 @@ options(
 library(extrafont)
 library(sysfonts)
 # import font
-# extrafont::font_import(
-#     paths = "../assets/Ubuntu/", 
-#     prompt = FALSE)
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
 # add font
 sysfonts::font_add(
     family =  "Ubuntu", 

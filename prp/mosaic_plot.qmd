@@ -24,7 +24,29 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 15))
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 15))
+# install data packages ----
+install.packages("palmerpenguins")
+library(palmerpenguins)
+install.packages("fivethirtyeight")
+library(fivethirtyeight)
 install.packages("fivethirtyeight")
 devtools::install_github("haleyjeppson/ggmosaic")
 library(ggmosaic)
@@ -219,7 +241,7 @@ ggp2_mosaic +
 ::: {style="font-size: 0.85em;"}
 It's a good idea to read the [`ggmosaic` vignette](https://haleyjeppson.github.io/ggmosaic/articles/ggmosaic.html), particularly the section on ordering and conditioning. 
 
-For example, if we set the `product()` variable as `unruly_child` and the conditional variable as `baby`, we see a very different display than if we follow the stanard two-variable syntax:
+For example, if we set the `product()` variable as `unruly_child` and the conditional variable as `baby`, we see a very different display than if we follow the standard two-variable syntax:
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -231,6 +253,8 @@ For example, if we set the `product()` variable as `unruly_child` and the condit
 #| message: false
 #| fig-height: 8
 #| fig-width: 8
+#| column: page-inset-right
+#| layout-nrow: 1
 # build conditional mosiac plot
 labs_mosaic_cond <- labs(
   subtitle = "Conditional plot",
@@ -242,8 +266,11 @@ ggp2_mosaic_cond <- ggplot(data = fly_mosaic) +
     x = product(unruly_child), # product variable
     fill = unruly_child,
     conds = product(baby))) + # conditional variable
-  theme_mosaic(base_size = 9)
-mosaic_cond <- ggp2_mosaic_cond + labs_mosaic_cond
+  theme_ggp2g(base_size = 14)
+
+ggp2_mosaic_cond + 
+    labs_mosaic_cond
+
 # build 2-variable mosiac plot
 labs_mosaic_2var <- labs(
   subtitle = "2-Variable plot",
@@ -254,7 +281,24 @@ ggp2_mosaic_2var <- ggplot(data = fly_mosaic) +
   geom_mosaic(aes(
     x = product(unruly_child, baby),
     fill = unruly_child)) +
-  theme_mosaic(base_size = 9)
+  theme_ggp2g(base_size = 14)
+
+ggp2_mosaic_2var + 
+    labs_mosaic_2var
+```
+
+
+```{r}
+#| label: patchwork_mosaic
+#| eval: false
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 8
+#| fig-width: 8
+#| column: page-inset-right
+#| layout-nrow: 1
+# build conditional mosiac plot
 mosaic_2var <- ggp2_mosaic_2var + labs_mosaic_2var
 # patch both together
 patchwork::plot_spacer() + # pad the area in front of the plot 1

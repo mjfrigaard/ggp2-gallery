@@ -23,8 +23,23 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(base_size = 14))
 install.packages("palmerpenguins")
 ```
 
@@ -53,22 +68,22 @@ peng_dotplot <- filter(penguins, !is.na(sex))
 labs_ovrlp_dotplot <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
+  y = "Count",
   fill = "Species")
 ggp2_ovrlp_dotplot <- ggplot(data = peng_dotplot, 
     aes(x = flipper_length_mm,
         fill = factor(species))) +
   geom_dotplot(
     method = "histodot",
-    binwidth = 1.5,
+    binwidth = 1.35,
     binpositions = "all")
 ggp2_ovrlp_dotplot + 
   labs_ovrlp_dotplot
 ```
 
-We can use dot-plots to compare distributions of a continuous variable across the levels of a categorical variable, but we need to adjust the way the dots are displayed. 
+Overlapping dot-plots display distributions of a continuous variable across the levels of a categorical variable.
 
-The `geom_dotplot()` function has adjustable `method` and `binposition` arguments that allow it to function similar to a histogram or frequency polygon. 
-
+To adjust the dot-plot display to look similar to a histogram or frequency polygon, change the `method` and `binposition` arguments.
 ::::
 
 
@@ -118,8 +133,8 @@ Remove missing `sex` from `penguins`
 #| label: data_code_ovrlp_dot_plots
 #| eval: true
 #| echo: true
-peng_dotplot <- filter(penguins, !is.na(sex))
-glimpse(peng_dotplot)
+peng_dotplot <- dplyr::filter(penguins, !is.na(sex))
+dplyr::glimpse(peng_dotplot)
 ```
 :::
 ::::
@@ -140,7 +155,7 @@ Map `flipper_length_mm` to `x`
 
 Map `species` to `fill` (*inside* `factor()`)
 
-Inside `geom_dotplot`, set `method` to `"histodot"`, `binwidth` to `1.5`, and `binpositions` to `"all"`
+Inside `geom_dotplot`, set `method` to `"histodot"`, `binwidth` to `1.35`, and `binpositions` to `"all"`
 
 :::
 
@@ -154,13 +169,14 @@ Inside `geom_dotplot`, set `method` to `"histodot"`, `binwidth` to `1.5`, and `b
 labs_ovrlp_dotplot <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
+  y = "Count",
   fill = "Species")
 ggp2_ovrlp_dotplot <- ggplot(data = peng_dotplot, 
     aes(x = flipper_length_mm,
         fill = factor(species))) +
   geom_dotplot(
     method = "histodot",
-    binwidth = 1.5,
+    binwidth = 1.35,
     binpositions = "all")
 ggp2_ovrlp_dotplot + 
   labs_ovrlp_dotplot
@@ -173,7 +189,7 @@ ggp2_ovrlp_dotplot +
 **GRAPH:**
 :::
 
-::: {style="font-size: 0.85em;"}
+::: {.column-margin}
 - `binwidth` = [*When method is "histodot", this specifies bin width. Defaults to 1/30 of the range of the data*](https://ggplot2.tidyverse.org/reference/geom_dotplot.html)
 
 - `binpositions` = [*"all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.*](https://ggplot2.tidyverse.org/reference/geom_dotplot.html)
@@ -188,13 +204,14 @@ ggp2_ovrlp_dotplot +
 labs_ovrlp_dotplot <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
+  y = "Count",
   fill = "Species")
-ggp2_ovrlp_dotplot <- ggplot(data = peng_dotplot, 
+ggp2_ovrlp_dotplot <- ggplot(data = peng_dotplot,
     aes(x = flipper_length_mm,
         fill = factor(species))) +
   geom_dotplot(
     method = "histodot",
-    binwidth = 1.5,
+    binwidth = 1.35,
     binpositions = "all")
 ggp2_ovrlp_dotplot + 
   labs_ovrlp_dotplot

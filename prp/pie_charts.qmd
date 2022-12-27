@@ -23,7 +23,25 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+# install data packages ----
 install.packages("ggplot2movies")
 install.packages("ggpubr")
 ```
@@ -49,6 +67,7 @@ install.packages("ggpubr")
 #| fig-align: right
 library(ggplot2movies)
 library(ggplot2)
+library(ggpubr)
 penguins_bar <- palmerpenguins::penguins |> 
     filter(!is.na(species))
 movie_pie <- ggplot2movies::movies |>
@@ -64,7 +83,6 @@ labs <- paste0(movie_pie$mpaa, " (",
 labs_pie <- labs(
   title = "Percent MPAA ratings for IMDB movies",
   x = "Percent MPAA rating")
-
 ggp2_pie <- ggpubr::ggpie(movie_pie, 
           x = "perc", label = labs, 
           lab.pos = "in", lab.font = "white",
@@ -120,7 +138,7 @@ library(ggplot2)
 :::
 
 ::: {.column-margin}
-![](../www/imdb.png){fig-align="right" width="80%" height="80%"}
+![](../www/imdb.png){fig-align="right" width="35%" height="35%"}
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -186,8 +204,8 @@ labs_pie <- labs(
 
 ggp2_pie <- ggpubr::ggpie(movie_pie, 
           x = "perc", label = labs, 
-          lab.pos = "in", lab.font = "white",
-          fill = "mpaa", color = "white") + 
+          lab.pos = "in", lab.font = "#ffffff",
+          fill = "mpaa", color = "#ffffff") + 
     theme(legend.position = "none")  
     
 ggp2_pie + 
@@ -215,8 +233,8 @@ labs_pie <- labs(
 
 ggp2_pie <- ggpubr::ggpie(movie_pie, 
           x = "perc", label = labs, 
-          lab.pos = "in", lab.font = "white",
-          fill = "mpaa", color = "white") + 
+          lab.pos = "in", lab.font = "#ffffff",
+          fill = "mpaa", color = "#ffffff") + 
     theme(legend.position = "none")  
     
 ggp2_pie + 

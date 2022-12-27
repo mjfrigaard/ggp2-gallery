@@ -23,7 +23,24 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 15))
 devtools::install_github("wilkox/treemapify")
 install.packages("palmerpenguins")
 ```
@@ -156,11 +173,11 @@ Filter the missing values from `sex`, group the data by `species`, `island`, and
 #| eval: true
 #| echo: true
 treemap_peng <- penguins |> 
-                  select(species, island, sex) |> 
-                  tidyr::drop_na() |> 
-                  group_by(species, island, sex) |>
-  count(species, island, sex) |> 
-  ungroup()
+    dplyr::select(species, island, sex) |>
+    tidyr::drop_na() |>
+    dplyr::group_by(species, island, sex) |>
+    dplyr::count(species, island, sex) |>
+    ungroup()
 glimpse(treemap_peng)
 ```
 :::
@@ -168,7 +185,7 @@ glimpse(treemap_peng)
 
 :::: {.panel-tabset}
 
-### Code
+### Basic Treemap
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **BASIC TREEMAP:**
@@ -196,41 +213,8 @@ Create labels
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_treemap
-#| eval: false
-#| echo: true 
-#| warning: false
-#| message: false
-labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins")
-ggp2_treemap <- ggplot(treemap_peng, 
-       aes(area = n, 
-           fill = sex, 
-           label = sex,
-           subgroup = species,
-           subgroup2 = island)) +
-       treemapify::geom_treemap() +
-       treemapify::geom_treemap_text(
-           place = "bottomright",
-           color = "#282b2d",
-           min.size = 0,
-           alpha = 0.75,
-           fontface = "italic",
-           family = "sans") 
-ggp2_treemap + 
-  labs_treemap
-```
-:::
-
-### Treemap
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**TREEMAP:**
-:::
-
-```{r}
-#| label: create_graph_treemap
 #| eval: true
-#| echo: false
+#| echo: true 
 #| warning: false
 #| message: false
 labs_treemap <- labs(
@@ -253,6 +237,7 @@ ggp2_treemap <- ggplot(treemap_peng,
 ggp2_treemap + 
   labs_treemap
 ```
+:::
 
 ### Subgroup 
 

@@ -23,8 +23,8 @@ website:
           - uni/box_plots.qmd
       - section: "Amounts"
         contents:
-          - amt/grouped_column_graphs.qmd
-          - amt/summarized_column_graphs.qmd
+          - amt/grouped_bar_graphs.qmd
+          - amt/summarized_bar_graphs.qmd
           - amt/overlapping_bar_graphs.qmd
           - amt/waffle_chart.qmd
           - amt/heatmaps.qmd

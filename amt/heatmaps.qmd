@@ -23,8 +23,27 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
-install.packages("fivethirtyeight")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+# install data packages ----
+install.packages("palmerpenguins")
+library(palmerpenguins)
 ```
 
 
@@ -65,7 +84,7 @@ heatmap_ross <- fivethirtyeight::bob_ross |>
   ungroup()
 labs_heatmap_tile <- labs(
   title = "Bob Ross' plants & clouds", 
-  x = "Season", 
+  x = "Episode", 
   y = "Plant & Cloud Objects", 
   fill = "Occurrences")
 ggp2_heatmap_tile <- ggplot(data = heatmap_ross, 
@@ -176,7 +195,7 @@ Add the `geom_tile()`
 #| message: false
 labs_heatmap_tile <- labs(
   title = "Bob Ross' plants & clouds", 
-  x = "Season", 
+  x = "Episode", 
   y = "Plant & Cloud Objects", 
   fill = "Occurrences")
 ggp2_heatmap_tile <- ggplot(data = heatmap_ross, 
@@ -203,7 +222,7 @@ ggp2_heatmap_tile +
 #| message: false
 labs_heatmap_tile <- labs(
   title = "Bob Ross' plants & clouds", 
-  x = "Season", 
+  x = "Episode", 
   y = "Plant & Cloud Objects", 
   fill = "Occurrences")
 ggp2_heatmap_tile <- ggplot(data = heatmap_ross, 
@@ -218,7 +237,7 @@ ggp2_heatmap_tile +
 ::::
 
 
-## More heatmaps!
+## More info
 
 In addition to `geom_tile()`, heatmaps can also be created with the `geom_raster()` function.
 
@@ -249,7 +268,7 @@ Add the `geom_raster()`
 #| message: false
 labs_heatmap_raster <- labs(
   title = "Bob Ross' plants & clouds", 
-  x = "Season", 
+  x = "Episode", 
   y = "Plant/Cloud Object", 
   fill = "Occurrences")
 ggp2_heatmap_raster <- ggplot(data = heatmap_ross, 
@@ -276,7 +295,7 @@ ggp2_heatmap_raster +
 #| message: false
 labs_heatmap_raster <- labs(
   title = "Bob Ross' plants & clouds", 
-  x = "Season", 
+  x = "Episode", 
   y = "Plant/Cloud Object", 
   fill = "Occurrences")
 ggp2_heatmap_raster <- ggplot(data = heatmap_ross, 

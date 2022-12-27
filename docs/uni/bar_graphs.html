@@ -230,12 +230,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../amt/grouped_column_graphs.html" class="sidebar-item-text sidebar-link">Grouped column-graphs</a>
+  <a href="../amt/grouped_bar_graphs.html" class="sidebar-item-text sidebar-link">Grouped bar-graphs</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../amt/summarized_column_graphs.html" class="sidebar-item-text sidebar-link">Summarized column-graphs</a>
+  <a href="../amt/summarized_bar_graphs.html" class="sidebar-item-text sidebar-link">Summarized bar-graphs</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -320,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dist/overlapping_stacked_density_plots.html" class="sidebar-item-text sidebar-link">Overlapping Densities</a>
+  <a href="../dist/overlapping_stacked_density_plots.html" class="sidebar-item-text sidebar-link">Overlapping Density Plot</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -869,9 +869,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sysfonts)</span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># import font</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># extrafont::font_import(</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#     paths = "../assets/Ubuntu/", </span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#     prompt = FALSE)</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>extrafont<span class="sc">::</span><span class="fu">font_import</span>(</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">paths =</span> <span class="st">"../assets/Ubuntu/"</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">prompt =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># add font</span></span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>sysfonts<span class="sc">::</span><span class="fu">font_add</span>(</span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span>  <span class="st">"Ubuntu"</span>, </span>

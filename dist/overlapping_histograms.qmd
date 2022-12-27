@@ -23,9 +23,25 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(base_size = 15))
 install.packages("palmerpenguins")
+library(palmerpenguins)
 ```
 
 
@@ -166,10 +182,13 @@ ggp2_ovrlp_hist +
 
 ::: {style="font-size: 0.85em;"}
 Histograms work by dividing the variable provided to `x` [*into bins and counting the number of observations in each bin.*](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+:::
 
+::: {.column-margin}
 Experiment with different `binwidth`s when comparing distributions across groups. 
 :::
 
+::: {style="font-size: 0.85em;"}
 ```{r}
 #| label: create_graph_ovrlp_hist
 #| eval: true
@@ -187,5 +206,6 @@ ggp2_ovrlp_hist <- ggplot(data = penguins,
 ggp2_ovrlp_hist + 
   labs_ovrlp_hist
 ```
+:::
 
 ::::

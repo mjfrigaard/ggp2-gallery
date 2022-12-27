@@ -23,9 +23,27 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+# install data packages ----
 install.packages("palmerpenguins")
+library(palmerpenguins)
 ```
 
 
@@ -50,19 +68,22 @@ install.packages("palmerpenguins")
 library(palmerpenguins) 
 library(ggplot2)
 penguins_ovrlp <- filter(penguins,
-                  !is.na(sex) & species == "Adelie")
+                      !is.na(species) & 
+                            island == "Dream")
 labs_bar_ovrlp <- labs(
-  title = "Adelie adult foraging penguins",
-  x = "Flipper length (millimeters)", 
-  fill = "Sex")
+  title = "Adult foraging penguins",
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species")
 ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
-          aes(x = flipper_length_mm, fill = sex)) +
+          aes(x = flipper_length_mm, fill = species)) +
                 geom_bar() 
 ggp2_bar_ovrlp + 
   labs_bar_ovrlp
 ```
 
-We can also use bars to look at numeric and categorical variables using `geom_bar()` by setting `fill` argument
+If we'd like to use two set of overlapping bars to display numerical values for different categorical variable levels, we can use the `fill` argument in `geom_bar()` or `geom_col()`
 
 This results in bars differentiated by color and ‘stacked’ on top of each other.
 
@@ -107,7 +128,7 @@ library(ggplot2)
 :::
 
 ::: {style="font-size: 0.85em;"}
-Remove missing `sex` from `penguins` and filter to only `"Adelie"` penguins.
+Remove missing `species` from `penguins` and filter the data to only penguins on `"Dream"` island.
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -116,7 +137,8 @@ Remove missing `sex` from `penguins` and filter to only `"Adelie"` penguins.
 #| eval: true
 #| echo: true
 penguins_ovrlp <- filter(penguins,
-                  !is.na(sex) & species == "Adelie")
+                      !is.na(species) & 
+                            island == "Dream")
 glimpse(penguins_ovrlp)
 ```
 :::
@@ -134,7 +156,7 @@ glimpse(penguins_ovrlp)
 
 Create labels
 
-Map `flipper_length_mm` to the `x` and `sex` to `fill`
+Map `flipper_length_mm` to the `x` and `species` to `fill`
 
 Add the `geom_bar()` layer
 
@@ -148,11 +170,13 @@ Add the `geom_bar()` layer
 #| warning: false
 #| message: false
 labs_bar_ovrlp <- labs(
-  title = "Adelie adult foraging penguins",
-  x = "Flipper length (millimeters)", 
-  fill = "Sex")
+  title = "Adult foraging penguins",
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species")
 ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
-          aes(x = flipper_length_mm, fill = sex)) +
+          aes(x = flipper_length_mm, fill = species)) +
                 geom_bar() 
 ggp2_bar_ovrlp + 
   labs_bar_ovrlp
@@ -172,11 +196,13 @@ ggp2_bar_ovrlp +
 #| warning: false
 #| message: false
 labs_bar_ovrlp <- labs(
-  title = "Adelie adult foraging penguins",
-  x = "Flipper length (millimeters)", 
-  fill = "Sex")
+  title = "Adult foraging penguins",
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species")
 ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
-          aes(x = flipper_length_mm, fill = sex)) +
+          aes(x = flipper_length_mm, fill = species)) +
                 geom_bar() 
 ggp2_bar_ovrlp + 
   labs_bar_ovrlp
@@ -198,7 +224,7 @@ ggp2_bar_ovrlp +
 :::
 
 ::: {style="font-size: 0.85em;"}
-Remove any missing values from `sex` and `species` in the `penguins` data.
+We'll be using the `penguins_ovrlp` dataset from above.
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -206,9 +232,7 @@ Remove any missing values from `sex` and `species` in the `penguins` data.
 #| label: data_code_bar_penguins_dodge
 #| eval: true
 #| echo: true
-penguins_dodge <- filter(penguins,
-                    !is.na(sex) & !is.na(species))
-glimpse(penguins_dodge)
+glimpse(penguins_ovrlp)
 ```
 :::
 
@@ -246,13 +270,15 @@ Inside the `geom_bar()` function, set `position` to `"dodge"`
 #| message: false
 labs_bar_dodge <- labs(
   title = "Adult foraging penguins",
-  subtitle = "position = 'dodge'",
-  x = "Penguin Species",
-  fill = "Island")
-
-ggp2_bar_dodge <- ggplot(data = penguins_dodge,
-                    aes(x = species, group = island, 
-                        fill = island)) +
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species",
+  caption = "position = 'dodge'")
+ggp2_bar_dodge <- ggplot(data = penguins_ovrlp,
+                    aes(x = flipper_length_mm, 
+                        group = species, 
+                        fill = species)) +
                     geom_bar(
                         position = "dodge")
 ggp2_bar_dodge +
@@ -295,14 +321,17 @@ Inside `geom_bar()`, set `position` to `"dodge2"`
 #| message: false
 labs_bar_dodge2 <- labs(
   title = "Adult foraging penguins",
-  subtitle = "position = 'dodge2'",
-  x = "Species",
-  fill = "Island")
-
-ggp2_bar_dodge2 <- ggplot(data = penguins_dodge,
-                      aes(x = species,
-                        fill = island)) +
-                      geom_bar(position = "dodge2")
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species",
+  caption = "position = 'dodge2'")
+ggp2_bar_dodge2 <- ggplot(data = penguins_ovrlp,
+                    aes(x = flipper_length_mm, 
+                        group = species, 
+                        fill = species)) +
+                    geom_bar(
+                        position = "dodge2")
 ggp2_bar_dodge2 +
   labs_bar_dodge2
 ```

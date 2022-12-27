@@ -23,8 +23,24 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 15))
 install.packages("palmerpenguins")
 ```
 
@@ -179,6 +195,7 @@ ggp2_grp_boxplots +
 When a categorical variable is supplied, the plot will contain a box for each level or group.
 :::
 
+::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: create_graph_grp_boxplots
 #| eval: true
@@ -199,5 +216,77 @@ ggp2_grp_boxplots <- ggplot(data = peng_box,
 ggp2_grp_boxplots + 
   labs_grp_boxplots
 ```
+:::
+
+::::
+
+## More info 
+
+:::: {.panel-tabset}
+
+### Notches 
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**NOTCHES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Add notches to the box-plot using the `notch = TRUE` and `notchwidth` arguments. 
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: notches_boxplots
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ggp2_grp_box_notch <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_boxplot(
+      notch = TRUE, 
+      notchwidth = 0.85, 
+      alpha = 2/3, 
+      show.legend = FALSE) 
+ggp2_grp_box_notch + 
+    labs_grp_boxplots
+```
+:::
+
+### Outliers 
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**OUTLIERS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Box-plots display outliers using points, and we can change the color these using the `outlier.colour` argument. Inside the `geom_boxplot()`, we map `island` to `color` and set `outlier.colour` to `NULL`:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: outliers_boxplots
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ggp2_grp_box_outliers <- ggplot(data = peng_box,
+       aes(x = island, 
+           y = bill_length_mm,
+           fill = island)) +
+  geom_boxplot(aes(color = island),
+      outlier.colour = NULL, 
+      outlier.size = 2,
+      notch = TRUE, 
+      notchwidth = 0.85, 
+      alpha = 2/3, 
+      show.legend = FALSE) 
+ggp2_grp_box_outliers + 
+    labs_grp_boxplots
+```
+:::
 
 ::::

@@ -23,9 +23,26 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 15))
 install.packages("palmerpenguins")
+library(palmerpenguins)
 ```
 
 
@@ -49,7 +66,7 @@ install.packages("palmerpenguins")
 #| fig-align: right
 library(palmerpenguins) 
 library(ggplot2)
-peng_density <- filter(penguins, !is.na(sex))
+peng_density <- filter(palmerpenguins::penguins, !is.na(sex))
 labs_fill_density <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
@@ -114,7 +131,7 @@ Remove missing `sex` from the `penguins` data
 #| label: data_code_fill_density
 #| eval: true
 #| echo: true
-peng_density <- filter(penguins, !is.na(sex))
+peng_density <- filter(palmerpenguins::penguins, !is.na(sex))
 glimpse(peng_density)
 ```
 :::

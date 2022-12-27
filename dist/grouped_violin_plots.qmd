@@ -23,8 +23,24 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 15))
 install.packages("palmerpenguins")
 ```
 
@@ -175,10 +191,11 @@ ggp2_grp_violin +
 Violin plots can allow us to compare the 'center' and 'spread' of continuous variables across categorical groups.
 :::
 
+::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: create_graph_grp_violin
 #| eval: true
-#| echo: false
+#| echo: true
 #| warning: false
 #| message: false
 labs_grp_violin <- labs(
@@ -195,5 +212,121 @@ ggp2_grp_violin <- ggplot(data = peng_violin,
 ggp2_grp_violin + 
   labs_grp_violin
 ```
+:::
+
+::::
+
+## More info
+
+:::: {.panel-tabset}
+
+### Quartiles
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**draw_quantiles:**
+:::
+
+::: {.column-margin}
+Change the shape of the line with [`linetype` and `linewidth`](https://ggplot2.tidyverse.org/reference/geom_violin.html#aesthetics).
+:::
+
+::: {style="font-size: 0.85em;"}
+We can include lines for the 25th, 50th, and 75th quartiles using the `draw_quantiles` argument. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: grp_violin_draw_quantiles
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ggplot(data = peng_violin,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75),
+      alpha = 1/2, 
+      linewidth = 0.5, 
+      show.legend = FALSE) 
+```
+:::
+
+### Kernel
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**kernel:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The [`kernel` argument](https://ggplot2.tidyverse.org/reference/geom_violin.html#arguments) let's us change the "*kernel density estimate*" used to create the violin shape. The possible [kernel density estimates](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/density.html) are `"gaussian"`, `"epanechnikov"`, `"rectangular"`, `"triangular"`, `"biweight"`, `"cosine"`, and `"optcosine"` 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: grp_violin_kernel
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ggplot(data = peng_violin,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_violin(alpha = 1/2, 
+      linewidth = 0.5, 
+      kernel = "rectangular",
+      show.legend = FALSE) 
+```
+:::
+
+### Bandwidth
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**bw:**
+:::
+
+::: {style="font-size: 0.85em;"}
+We can directly adjust the shape of the violin with the [`bw` argument](https://ggplot2.tidyverse.org/reference/geom_violin.html#arguments), which is the *standard deviation of the smoothing kernel.* The [`trim` argument](https://ggplot2.tidyverse.org/reference/geom_violin.html#arguments) *trim(s) the tails of the violins to the range of the data.*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: grp_violin_bw
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
+# bw of 0.5
+grp_violin_bw0p5 <- ggplot(data = peng_violin,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_violin(bw = 0.5, 
+      alpha = 2/3, 
+      trim = TRUE,
+      show.legend = FALSE) 
+grp_violin_bw0p5 + 
+    labs_grp_violin + 
+    labs(caption = "bw = 0.5")
+# bw of 4.5
+grp_violin_bw4p5 <- ggplot(data = peng_violin,
+       aes(x = island, 
+           y = bill_length_mm, 
+        fill = island)) +
+  geom_violin(bw = 4.5, 
+      alpha = 2/3, 
+      trim = TRUE,
+      show.legend = FALSE) 
+grp_violin_bw4p5 + 
+    labs_grp_violin + 
+    labs(caption = "bw = 4.5")
+```
+:::
+
+
+
 
 ::::

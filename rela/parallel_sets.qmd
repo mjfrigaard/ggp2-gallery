@@ -23,12 +23,24 @@ options(
   dplyr.print_min = 6, 
   dplyr.print_max = 6, 
   scipen = 9999)
-ggplot2::theme_set(
-    ggplot2::theme_void(base_size = 16) + 
-        theme(axis.title.y = element_text(size = 12), 
-              axis.text.y = element_text(size = 10),
-              axis.text.x = element_text(size = 10)))
-install.packages("ggplot2movies")
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 14))
 install.packages("palmerpenguins")
 devtools::install_github("thomasp85/ggforce")
 ```
@@ -86,8 +98,7 @@ ggp2_psets_labs <- ggp2_psets_axes +
   scale_x_continuous(
         breaks = c(1, 2, 3), 
         labels = c("Island", "Species", "Sex")) +
-  theme(legend.position = "bottom", 
-        axis.title.x = element_blank())
+  theme(axis.title.x = element_blank())
 
 ggp2_psets_labs +
     labs_psets
@@ -188,7 +199,7 @@ For labeling, adjust the `size` manually and set the `color` to something that s
 
 Manually label the `x` axis with `scale_x_continuous()`, setting the `breaks` and `labels` to the variable names in the `peng_wide` dataset
 
-Finally, move the legend to the bottom of the graph with `theme(legend.position =)` and remove the `x` title with `axis.title.x = element_blank()`
+Finally, remove the `x` title with `axis.title.x = element_blank()`
 
 :::
 
@@ -223,8 +234,7 @@ ggp2_psets_labs <- ggp2_psets_axes +
   scale_x_continuous(
         breaks = c(1, 2, 3), 
         labels = c("Island", "Species", "Sex")) +
-  theme(legend.position = "bottom", 
-        axis.title.x = element_blank())
+  theme(axis.title.x = element_blank())
 
 ggp2_psets_labs +
     labs_psets
@@ -267,8 +277,7 @@ ggp2_psets_labs <- ggp2_psets_axes +
   scale_x_continuous(
         breaks = c(1, 2, 3), 
         labels = c("Island", "Species", "Sex")) +
-  theme(legend.position = "bottom", 
-        axis.title.x = element_blank())
+  theme(axis.title.x = element_blank())
 
 ggp2_psets_labs +
     labs_psets
@@ -283,7 +292,7 @@ ggp2_psets_labs +
 ::: {style="font-size: 0.85em;"}
 If the categories have long names, use the `angle`, `nudge_x`/`nudge_y` and `hjust`/`vjust` in `geom_parallel_sets_labels()` to adjust the size, location, and color of the labels. 
 
-Manually setting the `limits` of the `x` axis in `scale_x_continuous()` and moving the legend with `theme(legend.position = )` will also give more room to the labels. 
+Manually setting the `limits` of the `x` axis in `scale_x_continuous()` will also give more room for the labels. 
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -296,7 +305,7 @@ Manually setting the `limits` of the `x` axis in `scale_x_continuous()` and movi
 ggp2_psets_axes + 
   geom_parallel_sets_labels(
       size = 3.2, 
-      colour = 'black',
+      colour = '#000000',
       angle = 0, 
       nudge_x = 0.1, 
       hjust = 0) + 
@@ -304,8 +313,7 @@ ggp2_psets_axes +
         limits = c(0.9, 3.2),
         breaks = c(1, 2, 3), 
         labels = c("Island", "Species", "Sex")) + 
-  theme(legend.position = "bottom", 
-        axis.title.x = element_blank()) + 
+  theme(axis.title.x = element_blank()) + 
     labs_psets
 ```
 :::
