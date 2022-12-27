@@ -1,5 +1,9 @@
 ---
 title: "Grouped bar-graphs"
+format:
+  html:
+    toc: true
+    code-fold: show
 execute:
   warning: false
   message: false
