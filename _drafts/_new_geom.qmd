@@ -51,7 +51,7 @@ install.packages("palmerpenguins")
 :::: {.callout-tip collapse="false" icon=false}
 ## Geom info
 ::: {style="font-size: 1.25em; color: #38B44A;"}
-**When would I use this geom?**
+**What does this geom do?**
 :::
 
 <br>
@@ -65,9 +65,8 @@ install.packages("palmerpenguins")
 #| out-height: '60%'
 #| out-width: '60%'
 #| fig-align: right
+install.packages("palmerpenguins")
 library(palmerpenguins) 
-library(ggplot2movies)
-library(fivethirtyeight)
 library(ggplot2)
 ```
 
@@ -105,21 +104,19 @@ Install packages.
 ```
 :::
 
-### Data
+### Plot Data
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**DATA:**
+**PLOT DATA:**
 :::
 
 <!-- 
 ::: {.column-margin}
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="70%" height="70%"}
 ![](../www/538.png){fig-align="right" width="15%" height="15%"}
 ![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
 :::
 -->
-
-
 
 ::: {style="font-size: 0.85em;"}
 <!-- Description of data -->
@@ -136,45 +133,74 @@ Install packages.
 :::
 ::::
 
+
+::::: {.callout-note collapse="true" icon=false}
+## GEOM_BUILD
+
 :::: {.panel-tabset}
 
-### Code
+### Build
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**BUILD:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: build_
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# ggp2_bar_x <- ggp2_bar_base + 
+#     geom_bar(mapping = aes(x = island))
+# bld_bar_x <- ggplot2::ggplot_build(ggp2_bar_x)
+# names(bld_bar_x)
+# bar_x_data <- bld_bar_x[["data"]][[1]]
+# glimpse(bar_x_data)
+```
+:::
+
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
 :::
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
-
+Extract the data from the `ggplot2` object.
 
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_
-#| eval: false
-#| echo: true 
+#| label: data_
+#| eval: true
+#| echo: true
 #| warning: false
 #| message: false
-
+# select(bar_x_data, fill)
 ```
 :::
 
-### Graph
+### Plot
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
+**PLOT:**
 :::
 
+::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: create_graph_
+#| label: plot_
 #| eval: true
-#| echo: false
+#| echo: true
 #| warning: false
 #| message: false
-
+# bld_bar_x[["plot"]]
 ```
+:::
 
 ::::
+:::::

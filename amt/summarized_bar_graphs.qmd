@@ -94,7 +94,7 @@ ggp2_sum_col +
     labs_sum_col
 ```
 
-`geom_col()` allows us to display numerical variables across levels of a categorical variable.
+`geom_col()` allows us to display numerical variables across levels of a categorical variable. Summarized bar-graphs assume the summary value (i.e., the variable that the length of the bars will be derived from) is contained in the variable mapped to the `x` or `y` aesthetic. 
 
 ::::
 
