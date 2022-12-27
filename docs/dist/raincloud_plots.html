@@ -737,9 +737,17 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </section>
 <section id="even-more-info" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="even-more-info">Even more info</h2>
-<div class="panel-tabset page-columns page-full">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>More resources:</p>
+<ol type="1">
+<li><p>Raincloud plots: a multi-platform tool for robust data visualization. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/">1</a></p></li>
+<li><p>Shape and point sizes in R. <a href="https://r-graphics.org/recipe-scatter-shapes">2</a></p></li>
+<li><p>RainCloudPlots package on GitHub. <a href="https://github.com/RainCloudPlots/RainCloudPlots">3</a></p></li>
+</ol>
+</div></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">More examples</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">#TidyTuesday example</a></li></ul>
-<div class="tab-content page-columns page-full">
+<div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div style="font-size: 0.85em;">
 <p>Cédric Scherer covered raincloud plots in <a href="https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/">this great write-up</a> for <a href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday</a>.</p>
@@ -766,16 +774,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div>
-<div id="tabset-4-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>More resources:</p>
-<ol type="1">
-<li><p>Raincloud plots: a multi-platform tool for robust data visualization. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/">1</a></p></li>
-<li><p>Shape and point sizes in R.<a href="https://r-graphics.org/recipe-scatter-shapes">2</a></p></li>
-<li><p>RainCloudPlots package on GitHub<a href="https://github.com/RainCloudPlots/RainCloudPlots">3</a></p></li>
-</ol>
-</div></div><div style="font-size: 0.90em; color: #1e83c8;">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>Polished Graph</strong></p>
 </div>
 <div style="font-size: 0.85em;">
@@ -1495,54 +1495,54 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-457"><a href="#cb11-457" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-458"><a href="#cb11-458" aria-hidden="true" tabindex="-1"></a><span class="fu">## Even more info</span></span>
 <span id="cb11-459"><a href="#cb11-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-460"><a href="#cb11-460" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
-<span id="cb11-461"><a href="#cb11-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-462"><a href="#cb11-462" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb11-463"><a href="#cb11-463" aria-hidden="true" tabindex="-1"></a>**Original Post**</span>
-<span id="cb11-464"><a href="#cb11-464" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb11-465"><a href="#cb11-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-466"><a href="#cb11-466" aria-hidden="true" tabindex="-1"></a><span class="fu">### More examples</span></span>
-<span id="cb11-467"><a href="#cb11-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-468"><a href="#cb11-468" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb11-469"><a href="#cb11-469" aria-hidden="true" tabindex="-1"></a>Cédric Scherer covered raincloud plots in <span class="co">[</span><span class="ot">this great write-up</span><span class="co">](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/)</span> for <span class="co">[</span><span class="ot">#TidyTuesday</span><span class="co">](https://github.com/rfordatascience/tidytuesday)</span>.</span>
-<span id="cb11-470"><a href="#cb11-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-471"><a href="#cb11-471" aria-hidden="true" tabindex="-1"></a>Cédric also covers some alternative methods for plotting the points (I particularly like using bands instead of points when displaying the rainclouds vertically).</span>
-<span id="cb11-472"><a href="#cb11-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-473"><a href="#cb11-473" aria-hidden="true" tabindex="-1"></a>We can switch to this layout by applying <span class="in">`ggplot2::coord_flip()`</span> to the <span class="in">`ggp2_stat_halfeye`</span> layer, then adding <span class="in">`geom_point()`</span> with <span class="in">`shape`</span> set to <span class="in">`95`</span></span>
+<span id="cb11-460"><a href="#cb11-460" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
+<span id="cb11-461"><a href="#cb11-461" aria-hidden="true" tabindex="-1"></a>More resources:   </span>
+<span id="cb11-462"><a href="#cb11-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-463"><a href="#cb11-463" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Raincloud plots: a multi-platform tool for robust data visualization. <span class="co">[</span><span class="ot">1</span><span class="co">](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)</span></span>
+<span id="cb11-464"><a href="#cb11-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-465"><a href="#cb11-465" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Shape and point sizes in R. <span class="co">[</span><span class="ot">2</span><span class="co">](https://r-graphics.org/recipe-scatter-shapes)</span></span>
+<span id="cb11-466"><a href="#cb11-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-467"><a href="#cb11-467" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>RainCloudPlots package on GitHub. <span class="co">[</span><span class="ot">3</span><span class="co">](https://github.com/RainCloudPlots/RainCloudPlots)</span></span>
+<span id="cb11-468"><a href="#cb11-468" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-469"><a href="#cb11-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-470"><a href="#cb11-470" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
+<span id="cb11-471"><a href="#cb11-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-472"><a href="#cb11-472" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb11-473"><a href="#cb11-473" aria-hidden="true" tabindex="-1"></a>**Original Post**</span>
 <span id="cb11-474"><a href="#cb11-474" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb11-475"><a href="#cb11-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-476"><a href="#cb11-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-477"><a href="#cb11-477" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb11-480"><a href="#cb11-480" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-481"><a href="#cb11-481" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_raincloud2_point_lines</span></span>
-<span id="cb11-482"><a href="#cb11-482" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb11-483"><a href="#cb11-483" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb11-484"><a href="#cb11-484" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb11-485"><a href="#cb11-485" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb11-486"><a href="#cb11-486" aria-hidden="true" tabindex="-1"></a>ggp2_stat_halfeye <span class="sc">+</span> </span>
-<span id="cb11-487"><a href="#cb11-487" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb11-488"><a href="#cb11-488" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(</span>
-<span id="cb11-489"><a href="#cb11-489" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">95</span>,</span>
-<span id="cb11-490"><a href="#cb11-490" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span>,</span>
-<span id="cb11-491"><a href="#cb11-491" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">2</span></span>
-<span id="cb11-492"><a href="#cb11-492" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb11-493"><a href="#cb11-493" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
-<span id="cb11-494"><a href="#cb11-494" aria-hidden="true" tabindex="-1"></a>    labs_raincloud_2</span>
-<span id="cb11-495"><a href="#cb11-495" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-496"><a href="#cb11-496" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb11-497"><a href="#cb11-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-498"><a href="#cb11-498" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-499"><a href="#cb11-499" aria-hidden="true" tabindex="-1"></a><span class="fu">### #TidyTuesday example</span></span>
-<span id="cb11-500"><a href="#cb11-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-501"><a href="#cb11-501" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
-<span id="cb11-502"><a href="#cb11-502" aria-hidden="true" tabindex="-1"></a>More resources:   </span>
-<span id="cb11-503"><a href="#cb11-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-504"><a href="#cb11-504" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Raincloud plots: a multi-platform tool for robust data visualization. <span class="co">[</span><span class="ot">1</span><span class="co">](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)</span></span>
-<span id="cb11-505"><a href="#cb11-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-506"><a href="#cb11-506" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Shape and point sizes in R.<span class="co">[</span><span class="ot">2</span><span class="co">](https://r-graphics.org/recipe-scatter-shapes)</span></span>
+<span id="cb11-476"><a href="#cb11-476" aria-hidden="true" tabindex="-1"></a><span class="fu">### More examples</span></span>
+<span id="cb11-477"><a href="#cb11-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-478"><a href="#cb11-478" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb11-479"><a href="#cb11-479" aria-hidden="true" tabindex="-1"></a>Cédric Scherer covered raincloud plots in <span class="co">[</span><span class="ot">this great write-up</span><span class="co">](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/)</span> for <span class="co">[</span><span class="ot">#TidyTuesday</span><span class="co">](https://github.com/rfordatascience/tidytuesday)</span>.</span>
+<span id="cb11-480"><a href="#cb11-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-481"><a href="#cb11-481" aria-hidden="true" tabindex="-1"></a>Cédric also covers some alternative methods for plotting the points (I particularly like using bands instead of points when displaying the rainclouds vertically).</span>
+<span id="cb11-482"><a href="#cb11-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-483"><a href="#cb11-483" aria-hidden="true" tabindex="-1"></a>We can switch to this layout by applying <span class="in">`ggplot2::coord_flip()`</span> to the <span class="in">`ggp2_stat_halfeye`</span> layer, then adding <span class="in">`geom_point()`</span> with <span class="in">`shape`</span> set to <span class="in">`95`</span></span>
+<span id="cb11-484"><a href="#cb11-484" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-485"><a href="#cb11-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-486"><a href="#cb11-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-487"><a href="#cb11-487" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb11-490"><a href="#cb11-490" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-491"><a href="#cb11-491" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_raincloud2_point_lines</span></span>
+<span id="cb11-492"><a href="#cb11-492" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb11-493"><a href="#cb11-493" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb11-494"><a href="#cb11-494" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb11-495"><a href="#cb11-495" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb11-496"><a href="#cb11-496" aria-hidden="true" tabindex="-1"></a>ggp2_stat_halfeye <span class="sc">+</span> </span>
+<span id="cb11-497"><a href="#cb11-497" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb11-498"><a href="#cb11-498" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(</span>
+<span id="cb11-499"><a href="#cb11-499" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">95</span>,</span>
+<span id="cb11-500"><a href="#cb11-500" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb11-501"><a href="#cb11-501" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">2</span></span>
+<span id="cb11-502"><a href="#cb11-502" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb11-503"><a href="#cb11-503" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb11-504"><a href="#cb11-504" aria-hidden="true" tabindex="-1"></a>    labs_raincloud_2</span>
+<span id="cb11-505"><a href="#cb11-505" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-506"><a href="#cb11-506" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb11-507"><a href="#cb11-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-508"><a href="#cb11-508" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>RainCloudPlots package on GitHub<span class="co">[</span><span class="ot">3</span><span class="co">](https://github.com/RainCloudPlots/RainCloudPlots)</span></span>
-<span id="cb11-509"><a href="#cb11-509" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-508"><a href="#cb11-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-509"><a href="#cb11-509" aria-hidden="true" tabindex="-1"></a><span class="fu">### #TidyTuesday example</span></span>
 <span id="cb11-510"><a href="#cb11-510" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-511"><a href="#cb11-511" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
 <span id="cb11-512"><a href="#cb11-512" aria-hidden="true" tabindex="-1"></a>**Polished Graph**</span>

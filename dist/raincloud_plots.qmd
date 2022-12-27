@@ -435,6 +435,16 @@ ggp2_jitter +
 
 ## Even more info
 
+::: {.column-margin}
+More resources:   
+
+1. Raincloud plots: a multi-platform tool for robust data visualization. [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)
+
+2. Shape and point sizes in R. [2](https://r-graphics.org/recipe-scatter-shapes)
+
+3. RainCloudPlots package on GitHub. [3](https://github.com/RainCloudPlots/RainCloudPlots)
+:::
+
 :::: {.panel-tabset}
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
@@ -473,16 +483,6 @@ ggplot2::geom_point(
 
 
 ### #TidyTuesday example
-
-::: {.column-margin}
-More resources:   
-
-1. Raincloud plots: a multi-platform tool for robust data visualization. [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)
-
-2. Shape and point sizes in R.[2](https://r-graphics.org/recipe-scatter-shapes)
-
-3. RainCloudPlots package on GitHub[3](https://github.com/RainCloudPlots/RainCloudPlots)
-:::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **Polished Graph**
