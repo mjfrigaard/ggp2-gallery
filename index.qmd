@@ -74,7 +74,7 @@ library(tidyverse)
 ***So many penguins!***
 :::
 
-To improve reproducibility, the majority of the graphs are built using the `palmerpenguins::penguins` data. : 
+To improve reproducibility, the majority of the graphs are built using the `palmerpenguins::penguins` data. 
 
 ### `penguins`
 
