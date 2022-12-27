@@ -52,7 +52,7 @@ Comparing distributions across groups with `ggplot2` (and friends!)
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Overlapping histograms allow us to compare distributions across the groups of a categorical (or ordinal) variable.
@@ -183,7 +183,7 @@ ggp2_ovrlp_hist +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Overlapping frequency polygons are similar to overlapping histograms--they allow us to compare distributions of a continuous variable across the levels of a categorical variable.
@@ -310,7 +310,7 @@ ggp2_ovrlp_freq_poly +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 We can use dot-plots to compare distributions of a continuous variable across the levels of a categorical variable, but we need to adjust the way the dots are displayed. 
@@ -451,7 +451,7 @@ ggp2_ovrlp_dotplot +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 We can also use smaller dots (or points) to show the spread of values for a particular variable with bee-swarm plots
@@ -592,7 +592,7 @@ ggp2_beeswarm +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 The `geom_density()` creates a [*smoothed version of the histogram*](https://ggplot2.tidyverse.org/reference/geom_density.html) and allows us to compare the distributions of a continuous variable across the levels of a categorical variable.
@@ -803,7 +803,7 @@ ggp2_stack_density +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 If we want to plot density curves but retain the interpretability of the axes, consider comparing multiple distributions using the [`ggridges` package](https://wilkelab.org/ggridges/).
@@ -942,7 +942,7 @@ ggp2_ridges +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Grouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
@@ -1079,7 +1079,7 @@ ggp2_grp_boxplots +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 A ‘violin plot’ is a variation of a density or ridgeline plot,  where the distribution is plotted symmetrically creating a two-sided, smoothed distribution.
@@ -1214,7 +1214,7 @@ ggp2_grp_violin +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 

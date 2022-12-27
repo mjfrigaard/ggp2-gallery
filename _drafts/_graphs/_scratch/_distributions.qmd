@@ -222,7 +222,7 @@ with `ggplot2`
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -351,7 +351,7 @@ ggp2_ovrlp_hist +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -486,7 +486,7 @@ ggp2_ovrlp_freq_poly +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -630,7 +630,7 @@ ggp2_ovrlp_dotplot +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -780,7 +780,7 @@ ggp2_beeswarm +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1094,7 +1094,7 @@ ggp2_ovrlp + ggp2_stack +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1226,7 +1226,7 @@ ggp2_ridges +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1365,7 +1365,7 @@ ggp2_grp_boxplots +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1497,7 +1497,7 @@ ggp2_grp_violin +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>

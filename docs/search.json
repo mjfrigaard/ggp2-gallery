@@ -11,7 +11,7 @@
     "href": "amt/overlapping_bar_graphs.html",
     "title": "Overlapping bar-graphs",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nIf we’d like to use two set of overlapping bars to display numerical values for different categorical variable levels, we can use the fill argument in geom_bar() or geom_col()\nThis results in bars differentiated by color and ‘stacked’ on top of each other."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nIf we’d like to use two set of overlapping bars to display numerical values for different categorical variable levels, we can use the fill argument in geom_bar() or geom_col()\nThis results in bars differentiated by color and ‘stacked’ on top of each other."
   },
   {
     "objectID": "amt/overlapping_bar_graphs.html#side-to-side-bar-graphs",
@@ -25,7 +25,7 @@
     "href": "amt/heatmaps.html",
     "title": "Heatmaps",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nHeatmaps display quantitative values across an intersection of two categorical (or discrete) variables.\nThe intersecting cells contain variations of color saturation (i.e., the grade of purity or vividness) to represent the numerical values between groups."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nHeatmaps display quantitative values across an intersection of two categorical (or discrete) variables.\nThe intersecting cells contain variations of color saturation (i.e., the grade of purity or vividness) to represent the numerical values between groups."
   },
   {
     "objectID": "amt/heatmaps.html#more-info",
@@ -39,7 +39,7 @@
     "href": "amt/grouped_bar_graphs.html",
     "title": "Grouped bar-graphs",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nGrouped bar-graphs display calculated statistical measures for a numerical variable across the levels of a second categorical variable. Color is used to make comparisons and distinguish between groups (or levels) of the categorical variable.\nIn ggplot2, we can create grouped bar-graphs with two geoms: geom_bar() and geom_col()\n\ngeom_bar() will map a categorical variable to the x or y and display counts for the discrete levels (see stat_count() for more info)\n\ngeom_col() will map both x and y aesthetics, and is used when we want to display numerical/quantitative values across the levels of a categorical variable, but these values have been created in their own column (see stat_identity() for more info)"
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nGrouped bar-graphs display calculated statistical measures for a numerical variable across the levels of a second categorical variable. Color is used to make comparisons and distinguish between groups (or levels) of the categorical variable.\nIn ggplot2, we can create grouped bar-graphs with two geoms: geom_bar() and geom_col()\n\ngeom_bar() will map a categorical variable to the x or y and display counts for the discrete levels (see stat_count() for more info)\n\ngeom_col() will map both x and y aesthetics, and is used when we want to display numerical/quantitative values across the levels of a categorical variable, but these values have been created in their own column (see stat_identity() for more info)"
   },
   {
     "objectID": "amt/grouped_bar_graphs.html#more-info",
@@ -67,7 +67,7 @@
     "href": "dist/bee_swarm_plots.html",
     "title": "Bee-swarm Plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nWe can also use smaller dots (or points) to show the spread of values for a particular variable with bee-swarm plots\nInstall the ggbeeswarm package."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nWe can also use smaller dots (or points) to show the spread of values for a particular variable with bee-swarm plots\nInstall the ggbeeswarm package."
   },
   {
     "objectID": "dist/bee_swarm_plots.html#more-info",
@@ -81,7 +81,7 @@
     "href": "dist/grouped_violin_plots.html",
     "title": "Grouped Violin-Plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nA ‘violin plot’ is a variation of a density or ridgeline plot, where the distribution is plotted symmetrically, creating a two-sided, smoothed distribution."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nA ‘violin plot’ is a variation of a density or ridgeline plot, where the distribution is plotted symmetrically, creating a two-sided, smoothed distribution."
   },
   {
     "objectID": "dist/grouped_violin_plots.html#more-info",
@@ -95,7 +95,7 @@
     "href": "dist/grouped_box_plots.html",
     "title": "Grouped Box-plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nGrouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.\nThe five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nGrouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.\nThe five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges."
   },
   {
     "objectID": "dist/grouped_box_plots.html#more-info",
@@ -123,7 +123,7 @@
     "href": "dist/raincloud_plots.html",
     "title": "Raincloud Plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRaincloud plots are a combination of density graph, a box-plot, and a beeswarm (or jitter) plot, and are used to compare distributions of quantitative/numerical variables across the levels of a categorical (or discrete) grouping variable.\nThe user-written package for creating raincloud plots (raincloudplots), or they can be built using the ggdist and package and geoms from ggplot2."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRaincloud plots are a combination of density graph, a box-plot, and a beeswarm (or jitter) plot, and are used to compare distributions of quantitative/numerical variables across the levels of a categorical (or discrete) grouping variable.\nThe user-written package for creating raincloud plots (raincloudplots), or they can be built using the ggdist and package and geoms from ggplot2."
   },
   {
     "objectID": "dist/raincloud_plots.html#raincloudplots",
@@ -158,7 +158,7 @@
     "href": "dist/overlapping_stacked_density_plots.html",
     "title": "Overlapping Density Plot",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nDensity plots are smoothed version(s) of histogram(s). They can are great for comparing the distributions of a continuous variable across the levels of a categorical variable.\ngeom_density() creates a kernel density estimate. The default position argument is \"identity\", which takes the data as is. However, we can change position to \"stack\" to display overlapping distributions."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nDensity plots are smoothed version(s) of histogram(s). They can are great for comparing the distributions of a continuous variable across the levels of a categorical variable.\ngeom_density() creates a kernel density estimate. The default position argument is \"identity\", which takes the data as is. However, we can change position to \"stack\" to display overlapping distributions."
   },
   {
     "objectID": "dist/overlapping_stacked_density_plots.html#more-info",
@@ -249,7 +249,14 @@
     "href": "uni/bar_graphs.html",
     "title": "Bar-graphs",
     "section": "",
-    "text": "PackagesData\n\n\n\nPACKAGES:\n\n\nInstall packages.\n\n\n\n\nCode\ninstall.packages(\"palmerpenguins\")\nlibrary(palmerpenguins) \nlibrary(ggplot2)\n\n\n\n\n\n\nDATA:\n\n\n\n\n\n\nArtwork by @allison_horst\n\n\n\nFilter the missing values from species in the palmerpenguins::penguins data and store it in penguins_bar.\n\n\n\n\nCode\npenguins_bar <- palmerpenguins::penguins |> \n    dplyr::filter(!is.na(species))\nglimpse(penguins_bar)\n\n\nRows: 344\nColumns: 8\n$ species           <fct> Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            <fct> Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               <fct> male, female, female, NA, female, male, female, male…\n$ year              <int> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n\n\n\n\n\n\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap species to the x axis\nMap species to the fill aesthetic inside the aes() of geom_bar()\nRemove the legend with show.legend = FALSE\n\n\n\n\nCode\nlabs_bar <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Species\", y = \"Count\", \n  fill = \"Species\")\nggp2_bar <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    geom_bar(aes(fill = species), \n        show.legend = FALSE)\nggp2_bar +\n  labs_bar\n\n\n\n\n\n\nGRAPH:"
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nA bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!).\nBar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each level value.\nIn ggplot2, bar charts can be built using geom_bar() (see also: geom_col())."
+  },
+  {
+    "objectID": "uni/bar_graphs.html#more-info",
+    "href": "uni/bar_graphs.html#more-info",
+    "title": "Bar-graphs",
+    "section": "More info",
+    "text": "More info\n\nstat = \"count\"geom_col()\n\n\n\nstat_count():\n\n\nThe default stat argument in geom_bar() is set to \"count\", which counts the number of cases at each x position, so it’s ideal for categorical variables (or factors). The stat_count() function can also be used to create bar-graphs using the geom argument.\nThe link between geom_[geom_name](stat = \"[stat_name]\") and stat_[stat_name](geom = \"[geom_name]\") is shown below:\n\n\n\n\nCode\nggp2_geom_bar <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    geom_bar(aes(fill = species), \n        stat = \"count\") + \n    labs(title = \"geom_bar(stat = 'count')\")\nggp2_geom_bar\nggp2_stat_count <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    stat_count(aes(fill = species), \n        geom = \"bar\") + \n    labs(title = \"stat_count(geom = 'bar')\")\nggp2_stat_count\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_col:\n\n\nTo create a bar-graph with geom_col(), the count variable needs to be computed before being mapped into the graph y aesthetic.\n\n\n\n\nCode\npenguins_bar |> \n    # create column of counts \n    dplyr::count(species, name = \"count\") |> \n    # map into x and y\n    ggplot(mapping = aes(x = species, y = count)) +\n    geom_col(aes(fill = species), \n        show.legend = FALSE) + \n    labs_bar +\n    labs(caption = \"*created with geom_col()\")\n# compare to geom_bar()\nggp2_bar +\n  labs_bar"
   },
   {
     "objectID": "rela/scatter_plot.html",
@@ -284,7 +291,7 @@
     "href": "rela/slope_graphs.html",
     "title": "Slope graphs",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nSlope graphs show changes in a numeric value (displayed on the y axis) typically over two points in time (along the x axis). The values for each group or unit of measurement are connected by lines, and any differences between the two time points are represented by the slope of the lines (hence the name, ‘slope chart’).\nWe can build slope graphs in ggplot2 using the geom_line() and geom_point() functions."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nSlope graphs show changes in a numeric value (displayed on the y axis) typically over two points in time (along the x axis). The values for each group or unit of measurement are connected by lines, and any differences between the two time points are represented by the slope of the lines (hence the name, ‘slope chart’).\nWe can build slope graphs in ggplot2 using the geom_line() and geom_point() functions."
   },
   {
     "objectID": "rela/slope_graphs.html#more-info",
@@ -312,7 +319,7 @@
     "href": "rela/density_contours.html",
     "title": "Density Contours",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nDensity contours (or 2-D density plots) are helpful for displaying differences in values between two numeric (continuous) variables.\nIn topographical maps, contour lines are drawn around areas of equal elevation above sea-level. In density contours, the contour lines are drawn around the areas our data occupy (essentially replacing sea-level as ‘an area without any x or y values.’)\nSpecifically, the contour lines outline areas on the graph with differing point densities, and semi-transparent colors (gradient) can be added to further highlight the separate regions."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nDensity contours (or 2-D density plots) are helpful for displaying differences in values between two numeric (continuous) variables.\nIn topographical maps, contour lines are drawn around areas of equal elevation above sea-level. In density contours, the contour lines are drawn around the areas our data occupy (essentially replacing sea-level as ‘an area without any x or y values.’)\nSpecifically, the contour lines outline areas on the graph with differing point densities, and semi-transparent colors (gradient) can be added to further highlight the separate regions."
   },
   {
     "objectID": "rela/density_contours.html#layer-by-layer",
@@ -340,7 +347,7 @@
     "href": "rela/hex_bins.html",
     "title": "Hexagon bin map",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nHex-bins are a very similar to 2-D histograms, but instead of dividing the graph area into a grid, it’s divided into hexagons. The number of points inside each per hexagon determine it’s color."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nHex-bins are a very similar to 2-D histograms, but instead of dividing the graph area into a grid, it’s divided into hexagons. The number of points inside each per hexagon determine it’s color."
   },
   {
     "objectID": "rela/hex_bins.html#more-options",
@@ -361,7 +368,7 @@
     "href": "rela/bins_2d.html",
     "title": "2D Histograms",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nStandard histograms separate a variable’s values into discrete groups, or ‘bins,’ which are arranged in increasing order across the x axis. The y axis displays the frequency (or count) of values within each bin.\nVertical bars capture the variable’s distribution using the height of the bar to represent the number of values per ‘bin’, and the number of bars corresponds with the bin value (or ‘bin-width’).\nWhen we extend this display to two numerical/quantitative variables, the bins are used to divide the total graph area into a grid, and color is used to display the variation in frequency (or count) of both variable values that fall within each intersecting square."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nStandard histograms separate a variable’s values into discrete groups, or ‘bins,’ which are arranged in increasing order across the x axis. The y axis displays the frequency (or count) of values within each bin.\nVertical bars capture the variable’s distribution using the height of the bar to represent the number of values per ‘bin’, and the number of bars corresponds with the bin value (or ‘bin-width’).\nWhen we extend this display to two numerical/quantitative variables, the bins are used to divide the total graph area into a grid, and color is used to display the variation in frequency (or count) of both variable values that fall within each intersecting square."
   },
   {
     "objectID": "rela/bins_2d.html#more-info",
@@ -403,7 +410,7 @@
     "href": "prp/diverging_bar_graphs.html",
     "title": "Diverging Bar-graphs",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nWhen would I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nIf you have two proportions that contain positive and negative values, consider using diverging bars with geom_bar().\nUnlike a standard or stacked bar graphs, diverging bar graphs display positive and negative quantities on both sides of a reference or baseline value (zero in this example). Color, length and position are used to compare the quantities across categorical levels (and within variable values).\n\n\n\n\n\n\n\n\n\nFor example, we can use the length of the bar from the reference line to compare disapproval estimates across all months (i.e., comparing red bars to each other).\n\n\n\n\n\n\n\n\n\nWe can also compare approval vs. disapproval for each month (i.e., compare the blue vs. red bars to each other within each month)."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nIf you have two proportions that contain positive and negative values, consider using diverging bars with geom_bar().\nUnlike a standard or stacked bar graphs, diverging bar graphs display positive and negative quantities on both sides of a reference or baseline value (zero in this example). Color, length and position are used to compare the quantities across categorical levels (and within variable values).\n\n\n\n\n\n\n\n\n\nFor example, we can use the length of the bar from the reference line to compare disapproval estimates across all months (i.e., comparing red bars to each other).\n\n\n\n\n\n\n\n\n\nWe can also compare approval vs. disapproval for each month (i.e., compare the blue vs. red bars to each other within each month)."
   },
   {
     "objectID": "prp/diverging_bar_graphs.html#vertical-diverging-bar-graphs",

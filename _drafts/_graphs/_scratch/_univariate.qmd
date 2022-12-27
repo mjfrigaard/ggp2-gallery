@@ -221,7 +221,7 @@ with `ggplot2`
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -362,7 +362,7 @@ ggp2_bar +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -498,7 +498,7 @@ ggp2_hist +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -633,7 +633,7 @@ ggp2_freqpoly +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -768,7 +768,7 @@ ggp2_dotplot +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -903,7 +903,7 @@ ggp2_density +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1038,7 +1038,7 @@ ggp2_violin +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>

@@ -53,7 +53,7 @@ devtools::install_github("wilkelab/ggridges")
 :::: {.callout-tip collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #38B44A;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 <br>

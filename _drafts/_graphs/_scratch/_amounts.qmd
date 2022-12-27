@@ -227,7 +227,7 @@ with `ggplot2`
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -549,7 +549,7 @@ ggp2_col +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -686,7 +686,7 @@ ggp2_bar_ovrlp +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -942,7 +942,7 @@ ggp2_bar_dodge2 +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1098,7 +1098,7 @@ ggp2_waffle +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>

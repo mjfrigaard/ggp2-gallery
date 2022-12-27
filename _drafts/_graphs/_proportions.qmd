@@ -52,7 +52,7 @@ Comparing proportions & part-to-whole relationships with `ggplot2` (and friends!
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 *“In general, pie charts work well when the goal is to emphasize simple fractions, such as one-half, one-third, or one-quarter.”*
@@ -205,7 +205,7 @@ ggp2_pie +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 If you have two proportions that contain positive and negative values, consider using diverging bars with `geom_bar()`
@@ -366,7 +366,7 @@ ggp2_bars_diverg +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Diverging bar-charts can be arranged vertically, too. 
@@ -525,7 +525,7 @@ ggp2_bar_diverg_vert +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 Density graphs are typically used to visualize the distribution of a single variable, but stacked density graphs are great for visualizing how proportions vary across numeric (continuous) variables.
 ::::
@@ -652,7 +652,7 @@ ggp2_fill_density +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
@@ -791,7 +791,7 @@ ggp2_mosaic +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 
@@ -1060,7 +1060,7 @@ ggp2_treemap_sgb +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 

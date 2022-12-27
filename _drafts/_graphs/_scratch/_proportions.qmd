@@ -225,7 +225,7 @@ with `ggplot2`
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -409,7 +409,7 @@ ggp2_pie +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -594,7 +594,7 @@ ggp2_bars_diverg +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -787,7 +787,7 @@ ggp2_bar_diverg_vert +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -926,7 +926,7 @@ ggp2_fill_density +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>
@@ -1087,7 +1087,7 @@ ggp2_mosaic +
 . . .
 
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-***When would I use this graph?***
+***Should I use this graph?***
 :::
 
 <br>

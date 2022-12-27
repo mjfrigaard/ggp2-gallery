@@ -52,7 +52,7 @@ Single variable graphs with `ggplot2` (and friends!)
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -184,7 +184,7 @@ ggp2_bar +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -308,7 +308,7 @@ ggp2_hist +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -433,7 +433,7 @@ ggp2_freqpoly +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -562,7 +562,7 @@ ggp2_dotplot +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -689,7 +689,7 @@ ggp2_density +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -819,7 +819,7 @@ ggp2_violin +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 
@@ -1007,7 +1007,7 @@ Compare the four graphs of `length` from `movie_box` below to the box-plot:
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 <br>
 

@@ -52,7 +52,7 @@ Trends, correlations, and connections with `ggplot2` (and friends!)
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Scatter plots are used to display two continuous variables.
@@ -186,7 +186,7 @@ ggp2_scatter +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 To display the relationship between **two** continuous variables across a third categorical variable. Use color to distinguish between categorical levels across the two continuous variable. 
@@ -324,7 +324,7 @@ ggp2_grp_scatter +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Bubble graphs display relationships between three continuous variables.
@@ -473,7 +473,7 @@ ggp2_bubble +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 In addition to size, the grouped bubble graph uses color to display differences across categorical levels.
@@ -615,7 +615,7 @@ ggp2_grp_bubble +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 An alluvial graph displays the changes in composition or flow over time or across multiple categories. 
@@ -885,7 +885,7 @@ ggp2_alluvial_lf +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 Bump charts show how numerical (ranked) values change over time for different categories (or groups). Differences are represented with connecting lines (along the `y` axis) that cover the full timescale (along the `x` axis).
@@ -1033,7 +1033,7 @@ ggp2_bump +
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 

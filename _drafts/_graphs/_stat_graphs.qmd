@@ -52,7 +52,7 @@ Statistical graphs with `ggplot2` (and friends!)
 
 :::: {.callout-note}
 ::: {style="font-size: 1.25em; color: #ffd500;"}
-**When would I use this graph?**
+**Should I use this graph?**
 :::
 
 
