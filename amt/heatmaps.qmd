@@ -40,7 +40,7 @@ showtext::showtext_auto()
 source("../R/theme_ggp2g.R")
 # set theme
 ggplot2::theme_set(theme_ggp2g(
-    base_size = 14))
+    base_size = 13))
 # install data packages ----
 install.packages("palmerpenguins")
 library(palmerpenguins)
