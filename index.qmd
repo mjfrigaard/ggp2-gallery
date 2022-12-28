@@ -426,7 +426,9 @@ Below are the graphs requiring additional packages/extensions:
         library(ggforce)
         ```
 
+## Theme
 
+The theme used in the graphs is custom and uses combined elements from `ggplot2::theme_minimal()` and `ggplot2::theme_void()`. View it [here](https://github.com/mjfrigaard/ggp2-gallery/blob/main/R/theme_ggp2g.R)
 
 
 
