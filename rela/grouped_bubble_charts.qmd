@@ -44,7 +44,7 @@ showtext::showtext_auto()
 source("../R/theme_ggp2g.R")
 # set theme
 ggplot2::theme_set(theme_ggp2g(
-    base_size = 16))
+    base_size = 13))
 install.packages("ggplot2movies")
 install.packages("palmerpenguins")
 ```
@@ -83,7 +83,7 @@ ggp2_grp_bubble <- penguins |>
   geom_point(
     aes(size = body_mass_g, fill = species), 
         alpha = 2/3, shape = 21, color = "#000000") + 
-  scale_size(range = c(.04, 8)) 
+  scale_size(range = c(.04, 6))
 
 ggp2_grp_bubble + 
   labs_grp_bubble
@@ -168,7 +168,7 @@ Inside `geom_point()`
     
 In the `scale_size()`  
 
-  - set `range` to `c(.04, 8)` and `name` to `"Body Mass (g)"` 
+  - set `range` to `c(.04, 6)`
   
 :::
 
@@ -192,7 +192,7 @@ ggp2_grp_bubble <- penguins |>
   geom_point(
     aes(size = body_mass_g, fill = species), 
         alpha = 2/3, shape = 21, color = "#000000") + 
-  scale_size(range = c(.04, 8)) 
+  scale_size(range = c(.04, 6)) 
 
 ggp2_grp_bubble + 
   labs_grp_bubble
@@ -224,7 +224,7 @@ ggp2_grp_bubble <- penguins |>
   geom_point(
     aes(size = body_mass_g, fill = species), 
         alpha = 2/3, shape = 21, color = "#000000") + 
-  scale_size(range = c(.04, 8)) 
+  scale_size(range = c(.04, 6)) 
 
 ggp2_grp_bubble + 
   labs_grp_bubble

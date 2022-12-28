@@ -5,6 +5,7 @@ require(showtext)
 require(showtextdb)
 require(sysfonts)
 library(extrafont)
+library(palmerpenguins)
 
 # theme_ggp2g -------------------------------------------------------------
 # this is a custom theme for the ggplot2 gallery
@@ -120,26 +121,50 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
     ## https://ggplot2-book.org/polishing.html#legend-elements
     legend.box =         NULL,
     legend.key.size =    unit(1.2, "lines"),
-    legend.position =    c(0.95, 0.8),
-    legend.justification = c(-0.65, 0.3), # c(horizontal, vertical)
+        # the positioning is = c(horizontal, vertical)
+        # c(1, 0) = bottom right
+        # c(0.5, 0.5) = dead center
+        # c(0, 1) = top left
+    legend.position =    c(1, 0.5), # c(horizontal, vertical)
+    legend.justification = c(-0.075, 0.0),
+
     legend.text =        element_text(
                             # face = "italic",
                             size = rel(0.7)),
     legend.title =       element_text(
                             size = rel(0.8), 
                             hjust = 0),
-    legend.margin =      margin(t = 0.5, r = 0.5, b = 0.5, l = 0.5),
+    legend.margin =      margin(t = 1.5, r = 1.5, b = 1.5, l = 1.5),
     ## PLOT MARGIN ----
     ## https://ggplot2-book.org/polishing.html#plot-elements
     ## 
-    plot.margin =        unit(x = c(1.5, 5.5, 1.5, 1.5), "lines"),
+    plot.margin =        unit(x = c(1.5, 5.0, 1.5, 1.5), "lines"),
     complete = TRUE
  )
   return(thm)
 }
-# # set ----
-# ggplot2::theme_set(
-#     theme_ggp2g(base_size = 16))
+# set ----
+ggplot2::theme_set(
+    theme_ggp2g(base_size = 16))
+
+labs_grp_bubble <- labs(
+  title = "Bill Length vs. Flipper Length",
+  x = "Bill Length (mm)", 
+  y = "Flipper length (mm)", 
+  size = "Body Mass", 
+  fill = "Species")
+
+ggp2_grp_bubble <- penguins |> 
+  ggplot(aes(
+    x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(
+    aes(size = body_mass_g, fill = species), 
+        alpha = 2/3, shape = 21, color = "#000000") + 
+  scale_size(range = c(.04, 8)) 
+
+ggp2_grp_bubble + 
+  labs_grp_bubble
+
 # # test ----
 # toy <- data.frame(
 #   const = 1,
