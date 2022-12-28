@@ -4,6 +4,8 @@ format:
   html:
     toc: true
     code-fold: show
+    out-height: '100%'
+    out-width: '100%'
 execute:
   warning: false
   message: false
