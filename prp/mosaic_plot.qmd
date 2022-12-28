@@ -78,20 +78,20 @@ library(ggmosaic)
 library(fivethirtyeight) 
 library(ggmosaic)
 library(ggplot2) 
-flying <- fivethirtyeight::flying
-fly_mosaic <- filter(flying, 
-              !is.na(baby) & !is.na(unruly_child)) |> 
-              select(baby, unruly_child)
+fly_mosaic <- fivethirtyeight::flying |> 
+                dplyr::select(baby, unruly_child, recline_rude) |> 
+                tidyr::drop_na()
 labs_mosaic <- labs(
       title = "In general...", 
       subtitle = "...is it rude to...",
       x = "... bring a baby on a plane?",
-      y = "..,knowingly bring unruly children on a plane?",
-      fill = "Responses") 
+      y = "...knowingly bring unruly children on a plane?",
+      fill = "Response") 
 ggp2_mosaic <- ggplot(data = fly_mosaic) +
-  geom_mosaic(aes(x = product(unruly_child, baby), 
-      fill = baby)) +
-  theme_mosaic(base_size = 10)
+   ggmosaic::geom_mosaic(mapping = 
+          aes(x = product(unruly_child, baby), 
+              fill = baby)) + 
+    ggmosaic::theme_mosaic(base_size = 10)
 ggp2_mosaic + 
     labs_mosaic
 ```
@@ -143,7 +143,7 @@ library(ggplot2)
 :::
 
 ::: {style="font-size: 0.85em;"}
-For this graph, we'll be using the `fivethirtyeight::flying` dataset, after removing the missing values from `baby` and `unruly_child`. 
+For this graph, we'll be using the `fivethirtyeight::flying` dataset, after removing the missing values from `baby`, `recline_rude`,  and `unruly_child`. 
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -151,10 +151,9 @@ For this graph, we'll be using the `fivethirtyeight::flying` dataset, after remo
 #| label: data_code_
 #| eval: true
 #| echo: true
-flying <- fivethirtyeight::flying
-fly_mosaic <- filter(flying, 
-              !is.na(baby) & !is.na(unruly_child)) |> 
-              select(baby, unruly_child)
+fly_mosaic <- fivethirtyeight::flying |> 
+                dplyr::select(baby, unruly_child, recline_rude) |> 
+                tidyr::drop_na()
 glimpse(fly_mosaic)
 ```
 :::
@@ -182,7 +181,7 @@ Add `theme_mosaic()`
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_
+#| label: code_graph_mosaic
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -193,12 +192,13 @@ labs_mosaic <- labs(
       title = "In general...", 
       subtitle = "...is it rude to...",
       x = "... bring a baby on a plane?",
-      y = "..,knowingly bring unruly children on a plane?",
-      fill = "Responses") 
+      y = "...knowingly bring unruly children on a plane?",
+      fill = "Response") 
 ggp2_mosaic <- ggplot(data = fly_mosaic) +
-  geom_mosaic(aes(x = product(unruly_child, baby), 
-      fill = baby)) +
-  theme_mosaic()
+   ggmosaic::geom_mosaic(mapping = 
+          aes(x = product(unruly_child, baby), 
+              fill = baby)) + 
+    ggmosaic::theme_mosaic(base_size = 10)
 ggp2_mosaic + 
     labs_mosaic
 ```
@@ -210,14 +210,11 @@ ggp2_mosaic +
 **GRAPH:**
 :::
 
-::: {style="font-size: 0.85em;"}
-*It's a good idea to adjust the `fig-height` and `fig-width` of your graph:*
-:::
-
+::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: create_graph_
+#| label: run_graph_mosaic
 #| eval: true
-#| echo: false
+#| echo: false 
 #| warning: false
 #| message: false
 #| fig-height: 7
@@ -226,70 +223,254 @@ labs_mosaic <- labs(
       title = "In general...", 
       subtitle = "...is it rude to...",
       x = "... bring a baby on a plane?",
-      y = "..,knowingly bring unruly children on a plane?",
-      fill = "Responses") 
+      y = "...knowingly bring unruly children on a plane?",
+      fill = "Response") 
 ggp2_mosaic <- ggplot(data = fly_mosaic) +
-  geom_mosaic(aes(x = product(unruly_child, baby), 
-      fill = baby)) +
-  theme_mosaic()
+   ggmosaic::geom_mosaic(mapping = 
+          aes(x = product(unruly_child, baby), 
+              fill = baby)) + 
+    ggmosaic::theme_mosaic(base_size = 10)
 ggp2_mosaic + 
     labs_mosaic
 ```
+:::
 
-### Notes
+### Details
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**NOTES:**
+**DETAILS:**
 :::
 
 ::: {style="font-size: 0.85em;"}
-It's a good idea to read the [`ggmosaic` vignette](https://haleyjeppson.github.io/ggmosaic/articles/ggmosaic.html), particularly the section on ordering and conditioning. 
+We've re-written the labels for the mosaic plot (`ggp2_mosaic`) to illustrate what's happening in the `aes()` of `geom_mosaic()`.
+:::
 
-For example, if we set the `product()` variable as `unruly_child` and the conditional variable as `baby`, we see a very different display than if we follow the standard two-variable syntax:
+::: {.column-margin}
+::: {style="font-size: 0.95em; color: #9d40f5;"}
+It's a good idea to adjust the `fig-height` and `fig-width` of your graph
+:::
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: create_graph_cond_mosaic
+#| label: create_table_mosaic
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 6
+#| fig-width: 6
+#| fig-align: center
+#| layout-nrow: 2
+# graph
+labs_mosaic <- labs(
+      title = "In general...is it rude to...", 
+      subtitle = "f(unruly_child | baby) f(baby)",
+      x = "... bring a baby on a plane?",
+      y = "...knowingly bring unruly children on a plane?",
+      fill = "Response") 
+ggp2_mosaic <- ggplot(data = fly_mosaic) +
+   ggmosaic::geom_mosaic(mapping = 
+          aes(x = product(unruly_child, baby), 
+              fill = baby)) + 
+    ggmosaic::theme_mosaic(base_size = 10)
+ggp2_mosaic + 
+    labs_mosaic
+# table
+fly_mosaic_counts <- fly_mosaic |>
+    dplyr::count(unruly_child, baby) |> 
+    tidyr::pivot_wider(names_from = baby, values_from = n) |> 
+    dplyr::arrange(desc(unruly_child)) |> 
+    dplyr::mutate(
+        Very = as.character(Very),
+        Very = tidyr::replace_na(Very, ""))
+
+kableExtra::kable_paper(
+  kable_input = knitr::kable(fly_mosaic_counts), 
+  font_size = 14)
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+The table above displays the counts for each combined response. As we can see, the counts are represented by height and width in the graph.
+:::
+
+::::
+
+## More info
+
+I recommend reading the [`ggmosaic` vignette](https://haleyjeppson.github.io/ggmosaic/articles/ggmosaic.html), particularly the sections on ordering and conditioning. 
+
+:::: {.panel-tabset}
+
+### Two variables
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**TWO VARIABLES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Below is another example of a two-variable mosaic plot, mapping the `product()` variables as `unruly_child` and `recline_rude`, and the `fill` variable as `recline_rude`.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: 2var_mosaic
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
-#| fig-height: 8
-#| fig-width: 8
-#| column: page-inset-right
-#| layout-nrow: 1
-# build conditional mosiac plot
-labs_mosaic_cond <- labs(
-  subtitle = "Conditional plot",
-  x = "..,knowingly bring unruly children on a plane?",
-  y = "... bring a baby on a plane?",
-  fill = "Responses")
-ggp2_mosaic_cond <- ggplot(data = fly_mosaic) +
-  geom_mosaic(aes(
-    x = product(unruly_child), # product variable
-    fill = unruly_child,
-    conds = product(baby))) + # conditional variable
-  theme_ggp2g(base_size = 14)
-
-ggp2_mosaic_cond + 
-    labs_mosaic_cond
-
+#| fig-height: 5.5
+#| fig-width: 5.5
 # build 2-variable mosiac plot
 labs_mosaic_2var <- labs(
+  title = "In general...is it rude to...", 
   subtitle = "2-Variable plot",
-  x = "..,knowingly bring unruly children on a plane?",
-  y = "... bring a baby on a plane?",
-  fill = "Responses")
+  x = "... recline your seat on a plane?",
+  y = "...knowingly bring unruly children on a plane?",
+  fill = "recline_rude responses"
+)
+
 ggp2_mosaic_2var <- ggplot(data = fly_mosaic) +
   geom_mosaic(aes(
-    x = product(unruly_child, baby),
-    fill = unruly_child)) +
-  theme_ggp2g(base_size = 14)
+    x = product(unruly_child, recline_rude),
+    fill = recline_rude)) +
+  ggmosaic::theme_mosaic(base_size = 10)
+  
 
 ggp2_mosaic_2var + 
     labs_mosaic_2var
 ```
+:::
+
+::: {style="font-size: 0.85em;"}
+Once again we can see the counts for each category in the cross-tabulation below:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: fly_mosaic_2var_counts
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+fly_mosaic_2var_counts <- fly_mosaic |> 
+    dplyr::count(unruly_child, recline_rude) |> 
+    tidyr::pivot_wider(names_from = recline_rude, values_from = n) |> 
+    dplyr::arrange(desc(unruly_child))
+
+kableExtra::kable_paper(
+  kable_input = knitr::kable(fly_mosaic_2var_counts), 
+  font_size = 12)
+```
+:::
+
+### Conditional variable
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CONDITIONAL VARIABLES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+For conditional variables, we map the `product()` variable as `unruly_child` and the `fill` variable as `baby`, but include a `conds` variable (as `product(recline_rude)`).
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: cond_mosaic
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| fig-height: 5.5
+#| fig-width: 5.5
+# build conditional mosiac plot
+labs_mosaic_cond <- labs(
+  title = "In general...is it rude to...", 
+  subtitle = "Conditional plot",
+  x = "...recline your seat on a plane?",
+  y = "...knowingly bring unruly children on a plane?",
+  fill = "unruly_child responses")
+ggp2_mosaic_cond <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(
+    x = product(unruly_child), # product variable
+    fill = unruly_child,
+    conds = product(recline_rude))) + # conditional variable
+  ggmosaic::theme_mosaic(base_size = 10)
+
+ggp2_mosaic_cond + 
+    labs_mosaic_cond
+```
+:::
+
+### Compare
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**COMPARE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Below we can compare the two plots--can you tell what's happening in the conditional plot?
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: comapre_mosaic
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| fig-height: 5.5
+#| fig-width: 5.5
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_mosaic_2var + 
+    labs_mosaic_2var
+
+ggp2_mosaic_cond + 
+    labs_mosaic_cond
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Compare the conditional mosaic plot above to the facetted mosaic plot below:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: facet_mosaic
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| fig-height: 8 
+#| fig-width: 8
+#| column: page-inset-right
+# facet plot
+labs_mosaic_facet <- labs(
+        title = "In general...is it rude to...",
+        y = "...recline your seat on a plane?",
+        x = "...knowingly bring unruly children on a plane?",
+        fill = "recline_rude responses") 
+ggp2_mosaic_facet <- ggplot(data = fly_mosaic) +
+          geom_mosaic(aes(x = product(recline_rude), 
+                       fill = recline_rude), 
+                    divider = "vspine") +
+            facet_grid(. ~ unruly_child) 
+ggp2_mosaic_facet + 
+    ggmosaic::theme_mosaic(base_size = 10) + 
+    theme(
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+         panel.grid.major = element_blank()) +
+    labs_mosaic_facet 
+```
+:::
+
+::::
 
 
 ```{r}
@@ -319,6 +500,5 @@ patchwork::plot_spacer() + # pad the area in front of the plot 1
     theme = theme_mosaic(base_size = 11),
     title = "In general...is it rude to...")
 ```
-:::
 
-::::
+
