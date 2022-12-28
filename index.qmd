@@ -144,6 +144,18 @@ install.packages("ggplot2movies")
 library(ggplot2movies)
 ```
 
+## Graph Categories 
+
+Graphs have been categorized into the following types:
+
+- Univariate graphs  
+- Amounts 
+- Proportions  
+- Comparing Distributions  
+- Relationships  
+
+Some graphs would justifiably belong in more than one category, and wherever this is the cases, I've tried to include other uses in the notes. 
+
 ## The Graphs (code style & structure)
 
 The gallery follows a [Rule of Least Power Principle](https://www.w3.org/2001/tag/doc/leastPower.html), in the sense that "*a language with a straightforward syntax may be easier to analyze than an otherwise equivalent one with more complex structure.*" 
@@ -415,17 +427,7 @@ Below are the graphs requiring additional packages/extensions:
         ```
 
 
-## Graph Categories 
 
-Graphs have been categorized into the following types:
-
-- Univariate graphs  
-- Amounts 
-- Proportions  
-- Comparing Distributions  
-- Relationships  
-
-Some graphs would justifiably belong in more than one category, and wherever this is the cases, I've tried to include other uses in the notes. 
 
 
 
