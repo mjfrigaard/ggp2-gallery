@@ -186,6 +186,8 @@ Add `geom_point()` and map `sex` to `color` aesthetic. Set the `size` to `2.25`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_clev_dots <- labs(
     title = "Flipper Length Differences",
     subtitle = "Male and female penguins",
@@ -219,6 +221,8 @@ ggp2_clev_dots +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_clev_dots <- labs(
     title = "Flipper Length Differences",
     subtitle = "Male and female penguins",

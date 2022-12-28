@@ -169,6 +169,8 @@ Adjust the `bins` accordingly
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_histogram <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",
@@ -202,6 +204,8 @@ The standard number of bins is `30`, but ['you should always override this value
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_histogram <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",

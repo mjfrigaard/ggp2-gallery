@@ -195,6 +195,8 @@ Move the legend to the top with `theme(legend.position = "top")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_waffle <- labs(
   title = "Waffle chart of palmer penguin species",
   x = "", y = "", fill = "Species")
@@ -222,6 +224,8 @@ ggp2_waffle +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_waffle <- labs(
   title = "Waffle chart of palmer penguin species",
   x = "", y = "", fill = "Species")

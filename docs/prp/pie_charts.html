@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked densities</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stream_plots.html" class="sidebar-item-text sidebar-link">Stream plots</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -535,10 +540,10 @@ $ perc &lt;dbl&gt; 0.108, 0.204, 0.688</code></pre>
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>CODE:</strong></p>
 </div>
@@ -551,8 +556,8 @@ $ perc &lt;dbl&gt; 0.108, 0.204, 0.688</code></pre>
 <p>Assign <code>"mpaa"</code> to <code>fill</code></p>
 <p>Remove legend with <code>theme(legend.position = "none")</code></p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(movie_pie<span class="sc">$</span>mpaa, <span class="st">" ("</span>, </span>
@@ -570,16 +575,21 @@ $ perc &lt;dbl&gt; 0.108, 0.204, 0.688</code></pre>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="sc">+</span> </span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  labs_pie</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell column-page-inset-right quarto-layout-panel">
+
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>GRAPH:</strong></p>
 </div>
-<div class="cell">
-<div class="cell-output-display">
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="pie_charts_files/figure-html/create_graph_-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>
@@ -1055,52 +1065,56 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
 <span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(movie_pie<span class="sc">$</span>mpaa, <span class="st">" ("</span>, </span>
-<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a>               (<span class="dv">100</span><span class="sc">*</span>movie_pie<span class="sc">$</span>perc), <span class="st">"%)"</span>)</span>
-<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a>labs_pie <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Percent MPAA ratings for IMDB movies"</span>,</span>
-<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Percent MPAA rating"</span>)</span>
-<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="ot">&lt;-</span> ggpubr<span class="sc">::</span><span class="fu">ggpie</span>(movie_pie, </span>
-<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"perc"</span>, <span class="at">label =</span> labs, </span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>          <span class="at">lab.pos =</span> <span class="st">"in"</span>, <span class="at">lab.font =</span> <span class="st">"#ffffff"</span>,</span>
-<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"mpaa"</span>, <span class="at">color =</span> <span class="st">"#ffffff"</span>) <span class="sc">+</span> </span>
-<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)  </span>
-<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="sc">+</span> </span>
-<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a>  labs_pie</span>
-<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(movie_pie<span class="sc">$</span>mpaa, <span class="st">" ("</span>, </span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>               (<span class="dv">100</span><span class="sc">*</span>movie_pie<span class="sc">$</span>perc), <span class="st">"%)"</span>)</span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>labs_pie <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Percent MPAA ratings for IMDB movies"</span>,</span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Percent MPAA rating"</span>)</span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="ot">&lt;-</span> ggpubr<span class="sc">::</span><span class="fu">ggpie</span>(movie_pie, </span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"perc"</span>, <span class="at">label =</span> labs, </span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a>          <span class="at">lab.pos =</span> <span class="st">"in"</span>, <span class="at">lab.font =</span> <span class="st">"#ffffff"</span>,</span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"mpaa"</span>, <span class="at">color =</span> <span class="st">"#ffffff"</span>) <span class="sc">+</span> </span>
+<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)  </span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="sc">+</span> </span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a>  labs_pie</span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_</span></span>
-<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(movie_pie<span class="sc">$</span>mpaa, <span class="st">" ("</span>, </span>
-<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a>               (<span class="dv">100</span><span class="sc">*</span>movie_pie<span class="sc">$</span>perc), <span class="st">"%)"</span>)</span>
-<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a>labs_pie <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb5-247"><a href="#cb5-247" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Percent MPAA ratings for IMDB movies"</span>,</span>
-<span id="cb5-248"><a href="#cb5-248" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Percent MPAA rating"</span>)</span>
-<span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-250"><a href="#cb5-250" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="ot">&lt;-</span> ggpubr<span class="sc">::</span><span class="fu">ggpie</span>(movie_pie, </span>
-<span id="cb5-251"><a href="#cb5-251" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"perc"</span>, <span class="at">label =</span> labs, </span>
-<span id="cb5-252"><a href="#cb5-252" aria-hidden="true" tabindex="-1"></a>          <span class="at">lab.pos =</span> <span class="st">"in"</span>, <span class="at">lab.font =</span> <span class="st">"#ffffff"</span>,</span>
-<span id="cb5-253"><a href="#cb5-253" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"mpaa"</span>, <span class="at">color =</span> <span class="st">"#ffffff"</span>) <span class="sc">+</span> </span>
-<span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)  </span>
-<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="sc">+</span> </span>
-<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a>  labs_pie</span>
-<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_</span></span>
+<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb5-247"><a href="#cb5-247" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb5-248"><a href="#cb5-248" aria-hidden="true" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(movie_pie<span class="sc">$</span>mpaa, <span class="st">" ("</span>, </span>
+<span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a>               (<span class="dv">100</span><span class="sc">*</span>movie_pie<span class="sc">$</span>perc), <span class="st">"%)"</span>)</span>
+<span id="cb5-250"><a href="#cb5-250" aria-hidden="true" tabindex="-1"></a>labs_pie <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb5-251"><a href="#cb5-251" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Percent MPAA ratings for IMDB movies"</span>,</span>
+<span id="cb5-252"><a href="#cb5-252" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Percent MPAA rating"</span>)</span>
+<span id="cb5-253"><a href="#cb5-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="ot">&lt;-</span> ggpubr<span class="sc">::</span><span class="fu">ggpie</span>(movie_pie, </span>
+<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"perc"</span>, <span class="at">label =</span> labs, </span>
+<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a>          <span class="at">lab.pos =</span> <span class="st">"in"</span>, <span class="at">lab.font =</span> <span class="st">"#ffffff"</span>,</span>
+<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"mpaa"</span>, <span class="at">color =</span> <span class="st">"#ffffff"</span>) <span class="sc">+</span> </span>
+<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)  </span>
+<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a>ggp2_pie <span class="sc">+</span> </span>
+<span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a>  labs_pie</span>
+<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

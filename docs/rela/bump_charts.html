@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked densities</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stream_plots.html" class="sidebar-item-text sidebar-link">Stream plots</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -536,10 +541,10 @@ $ rank      &lt;int&gt; 2, 4, 1, 3, 1, 4, 2, 3, 1, 3, 4, 2, 1, 3, 4, 2, 2, 3, 4,
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>CODE:</strong></p>
 </div>
@@ -549,8 +554,8 @@ $ rank      &lt;int&gt; 2, 4, 1, 3, 1, 4, 2, 3, 1, 3, 4, 2, 1, 3, 4, 2, 2, 3, 4,
 <p>Add <code>ggbump::geom_bump()</code> and set <code>size</code> to <code>2</code></p>
 <p>Move legend to bottom with <code>theme(legend.position = "bottom")</code></p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_bump <span class="ot">&lt;-</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TV News Hurricane Mentions"</span>,   </span>
@@ -567,16 +572,21 @@ $ rank      &lt;int&gt; 2, 4, 1, 3, 1, 4, 2, 3, 1, 3, 4, 2, 1, 3, 4, 2, 2, 3, 4,
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="sc">+</span> </span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  labs_bump</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell column-page-inset-right quarto-layout-panel">
+
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>GRAPH:</strong></p>
 </div>
-<div class="cell">
-<div class="cell-output-display">
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="bump_charts_files/figure-html/create_graph_bump-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>
@@ -1039,50 +1049,54 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
 <span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>labs_bump <span class="ot">&lt;-</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TV News Hurricane Mentions"</span>,   </span>
-<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Between Sep 15-25th, 2017"</span>, </span>
-<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Rank"</span>, </span>
-<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"Hurricanes"</span>)</span>
-<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tidy_hurricanes, </span>
-<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
-<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> rank, </span>
-<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> hurricane)) <span class="sc">+</span></span>
-<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>    ggbump<span class="sc">::</span><span class="fu">geom_bump</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="sc">+</span> </span>
-<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>  labs_bump</span>
-<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>labs_bump <span class="ot">&lt;-</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TV News Hurricane Mentions"</span>,   </span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Between Sep 15-25th, 2017"</span>, </span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Rank"</span>, </span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"Hurricanes"</span>)</span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tidy_hurricanes, </span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> rank, </span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> hurricane)) <span class="sc">+</span></span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a>    ggbump<span class="sc">::</span><span class="fu">geom_bump</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="sc">+</span> </span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a>  labs_bump</span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_bump</span></span>
-<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>labs_bump <span class="ot">&lt;-</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TV News Hurricane Mentions"</span>,   </span>
-<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Between Sep 15-25th, 2017"</span>, </span>
-<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Rank"</span>, </span>
-<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"Hurricanes"</span>)</span>
-<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tidy_hurricanes, </span>
-<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
-<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> rank, </span>
-<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> hurricane)) <span class="sc">+</span></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a>    ggbump<span class="sc">::</span><span class="fu">geom_bump</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="sc">+</span> </span>
-<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a>  labs_bump</span>
-<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_bump</span></span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>labs_bump <span class="ot">&lt;-</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TV News Hurricane Mentions"</span>,   </span>
+<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Between Sep 15-25th, 2017"</span>, </span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Rank"</span>, </span>
+<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"Hurricanes"</span>)</span>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tidy_hurricanes, </span>
+<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> date, </span>
+<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> rank, </span>
+<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> hurricane)) <span class="sc">+</span></span>
+<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a>    ggbump<span class="sc">::</span><span class="fu">geom_bump</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
 <span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a>ggp2_bump <span class="sc">+</span> </span>
+<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a>  labs_bump</span>
+<span id="cb5-247"><a href="#cb5-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-248"><a href="#cb5-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

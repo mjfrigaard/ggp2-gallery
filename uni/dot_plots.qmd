@@ -170,6 +170,8 @@ Adjust the `dotsize`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_dotplot <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",
@@ -194,6 +196,8 @@ ggp2_dotplot +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_dotplot <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",

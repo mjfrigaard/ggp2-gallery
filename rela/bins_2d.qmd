@@ -182,6 +182,8 @@ Add the `geom_bin2d()` layer
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_2dhist <- labs(
     title = "Adult Foraging Penguins", 
     subtitle = "Near Palmer Station, Antarctica", 
@@ -210,6 +212,8 @@ ggp2_2dhist +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_2dhist <- labs(
     title = "Adult Foraging Penguins", 
     subtitle = "Near Palmer Station, Antarctica", 
@@ -252,6 +256,8 @@ Below we change the `bins` to `15` and save this layer as `ggp2_2dbins15`:
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_base <- ggplot(data = penguins_2dhist, 
     mapping = aes(x = bill_length_mm, 
                   y = flipper_length_mm)) 
@@ -323,6 +329,8 @@ We also add a `geom_point()` layer.
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_2dbins15 + 
     scale_fill_continuous_sequential(
         palette = "SunsetDark",

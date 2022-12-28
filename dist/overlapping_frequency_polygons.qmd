@@ -99,7 +99,7 @@ Install packages.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_
+#| label: pkg_code_freq_poly
 #| eval: true
 #| echo: true
 #| warning: false
@@ -127,7 +127,7 @@ The `penguins` data.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_
+#| label: data_code_freq_poly
 #| eval: true
 #| echo: true
 penguins <- palmerpenguins::penguins
@@ -156,11 +156,13 @@ Map `species` to the `color` aesthetic *inside* the `geom_freqpoly()`
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_
+#| label: code_graph_freq_poly
 #| eval: false
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_ovrlp_freq_poly <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",
@@ -181,11 +183,13 @@ ggp2_ovrlp_freq_poly +
 :::
 
 ```{r}
-#| label: create_graph_
+#| label: create_graph_freq_poly
 #| eval: true
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_ovrlp_freq_poly <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)",

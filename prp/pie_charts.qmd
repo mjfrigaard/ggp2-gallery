@@ -200,6 +200,8 @@ Remove legend with `theme(legend.position = "none")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs <- paste0(movie_pie$mpaa, " (", 
                (100*movie_pie$perc), "%)")
 labs_pie <- labs(
@@ -229,6 +231,8 @@ ggp2_pie +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs <- paste0(movie_pie$mpaa, " (", 
                (100*movie_pie$perc), "%)")
 labs_pie <- labs(

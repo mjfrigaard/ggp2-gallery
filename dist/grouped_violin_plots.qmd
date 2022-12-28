@@ -169,6 +169,8 @@ Remove the legend with `show.legend = FALSE`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_grp_violin <- labs(
   title = "Adult foraging penguins", 
   subtitle = "Palmer Archipelago, Antarctica",
@@ -202,6 +204,8 @@ Violin plots can allow us to compare the 'center' and 'spread' of continuous var
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_grp_violin <- labs(
   title = "Adult foraging penguins", 
   subtitle = "Palmer Archipelago, Antarctica",
@@ -245,6 +249,8 @@ We can include lines for the 25th, 50th, and 75th quartiles using the `draw_quan
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggplot(data = peng_violin,
        aes(x = island, 
            y = bill_length_mm, 
@@ -273,6 +279,8 @@ The [`kernel` argument](https://ggplot2.tidyverse.org/reference/geom_violin.html
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggplot(data = peng_violin,
        aes(x = island, 
            y = bill_length_mm, 

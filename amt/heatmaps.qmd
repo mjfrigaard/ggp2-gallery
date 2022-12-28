@@ -202,6 +202,8 @@ Move the legend to the bottom with `theme(legend.position = "bottom")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_heatmap_tile <- labs(
   title = "Bob Ross' plants & clouds", 
   x = "Episode", 
@@ -230,6 +232,8 @@ ggp2_heatmap_tile +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_heatmap_tile <- labs(
   title = "Bob Ross' plants & clouds", 
   x = "Episode", 
@@ -279,6 +283,8 @@ Move the legend to the bottom with `theme(legend.position = "bottom")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_heatmap_raster <- labs(
   title = "Bob Ross' plants & clouds", 
   x = "Episode", 
@@ -307,6 +313,8 @@ ggp2_heatmap_raster +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_heatmap_raster <- labs(
   title = "Bob Ross' plants & clouds", 
   x = "Episode", 

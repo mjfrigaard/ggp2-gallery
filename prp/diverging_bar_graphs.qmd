@@ -270,6 +270,8 @@ Add `scale_y_continuous()` to manually set the limits and format the axis with `
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_geom_bar_diverg <- labs(
   title = "Trump Approval Ratings",
   subtitle = "From 'How Popular is Donald Trump'",
@@ -303,6 +305,8 @@ ggp2_bars_diverg +
 #| message: false
 #| out-height: '100%'
 #| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_geom_bar_diverg <- labs(
   title = "Trump Approval Ratings",
   subtitle = "From 'How Popular is Donald Trump'",
@@ -360,6 +364,8 @@ Add `scale_y_continuous()` to manually set the limits and format the axis with `
 #| message: false
 #| out-height: '100%'
 #| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_geom_bar_diverg_vert <- labs(
   title = "Trump Approval Ratings",
   subtitle = "From 'How Popular is Donald Trump'",
@@ -394,6 +400,8 @@ ggp2_bar_diverg_vert +
 #| message: false
 #| out-height: '100%'
 #| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_geom_bar_diverg_vert <- labs(
   title = "Trump Approval Ratings",
   subtitle = "From 'How Popular is Donald Trump'",

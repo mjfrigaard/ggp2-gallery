@@ -170,6 +170,8 @@ Map `species` to `color` inside the `geom_point()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_grp_scatter <- labs(
   title = "Bill Length vs. Flipper Length",
   x = "Bill Length (mm)", 
@@ -203,6 +205,8 @@ Adjust over-plotting with transparency (`alpha`)
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_grp_scatter <- labs(
   title = "Bill Length vs. Flipper Length",
   x = "Bill Length (mm)", 

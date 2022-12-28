@@ -214,6 +214,8 @@ Finally, remove the `x` title with `axis.title.x = element_blank()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_psets <- labs(
         title = "Categories of Palmer Penguins", 
         y = "Count", fill = "Sex")
@@ -257,6 +259,8 @@ ggp2_psets_labs +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_psets <- labs(
         title = "Categories of Palmer Penguins", 
         y = "Count", fill = "Sex")
@@ -306,6 +310,8 @@ Manually setting the `limits` of the `x` axis in `scale_x_continuous()` will als
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_psets_axes + 
   geom_parallel_sets_labels(
       size = 3.2, 

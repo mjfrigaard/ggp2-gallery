@@ -1,0 +1,192 @@
+---
+title: "Side-to-side (`'dodge'`) bar-graphs"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 18))
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false" icon=false}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**Should I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '60%'
+#| out-width: '60%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+penguins_dodge <- filter(penguins,
+                    !is.na(sex) & !is.na(species))
+labs_bar_dodge <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "position = 'dodge'",
+  x = "Penguin Species",
+  fill = "Penguin Sex")
+
+ggp2_bar_dodge <- ggplot(data = penguins_dodge,
+                    aes(x = species,
+                      fill = sex)) +
+                    geom_bar(position = "dodge")
+ggp2_bar_dodge +
+  labs_bar_dodge
+```
+
+To compare amounts using bar size (length or height) in a side-to-side display, we can set the position in `geom_bar()` to `"dodge"` or `"dodge2"`
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_dodge
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("palmerpenguins")
+library(palmerpenguins) 
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {.column-margin}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="100%" height="100%"}
+:::
+
+::: {style="font-size: 0.85em;"}
+Remove any missing values from `sex` and `species` in the `penguins` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_dodge
+#| eval: true
+#| echo: true
+penguins_dodge <- filter(penguins,
+                    !is.na(sex) & !is.na(species))
+glimpse(penguins_dodge)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Create labels
+
+Map `species` to the `x` and `sex` to `fill`
+
+Inside the `geom_bar()` function, set `position` to `"dodge"`
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_dodge
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+labs_bar_dodge <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "position = 'dodge'",
+  x = "Penguin Species",
+  fill = "Penguin Sex")
+
+ggp2_bar_dodge <- ggplot(data = penguins_dodge,
+                    aes(x = species,
+                      fill = sex)) +
+                    geom_bar(position = "dodge")
+ggp2_bar_dodge +
+  labs_bar_dodge
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_dodge
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+labs_bar_dodge <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "position = 'dodge'",
+  x = "Penguin Species",
+  fill = "Penguin Sex")
+
+ggp2_bar_dodge <- ggplot(data = penguins_dodge,
+                    aes(x = species,
+                      fill = sex)) +
+                    geom_bar(position = "dodge")
+ggp2_bar_dodge +
+  labs_bar_dodge
+```
+
+::::

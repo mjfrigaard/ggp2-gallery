@@ -178,6 +178,8 @@ Add the `geom_hex()` layer
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_hex <- labs(
     title = "Adult Foraging Penguins", 
     subtitle = "Near Palmer Station, Antarctica", 
@@ -205,6 +207,8 @@ ggp2_hex +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_hex <- labs(
     title = "Adult Foraging Penguins",
     subtitle = "Near Palmer Station, Antarctica",
@@ -287,6 +291,8 @@ If the hexagons overlap, we can use the `alpha` to make them slightly transparen
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_hex2 <- labs(
     title = "Adult Foraging Penguins", 
     subtitle = "Near Palmer Station, Antarctica", 
@@ -333,6 +339,8 @@ Bins can be set with `bins` (a single number) or `binwidth` (a numeric vector of
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_hex3 <- labs(
     title = "Adult Foraging Penguins", 
     subtitle = "Near Palmer Station, Antarctica", 

@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked densities</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stream_plots.html" class="sidebar-item-text sidebar-link">Stream plots</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -538,10 +543,10 @@ $ med_flip_length_mm &lt;dbl&gt; 210, 190, 189, 219, 196, 195</code></pre>
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>CODE:</strong></p>
 </div>
@@ -551,8 +556,8 @@ $ med_flip_length_mm &lt;dbl&gt; 210, 190, 189, 219, 196, 195</code></pre>
 <p>Add <code>geom_line()</code>, and map <code>island</code> to the <code>group</code> aesthetic. Set the <code>linewidth</code> to <code>0.75</code></p>
 <p>Add <code>geom_point()</code> and map <code>sex</code> to <code>color</code> aesthetic. Set the <code>size</code> to <code>2.25</code></p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_clev_dots <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
@@ -574,16 +579,21 @@ $ med_flip_length_mm &lt;dbl&gt; 210, 190, 189, 219, 196, 195</code></pre>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="sc">+</span> </span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell column-page-inset-right quarto-layout-panel">
+
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>GRAPH:</strong></p>
 </div>
-<div class="cell">
-<div class="cell-output-display">
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="cleveland_dot_plots_files/figure-html/create_graph_clev_dots-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>
@@ -1149,196 +1159,200 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
 <span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>labs_clev_dots <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Flipper Length Differences"</span>,</span>
-<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
-<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Flipper Length"</span>,</span>
-<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
-<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
-<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots,</span>
-<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> med_flip_length_mm, </span>
-<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
-<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
-<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
-<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
-<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="fl">2.25</span>) </span>
-<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="sc">+</span> </span>
-<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots</span>
-<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>labs_clev_dots <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Flipper Length Differences"</span>,</span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Flipper Length"</span>,</span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots,</span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> med_flip_length_mm, </span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="fl">2.25</span>) </span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="sc">+</span> </span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots</span>
+<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_clev_dots</span></span>
-<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a>labs_clev_dots <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Flipper Length Differences"</span>,</span>
-<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
-<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Flipper Length"</span>,</span>
-<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
-<span id="cb8-239"><a href="#cb8-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
-<span id="cb8-240"><a href="#cb8-240" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-241"><a href="#cb8-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-242"><a href="#cb8-242" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots,</span>
-<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> med_flip_length_mm, </span>
-<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
-<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
-<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
-<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
-<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="fl">2.25</span>) </span>
-<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="sc">+</span> </span>
-<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots</span>
-<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_clev_dots</span></span>
+<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a>labs_clev_dots <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb8-239"><a href="#cb8-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Flipper Length Differences"</span>,</span>
+<span id="cb8-240"><a href="#cb8-240" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
+<span id="cb8-241"><a href="#cb8-241" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Flipper Length"</span>,</span>
+<span id="cb8-242"><a href="#cb8-242" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
+<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
+<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots,</span>
+<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> med_flip_length_mm, </span>
+<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
+<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
+<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
+<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
+<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="fl">2.25</span>) </span>
 <span id="cb8-253"><a href="#cb8-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a><span class="fu">## More info</span></span>
+<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots <span class="sc">+</span> </span>
+<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots</span>
+<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a>Cleveland dot plots are also helpful when comparing multiple differences on a common scale.</span>
+<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a>::::</span>
 <span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
+<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a><span class="fu">## More info</span></span>
 <span id="cb8-261"><a href="#cb8-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data</span></span>
+<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a>Cleveland dot plots are also helpful when comparing multiple differences on a common scale.</span>
 <span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a>**DATA:**</span>
-<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data</span></span>
 <span id="cb8-267"><a href="#cb8-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a>Remove missing values from <span class="in">`sex`</span>, <span class="in">`bill_length_mm`</span> and <span class="in">`bill_depth_mm`</span>, and group on <span class="in">`sex`</span> and <span class="in">`island`</span> to the calculate the median bill length and median bill depth. These variables need to have 'showtime-ready' names because they'll be used in our facets. </span>
-<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a>After un-grouping the data, pivot the new columns into a long (tidy) format with <span class="in">`median_measure`</span> containing the name of the variable, and <span class="in">`median_value`</span> containing the numbers. </span>
+<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a>**DATA:**</span>
+<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb8-271"><a href="#cb8-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a>Finally, convert <span class="in">`median_measure`</span> into a factor. </span>
-<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-274"><a href="#cb8-274" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a>Remove missing values from <span class="in">`sex`</span>, <span class="in">`bill_length_mm`</span> and <span class="in">`bill_depth_mm`</span>, and group on <span class="in">`sex`</span> and <span class="in">`island`</span> to the calculate the median bill length and median bill depth. These variables need to have 'showtime-ready' names because they'll be used in our facets. </span>
+<span id="cb8-274"><a href="#cb8-274" aria-hidden="true" tabindex="-1"></a>After un-grouping the data, pivot the new columns into a long (tidy) format with <span class="in">`median_measure`</span> containing the name of the variable, and <span class="in">`median_value`</span> containing the numbers. </span>
 <span id="cb8-275"><a href="#cb8-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-276"><a href="#cb8-276" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb8-279"><a href="#cb8-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-280"><a href="#cb8-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: data_code_clev_dots2</span></span>
-<span id="cb8-281"><a href="#cb8-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb8-282"><a href="#cb8-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb8-283"><a href="#cb8-283" aria-hidden="true" tabindex="-1"></a>peng_clev_dots2 <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span></span>
-<span id="cb8-284"><a href="#cb8-284" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> </span>
-<span id="cb8-285"><a href="#cb8-285" aria-hidden="true" tabindex="-1"></a>            <span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm) <span class="sc">&amp;</span> </span>
-<span id="cb8-286"><a href="#cb8-286" aria-hidden="true" tabindex="-1"></a>                <span class="sc">!</span><span class="fu">is.na</span>(bill_depth_mm)) <span class="sc">|&gt;</span></span>
-<span id="cb8-287"><a href="#cb8-287" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(sex, island) <span class="sc">|&gt;</span></span>
-<span id="cb8-288"><a href="#cb8-288" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb8-289"><a href="#cb8-289" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Median Bill Length</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">median</span>(bill_length_mm),</span>
-<span id="cb8-290"><a href="#cb8-290" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Median Bill Depth</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">median</span>(bill_depth_mm)) <span class="sc">|&gt;</span></span>
-<span id="cb8-291"><a href="#cb8-291" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb8-292"><a href="#cb8-292" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"Med"</span>), </span>
-<span id="cb8-293"><a href="#cb8-293" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_to =</span> <span class="st">"median_measure"</span>, </span>
-<span id="cb8-294"><a href="#cb8-294" aria-hidden="true" tabindex="-1"></a>        <span class="at">values_to =</span> <span class="st">"median_value"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-295"><a href="#cb8-295" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">median_measure =</span> <span class="fu">factor</span>(median_measure))</span>
-<span id="cb8-296"><a href="#cb8-296" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(peng_clev_dots2)</span>
-<span id="cb8-297"><a href="#cb8-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-298"><a href="#cb8-298" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-299"><a href="#cb8-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-300"><a href="#cb8-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code</span></span>
-<span id="cb8-301"><a href="#cb8-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-302"><a href="#cb8-302" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb8-303"><a href="#cb8-303" aria-hidden="true" tabindex="-1"></a>**CODE:**</span>
-<span id="cb8-304"><a href="#cb8-304" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-276"><a href="#cb8-276" aria-hidden="true" tabindex="-1"></a>Finally, convert <span class="in">`median_measure`</span> into a factor. </span>
+<span id="cb8-277"><a href="#cb8-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-278"><a href="#cb8-278" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-279"><a href="#cb8-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-280"><a href="#cb8-280" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb8-283"><a href="#cb8-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-284"><a href="#cb8-284" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: data_code_clev_dots2</span></span>
+<span id="cb8-285"><a href="#cb8-285" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb8-286"><a href="#cb8-286" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb8-287"><a href="#cb8-287" aria-hidden="true" tabindex="-1"></a>peng_clev_dots2 <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">|&gt;</span></span>
+<span id="cb8-288"><a href="#cb8-288" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> </span>
+<span id="cb8-289"><a href="#cb8-289" aria-hidden="true" tabindex="-1"></a>            <span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm) <span class="sc">&amp;</span> </span>
+<span id="cb8-290"><a href="#cb8-290" aria-hidden="true" tabindex="-1"></a>                <span class="sc">!</span><span class="fu">is.na</span>(bill_depth_mm)) <span class="sc">|&gt;</span></span>
+<span id="cb8-291"><a href="#cb8-291" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(sex, island) <span class="sc">|&gt;</span></span>
+<span id="cb8-292"><a href="#cb8-292" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb8-293"><a href="#cb8-293" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Median Bill Length</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">median</span>(bill_length_mm),</span>
+<span id="cb8-294"><a href="#cb8-294" aria-hidden="true" tabindex="-1"></a>        <span class="st">`</span><span class="at">Median Bill Depth</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">median</span>(bill_depth_mm)) <span class="sc">|&gt;</span></span>
+<span id="cb8-295"><a href="#cb8-295" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-296"><a href="#cb8-296" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"Med"</span>), </span>
+<span id="cb8-297"><a href="#cb8-297" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_to =</span> <span class="st">"median_measure"</span>, </span>
+<span id="cb8-298"><a href="#cb8-298" aria-hidden="true" tabindex="-1"></a>        <span class="at">values_to =</span> <span class="st">"median_value"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-299"><a href="#cb8-299" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">median_measure =</span> <span class="fu">factor</span>(median_measure))</span>
+<span id="cb8-300"><a href="#cb8-300" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(peng_clev_dots2)</span>
+<span id="cb8-301"><a href="#cb8-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-302"><a href="#cb8-302" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-303"><a href="#cb8-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-304"><a href="#cb8-304" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code</span></span>
 <span id="cb8-305"><a href="#cb8-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-306"><a href="#cb8-306" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb8-307"><a href="#cb8-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-308"><a href="#cb8-308" aria-hidden="true" tabindex="-1"></a>Re-create labels</span>
+<span id="cb8-306"><a href="#cb8-306" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb8-307"><a href="#cb8-307" aria-hidden="true" tabindex="-1"></a>**CODE:**</span>
+<span id="cb8-308"><a href="#cb8-308" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb8-309"><a href="#cb8-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-310"><a href="#cb8-310" aria-hidden="true" tabindex="-1"></a>Map the <span class="in">`median_value`</span> to the <span class="in">`x`</span> axis, and <span class="in">`island`</span> to the <span class="in">`y`</span> axis, but wrap <span class="in">`island`</span> in <span class="in">`forcats::fct_rev()`</span>.</span>
+<span id="cb8-310"><a href="#cb8-310" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
 <span id="cb8-311"><a href="#cb8-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a>Add <span class="in">`geom_line()`</span>, and map <span class="in">`island`</span> to the <span class="in">`group`</span> aesthetic. Set the <span class="in">`linewidth`</span> to <span class="in">`0.75`</span></span>
+<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a>Re-create labels</span>
 <span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a>Add <span class="in">`geom_point()`</span> and map <span class="in">`sex`</span> to <span class="in">`color`</span> aesthetic. Set the <span class="in">`size`</span> to <span class="in">`2.25`</span></span>
+<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a>Map the <span class="in">`median_value`</span> to the <span class="in">`x`</span> axis, and <span class="in">`island`</span> to the <span class="in">`y`</span> axis, but wrap <span class="in">`island`</span> in <span class="in">`forcats::fct_rev()`</span>.</span>
 <span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>Add <span class="in">`facet_wrap()`</span> and facet by <span class="in">`median_measure`</span>, setting <span class="in">`shrink`</span> to <span class="in">`TRUE`</span> and <span class="in">`scales`</span> to <span class="in">`"free_x"`</span></span>
+<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>Add <span class="in">`geom_line()`</span>, and map <span class="in">`island`</span> to the <span class="in">`group`</span> aesthetic. Set the <span class="in">`linewidth`</span> to <span class="in">`0.75`</span></span>
 <span id="cb8-317"><a href="#cb8-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a>Add <span class="in">`geom_point()`</span> and map <span class="in">`sex`</span> to <span class="in">`color`</span> aesthetic. Set the <span class="in">`size`</span> to <span class="in">`2.25`</span></span>
 <span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graph_code_clev_dots2</span></span>
-<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: '100%'</span></span>
-<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: '100%'</span></span>
-<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
-<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
-<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>labs_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Penguin Measurements Differences"</span>,</span>
-<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
-<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Bill Length/Depth (mm)"</span>,</span>
-<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
-<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
-<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots2,</span>
-<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> median_value, </span>
-<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
-<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
-<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a>                        <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
-<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="fl">2.25</span>) <span class="sc">+</span></span>
-<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">facet_wrap</span>(. <span class="sc">~</span> median_measure, </span>
-<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a>                        <span class="at">shrink =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scales =</span> <span class="st">"free_x"</span>)</span>
-<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="sc">+</span></span>
-<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots2</span>
-<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
-<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-357"><a href="#cb8-357" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb8-358"><a href="#cb8-358" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb8-359"><a href="#cb8-359" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a>Add <span class="in">`facet_wrap()`</span> and facet by <span class="in">`median_measure`</span>, setting <span class="in">`shrink`</span> to <span class="in">`TRUE`</span> and <span class="in">`scales`</span> to <span class="in">`"free_x"`</span></span>
+<span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graph_code_clev_dots2</span></span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: '100%'</span></span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: '100%'</span></span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>labs_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Penguin Measurements Differences"</span>,</span>
+<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
+<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Bill Length/Depth (mm)"</span>,</span>
+<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
+<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
+<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots2,</span>
+<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> median_value, </span>
+<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
+<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
+<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a>                        <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
+<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="fl">2.25</span>) <span class="sc">+</span></span>
+<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">facet_wrap</span>(. <span class="sc">~</span> median_measure, </span>
+<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a>                        <span class="at">shrink =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scales =</span> <span class="st">"free_x"</span>)</span>
+<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="sc">+</span></span>
+<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots2</span>
+<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-357"><a href="#cb8-357" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-358"><a href="#cb8-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-359"><a href="#cb8-359" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
 <span id="cb8-360"><a href="#cb8-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-361"><a href="#cb8-361" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb8-364"><a href="#cb8-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-365"><a href="#cb8-365" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graph_run_clev_dots2</span></span>
-<span id="cb8-366"><a href="#cb8-366" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb8-367"><a href="#cb8-367" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb8-368"><a href="#cb8-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: '100%'</span></span>
-<span id="cb8-369"><a href="#cb8-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: '100%'</span></span>
-<span id="cb8-370"><a href="#cb8-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
-<span id="cb8-371"><a href="#cb8-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
-<span id="cb8-372"><a href="#cb8-372" aria-hidden="true" tabindex="-1"></a>labs_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb8-373"><a href="#cb8-373" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Penguin Measurements Differences"</span>,</span>
-<span id="cb8-374"><a href="#cb8-374" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
-<span id="cb8-375"><a href="#cb8-375" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Bill Length/Depth (mm)"</span>,</span>
-<span id="cb8-376"><a href="#cb8-376" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
-<span id="cb8-377"><a href="#cb8-377" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
-<span id="cb8-378"><a href="#cb8-378" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-379"><a href="#cb8-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-380"><a href="#cb8-380" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots2,</span>
-<span id="cb8-381"><a href="#cb8-381" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> median_value, </span>
-<span id="cb8-382"><a href="#cb8-382" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
-<span id="cb8-383"><a href="#cb8-383" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
-<span id="cb8-384"><a href="#cb8-384" aria-hidden="true" tabindex="-1"></a>                        <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb8-385"><a href="#cb8-385" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
-<span id="cb8-386"><a href="#cb8-386" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="fl">2.25</span>) <span class="sc">+</span></span>
-<span id="cb8-387"><a href="#cb8-387" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">facet_wrap</span>(. <span class="sc">~</span> median_measure, </span>
-<span id="cb8-388"><a href="#cb8-388" aria-hidden="true" tabindex="-1"></a>                        <span class="at">shrink =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb8-389"><a href="#cb8-389" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scales =</span> <span class="st">"free_x"</span>)</span>
-<span id="cb8-390"><a href="#cb8-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-391"><a href="#cb8-391" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="sc">+</span></span>
-<span id="cb8-392"><a href="#cb8-392" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots2</span>
-<span id="cb8-393"><a href="#cb8-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-394"><a href="#cb8-394" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-395"><a href="#cb8-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-396"><a href="#cb8-396" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb8-361"><a href="#cb8-361" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb8-362"><a href="#cb8-362" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb8-363"><a href="#cb8-363" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-364"><a href="#cb8-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-365"><a href="#cb8-365" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb8-368"><a href="#cb8-368" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-369"><a href="#cb8-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graph_run_clev_dots2</span></span>
+<span id="cb8-370"><a href="#cb8-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb8-371"><a href="#cb8-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb8-372"><a href="#cb8-372" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: '100%'</span></span>
+<span id="cb8-373"><a href="#cb8-373" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: '100%'</span></span>
+<span id="cb8-374"><a href="#cb8-374" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb8-375"><a href="#cb8-375" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb8-376"><a href="#cb8-376" aria-hidden="true" tabindex="-1"></a>labs_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb8-377"><a href="#cb8-377" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Penguin Measurements Differences"</span>,</span>
+<span id="cb8-378"><a href="#cb8-378" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Male and female penguins"</span>,</span>
+<span id="cb8-379"><a href="#cb8-379" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Bill Length/Depth (mm)"</span>,</span>
+<span id="cb8-380"><a href="#cb8-380" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Island"</span>,</span>
+<span id="cb8-381"><a href="#cb8-381" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
+<span id="cb8-382"><a href="#cb8-382" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-383"><a href="#cb8-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-384"><a href="#cb8-384" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> peng_clev_dots2,</span>
+<span id="cb8-385"><a href="#cb8-385" aria-hidden="true" tabindex="-1"></a>                <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> median_value, </span>
+<span id="cb8-386"><a href="#cb8-386" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> <span class="fu">fct_rev</span>(island))) <span class="sc">+</span></span>
+<span id="cb8-387"><a href="#cb8-387" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> island), </span>
+<span id="cb8-388"><a href="#cb8-388" aria-hidden="true" tabindex="-1"></a>                        <span class="at">linewidth =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb8-389"><a href="#cb8-389" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sex), </span>
+<span id="cb8-390"><a href="#cb8-390" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="fl">2.25</span>) <span class="sc">+</span></span>
+<span id="cb8-391"><a href="#cb8-391" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">facet_wrap</span>(. <span class="sc">~</span> median_measure, </span>
+<span id="cb8-392"><a href="#cb8-392" aria-hidden="true" tabindex="-1"></a>                        <span class="at">shrink =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb8-393"><a href="#cb8-393" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scales =</span> <span class="st">"free_x"</span>)</span>
+<span id="cb8-394"><a href="#cb8-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-395"><a href="#cb8-395" aria-hidden="true" tabindex="-1"></a>ggp2_clev_dots2 <span class="sc">+</span></span>
+<span id="cb8-396"><a href="#cb8-396" aria-hidden="true" tabindex="-1"></a>    labs_clev_dots2</span>
+<span id="cb8-397"><a href="#cb8-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-398"><a href="#cb8-398" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-399"><a href="#cb8-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-400"><a href="#cb8-400" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

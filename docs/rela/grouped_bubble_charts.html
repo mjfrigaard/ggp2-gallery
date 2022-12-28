@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked densities</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stream_plots.html" class="sidebar-item-text sidebar-link">Stream plots</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -537,10 +542,10 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>CODE:</strong></p>
 </div>
@@ -558,8 +563,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <li>set <code>range</code> to <code>c(.04, 6)</code></li>
 </ul>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_grp_bubble <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
@@ -581,36 +586,41 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="sc">+</span> </span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell column-page-inset-right quarto-layout-panel">
+
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>GRAPH:</strong></p>
 </div>
-<div class="cell">
-<div class="cell-output-display">
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="grouped_bubble_charts_files/figure-html/create_graph_grp_bubble-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<section id="more-info" class="level2">
+</div>
+<section id="more-info" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="more-info">More info</h2>
 <p>We can change the <code>shape</code> of the points for more control of the <code>color</code> and <code>fill</code>.</p>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Shape</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Color</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="tab-content page-columns page-full">
+<div id="tabset-3-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>SHAPE:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
 <p>Inside <code>geom_point()</code>, we can set <code>shape</code> to <code>21</code>, and <code>color</code> to <code>"#000000"</code> to outline the points in black</p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21 <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
@@ -624,21 +634,25 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21 <span class="sc">+</span> </span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="grouped_bubble_charts_files/figure-html/shape_21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>COLOR:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
 <p>Inside the <code>aes()</code> of <code>geom_point()</code>, we can set <code>shape</code> to <code>21</code>, and map <code>color</code> to <code>"species"</code> to outline the points in the same colors as <code>fill</code></p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21_color <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
@@ -654,8 +668,12 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21_color <span class="sc">+</span> </span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
+<div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="grouped_bubble_charts_files/figure-html/shape_21_color_aes-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1113,129 +1131,137 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-190"><a href="#cb7-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
 <span id="cb7-191"><a href="#cb7-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb7-192"><a href="#cb7-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a>labs_grp_bubble <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
-<span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>, </span>
-<span id="cb7-196"><a href="#cb7-196" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span>, </span>
-<span id="cb7-197"><a href="#cb7-197" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="st">"Body Mass"</span>, </span>
-<span id="cb7-198"><a href="#cb7-198" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>)</span>
-<span id="cb7-199"><a href="#cb7-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-200"><a href="#cb7-200" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-201"><a href="#cb7-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb7-202"><a href="#cb7-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb7-203"><a href="#cb7-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-204"><a href="#cb7-204" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, </span>
-<span id="cb7-205"><a href="#cb7-205" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> species), </span>
-<span id="cb7-206"><a href="#cb7-206" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb7-207"><a href="#cb7-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
-<span id="cb7-208"><a href="#cb7-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-209"><a href="#cb7-209" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="sc">+</span> </span>
-<span id="cb7-210"><a href="#cb7-210" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
-<span id="cb7-211"><a href="#cb7-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-212"><a href="#cb7-212" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-213"><a href="#cb7-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-214"><a href="#cb7-214" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a>labs_grp_bubble <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb7-196"><a href="#cb7-196" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
+<span id="cb7-197"><a href="#cb7-197" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>, </span>
+<span id="cb7-198"><a href="#cb7-198" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span>, </span>
+<span id="cb7-199"><a href="#cb7-199" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="st">"Body Mass"</span>, </span>
+<span id="cb7-200"><a href="#cb7-200" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>)</span>
+<span id="cb7-201"><a href="#cb7-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-202"><a href="#cb7-202" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-203"><a href="#cb7-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb7-204"><a href="#cb7-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb7-205"><a href="#cb7-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb7-206"><a href="#cb7-206" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, </span>
+<span id="cb7-207"><a href="#cb7-207" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> species), </span>
+<span id="cb7-208"><a href="#cb7-208" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb7-209"><a href="#cb7-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
+<span id="cb7-210"><a href="#cb7-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-211"><a href="#cb7-211" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="sc">+</span> </span>
+<span id="cb7-212"><a href="#cb7-212" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
+<span id="cb7-213"><a href="#cb7-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-214"><a href="#cb7-214" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb7-215"><a href="#cb7-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-216"><a href="#cb7-216" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb7-217"><a href="#cb7-217" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb7-218"><a href="#cb7-218" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-219"><a href="#cb7-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-222"><a href="#cb7-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-223"><a href="#cb7-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_grp_bubble</span></span>
-<span id="cb7-224"><a href="#cb7-224" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb7-225"><a href="#cb7-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb7-226"><a href="#cb7-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb7-227"><a href="#cb7-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb7-228"><a href="#cb7-228" aria-hidden="true" tabindex="-1"></a>labs_grp_bubble <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb7-229"><a href="#cb7-229" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
-<span id="cb7-230"><a href="#cb7-230" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>, </span>
-<span id="cb7-231"><a href="#cb7-231" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span>, </span>
-<span id="cb7-232"><a href="#cb7-232" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="st">"Body Mass"</span>, </span>
-<span id="cb7-233"><a href="#cb7-233" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>)</span>
-<span id="cb7-234"><a href="#cb7-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-235"><a href="#cb7-235" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-236"><a href="#cb7-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb7-237"><a href="#cb7-237" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb7-238"><a href="#cb7-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-239"><a href="#cb7-239" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, </span>
-<span id="cb7-240"><a href="#cb7-240" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> species), </span>
-<span id="cb7-241"><a href="#cb7-241" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb7-242"><a href="#cb7-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
-<span id="cb7-243"><a href="#cb7-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-244"><a href="#cb7-244" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="sc">+</span> </span>
-<span id="cb7-245"><a href="#cb7-245" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
-<span id="cb7-246"><a href="#cb7-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-216"><a href="#cb7-216" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb7-217"><a href="#cb7-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-218"><a href="#cb7-218" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb7-219"><a href="#cb7-219" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb7-220"><a href="#cb7-220" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-221"><a href="#cb7-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-224"><a href="#cb7-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-225"><a href="#cb7-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_grp_bubble</span></span>
+<span id="cb7-226"><a href="#cb7-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb7-227"><a href="#cb7-227" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb7-228"><a href="#cb7-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb7-229"><a href="#cb7-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb7-230"><a href="#cb7-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb7-231"><a href="#cb7-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb7-232"><a href="#cb7-232" aria-hidden="true" tabindex="-1"></a>labs_grp_bubble <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb7-233"><a href="#cb7-233" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Bill Length vs. Flipper Length"</span>,</span>
+<span id="cb7-234"><a href="#cb7-234" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>, </span>
+<span id="cb7-235"><a href="#cb7-235" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Flipper length (mm)"</span>, </span>
+<span id="cb7-236"><a href="#cb7-236" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="st">"Body Mass"</span>, </span>
+<span id="cb7-237"><a href="#cb7-237" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>)</span>
+<span id="cb7-238"><a href="#cb7-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-239"><a href="#cb7-239" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-240"><a href="#cb7-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb7-241"><a href="#cb7-241" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb7-242"><a href="#cb7-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb7-243"><a href="#cb7-243" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, </span>
+<span id="cb7-244"><a href="#cb7-244" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> species), </span>
+<span id="cb7-245"><a href="#cb7-245" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb7-246"><a href="#cb7-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
 <span id="cb7-247"><a href="#cb7-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-248"><a href="#cb7-248" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb7-249"><a href="#cb7-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-250"><a href="#cb7-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## More info </span></span>
+<span id="cb7-248"><a href="#cb7-248" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble <span class="sc">+</span> </span>
+<span id="cb7-249"><a href="#cb7-249" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
+<span id="cb7-250"><a href="#cb7-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb7-251"><a href="#cb7-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-252"><a href="#cb7-252" aria-hidden="true" tabindex="-1"></a>We can change the <span class="in">`shape`</span> of the points for more control of the <span class="in">`color`</span> and <span class="in">`fill`</span>. </span>
+<span id="cb7-252"><a href="#cb7-252" aria-hidden="true" tabindex="-1"></a>::::</span>
 <span id="cb7-253"><a href="#cb7-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-254"><a href="#cb7-254" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
-<span id="cb7-255"><a href="#cb7-255" aria-hidden="true" tabindex="-1"></a><span class="fu">### Shape</span></span>
-<span id="cb7-256"><a href="#cb7-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-257"><a href="#cb7-257" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb7-258"><a href="#cb7-258" aria-hidden="true" tabindex="-1"></a>**SHAPE:**</span>
-<span id="cb7-259"><a href="#cb7-259" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-254"><a href="#cb7-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## More info </span></span>
+<span id="cb7-255"><a href="#cb7-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-256"><a href="#cb7-256" aria-hidden="true" tabindex="-1"></a>We can change the <span class="in">`shape`</span> of the points for more control of the <span class="in">`color`</span> and <span class="in">`fill`</span>. </span>
+<span id="cb7-257"><a href="#cb7-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-258"><a href="#cb7-258" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
+<span id="cb7-259"><a href="#cb7-259" aria-hidden="true" tabindex="-1"></a><span class="fu">### Shape</span></span>
 <span id="cb7-260"><a href="#cb7-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-261"><a href="#cb7-261" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb7-262"><a href="#cb7-262" aria-hidden="true" tabindex="-1"></a>Inside <span class="in">`geom_point()`</span>, we can set <span class="in">`shape`</span> to <span class="in">`21`</span>, and <span class="in">`color`</span> to <span class="in">`"#000000"`</span> to outline the points in black</span>
+<span id="cb7-261"><a href="#cb7-261" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb7-262"><a href="#cb7-262" aria-hidden="true" tabindex="-1"></a>**SHAPE:**</span>
 <span id="cb7-263"><a href="#cb7-263" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb7-264"><a href="#cb7-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-265"><a href="#cb7-265" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb7-268"><a href="#cb7-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-269"><a href="#cb7-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: shape_21</span></span>
-<span id="cb7-270"><a href="#cb7-270" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb7-271"><a href="#cb7-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
-<span id="cb7-272"><a href="#cb7-272" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb7-273"><a href="#cb7-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb7-274"><a href="#cb7-274" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21 <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-275"><a href="#cb7-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb7-276"><a href="#cb7-276" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb7-277"><a href="#cb7-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-278"><a href="#cb7-278" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, <span class="at">fill =</span> species), </span>
-<span id="cb7-279"><a href="#cb7-279" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">+</span> </span>
-<span id="cb7-280"><a href="#cb7-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
-<span id="cb7-281"><a href="#cb7-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-282"><a href="#cb7-282" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21 <span class="sc">+</span> </span>
-<span id="cb7-283"><a href="#cb7-283" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
-<span id="cb7-284"><a href="#cb7-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-285"><a href="#cb7-285" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-286"><a href="#cb7-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-287"><a href="#cb7-287" aria-hidden="true" tabindex="-1"></a><span class="fu">### Color</span></span>
-<span id="cb7-288"><a href="#cb7-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-289"><a href="#cb7-289" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb7-290"><a href="#cb7-290" aria-hidden="true" tabindex="-1"></a>**COLOR:**</span>
+<span id="cb7-265"><a href="#cb7-265" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb7-266"><a href="#cb7-266" aria-hidden="true" tabindex="-1"></a>Inside <span class="in">`geom_point()`</span>, we can set <span class="in">`shape`</span> to <span class="in">`21`</span>, and <span class="in">`color`</span> to <span class="in">`"#000000"`</span> to outline the points in black</span>
+<span id="cb7-267"><a href="#cb7-267" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-268"><a href="#cb7-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-269"><a href="#cb7-269" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb7-272"><a href="#cb7-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-273"><a href="#cb7-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: shape_21</span></span>
+<span id="cb7-274"><a href="#cb7-274" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb7-275"><a href="#cb7-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
+<span id="cb7-276"><a href="#cb7-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb7-277"><a href="#cb7-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb7-278"><a href="#cb7-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb7-279"><a href="#cb7-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb7-280"><a href="#cb7-280" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21 <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-281"><a href="#cb7-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb7-282"><a href="#cb7-282" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb7-283"><a href="#cb7-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb7-284"><a href="#cb7-284" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, <span class="at">fill =</span> species), </span>
+<span id="cb7-285"><a href="#cb7-285" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">+</span> </span>
+<span id="cb7-286"><a href="#cb7-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
+<span id="cb7-287"><a href="#cb7-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-288"><a href="#cb7-288" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21 <span class="sc">+</span> </span>
+<span id="cb7-289"><a href="#cb7-289" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
+<span id="cb7-290"><a href="#cb7-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb7-291"><a href="#cb7-291" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb7-292"><a href="#cb7-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-293"><a href="#cb7-293" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb7-294"><a href="#cb7-294" aria-hidden="true" tabindex="-1"></a>Inside the <span class="in">`aes()`</span> of <span class="in">`geom_point()`</span>, we can set <span class="in">`shape`</span> to <span class="in">`21`</span>, and map <span class="in">`color`</span> to <span class="in">`"species"`</span> to outline the points in the same colors as <span class="in">`fill`</span></span>
-<span id="cb7-295"><a href="#cb7-295" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-296"><a href="#cb7-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-297"><a href="#cb7-297" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb7-300"><a href="#cb7-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-301"><a href="#cb7-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: shape_21_color_aes</span></span>
-<span id="cb7-302"><a href="#cb7-302" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb7-303"><a href="#cb7-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
-<span id="cb7-304"><a href="#cb7-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb7-305"><a href="#cb7-305" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb7-306"><a href="#cb7-306" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21_color <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-307"><a href="#cb7-307" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb7-308"><a href="#cb7-308" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb7-309"><a href="#cb7-309" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-310"><a href="#cb7-310" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, </span>
-<span id="cb7-311"><a href="#cb7-311" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> species, </span>
-<span id="cb7-312"><a href="#cb7-312" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> species), </span>
-<span id="cb7-313"><a href="#cb7-313" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb7-314"><a href="#cb7-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
-<span id="cb7-315"><a href="#cb7-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-316"><a href="#cb7-316" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21_color <span class="sc">+</span> </span>
-<span id="cb7-317"><a href="#cb7-317" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
-<span id="cb7-318"><a href="#cb7-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-319"><a href="#cb7-319" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-320"><a href="#cb7-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-321"><a href="#cb7-321" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb7-293"><a href="#cb7-293" aria-hidden="true" tabindex="-1"></a><span class="fu">### Color</span></span>
+<span id="cb7-294"><a href="#cb7-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-295"><a href="#cb7-295" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb7-296"><a href="#cb7-296" aria-hidden="true" tabindex="-1"></a>**COLOR:**</span>
+<span id="cb7-297"><a href="#cb7-297" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-298"><a href="#cb7-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-299"><a href="#cb7-299" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb7-300"><a href="#cb7-300" aria-hidden="true" tabindex="-1"></a>Inside the <span class="in">`aes()`</span> of <span class="in">`geom_point()`</span>, we can set <span class="in">`shape`</span> to <span class="in">`21`</span>, and map <span class="in">`color`</span> to <span class="in">`"species"`</span> to outline the points in the same colors as <span class="in">`fill`</span></span>
+<span id="cb7-301"><a href="#cb7-301" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-302"><a href="#cb7-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-303"><a href="#cb7-303" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb7-306"><a href="#cb7-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-307"><a href="#cb7-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: shape_21_color_aes</span></span>
+<span id="cb7-308"><a href="#cb7-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb7-309"><a href="#cb7-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
+<span id="cb7-310"><a href="#cb7-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb7-311"><a href="#cb7-311" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb7-312"><a href="#cb7-312" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb7-313"><a href="#cb7-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb7-314"><a href="#cb7-314" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21_color <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-315"><a href="#cb7-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb7-316"><a href="#cb7-316" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb7-317"><a href="#cb7-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb7-318"><a href="#cb7-318" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> body_mass_g, </span>
+<span id="cb7-319"><a href="#cb7-319" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> species, </span>
+<span id="cb7-320"><a href="#cb7-320" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> species), </span>
+<span id="cb7-321"><a href="#cb7-321" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb7-322"><a href="#cb7-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(.<span class="dv">04</span>, <span class="dv">6</span>)) </span>
+<span id="cb7-323"><a href="#cb7-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-324"><a href="#cb7-324" aria-hidden="true" tabindex="-1"></a>ggp2_grp_bubble_s21_color <span class="sc">+</span> </span>
+<span id="cb7-325"><a href="#cb7-325" aria-hidden="true" tabindex="-1"></a>  labs_grp_bubble</span>
+<span id="cb7-326"><a href="#cb7-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-327"><a href="#cb7-327" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb7-328"><a href="#cb7-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-329"><a href="#cb7-329" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

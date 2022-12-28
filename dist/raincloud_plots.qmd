@@ -238,6 +238,8 @@ Use the `raincloudplots::raincloud_1x1()` to build the plot, assigning `peng_1x1
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_raincloud <- raincloudplots::raincloud_1x1(
     data_1x1 = peng_1x1,
     colors = (c('#0bd3d3', '#f890e7')),
@@ -272,6 +274,8 @@ ggp2_raincloud_x +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_raincloud <- raincloudplots::raincloud_1x1(
     data_1x1 = peng_1x1,
     colors = (c('#0bd3d3', '#f890e7')),
@@ -347,6 +351,8 @@ For the first layer, we create a box-plot with `geom_boxplot()`, but include not
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_raincloud_2 <- ggplot2::labs(
     title = "Flipper length of Palmer penguins",
          x = "Flipper length (mm)",
@@ -381,6 +387,8 @@ We then add the density with a `ggdist::stat_halfeye()` layer, mapping `species`
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_stat_halfeye <- ggp2_box +
   ggdist::stat_halfeye(aes(fill = species),
     adjust = 0.6, # shape = adjust * density estimator
@@ -421,6 +429,8 @@ The final layer is a `geom_point()`, mapping `fill` to `species` and setting `po
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_jitter <- ggp2_stat_halfeye + 
     geom_point(aes(fill = species),
         shape = 21, 
@@ -473,6 +483,8 @@ We can switch to this layout by applying `ggplot2::coord_flip()` to the `ggp2_st
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_stat_halfeye + 
     ggplot2::coord_flip() + 
 ggplot2::geom_point(

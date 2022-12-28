@@ -168,6 +168,8 @@ Add the `geom_freqpoly()` layer
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_freqpoly <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",
@@ -196,6 +198,8 @@ Experiment to see how many `bins` fit your variable’s distribution
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_freqpoly <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",

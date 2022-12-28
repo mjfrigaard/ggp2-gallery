@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked densities</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stream_plots.html" class="sidebar-item-text sidebar-link">Stream plots</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -533,7 +538,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
 <div class="tab-content page-columns page-full">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>CODE:</strong></p>
 </div>
@@ -543,8 +548,8 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p>Add the <code>geom_histogram()</code></p>
 <p>Adjust the <code>bins</code> accordingly</p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="page-columns page-full">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>labs_histogram <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
@@ -559,6 +564,9 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="sc">+</span> </span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  labs_histogram</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell column-page-inset-right quarto-layout-panel">
+
+</div>
 </div>
 </div>
 </div>
@@ -571,9 +579,11 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div style="font-size: 0.95em;">
 <p>The standard number of bins is <code>30</code>, but <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">‘you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.’</a></p>
 </div>
-</div></div><div class="cell">
-<div class="cell-output-display">
+</div></div><div class="cell column-page-inset-right quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <p><img src="histograms_files/figure-html/create_graph_histogram-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </div>
 </div>
@@ -1018,53 +1028,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
 <span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a>labs_histogram <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
-<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Distribution of flipper length"</span>,</span>
-<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>)</span>
-<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a>     <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_histogram</span>() </span>
-<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="sc">+</span> </span>
-<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a>  labs_histogram</span>
-<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>labs_histogram <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Distribution of flipper length"</span>,</span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>)</span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a>     <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_histogram</span>() </span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="sc">+</span> </span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a>  labs_histogram</span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
-<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.95em;"}</span>
-<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>The standard number of bins is <span class="in">`30`</span>, but <span class="co">[</span><span class="ot">'you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'</span><span class="co">](https://ggplot2.tidyverse.org/reference/geom_histogram.html)</span></span>
-<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_histogram</span></span>
-<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>labs_histogram <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
-<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Distribution of flipper length"</span>,</span>
-<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>)</span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a>     <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> </span>
-<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_histogram</span>() </span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.95em;"}</span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a>The standard number of bins is <span class="in">`30`</span>, but <span class="co">[</span><span class="ot">'you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'</span><span class="co">](https://ggplot2.tidyverse.org/reference/geom_histogram.html)</span></span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_histogram</span></span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>labs_histogram <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Distribution of flipper length"</span>,</span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>)</span>
 <span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="sc">+</span> </span>
-<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a>  labs_histogram</span>
-<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a>     <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm)) <span class="sc">+</span> </span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_histogram</span>() </span>
 <span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>ggp2_hist <span class="sc">+</span> </span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a>  labs_histogram</span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

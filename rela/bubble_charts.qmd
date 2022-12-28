@@ -178,6 +178,8 @@ Move the legend to the bottom of the graph with `theme(legend.position = "bottom
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_bubble <- labs(
   title = "Bill Length vs. Flipper Length",
   x = "Bill Length (mm)", y = "Flipper length (mm)", 
@@ -208,6 +210,8 @@ ggp2_bubble +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_bubble <- labs(
   title = "Bill Length vs. Flipper Length",
   x = "Bill Length (mm)", y = "Flipper length (mm)", 

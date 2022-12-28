@@ -172,6 +172,8 @@ Remove the legend with `show.legend = FALSE`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_ridges <- labs(
   title = "Adult foraging penguins",
   x = "Bill length (millimeters)",
@@ -203,6 +205,8 @@ Ridgeline plots are excellent for comparing continuous distributions across grou
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_ridges <- labs(
   title = "Adult foraging penguins",
   x = "Bill length (millimeters)",

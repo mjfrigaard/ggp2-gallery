@@ -183,6 +183,8 @@ Map `island` to `fill` *inside* the `aes()` of `geom_col()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_grp_col <- labs(
     title = "Average Penguin Mass",
     subtitle = "What's the average mass of penguins per Island?",
@@ -210,6 +212,8 @@ ggp2_grp_col +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_grp_col <- labs(
     title = "Average Penguin Mass",
     subtitle = "What's the average mass of penguins per Island?",

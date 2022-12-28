@@ -184,6 +184,8 @@ Map `island` to `x` and `body_mass_kg` to `y`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_sum_col <- labs(
     title = "Total Penguin Mass",
     subtitle = "How many kilograms of penguin per Island?",
@@ -211,6 +213,8 @@ ggp2_sum_col +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_sum_col <- labs(
     title = "Total Penguin Mass",
     subtitle = "How many kilograms of penguin per Island?",
@@ -334,6 +338,8 @@ The `geom_bar()` geom will also create grouped bar-graphs, but we have to switch
 #| echo: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggplot(data = peng_sum_col,
     aes(x = island,
         y = body_mass_kg)) +

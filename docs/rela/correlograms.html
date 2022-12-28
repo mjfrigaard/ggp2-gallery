@@ -293,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../prp/stacked_filled_density_graphs.html" class="sidebar-item-text sidebar-link">Stacked densities</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prp/stream_plots.html" class="sidebar-item-text sidebar-link">Stream plots</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -423,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -512,27 +517,27 @@ Graph info
 </div>
 </div>
 </div>
-<div class="panel-tabset">
+<div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>CODE:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
 <p>Create labels</p>
 </div>
-<div style="font-size: 0.75em;">
-<div class="cell">
+<div style="font-size: 0.75em;" class="page-columns page-full">
+<div class="cell column-page-inset-right quarto-layout-panel">
 
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
 <p><strong>GRAPH:</strong></p>
 </div>
-<div class="cell">
+<div class="cell column-page-inset-right quarto-layout-panel">
 
 </div>
 </div>
@@ -968,26 +973,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
 <span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
 <span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### Graph</span></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>**GRAPH:**</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

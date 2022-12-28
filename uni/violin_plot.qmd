@@ -132,7 +132,7 @@ The `penguins` data.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_
+#| label: data_code_violin
 #| eval: true
 #| echo: true
 penguins <- palmerpenguins::penguins
@@ -168,6 +168,8 @@ Add `geom_violin()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_violin <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",
@@ -194,6 +196,8 @@ ggp2_violin +
 #| echo: false
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_violin <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",

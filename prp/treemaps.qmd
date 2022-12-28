@@ -221,6 +221,8 @@ Create labels
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_treemap <- labs(
   title = "Species, island, and sex of adult penguins",
     fill = "Sex")
@@ -278,6 +280,8 @@ See full list of arguments [here](http://wilkox.org/treemapify/).
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_tm_subgroup <- ggp2_treemap +
     treemapify::geom_treemap_subgroup2_border(
            color = "#282b2d",
@@ -323,6 +327,8 @@ Add `geom_treemap_subgroup_text()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| layout-nrow: 1
 ggp2_tm_subgroup2 <- ggp2_tm_subgroup + 
        treemapify::geom_treemap_subgroup_border(
            color = "#ffffff", 
