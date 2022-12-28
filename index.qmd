@@ -25,6 +25,10 @@ library(knitr)
 library(kableExtra)
 library(colorblindr)
 library(downlit)
+install.packages("tidyverse")
+install.packages("fivethirtyeight")
+install.packages("palmerpenguins")
+install.packages("ggplot2movies")
 # options ----
 options(
   repos = "https://cloud.r-project.org",
@@ -36,7 +40,7 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))
 
 
 
-Welcome to the `ggplot2` graph gallery! This Quarto website contains a series of graphs composed in `ggplot2`. 
+Welcome! This website contains a collection of graphs composed in using `ggplot2` (and friends!).
 
 ::: {.column-margin}
 ![](www/ggplot2.png){fig-align="center" width="40%" height="40%"}
@@ -68,24 +72,18 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-## Data
-
-::: {style="font-size: 1.25em; color: #38B44A;"}
-***So many penguins!***
-:::
+## The Data
 
 To improve reproducibility, the majority of the graphs are built using the `palmerpenguins::penguins` data. 
 
-### `penguins`
+:::: {.column-margin}
 
-::: {.column-margin}
-![Artwork by @allison_horst](www/lter_penguins.png){fig-align="center" width="50%" height="50%"}
+::: {style="font-size: 0.95em; color: #fa7b3c;"}
+***...so...many...PENGUINS!***
 :::
 
-Install this package using the code below:
-
-:::: {.callout-note collapse="true"}
-## `penguins` data
+![Artwork by @allison_horst](www/lter_penguins.png){fig-align="center" width="50%" height="50%"}
+::::
 
 ```{r}
 #| label: penguins-pkg-show
@@ -93,31 +91,10 @@ Install this package using the code below:
 #| echo: true
 install.packages("palmerpenguins")
 library(palmerpenguins)
-palmerpenguins::penguins |> glimpse()
 ```
 
-```{r}
-#| label: penguins-pkg
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-library(palmerpenguins)
-palmerpenguins::penguins |> glimpse()
-```
-:::
 
 Some of the graphs use datasets from the `fivethirtyeight` package.
-
-::: {.column-margin}
-![](www/538.png){fig-align="center" width="30%" height="30%"}
-:::
-
-
-:::: {.callout-note collapse="true"}
-## `fivethirtyeight` data
-
-To view a table of available datasets in the `fivethirtyeight` package, view the `Data Frame Name` and `Article Title` columns in the `datasets_master` table. 
 
 ```{r}
 #| label: 538-pkg-show
@@ -125,10 +102,20 @@ To view a table of available datasets in the `fivethirtyeight` package, view the
 #| echo: true
 install.packages("fivethirtyeight")
 library(fivethirtyeight)
-fivethirtyeight::datasets_master |> 
-    select(`Data Frame Name`, `Article Title`)
 ```
 
+::: {.column-margin}
+![](www/538.png){fig-align="center" width="30%" height="30%"}
+:::
+
+:::: {.callout-tip collapse="true" icon=false}
+## Expand to view the data in the `fivethirtyeight` package
+
+::: {style="font-size: 0.75em;"}
+To view a table of available datasets in the `fivethirtyeight` package, view the `Data Frame Name` and `Article Title` columns in the `datasets_master` table:
+:::
+
+::: {style="font-size: 0.70em;"}
 ```{r}
 #| label: 538-pkg
 #| eval: true
@@ -140,21 +127,14 @@ reactable::reactable(fivethirtyeight::datasets_master |>
     select(`Data Frame Name`, `Article Title`), 
     defaultPageSize = 5)
 ```
-
 :::
+::::
 
-### Additional datasets
-
-### `movies`
+A *few* of the graphs are built using the `ggplot2movies::movies` data. 
 
 ::: {.column-margin}
 ![](www/imdb.png){fig-align="center" width="30%" height="30%"}
 :::
-
-A *few* of the graphs are built using the `ggplot2movies::movies` data. 
-
-:::: {.callout-note collapse="true"}
-## `movies` data
 
 ```{r}
 #| label: movies-pkg-show
@@ -162,36 +142,19 @@ A *few* of the graphs are built using the `ggplot2movies::movies` data.
 #| echo: true
 install.packages("ggplot2movies")
 library(ggplot2movies)
-ggplot2movies::movies |> glimpse()
 ```
 
+## The Graphs (code style & structure)
 
-```{r}
-#| label: movies-pkg
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-library(ggplot2movies)
-ggplot2movies::movies |> glimpse()
-```
+The gallery follows a [Rule of Least Power Principle](https://www.w3.org/2001/tag/doc/leastPower.html), in the sense that "*a language with a straightforward syntax may be easier to analyze than an otherwise equivalent one with more complex structure.*" 
 
-:::
+In other words, assuming the reader has some understanding of R and the `tidyverse`, the code for each graph is meant to be read and understood *without* having to run it. 
 
-## Code Style & Structure 
-
-The gallery follows a [Rule of Least Power Principle](https://www.w3.org/2001/tag/doc/leastPower.html), in the sense that "*a language with a straightforward syntax may be easier to analyze than an otherwise equivalent one with more complex structure.*" In other words, assuming the reader has some understanding of R and the `tidyverse`, the code for each graph is meant to be read and understood *without* having to run it. 
-
-::: {style="font-size: 0.95em; color: #02577A;"}
-- **All graph labels have the `labs_` prefix**  
-
-- **All graph layers have a `ggp2_` prefix**
-:::
 
 Each graph has the same four sections and structure: **Packages**, **Data**, **Code**, and **Graph**
 
-::::: {.callout-note collapse="false"}
-### Graph Code Structure
+::::: {.callout-note collapse="true"}
+### Expand to view the graph code structure
 
 :::: {.panel-tabset}
 
@@ -310,9 +273,147 @@ ggp2_graph +
 
 :::::
 
+All objects have the following naming conventions:
+
+::: {style="font-size: 0.95em; color: #02577A;"}
+- **Graph labels have the `labs_` prefix**  
+
+- **Graph layers have a `ggp2_` prefix**
+:::
+
+**Code Style:**
+
 I've attempted to balance brevity and clarity, but with the assumption that its best to err on the latter. I've also followed the general principle that if a graph can be *easily* built using one of `ggplot2` 's `geom_*` functions, that method is shown first. 
 
 If the graph can't be built with `ggplot2`'s geoms and requires additional packages/geoms/functions, instructions for installing the development version for these packages has been provided.
+
+**Extensions:**
+
+Below are the graphs requiring additional packages/extensions:
+
+-   [x] Waffle charts
+
+    -   [`ggwaffle` package](https://liamgilbey.github.io/ggwaffle/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Waffle Charts
+        devtools::install_github("liamgilbey/ggwaffle")
+        library(ggwaffle)
+        ```
+
+-   [x] Pie Charts
+
+    -   [`ggpubr` package](https://rpkgs.datanovia.com/ggpubr/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Pie Charts 
+        devtools::install_github("kassambara/ggpubr")
+        library(ggpubr)
+        ```
+
+-   [x] Mosaic Plots
+
+    -   [`ggmosaic` package](https://haleyjeppson.github.io/ggmosaic/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Mosaic Charts 
+        devtools::install_github("haleyjeppson/ggmosaic")
+        library(ggmosaic)
+        ```
+
+-   [x] Treemaps
+
+    -   [`treemapify` package](https://wilkox.org/treemapify/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Treemaps
+        devtools::install_github("wilkox/treemapify")
+        library(treemapify)
+        ```
+
+-   [x] Bee-swarm Plots
+
+    -   [`ggbeeswarm` package](https://github.com/eclarke/ggbeeswarm)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bee-swarm Plots
+        devtools::install_github("eclarke/ggbeeswarm")
+        library(ggbeeswarm)
+        ```
+
+-   [x] Ridgeline Plots
+
+    -   [`ggridges` package](https://wilkelab.org/ggridges/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Ridgeline plots 
+        devtools::install_github("wilkelab/ggridges")
+        library(ggridges)
+        ```
+
+-   [x] Rain-cloud plots
+
+    -   [`raincloudplots`](https://github.com/jorvlan/raincloudplots) and [`ggdist`](https://mjskay.github.io/ggdist/reference/index.html) packages
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Rain-cloud plots 
+        remotes::install_github('jorvlan/raincloudplots')
+        remotes::install_github('mjskay/ggdist')
+        library(raincloudplots)
+        library(ggdist)
+        ```
+
+-   [x] Alluvial charts
+
+    -   [ggalluvial package](https://corybrunson.github.io/ggalluvial/)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Alluvial charts
+        devtools::install_github("corybrunson/ggalluvial")
+        library(ggalluvial)
+        ```
+
+
+-   [x] Bump charts
+
+    -   [ggbump package](https://github.com/davidsjoberg/ggbump)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bump charts
+        devtools::install_github("davidsjoberg/ggbump")
+        library(ggbump)
+        ```
+
+-   [x] Parallel Sets
+
+    -   [ggforce package](https://ggforce.data-imaginist.com/index.html)
+
+        ```{r}
+        #| eval: false
+        #| echo: true
+        # Bump charts
+        devtools::install_github("thomasp85/ggforce")
+        library(ggforce)
+        ```
+
 
 ## Graph Categories 
 
@@ -325,6 +426,10 @@ Graphs have been categorized into the following types:
 - Relationships  
 
 Some graphs would justifiably belong in more than one category, and wherever this is the cases, I've tried to include other uses in the notes. 
+
+
+
+<!--
 
 ### Univariate Graphs
 
@@ -534,3 +639,5 @@ The following graphs are used to display relationships between two (or more) var
 -   [x] Hex Bins
 
 -   [ ] *Correlograms*
+
+-->
