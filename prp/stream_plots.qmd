@@ -210,6 +210,8 @@ Adjust the `y` axis with `scale_y_continuous()` and `scales::dollar`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_stream <- labs(
@@ -245,6 +247,8 @@ ggp2_stream +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_stream <- labs(
@@ -301,6 +305,8 @@ Adjust colors:
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_stream_prp <- ggplot(data = movies_stream, 
@@ -355,6 +361,8 @@ Finally, change the `y` axis to US dollars using `scale_y_continuous()` and `sca
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_stream_srt <- ggplot(data = movies_stream, 
