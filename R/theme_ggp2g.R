@@ -47,17 +47,13 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
                             debug = FALSE),
     ## AXES --------------------------------------------------------------
     axis.text =          element_text(
-                            # face = "plain",
                             family = base_family,
                             size = rel(0.65)
-                            # vjust = 1,
                             ),
-    axis.title.x =       element_text(vjust = -1.75),
+    axis.title.x =       element_text(vjust = -4.75),
     axis.title.y =       element_text(vjust = 4.25, angle = 90),
     axis.title =         element_text(
-                            # face = "plain",
                             size = rel(0.8)
-                            # vjust = 1,
                             ),
     ### AXIS TICKS ----
     ## remove all axis ticks
@@ -125,7 +121,7 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
     legend.box =         NULL,
     legend.key.size =    unit(1.2, "lines"),
     legend.position =    c(0.95, 0.8),
-    legend.justification = c(-0.35, 0.5), # c(horizontal, vertical)
+    legend.justification = c(-0.65, 0.3), # c(horizontal, vertical)
     legend.text =        element_text(
                             # face = "italic",
                             size = rel(0.7)),

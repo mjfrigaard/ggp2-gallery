@@ -3,6 +3,25 @@ library(fs)
 library(stringr)
 library(purrr)
 
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+
 source("R/new_graph.R")
 source("R/new_geom.R")
 
@@ -31,4 +50,4 @@ library(tidyr)
 # write_lines(x = script_header, file = "R/geom_abline.R", append = TRUE)
 # map2(.x = script_header, .y = geom_files, .f = write_lines, append = TRUE)
 
-new_graph(name = "Correlograms", section = "rela")
+new_graph(name = "cleveland dot plots", section = "amt")

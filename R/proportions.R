@@ -60,41 +60,64 @@ ggp2_pie +
 # consider using diverging bars with geom_bar()
 
 ## DATA --------------------------------------------------------------------
-## Create trump_approval_diverg from the fivethirtyeight::trump_approval_trend
-## dataset.
+## Create trump_approval_diverg from the 
+## fivethirtyeight::trump_approval_trend dataset.
 
-fivethirtyeight::trump_approval_trend |>
-  filter(subgroup == "All polls") |>
-  mutate(
+fivethirtyeight::trump_approval_trend |> 
+  dplyr::filter(subgroup == "All polls") |> 
+  dplyr::mutate(
     month = lubridate::month(modeldate,
-      label = TRUE, abbr = TRUE),
-    approve = approve_estimate * 0.01,
-    disapprove = disapprove_estimate * 0.01,
-    disapprove = disapprove * -1
-  ) |>
-  pivot_longer(
-    cols = c(approve, disapprove),
-    names_to = "poll",
-    values_to = "values"
-  ) |>
-  group_by(month, poll) |>
-  summarise(month_avg = mean(values, na.rm = TRUE)) |>
-  ungroup() -> trump_approval_diverg
+                label = TRUE, abbr = TRUE),
+    approve = approve_estimate*0.01,
+    disapprove = disapprove_estimate*0.01,
+    disapprove = disapprove * -1) |> 
+  tidyr::pivot_longer(cols = c(approve, disapprove), 
+    names_to = "poll", values_to = "values") |> 
+  dplyr::group_by(month, poll) |> 
+    dplyr::summarise(
+      month_avg = mean(values, na.rm = TRUE)
+    ) |> 
+  dplyr::ungroup() -> trump_approval_diverg
+glimpse(trump_approval_diverg)
 
 ## CODE --------------------------------------------------------------------
 
 labs_geom_bar_diverg <- labs(
   title = "Trump Approval Ratings",
   subtitle = "From 'How Popular is Donald Trump'",
-  x = "Month", y = "Monthly average percent",
+  x = "Month",
+  y = "Monthly average percent",
   fill = "Estimate")
-ggp2_bars_diverg <- ggplot(trump_approval_diverg, 
+ggp2_bars_diverg <- ggplot(
+  data = trump_approval_diverg, 
     aes(x = month, y = month_avg)) +
   geom_bar(aes(fill = poll),
     stat = "identity", width = .5) + 
   scale_y_continuous(limits = c(-1, 1), 
-    labels = scales::percent)
+    labels = scales::percent) 
+
+
 
 ## GRAPH --------------------------------------------------------------------
 ggp2_bars_diverg + 
   labs_geom_bar_diverg
+
+# DIVERGING BAR GRAPHS (VERTICAL) -------
+
+labs_geom_bar_diverg_vert <- labs(
+  title = "Trump Approval Ratings",
+  subtitle = "From 'How Popular is Donald Trump'",
+  x = "Monthly average percent",
+  y = "Month",
+  fill = "Estimate")
+ggp2_bar_diverg_vert <- ggplot(
+  data = trump_approval_diverg,
+      aes(x = month_avg, y =  month)) +
+  geom_bar(
+      aes(fill = poll), 
+        stat = "identity", width = .5) + 
+  scale_x_continuous(limits = c(-1, 1), 
+        labels = scales::percent)
+
+ggp2_bar_diverg_vert + 
+  labs_geom_bar_diverg_vert

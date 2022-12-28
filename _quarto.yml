@@ -28,6 +28,7 @@ website:
           - amt/overlapping_bar_graphs.qmd
           - amt/waffle_chart.qmd
           - amt/heatmaps.qmd
+          - amt/cleveland_dot_plots.qmd
       - section: "Proportions"
         contents:
           - prp/pie_charts.qmd
