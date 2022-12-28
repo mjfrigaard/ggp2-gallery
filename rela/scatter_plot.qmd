@@ -170,6 +170,8 @@ Add `geom_point()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_scatter <- labs(
@@ -202,6 +204,8 @@ If multiple points occupy the same value position, use transparency (`alpha`) to
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_scatter <- labs(

@@ -199,6 +199,8 @@ Add `geom_text()`, with `stat` set to `stratum` and label set to `after_stat(str
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_alluvial <- ggtitle(label = "Palmer Penguins", 
@@ -241,6 +243,8 @@ The `ggalluvial` functions can handle wide or long data.
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_alluvial <- ggtitle(label = "Palmer Penguins", 
@@ -328,6 +332,8 @@ Add `geom_text()` and set `stat` to `"stratum"`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_alluvial <- ggtitle(label = "Palmer Penguins", 
@@ -364,6 +370,8 @@ Convert data to lodes form using `to_lodes_form()` from the `ggalluvial` package
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_alluvial <- ggtitle(label = "Palmer Penguins", 

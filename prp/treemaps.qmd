@@ -223,6 +223,8 @@ Create labels
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_treemap <- labs(
@@ -282,6 +284,8 @@ See full list of arguments [here](http://wilkox.org/treemapify/).
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_tm_subgroup <- ggp2_treemap +
@@ -329,6 +333,8 @@ Add `geom_treemap_subgroup_text()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_tm_subgroup2 <- ggp2_tm_subgroup + 

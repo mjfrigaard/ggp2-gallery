@@ -204,6 +204,8 @@ We'll adjust the x axis with `scale_x_continuous()`, manually setting the `break
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_slope <- labs(
@@ -241,6 +243,8 @@ ggp2_slope +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_slope <- labs(
@@ -334,6 +338,8 @@ Finally, we facet the graph by `sex`, adjust the `size` of the text, and move th
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_slope <- labs(
@@ -381,6 +387,8 @@ ggp2_grp_slope +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_slope <- labs(

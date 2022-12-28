@@ -172,6 +172,8 @@ Map `species` to `color` inside the `geom_point()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_scatter <- labs(
@@ -207,6 +209,8 @@ Adjust over-plotting with transparency (`alpha`)
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_scatter <- labs(

@@ -189,6 +189,8 @@ Set the `alpha` to `1/3` (to handle the overlapping areas)
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_ovrlp_density <- labs(
@@ -225,6 +227,8 @@ Make density area slightly transparent to handle over-plotting
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_ovrlp_density <- labs(
@@ -269,6 +273,8 @@ If we change the `position` to `"stack"` we can see the smoothed estimates are '
 #| cap-location: margin
 #| column: page-inset-right
 #| layout-nrow: 1
+#| out-height: '100%'
+#| out-width: '100%'
 labs_stack_density <- labs(
     title = "Adult foraging penguins",
     x = "Flipper length (millimeters)",
@@ -305,6 +311,8 @@ If we include `after_stat(count)` as one of our mapped aesthetics, the mapping i
 #| message: false
 #| fig-cap: "Adding [`after_stat(count)`](https://ggplot2.tidyverse.org/reference/geom_density.html#computed-variables) *'preserves marginal densities.'*, which result in more a interpretable `y` axis (depending on the audience)"
 #| cap-location: margin
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_after_stat_density <- labs(
@@ -342,6 +350,8 @@ Using `after_stat(count)` with `position = "fill"` creates in a conditional dens
 #| message: false
 #| fig-cap: "This results in a `y` axis ranging from 0-1, and the area filled with the relative proportional values."
 #| cap-location: margin
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_fill_density <- labs(

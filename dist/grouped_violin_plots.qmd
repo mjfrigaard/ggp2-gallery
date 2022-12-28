@@ -171,6 +171,8 @@ Remove the legend with `show.legend = FALSE`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_violin <- labs(
@@ -206,6 +208,8 @@ Violin plots can allow us to compare the 'center' and 'spread' of continuous var
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_violin <- labs(
@@ -251,6 +255,8 @@ We can include lines for the 25th, 50th, and 75th quartiles using the `draw_quan
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggplot(data = peng_violin,
@@ -281,6 +287,8 @@ The [`kernel` argument](https://ggplot2.tidyverse.org/reference/geom_violin.html
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggplot(data = peng_violin,
@@ -311,6 +319,8 @@ We can directly adjust the shape of the violin with the [`bw` argument](https://
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 # bw of 0.5

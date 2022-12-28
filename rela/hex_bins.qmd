@@ -180,6 +180,8 @@ Add the `geom_hex()` layer
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_hex <- labs(
@@ -209,6 +211,8 @@ ggp2_hex +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_hex <- labs(
@@ -250,6 +254,8 @@ Below we change the `bins` to `20` and `15` and save these layers as `ggp2_hex_b
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_hex_b20 <- ggplot(data = penguins_hex,
@@ -293,6 +299,8 @@ If the hexagons overlap, we can use the `alpha` to make them slightly transparen
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_hex2 <- labs(
@@ -341,6 +349,8 @@ Bins can be set with `bins` (a single number) or `binwidth` (a numeric vector of
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_hex3 <- labs(

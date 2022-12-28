@@ -186,6 +186,8 @@ Map `island` to `x` and `body_mass_kg` to `y`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_sum_col <- labs(
@@ -215,6 +217,8 @@ ggp2_sum_col +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_sum_col <- labs(
@@ -340,6 +344,8 @@ The `geom_bar()` geom will also create grouped bar-graphs, but we have to switch
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggplot(data = peng_sum_col,

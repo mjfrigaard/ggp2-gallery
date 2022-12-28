@@ -197,6 +197,8 @@ Move the legend to the top with `theme(legend.position = "top")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_waffle <- labs(
@@ -226,6 +228,8 @@ ggp2_waffle +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_waffle <- labs(

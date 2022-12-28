@@ -172,6 +172,8 @@ Inside `geom_dotplot`, set `method` to `"histodot"`, `binwidth` to `1.35`, and `
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_ovrlp_dotplot <- labs(
@@ -209,6 +211,8 @@ ggp2_ovrlp_dotplot +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_ovrlp_dotplot <- labs(

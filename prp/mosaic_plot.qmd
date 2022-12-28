@@ -193,8 +193,8 @@ Move the legend to the bottom with `theme(legend.position = "bottom")`
 #| echo: true 
 #| warning: false
 #| message: false
-#| fig-height: 7
-#| fig-width: 7
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_mosaic <- labs(
@@ -227,8 +227,8 @@ ggp2_mosaic +
 #| echo: false 
 #| warning: false
 #| message: false
-#| fig-height: 7
-#| fig-width: 7
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_mosaic <- labs(
@@ -271,8 +271,8 @@ It's a good idea to adjust the `fig-height` and `fig-width` of your graph
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-height: 6
-#| fig-width: 6
+#| out-height: '100%'
+#| out-width: '100%'
 #| fig-align: center
 #| layout-nrow: 2
 # graph
@@ -356,6 +356,8 @@ kableExtra::kable_paper(
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 # build 2-variable mosiac plot
@@ -389,6 +391,8 @@ For conditional variables, we map the `product()` variable as `unruly_child` and
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 # build conditional mosiac plot
@@ -431,8 +435,8 @@ The `divider` argument let's us control the spine partitions (vertically and hor
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-height: 10
-#| fig-width: 8
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_mosaic_facet <- labs(
@@ -487,8 +491,8 @@ The two horizontal orientation options make the axis text harder to read, so the
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-height: 10
-#| fig-width: 8
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_mosaic_hspine <- ggplot(data = fly_mosaic) +

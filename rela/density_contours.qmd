@@ -219,6 +219,8 @@ Add the `geom_density_2d()`
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 # labels
@@ -266,6 +268,8 @@ ggp2_dnsty_2d +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 # x limits
@@ -336,6 +340,8 @@ Build a base layer:
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_sdens_2d <- labs(
@@ -390,6 +396,8 @@ Add the `stat_density_2d()` layer:
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 stat_sdens_2d <- base_sdens_2d +
@@ -409,6 +417,8 @@ stat_sdens_2d +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp1 <- stat_sdens_2d +
@@ -462,6 +472,8 @@ We'll set these to white (`"#ffffff"`) and dark gray (`"#404040"`)
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 fill_sdens_2d <- stat_sdens_2d +
@@ -480,6 +492,8 @@ fill_sdens_2d +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 fill_sdens_2d <- stat_sdens_2d +
@@ -542,6 +556,8 @@ Add a `geom_point()` layer
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 # geom_point()
@@ -563,6 +579,8 @@ pnts_sdens_2d +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 pnts_sdens_2d <- fill_sdens_2d +
@@ -648,6 +666,8 @@ Build the `geom_point()` layer:
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_dnsty_2d_grp <- labs(
@@ -721,6 +741,8 @@ Facet:
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_dnsty_2d_facet <- labs(
@@ -763,6 +785,8 @@ ggp2_dnsty_2d_facet +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_dnsty_2d_facet <- labs(
@@ -851,6 +875,8 @@ Add the `geom_density_2d_filled()`, setting `alpha` to `0.8`
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_dnsty_2d <- labs(
@@ -886,6 +912,8 @@ ggp2_dnsty_2d_fill +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_dnsty_2d <- labs(
@@ -948,6 +976,8 @@ We can also outline the contours by adding color to the lines using another `geo
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_dnsty_2d_fill_lns <- ggp2_dnsty_2d_fill +
@@ -965,6 +995,8 @@ ggp2_dnsty_2d_fill_lns +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_dnsty_2d_fill_lns <- ggp2_dnsty_2d_fill +

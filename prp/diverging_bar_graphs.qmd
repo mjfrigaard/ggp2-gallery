@@ -272,6 +272,8 @@ Add `scale_y_continuous()` to manually set the limits and format the axis with `
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_geom_bar_diverg <- labs(

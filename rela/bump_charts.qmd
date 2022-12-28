@@ -193,6 +193,8 @@ Move legend to bottom with `theme(legend.position = "bottom")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_bump <- labs(title = "TV News Hurricane Mentions",   
@@ -223,6 +225,8 @@ ggp2_bump +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_bump <- labs(title = "TV News Hurricane Mentions",   

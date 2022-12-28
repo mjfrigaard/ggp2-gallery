@@ -187,6 +187,8 @@ Remove the legend with `show.legend = FALSE`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_beeswarm <- labs(
@@ -222,6 +224,8 @@ Adjust the size/shape of the swarm using `method =` or the  `geom_quasirandom()`
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_beeswarm <- labs(
@@ -269,6 +273,8 @@ Set the point `shape` to `21` to control the `fill` and `color`
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_compact_swarm <- ggplot(data = peng_beeswarm,
@@ -306,6 +312,8 @@ For a beeswarm that falls across the vertical axis, use the `side` argument.
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_rside_swarm <- ggplot(data = peng_beeswarm,

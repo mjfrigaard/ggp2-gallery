@@ -240,6 +240,8 @@ Use the `raincloudplots::raincloud_1x1()` to build the plot, assigning `peng_1x1
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_raincloud <- raincloudplots::raincloud_1x1(
@@ -276,6 +278,8 @@ ggp2_raincloud_x +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_raincloud <- raincloudplots::raincloud_1x1(

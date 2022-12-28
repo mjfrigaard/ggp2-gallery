@@ -202,6 +202,8 @@ Remove legend with `theme(legend.position = "none")`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs <- paste0(movie_pie$mpaa, " (", 
@@ -228,11 +230,13 @@ ggp2_pie +
 :::
 
 ```{r}
-#| label: create_graph_
+#| label: create_graph_pie
 #| eval: true
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs <- paste0(movie_pie$mpaa, " (", 

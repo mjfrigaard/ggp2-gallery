@@ -185,6 +185,8 @@ Map `island` to `fill` *inside* the `aes()` of `geom_col()`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_col <- labs(
@@ -214,6 +216,8 @@ ggp2_grp_col +
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_col <- labs(

@@ -175,6 +175,8 @@ Remove the legend with `show.legend = FALSE`
 #| echo: true 
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_boxplots <- labs(
@@ -210,6 +212,8 @@ When a categorical variable is supplied, the plot will contain a box for each le
 #| echo: false
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_boxplots <- labs(
@@ -252,6 +256,8 @@ Add notches to the box-plot using the `notch = TRUE` and `notchwidth` arguments.
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_grp_box_notch <- ggplot(data = peng_box,
@@ -285,6 +291,8 @@ Box-plots display outliers using points, and we can change the color these using
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_grp_box_outliers <- ggplot(data = peng_box,
