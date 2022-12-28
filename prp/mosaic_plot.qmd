@@ -403,102 +403,193 @@ ggp2_mosaic_cond +
 ```
 :::
 
-### Compare
+### Facets
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**COMPARE:**
+**FACETS:**
 :::
 
 ::: {style="font-size: 0.85em;"}
-Below we can compare the two plots--can you tell what's happening in the conditional plot?
+
+Another option for including a conditioning variable is including facets. In the example below we use `recline_rude` in both `x` and `fill` (we don't need to wrap `recline_rude` in `product()` because it's the only variable).
+
+The `divider` argument let's us control the spine partitions (vertically and horizontally). 
 :::
 
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: comapre_mosaic
-#| eval: true
+#| label: comapre_mosaic_show
+#| eval: false
 #| echo: true
 #| warning: false
 #| message: false
-#| fig-height: 5.5
-#| fig-width: 5.5
-#| column: page-inset-right
-#| layout-nrow: 1
-ggp2_mosaic_2var + 
-    labs_mosaic_2var
+#| fig-height: 8
+#| fig-width: 8
+# facet plot
+labs_mosaic_facet <- labs(
+        title = "In general...is it rude to...",
+        caption = "divider = 'vspine'",
+        y = "...recline your seat on a plane?",
+        x = "...knowingly bring unruly children on a plane?",
+        fill = "recline_rude responses") 
 
-ggp2_mosaic_cond + 
-    labs_mosaic_cond
+ggp2_mosaic_facet <- ggplot(data = fly_mosaic) +
+          ggmosaic::geom_mosaic(aes(x = recline_rude, 
+                                 fill = recline_rude), 
+                              divider = "vspine") +
+                    facet_grid(. ~ unruly_child) + 
+          ggmosaic::theme_mosaic() 
+
+ggp2_mosaic_facet + 
+    theme(
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major = element_blank()) +
+    labs_mosaic_facet 
+    
 ```
-:::
 
-::: {style="font-size: 0.85em;"}
-Compare the conditional mosaic plot above to the facetted mosaic plot below:
-:::
 
-::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: facet_mosaic
+#| label: comapre_mosaic_run
 #| eval: true
-#| echo: true
-#| code-fold: true
+#| echo: false
 #| warning: false
 #| message: false
-#| fig-height: 8 
+#| fig-height: 10
 #| fig-width: 8
 #| column: page-inset-right
+#| layout-nrow: 1
 # facet plot
 labs_mosaic_facet <- labs(
         title = "In general...is it rude to...",
         y = "...recline your seat on a plane?",
         x = "...knowingly bring unruly children on a plane?",
         fill = "recline_rude responses") 
+
 ggp2_mosaic_facet <- ggplot(data = fly_mosaic) +
-          geom_mosaic(aes(x = product(recline_rude), 
-                       fill = recline_rude), 
-                    divider = "vspine") +
-            facet_grid(. ~ unruly_child) 
+          ggmosaic::geom_mosaic(aes(x = recline_rude, 
+                                 fill = recline_rude), 
+                              divider = "vspine") +
+                    facet_grid(. ~ unruly_child) 
+
 ggp2_mosaic_facet + 
     ggmosaic::theme_mosaic(base_size = 10) + 
     theme(
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         panel.grid.minor.x = element_blank(),
-         panel.grid.major = element_blank()) +
-    labs_mosaic_facet 
+        panel.grid.major = element_blank(),
+        plot.margin =        unit(x = c(0.5, 0.5, 0.5, 0.5), "lines")) + 
+    labs_mosaic_facet +
+    labs(caption = "divider = 'vspine'") 
+```
+:::
+
+
+::: {style="font-size: 0.85em;"}
+Below are the two vertical orientation options for the `divider` argument. 
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: patchwork_mosaic_run_v
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 10
+#| fig-width: 8
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_mosaic_vspine <- ggplot(data = fly_mosaic) +
+          ggmosaic::geom_mosaic(aes(x = recline_rude, 
+                                 fill = recline_rude), 
+                              divider = "vspine") +
+                    facet_grid(. ~ unruly_child) + 
+            ggmosaic::theme_mosaic(base_size = 8) + 
+            theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                panel.grid.minor.x = element_blank(),
+                panel.grid.major = element_blank()) +
+            labs_mosaic_facet +
+            labs(caption = "divider = 'vspine'") 
+
+ggp2_mosaic_vbar <- ggplot(data = fly_mosaic) +
+          ggmosaic::geom_mosaic(aes(x = recline_rude, 
+                                 fill = recline_rude), 
+                              divider = "vbar") +
+                    facet_grid(. ~ unruly_child) +
+            ggmosaic::theme_mosaic(base_size = 8) + 
+            theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                panel.grid.minor.x = element_blank(),
+                panel.grid.major = element_blank()) +
+            labs_mosaic_facet +
+            labs(caption = "divider = 'vbar'") 
+
+ggp2_mosaic_vspine + 
+    ggp2_mosaic_vbar + 
+  patchwork::plot_layout(
+    nrow = 2, guides = 'collect')
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+The two horizontal orientation options make the axis text harder to read, so these need to be manipulated manually. 
+:::
+
+::: {style="font-size: 0.85em;"}
+```{r}
+#| label: patchwork_mosaic_run_h
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 10
+#| fig-width: 8
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_mosaic_hspine <- ggplot(data = fly_mosaic) +
+          ggmosaic::geom_mosaic(aes(x = recline_rude, 
+                                 fill = recline_rude), 
+                              divider = "hspine") +
+                    facet_grid(. ~ unruly_child) + 
+            ggmosaic::theme_mosaic(base_size = 8) + 
+            theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                panel.grid.minor.x = element_blank(),
+                panel.grid.major = element_blank()) +
+            labs_mosaic_facet +
+            labs(caption = "divider = 'hspine'") 
+
+
+ggp2_mosaic_hbar <- ggplot(data = fly_mosaic) +
+          ggmosaic::geom_mosaic(aes(x = recline_rude, 
+                                 fill = recline_rude), 
+                              divider = "hbar") +
+                    facet_grid(. ~ unruly_child) + 
+            ggmosaic::theme_mosaic(base_size = 8) + 
+            theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                panel.grid.minor.x = element_blank(),
+                panel.grid.major = element_blank()) +
+            labs_mosaic_facet +
+            labs(caption = "divider = 'hbar'") 
+
+ggp2_mosaic_hspine + 
+    ggp2_mosaic_hbar + 
+  patchwork::plot_layout(
+    nrow = 2, guides = 'collect')
 ```
 :::
 
 ::::
-
-
-```{r}
-#| label: patchwork_mosaic
-#| eval: false
-#| echo: false
-#| warning: false
-#| message: false
-#| fig-height: 8
-#| fig-width: 8
-#| column: page-inset-right
-#| layout-nrow: 1
-# build conditional mosiac plot
-mosaic_2var <- ggp2_mosaic_2var + labs_mosaic_2var
-# patch both together
-patchwork::plot_spacer() + # pad the area in front of the plot 1
-  mosaic_cond +
-  patchwork::plot_spacer() + # pad the area in front of the plot 2
-  mosaic_2var +
-  patchwork::plot_layout(
-    # limit to 2 rows
-    nrow = 2,
-    # make plots in column 2 5x the width of column 1
-    widths = c(1, 5)) +
-  patchwork::plot_annotation(
-    # adjust title text size
-    theme = theme_mosaic(base_size = 11),
-    title = "In general...is it rude to...")
-```
 
 
