@@ -134,7 +134,7 @@ ggp2_sum_col <- ggplot(data = peng_sum_col,
 ggp2_sum_col + 
     labs_sum_col
 
-# OVERLAPPING (STACKED) BAR GRAPHS --------------------
+# OVERLAPPING BAR GRAPHS --------------------
 penguins_ovrlp <- filter(penguins,
                       !is.na(species) & 
                             island == "Dream")

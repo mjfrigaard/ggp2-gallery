@@ -126,13 +126,11 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
         # c(0.5, 0.5) = dead center
         # c(0, 1) = top left
     legend.position =    c(1, 0.5), # c(horizontal, vertical)
-    legend.justification = c(-0.075, 0.0),
-
+    legend.justification = c(-0.015, 0.0), # c(horizontal, vertical)
     legend.text =        element_text(
-                            # face = "italic",
-                            size = rel(0.7)),
+                            size = rel(0.65)),
     legend.title =       element_text(
-                            size = rel(0.8), 
+                            size = rel(0.7), 
                             hjust = 0),
     legend.margin =      margin(t = 1.5, r = 1.5, b = 1.5, l = 1.5),
     ## PLOT MARGIN ----
@@ -147,6 +145,8 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
 ggplot2::theme_set(
     theme_ggp2g(base_size = 16))
 
+# GROUPED BUBBLE GRAPHS --------------------
+penguins <- palmerpenguins::penguins
 labs_grp_bubble <- labs(
   title = "Bill Length vs. Flipper Length",
   x = "Bill Length (mm)", 
@@ -165,21 +165,55 @@ ggp2_grp_bubble <- penguins |>
 ggp2_grp_bubble + 
   labs_grp_bubble
 
-# # test ----
-# toy <- data.frame(
-#   const = 1,
-#   up = 1:4,
-#   txt = letters[1:4],
-#   big = (1:4)*1000,
-#   log = c(2, 5, 10, 2000)
-# )
-# 
-# base <- ggplot(data = toy, 
-#         aes(x = up, y = up)) +
-#     geom_point(aes(color = txt), 
-#       size = 3) +
-#     geom_line() +
-#     labs(title = "Ubuntu", 
-#          subtitle = "Ubuntu-Regular.ttf")
-# 
-# base
+# OVERLAPPING BAR GRAPHS --------------------
+penguins_ovrlp <- filter(penguins,
+                      !is.na(species) & 
+                            island == "Dream")
+glimpse(penguins_ovrlp)
+
+labs_bar_ovrlp <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species")
+ggp2_bar_ovrlp <- ggplot(data = penguins_ovrlp,
+          aes(x = flipper_length_mm, fill = species)) +
+                geom_bar() 
+ggp2_bar_ovrlp + 
+  labs_bar_ovrlp
+
+## DODGE BAR GRAPHS --------------------
+labs_bar_dodge <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species",
+  caption = "position = 'dodge'")
+ggp2_bar_dodge <- ggplot(data = penguins_ovrlp,
+                    aes(x = flipper_length_mm, 
+                        group = species, 
+                        fill = species)) +
+                    geom_bar(
+                        position = "dodge")
+ggp2_bar_dodge +
+  labs_bar_dodge
+
+## DODGE2 BAR GRAPHS --------------------
+# dodge2 preserves the total width of the elements.
+labs_bar_dodge2 <- labs(
+  title = "Adult foraging penguins",
+  subtitle = "Penguins on Dream island",
+  x = "Flipper length (millimeters)",
+  y = "Count",
+  fill = "Species",
+  caption = "position = 'dodge2'")
+ggp2_bar_dodge2 <- ggplot(data = penguins_ovrlp,
+                    aes(x = flipper_length_mm, 
+                        group = species, 
+                        fill = species)) +
+                    geom_bar(
+                        position = "dodge2")
+ggp2_bar_dodge2 +
+  labs_bar_dodge2
