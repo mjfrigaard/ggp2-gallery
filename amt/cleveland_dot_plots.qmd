@@ -96,7 +96,7 @@ ggp2_clev_dots +
 
 A Cleveland dot plot displays differences in a numerical variable for different levels of a categorical variable.
 
-Typically, the graph contains two points representing the numerical value on the `y` axis, differentiated by color. A line connects the two points together, representing the difference (or ‘delta’) between the two values. The length of the line is the size of the difference. 
+Typically, the graph contains two points representing the numerical value on the `y` axis, differentiated by color. A line connecting the two points represents the difference between the two categorical levels (the width of the line is the size of the difference).
 
 ::::
 
@@ -171,6 +171,11 @@ glimpse(peng_clev_dots)
 
 Create labels
 
+Map the `med_flip_length_mm` to the `x` axis, and `island` to the `y` axis, but wrap `island` in `forcats::fct_rev()`.
+
+Add `geom_line()`, and map `island` to the `group` aesthetic. Set the `linewidth` to `0.75`
+
+Add `geom_point()` and map `sex` to `color` aesthetic. Set the `size` to `2.25`
 
 :::
 
@@ -190,9 +195,12 @@ labs_clev_dots <- labs(
 )
 
 ggp2_clev_dots <- ggplot(data = peng_clev_dots,
-    mapping = aes(x = med_flip_length_mm, y = fct_rev(island))) +
-        geom_line(aes(group = island), linewidth = 0.75) + 
-        geom_point(aes(color = sex), size = 2.25) 
+                mapping = aes(x = med_flip_length_mm, 
+                              y = fct_rev(island))) +
+                geom_line(aes(group = island), 
+                    linewidth = 0.75) + 
+                geom_point(aes(color = sex), 
+                    size = 2.25) 
 
 ggp2_clev_dots + 
     labs_clev_dots
@@ -220,9 +228,12 @@ labs_clev_dots <- labs(
 )
 
 ggp2_clev_dots <- ggplot(data = peng_clev_dots,
-    mapping = aes(x = med_flip_length_mm, y = fct_rev(island))) +
-        geom_line(aes(group = island), linewidth = 0.75) + 
-        geom_point(aes(color = sex), size = 2.25) 
+                mapping = aes(x = med_flip_length_mm, 
+                              y = fct_rev(island))) +
+                geom_line(aes(group = island), 
+                    linewidth = 0.75) + 
+                geom_point(aes(color = sex), 
+                    size = 2.25) 
 
 ggp2_clev_dots + 
     labs_clev_dots
@@ -243,6 +254,10 @@ Cleveland dot plots are also helpful when comparing multiple differences on a co
 :::
 
 ::: {style="font-size: 0.85em;"}
+Remove missing values from `sex` and `flipper_length_mm` and group on `sex` and `island` to the calculate the median flipper length, median bill length, and median bill depth. These variables are going to get 'showtime-ready' names because they'll be used in our facets. 
+After ungrouping the data, pivot the new columns into a long (tidy) format with `median_measure` containing the name of the variable, and `median_value` containing the numbers. 
+
+Finally, convert `median_measure` into a factor. 
 
 :::
 
@@ -252,13 +267,13 @@ Cleveland dot plots are also helpful when comparing multiple differences on a co
 #| eval: true
 #| echo: true
 peng_clev_dots2 <- palmerpenguins::penguins |>
-    dplyr::filter(!is.na(sex) & !is.na(flipper_length_mm)) |>
+    dplyr::filter(!is.na(sex) & 
+            !is.na(flipper_length_mm)) |>
     dplyr::group_by(sex, island) |>
     dplyr::summarise(
         `Median Flipper Length` = median(flipper_length_mm),
         `Median Bill Length` = median(bill_length_mm),
-        `Median Bill Depth` = median(bill_depth_mm)
-        ) |>
+        `Median Bill Depth` = median(bill_depth_mm)) |>
     dplyr::ungroup() |> 
     tidyr::pivot_longer(cols = starts_with("Med"), 
         names_to = "median_measure", 
@@ -272,6 +287,20 @@ glimpse(peng_clev_dots2)
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Re-create labels
+
+Map the `median_value` to the `x` axis, and `island` to the `y` axis, but wrap `island` in `forcats::fct_rev()`.
+
+Add `geom_line()`, and map `island` to the `group` aesthetic. Set the `linewidth` to `0.75`
+
+Add `geom_point()` and map `sex` to `color` aesthetic. Set the `size` to `2.25`
+
+Add `facet_wrap()` and facet by `median_measure`, setting `shrink` to `TRUE` and `scales` to `"free_x"`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -288,11 +317,15 @@ labs_clev_dots2 <- labs(
 )
 
 ggp2_clev_dots2 <- ggplot(data = peng_clev_dots2,
-        mapping = aes(x = median_value, y = fct_rev(island))) +
-        geom_line(aes(group = island), linewidth = 0.75) +
-    geom_point(aes(color = sex), size = 2.25) +
-    facet_wrap(. ~ median_measure, 
-        shrink = TRUE, scales = "free_x")
+                mapping = aes(x = median_value, 
+                              y = fct_rev(island))) +
+                    geom_line(aes(group = island), 
+                        linewidth = 0.75) +
+                    geom_point(aes(color = sex), 
+                        size = 2.25) +
+                    facet_wrap(. ~ median_measure, 
+                        shrink = TRUE, 
+                        scales = "free_x")
 
 ggp2_clev_dots2 +
     labs_clev_dots2
@@ -310,6 +343,8 @@ ggp2_clev_dots2 +
 #| label: graph_run_clev_dots2
 #| eval: true
 #| echo: false
+#| column: page-inset-right
+#| layout-nrow: 1
 labs_clev_dots2 <- labs(
     title = "Penguin Measurements Differences",
     subtitle = "Male and female penguins",
@@ -319,11 +354,15 @@ labs_clev_dots2 <- labs(
 )
 
 ggp2_clev_dots2 <- ggplot(data = peng_clev_dots2,
-        mapping = aes(x = median_value, y = fct_rev(island))) +
-        geom_line(aes(group = island), linewidth = 0.75) +
-    geom_point(aes(color = sex), size = 2.25) +
-    facet_wrap(. ~ median_measure, 
-        shrink = TRUE, scales = "free_x")
+                mapping = aes(x = median_value, 
+                              y = fct_rev(island))) +
+                    geom_line(aes(group = island), 
+                        linewidth = 0.75) +
+                    geom_point(aes(color = sex), 
+                        size = 2.25) +
+                    facet_wrap(. ~ median_measure, 
+                        shrink = TRUE, 
+                        scales = "free_x")
 
 ggp2_clev_dots2 +
     labs_clev_dots2
