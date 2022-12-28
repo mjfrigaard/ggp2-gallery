@@ -91,12 +91,15 @@ ggp2_mosaic <- ggplot(data = fly_mosaic) +
    ggmosaic::geom_mosaic(mapping = 
           aes(x = product(unruly_child, baby), 
               fill = baby)) + 
-    ggmosaic::theme_mosaic(base_size = 10)
+    ggmosaic::theme_mosaic(base_size = 10) + 
+    theme(legend.position = "bottom")
 ggp2_mosaic + 
     labs_mosaic
 ```
 
 A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
+
+Mosaic plot legends should be positioned on top or bottom and justified horizontally to preserve shape and improve readability. 
 
 We can build mosaic plots using the [`ggmosaic` package.](https://haleyjeppson.github.io/ggmosaic/)
 
@@ -148,7 +151,7 @@ For this graph, we'll be using the `fivethirtyeight::flying` dataset, after remo
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_
+#| label: data_code_mosaic
 #| eval: true
 #| echo: true
 fly_mosaic <- fivethirtyeight::flying |> 
@@ -177,6 +180,8 @@ Map `baby` to `fill`
 
 Add `theme_mosaic()`
 
+Move the legend to the bottom with `theme(legend.position = "bottom")`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -198,7 +203,8 @@ ggp2_mosaic <- ggplot(data = fly_mosaic) +
    ggmosaic::geom_mosaic(mapping = 
           aes(x = product(unruly_child, baby), 
               fill = baby)) + 
-    ggmosaic::theme_mosaic(base_size = 10)
+    ggmosaic::theme_mosaic(base_size = 10) + 
+    theme(legend.position = "bottom")
 ggp2_mosaic + 
     labs_mosaic
 ```
@@ -229,7 +235,8 @@ ggp2_mosaic <- ggplot(data = fly_mosaic) +
    ggmosaic::geom_mosaic(mapping = 
           aes(x = product(unruly_child, baby), 
               fill = baby)) + 
-    ggmosaic::theme_mosaic(base_size = 10)
+    ggmosaic::theme_mosaic(base_size = 10) + 
+    theme(legend.position = "bottom")
 ggp2_mosaic + 
     labs_mosaic
 ```
@@ -273,7 +280,8 @@ ggp2_mosaic <- ggplot(data = fly_mosaic) +
    ggmosaic::geom_mosaic(mapping = 
           aes(x = product(unruly_child, baby), 
               fill = baby)) + 
-    ggmosaic::theme_mosaic(base_size = 10)
+    ggmosaic::theme_mosaic(base_size = 10) + 
+    theme(legend.position = "bottom")
 ggp2_mosaic + 
     labs_mosaic
 # table
@@ -311,40 +319,8 @@ I recommend reading the [`ggmosaic` vignette](https://haleyjeppson.github.io/ggm
 
 ::: {style="font-size: 0.85em;"}
 Below is another example of a two-variable mosaic plot, mapping the `product()` variables as `unruly_child` and `recline_rude`, and the `fill` variable as `recline_rude`.
-:::
 
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: 2var_mosaic
-#| eval: true
-#| echo: true
-#| warning: false
-#| message: false
-#| fig-height: 5.5
-#| fig-width: 5.5
-# build 2-variable mosiac plot
-labs_mosaic_2var <- labs(
-  title = "In general...is it rude to...", 
-  subtitle = "2-Variable plot",
-  x = "... recline your seat on a plane?",
-  y = "...knowingly bring unruly children on a plane?",
-  fill = "recline_rude responses"
-)
-
-ggp2_mosaic_2var <- ggplot(data = fly_mosaic) +
-  geom_mosaic(aes(
-    x = product(unruly_child, recline_rude),
-    fill = recline_rude)) +
-  ggmosaic::theme_mosaic(base_size = 10)
-  
-
-ggp2_mosaic_2var + 
-    labs_mosaic_2var
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Once again we can see the counts for each category in the cross-tabulation below:
+Once again we can see the counts for each category in the cross-tabulation:
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -354,6 +330,8 @@ Once again we can see the counts for each category in the cross-tabulation below
 #| echo: false
 #| warning: false
 #| message: false
+#| column: margin
+# table
 fly_mosaic_2var_counts <- fly_mosaic |> 
     dplyr::count(unruly_child, recline_rude) |> 
     tidyr::pivot_wider(names_from = recline_rude, values_from = n) |> 
@@ -365,10 +343,32 @@ kableExtra::kable_paper(
 ```
 :::
 
-### Conditional variable
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_mosaic_2var
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| layout-nrow: 1
+# build 2-variable mosiac plot
+labs_mosaic_2var <- labs(
+  title = "In general...is it rude to...", 
+  subtitle = "2-Variable plot",
+  x = "... recline your seat on a plane?",
+  y = "...knowingly bring unruly children on a plane?",
+  fill = "recline_rude responses")
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CONDITIONAL VARIABLES:**
+ggp2_mosaic_2var <- ggplot(data = fly_mosaic) +
+  geom_mosaic(aes(
+    x = product(unruly_child, recline_rude),
+    fill = recline_rude)) +
+  ggmosaic::theme_mosaic(base_size = 10) + 
+  theme(legend.position = "bottom")
+  
+ggp2_mosaic_2var + 
+    labs_mosaic_2var
+```
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -377,13 +377,12 @@ For conditional variables, we map the `product()` variable as `unruly_child` and
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: cond_mosaic
+#| label: ggp2_mosaic_cond
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
-#| fig-height: 5.5
-#| fig-width: 5.5
+#| layout-nrow: 1
 # build conditional mosiac plot
 labs_mosaic_cond <- labs(
   title = "In general...is it rude to...", 
@@ -396,7 +395,8 @@ ggp2_mosaic_cond <- ggplot(data = fly_mosaic) +
     x = product(unruly_child), # product variable
     fill = unruly_child,
     conds = product(recline_rude))) + # conditional variable
-  ggmosaic::theme_mosaic(base_size = 10)
+  ggmosaic::theme_mosaic(base_size = 10) + 
+  theme(legend.position = "bottom")
 
 ggp2_mosaic_cond + 
     labs_mosaic_cond
@@ -413,84 +413,7 @@ ggp2_mosaic_cond +
 
 Another option for including a conditioning variable is including facets. In the example below we use `recline_rude` in both `x` and `fill` (we don't need to wrap `recline_rude` in `product()` because it's the only variable).
 
-The `divider` argument let's us control the spine partitions (vertically and horizontally). 
-:::
-
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: comapre_mosaic_show
-#| eval: false
-#| echo: true
-#| warning: false
-#| message: false
-#| fig-height: 8
-#| fig-width: 8
-# facet plot
-labs_mosaic_facet <- labs(
-        title = "In general...is it rude to...",
-        caption = "divider = 'vspine'",
-        y = "...recline your seat on a plane?",
-        x = "...knowingly bring unruly children on a plane?",
-        fill = "recline_rude responses") 
-
-ggp2_mosaic_facet <- ggplot(data = fly_mosaic) +
-          ggmosaic::geom_mosaic(aes(x = recline_rude, 
-                                 fill = recline_rude), 
-                              divider = "vspine") +
-                    facet_grid(. ~ unruly_child) + 
-          ggmosaic::theme_mosaic() 
-
-ggp2_mosaic_facet + 
-    theme(
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.major = element_blank()) +
-    labs_mosaic_facet 
-    
-```
-
-
-```{r}
-#| label: comapre_mosaic_run
-#| eval: true
-#| echo: false
-#| warning: false
-#| message: false
-#| fig-height: 10
-#| fig-width: 8
-#| column: page-inset-right
-#| layout-nrow: 1
-# facet plot
-labs_mosaic_facet <- labs(
-        title = "In general...is it rude to...",
-        y = "...recline your seat on a plane?",
-        x = "...knowingly bring unruly children on a plane?",
-        fill = "recline_rude responses") 
-
-ggp2_mosaic_facet <- ggplot(data = fly_mosaic) +
-          ggmosaic::geom_mosaic(aes(x = recline_rude, 
-                                 fill = recline_rude), 
-                              divider = "vspine") +
-                    facet_grid(. ~ unruly_child) 
-
-ggp2_mosaic_facet + 
-    ggmosaic::theme_mosaic(base_size = 10) + 
-    theme(
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.major = element_blank(),
-        plot.margin =        unit(x = c(0.5, 0.5, 0.5, 0.5), "lines")) + 
-    labs_mosaic_facet +
-    labs(caption = "divider = 'vspine'") 
-```
-:::
-
-
-::: {style="font-size: 0.85em;"}
-Below are the two vertical orientation options for the `divider` argument. 
+The `divider` argument let's us control the spine partitions (vertically and horizontally). Below are the two vertical orientation options for the `divider` argument. 
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -504,6 +427,12 @@ Below are the two vertical orientation options for the `divider` argument.
 #| fig-width: 8
 #| column: page-inset-right
 #| layout-nrow: 1
+labs_mosaic_facet <- labs(
+        title = "In general...is it rude to...",
+        caption = "divider = 'vspine'",
+        y = "...recline your seat on a plane?",
+        x = "...knowingly bring unruly children on a plane?",
+        fill = "recline_rude responses") 
 ggp2_mosaic_vspine <- ggplot(data = fly_mosaic) +
           ggmosaic::geom_mosaic(aes(x = recline_rude, 
                                  fill = recline_rude), 

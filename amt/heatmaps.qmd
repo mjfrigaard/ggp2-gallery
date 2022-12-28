@@ -95,7 +95,8 @@ ggp2_heatmap_tile <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_tile() 
+       geom_tile() + 
+    theme(legend.position = "bottom")
 ggp2_heatmap_tile + 
   labs_heatmap_tile
 ```
@@ -103,6 +104,8 @@ ggp2_heatmap_tile +
 Heatmaps display quantitative values across an intersection of two categorical (or discrete) variables.
 
 The intersecting cells contain variations of color saturation (i.e., the grade of purity or vividness) to represent the numerical values between groups.
+
+Heatmap legends should be positioned on top or bottom and justified horizontally to preserve shape and improve readability. 
 
 ::::
 
@@ -188,6 +191,8 @@ Assign `season` to `x`, `object` to `y`, and `occurrences` to `fill`
 
 Add the `geom_tile()`
 
+Move the legend to the bottom with `theme(legend.position = "bottom")`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -206,7 +211,8 @@ ggp2_heatmap_tile <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_tile() 
+       geom_tile() + 
+    theme(legend.position = "bottom")
 ggp2_heatmap_tile + 
   labs_heatmap_tile
 ```
@@ -233,7 +239,8 @@ ggp2_heatmap_tile <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_tile() 
+       geom_tile() + 
+    theme(legend.position = "bottom")
 ggp2_heatmap_tile + 
   labs_heatmap_tile
 ```
@@ -261,6 +268,8 @@ Assign `season` to `x`, `object` to `y`, and `occurrences` to fill
 
 Add the `geom_raster()`
 
+Move the legend to the bottom with `theme(legend.position = "bottom")`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -279,7 +288,8 @@ ggp2_heatmap_raster <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_raster() 
+       geom_raster() + 
+    theme(legend.position = "bottom")
 ggp2_heatmap_raster + 
   labs_heatmap_raster
 ```
@@ -306,7 +316,8 @@ ggp2_heatmap_raster <- ggplot(data = heatmap_ross,
        aes(x = season, 
            y = object, 
            fill = occurrences)) + 
-       geom_raster() 
+       geom_raster() + 
+    theme(legend.position = "bottom")
 ggp2_heatmap_raster + 
   labs_heatmap_raster
 ```

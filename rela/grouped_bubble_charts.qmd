@@ -1,5 +1,5 @@
 ---
-title: "Grouped Bubble Charts"
+title: "Grouped Bubble Graph"
 format:
   html:
     toc: true
@@ -89,7 +89,9 @@ ggp2_grp_bubble +
   labs_grp_bubble
 ```
 
-In addition to size, the grouped bubble graph uses color to display differences across categorical levels.
+Grouped bubble graphs use position, color, and size to display the relationships between four variables (three numerical/quantitative, one categorical).
+
+The position on the x and y axis captures the relationship between two numerical variables. The size and color of the points display a third numerical variable across the levels of a (fourth) categorical variable.
 
 ::::
 
@@ -163,8 +165,7 @@ Map `bill_length_mm` to the `x` axis and  `flipper_length_mm` to the `y` axis
 Inside `geom_point()`  
 
   - map `body_mass_g` to `size` and `species` to `fill`  
-  
-  - set the `alpha` to `2/3`, shape to `21`, and `color` to `"#000000"`  
+  - set the `alpha` to `2/3`
     
 In the `scale_size()`  
 
@@ -190,8 +191,9 @@ ggp2_grp_bubble <- penguins |>
   ggplot(aes(
     x = bill_length_mm, y = flipper_length_mm)) + 
   geom_point(
-    aes(size = body_mass_g, fill = species), 
-        alpha = 2/3, shape = 21, color = "#000000") + 
+    aes(size = body_mass_g, 
+        color = species), 
+            alpha = 2/3) + 
   scale_size(range = c(.04, 6)) 
 
 ggp2_grp_bubble + 
@@ -222,12 +224,82 @@ ggp2_grp_bubble <- penguins |>
   ggplot(aes(
     x = bill_length_mm, y = flipper_length_mm)) + 
   geom_point(
-    aes(size = body_mass_g, fill = species), 
-        alpha = 2/3, shape = 21, color = "#000000") + 
+    aes(size = body_mass_g, 
+        color = species), 
+            alpha = 2/3) + 
   scale_size(range = c(.04, 6)) 
 
 ggp2_grp_bubble + 
   labs_grp_bubble
 ```
+
+::::
+
+## More info 
+
+We can change the `shape` of the points for more control of the `color` and `fill`. 
+
+:::: {.panel-tabset}
+### Shape
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**SHAPE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Inside `geom_point()`, we can set `shape` to `21`, and `color` to `"#000000"` to outline the points in black
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: shape_21
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+ggp2_grp_bubble_s21 <- penguins |> 
+  ggplot(aes(
+    x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(
+    aes(size = body_mass_g, fill = species), 
+        alpha = 2/3, shape = 21, color = "#000000") + 
+  scale_size(range = c(.04, 6)) 
+
+ggp2_grp_bubble_s21 + 
+  labs_grp_bubble
+```
+:::
+
+### Color
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**COLOR:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Inside the `aes()` of `geom_point()`, we can set `shape` to `21`, and map `color` to `"species"` to outline the points in the same colors as `fill`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: shape_21_color_aes
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+ggp2_grp_bubble_s21_color <- penguins |> 
+  ggplot(aes(
+    x = bill_length_mm, y = flipper_length_mm)) + 
+  geom_point(
+    aes(size = body_mass_g, 
+        fill = species, 
+        color = species), 
+        alpha = 2/3, shape = 21) + 
+  scale_size(range = c(.04, 6)) 
+
+ggp2_grp_bubble_s21_color + 
+  labs_grp_bubble
+```
+:::
 
 ::::

@@ -47,6 +47,7 @@ ggplot2::theme_set(theme_ggp2g(
     base_size = 16))
 # install data packages ----
 install.packages("palmerpenguins")
+devtools::install_github("GuangchuangYu/emojifont")
 library(palmerpenguins)
 ```
 
@@ -87,10 +88,13 @@ ggp2_waffle <- ggplot(data = waffle_peng,
   ggwaffle::geom_waffle() 
 ggp2_waffle + 
   labs_waffle +
-  ggwaffle::theme_waffle()
+  ggwaffle::theme_waffle() + 
+  theme(legend.position = "top")
 ```
 
 Waffle charts use color to display the levels that make up the values in a categorical variable. The counts for each level are divided into separate colors into a square or grid display.
+
+Waffle chart legends should be positioned on top or bottom and justified horizontally to preserve shape and improve readability. 
 
 We’ll build a waffle chart using the [`ggwaffle` package.](https://liamgilbey.github.io/ggwaffle/)
 
@@ -180,6 +184,8 @@ Add `ggwaffle::geom_waffle()`
 
 Add `ggwaffle::theme_waffle()`
 
+Move the legend to the top with `theme(legend.position = "top")`
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -196,7 +202,8 @@ ggp2_waffle <- ggplot(data = waffle_peng,
        aes(x = x, 
            y = y, 
            fill = group)) + 
-  ggwaffle::geom_waffle() 
+  ggwaffle::geom_waffle() +
+  theme(legend.position = "top")
 ggp2_waffle + 
   labs_waffle +
   ggwaffle::theme_waffle()
@@ -225,7 +232,9 @@ ggp2_waffle <- ggplot(data = waffle_peng,
   ggwaffle::geom_waffle() 
 ggp2_waffle + 
   labs_waffle +
-  ggwaffle::theme_waffle()
+  ggwaffle::theme_waffle() +
+  theme(legend.position = "top")
 ```
 
 ::::
+

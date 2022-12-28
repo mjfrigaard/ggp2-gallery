@@ -375,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../rela/grouped_bubble_charts.html" class="sidebar-item-text sidebar-link">Grouped Bubble Charts</a>
+  <a href="../rela/grouped_bubble_charts.html" class="sidebar-item-text sidebar-link">Grouped Bubble Graph</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -593,16 +593,20 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><strong>DATA:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
-<p>We’ll be using the <code>penguins_ovrlp</code> dataset from above.</p>
+<p>We’ll be using the <code>penguins_dodge</code> dataset (with missing values removed from <code>species</code> and <code>sex</code>, and limited to <code>"Dream"</code> island)</p>
 </div>
 <div style="font-size: 0.75em;">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_ovrlp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins_dodge <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">!</span><span class="fu">is.na</span>(species) <span class="sc">&amp;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                        <span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                            island <span class="sc">==</span> <span class="st">"Dream"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_dodge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 124
+<pre><code>Rows: 123
 Columns: 8
 $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
 $ island            &lt;fct&gt; Dream, Dream, Dream, Dream, Dream, Dream, Dream, Dre…
@@ -638,12 +642,12 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Penguins on Dream island"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Count"</span>,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>,</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"position = 'dodge'"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_ovrlp,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_dodge,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> sex, </span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> species, </span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
@@ -680,18 +684,17 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Penguins on Dream island"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Count"</span>,</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>,</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"position = 'dodge2'"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_ovrlp,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> species, </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge2"</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_dodge,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> sex, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge2"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="overlapping_bar_graphs_files/figure-html/create_graph_dodge2-1.png" class="img-fluid" width="672"></p>
@@ -1215,7 +1218,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a>We'll be using the <span class="in">`penguins_ovrlp`</span> dataset from above.</span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a>We'll be using the <span class="in">`penguins_dodge`</span> dataset (with missing values removed from <span class="in">`species`</span> and <span class="in">`sex`</span>, and limited to <span class="in">`"Dream"`</span> island)</span>
 <span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
@@ -1223,134 +1226,137 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: data_code_bar_penguins_dodge</span></span>
 <span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_ovrlp)</span>
-<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dodge`</span></span>
-<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a>**`dodge`:**</span>
-<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a>penguins_dodge <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins,</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">!</span><span class="fu">is.na</span>(species) <span class="sc">&amp;</span> </span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>                        <span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span></span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>                            island <span class="sc">==</span> <span class="st">"Dream"</span>)</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins_dodge)</span>
+<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dodge`</span></span>
 <span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
-<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*`position = "dodge"` preserves the vertical position of a geom while adjusting the horizontal position*</span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a>**`dodge`:**</span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*requires the grouping variable to be be specified in the global or `⁠geom_`⁠ layer*</span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
 <span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*`position = "dodge"` preserves the vertical position of a geom while adjusting the horizontal position*</span>
 <span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*requires the grouping variable to be be specified in the global or `⁠geom_`⁠ layer*</span>
 <span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>Create labels</span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>Map <span class="in">`species`</span> to the <span class="in">`x`</span> and <span class="in">`island`</span> to <span class="in">`group`</span> and <span class="in">`fill`</span> </span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
 <span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>Inside the <span class="in">`geom_bar()`</span> function, set <span class="in">`position`</span> to <span class="in">`"dodge"`</span></span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>Create labels</span>
 <span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>Map <span class="in">`species`</span> to the <span class="in">`x`</span> and <span class="in">`island`</span> to <span class="in">`group`</span> and <span class="in">`fill`</span> </span>
 <span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: code_graph_dodge</span></span>
-<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
-<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
-<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Penguins on Dream island"</span>,</span>
-<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>,</span>
-<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>,</span>
-<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"position = 'dodge'"</span>)</span>
-<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_ovrlp,</span>
-<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> species, </span>
-<span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
-<span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge"</span>)</span>
-<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="sc">+</span></span>
-<span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge</span>
-<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-307"><a href="#cb9-307" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-308"><a href="#cb9-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-309"><a href="#cb9-309" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dodge2`</span></span>
-<span id="cb9-310"><a href="#cb9-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-311"><a href="#cb9-311" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb9-312"><a href="#cb9-312" aria-hidden="true" tabindex="-1"></a>**`dodge2`:**</span>
-<span id="cb9-313"><a href="#cb9-313" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a>Inside the <span class="in">`geom_bar()`</span> function, set <span class="in">`position`</span> to <span class="in">`"dodge"`</span></span>
+<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: code_graph_dodge</span></span>
+<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true </span></span>
+<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Penguins on Dream island"</span>,</span>
+<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
+<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>,</span>
+<span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"position = 'dodge'"</span>)</span>
+<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_dodge,</span>
+<span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> sex, </span>
+<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> species, </span>
+<span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
+<span id="cb9-307"><a href="#cb9-307" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge"</span>)</span>
+<span id="cb9-308"><a href="#cb9-308" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="sc">+</span></span>
+<span id="cb9-309"><a href="#cb9-309" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge</span>
+<span id="cb9-310"><a href="#cb9-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-311"><a href="#cb9-311" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-312"><a href="#cb9-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-313"><a href="#cb9-313" aria-hidden="true" tabindex="-1"></a><span class="fu">### `dodge2`</span></span>
 <span id="cb9-314"><a href="#cb9-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-315"><a href="#cb9-315" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
-<span id="cb9-316"><a href="#cb9-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-317"><a href="#cb9-317" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*works without a grouping variable in a layer*</span>
+<span id="cb9-315"><a href="#cb9-315" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb9-316"><a href="#cb9-316" aria-hidden="true" tabindex="-1"></a>**`dodge2`:**</span>
+<span id="cb9-317"><a href="#cb9-317" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-318"><a href="#cb9-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-319"><a href="#cb9-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*works with bars and rectangles*  </span>
+<span id="cb9-319"><a href="#cb9-319" aria-hidden="true" tabindex="-1"></a>::: {.column-margin}</span>
 <span id="cb9-320"><a href="#cb9-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-321"><a href="#cb9-321" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*useful for arranging graphs with variable widths.*</span>
+<span id="cb9-321"><a href="#cb9-321" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*works without a grouping variable in a layer*</span>
 <span id="cb9-322"><a href="#cb9-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-323"><a href="#cb9-323" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-323"><a href="#cb9-323" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*works with bars and rectangles*  </span>
 <span id="cb9-324"><a href="#cb9-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-325"><a href="#cb9-325" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb9-325"><a href="#cb9-325" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*useful for arranging graphs with variable widths.*</span>
 <span id="cb9-326"><a href="#cb9-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-327"><a href="#cb9-327" aria-hidden="true" tabindex="-1"></a>Create labels</span>
+<span id="cb9-327"><a href="#cb9-327" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-328"><a href="#cb9-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-329"><a href="#cb9-329" aria-hidden="true" tabindex="-1"></a>Map <span class="in">`species`</span> to <span class="in">`x`</span> and <span class="in">`island`</span> to <span class="in">`fill`</span></span>
+<span id="cb9-329"><a href="#cb9-329" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
 <span id="cb9-330"><a href="#cb9-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-331"><a href="#cb9-331" aria-hidden="true" tabindex="-1"></a>Inside <span class="in">`geom_bar()`</span>, set <span class="in">`position`</span> to <span class="in">`"dodge2"`</span></span>
+<span id="cb9-331"><a href="#cb9-331" aria-hidden="true" tabindex="-1"></a>Create labels</span>
 <span id="cb9-332"><a href="#cb9-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-333"><a href="#cb9-333" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-333"><a href="#cb9-333" aria-hidden="true" tabindex="-1"></a>Map <span class="in">`species`</span> to <span class="in">`x`</span> and <span class="in">`island`</span> to <span class="in">`fill`</span></span>
 <span id="cb9-334"><a href="#cb9-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-335"><a href="#cb9-335" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb9-338"><a href="#cb9-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-339"><a href="#cb9-339" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_dodge2</span></span>
-<span id="cb9-340"><a href="#cb9-340" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb9-341"><a href="#cb9-341" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
-<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
-<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Penguins on Dream island"</span>,</span>
-<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Flipper length (millimeters)"</span>,</span>
-<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>,</span>
-<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"position = 'dodge2'"</span>)</span>
-<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_ovrlp,</span>
-<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>                        <span class="at">group =</span> species, </span>
-<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
-<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge2"</span>)</span>
-<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
-<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span>
-<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a><span class="fu">### Compare</span></span>
-<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a>**COMPARE:**</span>
-<span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: compare_bars</span></span>
-<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb9-375"><a href="#cb9-375" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb9-376"><a href="#cb9-376" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
-<span id="cb9-377"><a href="#cb9-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
-<span id="cb9-378"><a href="#cb9-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-379"><a href="#cb9-379" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="sc">+</span></span>
-<span id="cb9-380"><a href="#cb9-380" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge</span>
+<span id="cb9-335"><a href="#cb9-335" aria-hidden="true" tabindex="-1"></a>Inside <span class="in">`geom_bar()`</span>, set <span class="in">`position`</span> to <span class="in">`"dodge2"`</span></span>
+<span id="cb9-336"><a href="#cb9-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-337"><a href="#cb9-337" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-338"><a href="#cb9-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-339"><a href="#cb9-339" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_dodge2</span></span>
+<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a>labs_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">labs</span>(</span>
+<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Adult foraging penguins"</span>,</span>
+<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Penguins on Dream island"</span>,</span>
+<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
+<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"Species"</span>,</span>
+<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"position = 'dodge2'"</span>)</span>
+<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins_dodge,</span>
+<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">x =</span> sex, </span>
+<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">geom_bar</span>(</span>
+<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>                        <span class="at">position =</span> <span class="st">"dodge2"</span>)</span>
+<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
+<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span>
+<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a><span class="fu">### Compare</span></span>
+<span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb9-368"><a href="#cb9-368" aria-hidden="true" tabindex="-1"></a>**COMPARE:**</span>
+<span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: compare_bars</span></span>
+<span id="cb9-375"><a href="#cb9-375" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb9-376"><a href="#cb9-376" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb9-377"><a href="#cb9-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb9-378"><a href="#cb9-378" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb9-379"><a href="#cb9-379" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb9-380"><a href="#cb9-380" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
 <span id="cb9-381"><a href="#cb9-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-382"><a href="#cb9-382" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
-<span id="cb9-383"><a href="#cb9-383" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span>
-<span id="cb9-384"><a href="#cb9-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-385"><a href="#cb9-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-386"><a href="#cb9-386" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb9-382"><a href="#cb9-382" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge <span class="sc">+</span></span>
+<span id="cb9-383"><a href="#cb9-383" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge</span>
+<span id="cb9-384"><a href="#cb9-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-385"><a href="#cb9-385" aria-hidden="true" tabindex="-1"></a>ggp2_bar_dodge2 <span class="sc">+</span></span>
+<span id="cb9-386"><a href="#cb9-386" aria-hidden="true" tabindex="-1"></a>  labs_bar_dodge2</span>
+<span id="cb9-387"><a href="#cb9-387" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-388"><a href="#cb9-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-389"><a href="#cb9-389" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

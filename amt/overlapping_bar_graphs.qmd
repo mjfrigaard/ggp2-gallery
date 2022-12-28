@@ -228,7 +228,7 @@ ggp2_bar_ovrlp +
 :::
 
 ::: {style="font-size: 0.85em;"}
-We'll be using the `penguins_ovrlp` dataset from above.
+We'll be using the `penguins_dodge` dataset (with missing values removed from `species` and `sex`, and limited to `"Dream"` island)
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -236,7 +236,11 @@ We'll be using the `penguins_ovrlp` dataset from above.
 #| label: data_code_bar_penguins_dodge
 #| eval: true
 #| echo: true
-glimpse(penguins_ovrlp)
+penguins_dodge <- filter(penguins,
+                      !is.na(species) & 
+                        !is.na(sex) &
+                            island == "Dream")
+glimpse(penguins_dodge)
 ```
 :::
 
@@ -275,12 +279,12 @@ Inside the `geom_bar()` function, set `position` to `"dodge"`
 labs_bar_dodge <- labs(
   title = "Adult foraging penguins",
   subtitle = "Penguins on Dream island",
-  x = "Flipper length (millimeters)",
+  x = "Sex",
   y = "Count",
   fill = "Species",
   caption = "position = 'dodge'")
-ggp2_bar_dodge <- ggplot(data = penguins_ovrlp,
-                    aes(x = flipper_length_mm, 
+ggp2_bar_dodge <- ggplot(data = penguins_dodge,
+                    aes(x = sex, 
                         group = species, 
                         fill = species)) +
                     geom_bar(
@@ -326,13 +330,12 @@ Inside `geom_bar()`, set `position` to `"dodge2"`
 labs_bar_dodge2 <- labs(
   title = "Adult foraging penguins",
   subtitle = "Penguins on Dream island",
-  x = "Flipper length (millimeters)",
+  x = "Sex",
   y = "Count",
   fill = "Species",
   caption = "position = 'dodge2'")
-ggp2_bar_dodge2 <- ggplot(data = penguins_ovrlp,
-                    aes(x = flipper_length_mm, 
-                        group = species, 
+ggp2_bar_dodge2 <- ggplot(data = penguins_dodge,
+                    aes(x = sex, 
                         fill = species)) +
                     geom_bar(
                         position = "dodge2")

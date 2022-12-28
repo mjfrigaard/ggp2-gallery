@@ -28,11 +28,10 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
                         base_rect_size = base_size / 22) {
     
   half_line <- base_size / 2
-  # most of this is borrowed from theme_minimal()/void(), but with some
+  # most of this is borrowed from theme_minimal()/theme_void(), but with some
   # adjustments to panel, margins, and legend see the original here:
   # https://github.com/tidyverse/ggplot2/blob/d9f179b038f020158773fac54af9a84cf961b54b/R/theme-defaults.r#L459
   thm <- theme(
-
     # RECTANGLE ----------------------------------------------------
     rect =               element_blank(),
     # TEXT ---------------------------------------------------------
@@ -48,14 +47,10 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
                             debug = FALSE),
     ## AXES --------------------------------------------------------------
     axis.text =          element_text(
-                            family = base_family,
-                            size = rel(0.65)
-                            ),
+                            family = base_family, size = rel(0.65)),
     axis.title.x =       element_text(vjust = -4.75),
     axis.title.y =       element_text(vjust = 4.25, angle = 90),
-    axis.title =         element_text(
-                            size = rel(0.8)
-                            ),
+    axis.title =         element_text(size = rel(0.8)),
     ### AXIS TICKS ----
     ## remove all axis ticks
     ## https://ggplot2-book.org/polishing.html#theme-axis
@@ -77,8 +72,8 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
     strip.switch.pad.wrap = unit(half_line / 2, "pt"),
     strip.background = element_rect(fill = "#d0d0d0"),
     ## PANEL ----
-    ## here we introduce light gray lines for the graph area (with vertical 
-    ## lines slightly larger than horizontal lines)
+    ## here we introduce thin, light gray lines for the graph area (with
+    ## vertical lines slightly larger than horizontal lines)
     ## https://ggplot2-book.org/polishing.html#panel-elements
     panel.ontop =        FALSE,
     panel.spacing =      unit(half_line, "pt"),
@@ -119,23 +114,26 @@ theme_ggp2g <- function(base_size = 11, base_family = "Ubuntu",
     plot.tag.position =  'topleft',
     ## LEGEND ----
     ## https://ggplot2-book.org/polishing.html#legend-elements
+    # legend.direction =   "",
+    # legend.box.just =    "",
     legend.box =         NULL,
     legend.key.size =    unit(1.2, "lines"),
         # the positioning is = c(horizontal, vertical)
         # c(1, 0) = bottom right
         # c(0.5, 0.5) = dead center
         # c(0, 1) = top left
-    legend.position =    c(1, 0.5), # c(horizontal, vertical)
-    legend.justification = c(-0.015, 0.0), # c(horizontal, vertical)
+        # https://ggplot2-book.org/scale-colour.html#legend-layout
+    # legend.position =    c(1, 0.5), # c(horizontal, vertical)
+    # legend.justification = c(-0.015, 0.0), # c(horizontal, vertical)
     legend.text =        element_text(
-                            size = rel(0.65)),
+                            size = rel(0.60)),
     legend.title =       element_text(
-                            size = rel(0.7), 
+                            size = rel(0.70), 
                             hjust = 0),
-    legend.margin =      margin(t = 1.5, r = 1.5, b = 1.5, l = 1.5),
+    # legend.margin =      unit(c(1.5, 1.5, 1.5, 1.5), "mm"),
+    legend.margin =      margin(t = 2.5, r = 2.5, b = 2.5, l = 2.5),
     ## PLOT MARGIN ----
     ## https://ggplot2-book.org/polishing.html#plot-elements
-    ## 
     plot.margin =        unit(x = c(1.5, 5.0, 1.5, 1.5), "lines"),
     complete = TRUE
  )
@@ -169,8 +167,6 @@ ggp2_grp_bubble +
 penguins_ovrlp <- filter(penguins,
                       !is.na(species) & 
                             island == "Dream")
-glimpse(penguins_ovrlp)
-
 labs_bar_ovrlp <- labs(
   title = "Adult foraging penguins",
   subtitle = "Penguins on Dream island",
