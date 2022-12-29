@@ -186,7 +186,7 @@
     "href": "index.html",
     "title": "Overview",
     "section": "",
-    "text": "Welcome! This website contains a collection of graphs composed in using ggplot2 (and friends!).\nInstall ggplot2 using the code below:\nOr install ggplot2 as part of the tidyverse:"
+    "text": "Welcome! This website contains a collection of graphs created using ggplot2 (and friends!).\nInstall ggplot2 using the code below:\nOr install ggplot2 as part of the tidyverse:"
   },
   {
     "objectID": "index.html#the-data",
@@ -214,7 +214,7 @@
     "href": "index.html#theme",
     "title": "Overview",
     "section": "Theme",
-    "text": "Theme\nThe theme used in the graphs is custom and uses combined elements from ggplot2::theme_minimal() and ggplot2::theme_void(). View it here"
+    "text": "Theme\nThe theme used in the graphs is custom and uses combined elements from ggplot2::theme_minimal() and ggplot2::theme_void(). View it here."
   },
   {
     "objectID": "geoms/geom_bar.html",
@@ -474,5 +474,26 @@
     "title": "Mosaic Plots",
     "section": "More info",
     "text": "More info\nI recommend reading the ggmosaic vignette, particularly the sections on ordering and conditioning.\n\nTwo variablesFacets\n\n\n\nTWO VARIABLES:\n\n\nBelow is another example of a two-variable mosaic plot, mapping the product() variables as unruly_child and recline_rude, and the fill variable as recline_rude.\nOnce again we can see the counts for each category in the cross-tabulation:\n\n\n\n\n\n\n\n \n  \n    unruly_child \n    No \n    Somewhat \n    Very \n  \n \n\n  \n    Very \n    193 \n    119 \n    39 \n  \n  \n    Somewhat \n    204 \n    123 \n    24 \n  \n  \n    No \n    102 \n    38 \n    7 \n  \n\n\n\n\n\n\n\n\nCode\n# build 2-variable mosiac plot\nlabs_mosaic_2var <- labs(\n  title = \"In general...is it rude to...\", \n  subtitle = \"2-Variable plot\",\n  x = \"... recline your seat on a plane?\",\n  y = \"...knowingly bring unruly children on a plane?\",\n  fill = \"recline_rude responses\")\n\nggp2_mosaic_2var <- ggplot(data = fly_mosaic) +\n  geom_mosaic(aes(\n    x = product(unruly_child, recline_rude),\n    fill = recline_rude)) +\n  ggmosaic::theme_mosaic(base_size = 10) + \n  theme(legend.position = \"bottom\")\n  \nggp2_mosaic_2var + \n    labs_mosaic_2var\n\n\n\n\n\n\n\n\n\n\n\nFor conditional variables, we map the product() variable as unruly_child and the fill variable as baby, but include a conds variable (as product(recline_rude)).\n\n\n\n\nCode\n# build conditional mosiac plot\nlabs_mosaic_cond <- labs(\n  title = \"In general...is it rude to...\", \n  subtitle = \"Conditional plot\",\n  x = \"...recline your seat on a plane?\",\n  y = \"...knowingly bring unruly children on a plane?\",\n  fill = \"unruly_child responses\")\nggp2_mosaic_cond <- ggplot(data = fly_mosaic) +\n  geom_mosaic(aes(\n    x = product(unruly_child), # product variable\n    fill = unruly_child,\n    conds = product(recline_rude))) + # conditional variable\n  ggmosaic::theme_mosaic(base_size = 10) + \n  theme(legend.position = \"bottom\")\n\nggp2_mosaic_cond + \n    labs_mosaic_cond\n\n\n\n\n\n\n\n\n\n\n\n\n\nFACETS:\n\n\nAnother option for including a conditioning variable is including facets. In the example below we use recline_rude in both x and fill (we don’t need to wrap recline_rude in product() because it’s the only variable).\nThe divider argument let’s us control the spine partitions (vertically and horizontally). Below are the two vertical orientation options for the divider argument.\n\n\n\n\n\n\n\n\n\n\n\nThe two horizontal orientation options make the axis text harder to read, so these need to be manipulated manually."
+  },
+  {
+    "objectID": "index.html#the-graphs",
+    "href": "index.html#the-graphs",
+    "title": "Overview",
+    "section": "The Graphs",
+    "text": "The Graphs\nThe gallery follows a Rule of Least Power Principle, in the sense that “a language with a straightforward syntax may be easier to analyze than an otherwise equivalent one with more complex structure.”\nIn other words, assuming the reader has some understanding of R and the tidyverse, the code for each graph is meant to be read and understood without having to run it.\n\nGraph Categories\nGraphs have been categorized into the following types:\n\nUnivariate graphs\n\nAmounts\nProportions\n\nComparing Distributions\n\nRelationships\n\nSome graphs would justifiably belong in more than one category, and wherever this is the case, I’ve tried to include links to other uses in the notes."
+  },
+  {
+    "objectID": "index.html#code-style-structure",
+    "href": "index.html#code-style-structure",
+    "title": "Overview",
+    "section": "Code style & structure",
+    "text": "Code style & structure\nEach graph has, at minimum, the same two sections and four tabs:\n\nPackages and Data\n\nCode for installing development version of packages (if necessary) for graphs and data\n\nAny steps used to create (i.e., manipulate and prepare) the data for the graph\n\n\nCode and Graph\n\nCode to build the labels and graph layers\n\nGraph labels have the labs_ prefix\n\nGraph layers have a ggp2_ prefix\n\n\n\n\n\n\n\n\n\nExpand to view the graph code structure\n\n\n\n\n\n\nPackagesData\n\n\n\nPACKAGES:\n\n\nInstall packages.\n\n\n\n\nCode\nlibrary(ggplot2)\n\n\n\n\n\n\nDATA:\n\n\n\nDescription of data\n\n\n\n\nCode\ndf <- tibble::tibble(X = sample(x = 1:100, 10, FALSE),\n                     Y = rlnorm(10, 1, 3))\n\n\n\n\n\n\n\nCodeGraph\n\n\n\nCODE:\n\n\nCode for creating graph\n\n\n\n\nCode\n# labels\nlabs_graph <- ggplot2::labs(title = \"Title\", \n                            subtitle = \"subtitle\", \n                            x = \"X\", y = \"Y\")\n# layers\nggp2_graph <- ggplot2::ggplot(data = df, \n    mapping = aes(x = X, y = Y)) + \n    ggplot2::geom_blank()\n# graph\nggp2_graph + \n    labs_graph\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\n\n\n\n\n\nCode Style:\nI’ve attempted to balance brevity and clarity, but with the assumption that its best to err on the latter. I’ve also followed the general principle that if a graph can be easily built using one of ggplot2 ’s geom_* functions, that method is shown first."
+  },
+  {
+    "objectID": "index.html#extensions",
+    "href": "index.html#extensions",
+    "title": "Overview",
+    "section": "Extensions",
+    "text": "Extensions\nBelow are the graphs requiring additional packages/extensions:\n\nWaffle charts\nggwaffle package\n\n\nCode\n# Waffle Charts\ndevtools::install_github(\"liamgilbey/ggwaffle\")\nlibrary(ggwaffle)\n\n\n\nPie Charts\nggpubr package\n\n\nCode\n# Pie Charts \ndevtools::install_github(\"kassambara/ggpubr\")\nlibrary(ggpubr)\n\n\n\nMosaic Plots\nggmosaic package\n\n\nCode\n# Mosaic Charts \ndevtools::install_github(\"haleyjeppson/ggmosaic\")\nlibrary(ggmosaic)\n\n\n\nTreemaps\ntreemapify package\n\n\nCode\n# Treemaps\ndevtools::install_github(\"wilkox/treemapify\")\nlibrary(treemapify)\n\n\n\nBee-swarm Plots\nggbeeswarm package\n\n\nCode\n# Bee-swarm Plots\ndevtools::install_github(\"eclarke/ggbeeswarm\")\nlibrary(ggbeeswarm)\n\n\n\nRidgeline Plots\nggridges package\n\n\nCode\n# Ridgeline plots \ndevtools::install_github(\"wilkelab/ggridges\")\nlibrary(ggridges)\n\n\n\nRain-cloud plots\nraincloudplots and ggdist packages\n\n\nCode\n# Rain-cloud plots \nremotes::install_github('jorvlan/raincloudplots')\nremotes::install_github('mjskay/ggdist')\nlibrary(raincloudplots)\nlibrary(ggdist)\n\n\n\nAlluvial charts\nggalluvial package\n\n\nCode\n# Alluvial charts\ndevtools::install_github(\"corybrunson/ggalluvial\")\nlibrary(ggalluvial)\n\n\n\nBump charts\nggbump package\n\n\nCode\n# Bump charts\ndevtools::install_github(\"davidsjoberg/ggbump\")\nlibrary(ggbump)\n\n\n\nParallel Sets\nggforce package\n\n\nCode\n# Bump charts\ndevtools::install_github(\"thomasp85/ggforce\")\nlibrary(ggforce)\n\n\n\nStream Plots\nggstream package\n\n\nCode\n# Stream plots\ndevtools::install_github(\"davidsjoberg/ggstream\")\nlibrary(ggstream)"
   }
 ]
