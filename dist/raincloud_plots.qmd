@@ -4,8 +4,7 @@ format:
   html:
     toc: true
     code-fold: show
-    out-height: '100%'
-    out-width: '100%'
+    
 execute:
   warning: false
   message: false
@@ -346,7 +345,7 @@ glimpse(peng_raincloud)
 
 Create labels
 
-For the first layer, we create a box-plot with `geom_boxplot()`, but include notches and removing the outliers. 
+For the first layer, we create a box-plot with `geom_boxplot()`, but include notches and remove the outliers. 
 
 :::
 
@@ -357,6 +356,8 @@ For the first layer, we create a box-plot with `geom_boxplot()`, but include not
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_raincloud_2 <- ggplot2::labs(
@@ -369,7 +370,8 @@ ggp2_box <- ggplot(peng_raincloud,
     notch = TRUE, 
     notchwidth = 0.9,
     width = .15, 
-    outlier.shape = NA)
+    outlier.shape = NA,
+    show.legend = FALSE)
 ggp2_box + 
     labs_raincloud_2
 ```
@@ -383,7 +385,7 @@ ggp2_box +
 
 ::: {style="font-size: 0.85em;"}
 
-We then add the density with a `ggdist::stat_halfeye()` layer, mapping `species` to `fill`, and adjusting the size and shape of the density curve and shifting it slightly above the box-plot.
+We then add a horizontal density curve with `ggdist::stat_halfeye()`, mapping `species` to `fill`, and adjusting the size and shape of the density curve and shifting it slightly above the box-plot.
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -393,6 +395,8 @@ We then add the density with a `ggdist::stat_halfeye()` layer, mapping `species`
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_stat_halfeye <- ggp2_box +
@@ -402,7 +406,8 @@ ggp2_stat_halfeye <- ggp2_box +
     point_colour = NA, # removes the point in center
     orientation = "horizontal", # like the box-plot
     height = 0.5, # height of curve
-    justification = -0.3 # shift vertically above box
+    justification = -0.3, # shift vertically above box
+    show.legend = FALSE # don't need this 
 ) 
 ggp2_stat_halfeye + 
     labs_raincloud_2
@@ -424,8 +429,6 @@ The final layer is a `geom_point()`, mapping `fill` to `species` and setting `po
 
 - Manually set the `height`, which refers to the vertical area for the points 
 
-- Remove the legend for the entire graph with `theme(legend.position = "none")`
-
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -435,17 +438,19 @@ The final layer is a `geom_point()`, mapping `fill` to `species` and setting `po
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_jitter <- ggp2_stat_halfeye + 
     geom_point(aes(fill = species),
-        shape = 21, 
-        color = "#ffffff", 
-        alpha = 1/3, size = 1.8,
-    position = position_jitter(
-      seed = 321, 
-      height = .07)) + 
-    theme(legend.position = "none")
+        position = position_jitter(
+          seed = 321, 
+          height = .07),
+            shape = 21, 
+            color = "#ffffff", 
+            alpha = 1/3, size = 1.8,
+            show.legend = FALSE) 
 ggp2_jitter + 
     labs_raincloud_2
 ```
@@ -454,16 +459,6 @@ ggp2_jitter +
 ::::
 
 ## Even more info
-
-::: {.column-margin}
-More resources:   
-
-1. Raincloud plots: a multi-platform tool for robust data visualization. [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)
-
-2. Shape and point sizes in R. [2](https://r-graphics.org/recipe-scatter-shapes)
-
-3. RainCloudPlots package on GitHub. [3](https://github.com/RainCloudPlots/RainCloudPlots)
-:::
 
 :::: {.panel-tabset}
 
@@ -489,6 +484,8 @@ We can switch to this layout by applying `ggplot2::coord_flip()` to the `ggp2_st
 #| echo: true
 #| warning: false
 #| message: false
+#| out-height: '100%'
+#| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
 ggp2_stat_halfeye + 
@@ -515,6 +512,20 @@ The code to re-create the #TidyTuesday graph is contained in this [gist.](https:
 
 ![](../www/rainclouds_gist.png){fig-align="center" width="100%" height="100%"}
 
+:::
+
+### More resources
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**MORE RESOURCES**
+:::
+
+::: {style="font-size: 0.85em;"}
+1. Raincloud plots: a multi-platform tool for robust data visualization. [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/)
+
+2. Shape and point sizes in R. [2](https://r-graphics.org/recipe-scatter-shapes)
+
+3. RainCloudPlots package on GitHub. [3](https://github.com/RainCloudPlots/RainCloudPlots)
 :::
 
 ::::
