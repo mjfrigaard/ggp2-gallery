@@ -57,6 +57,8 @@ install.packages("palmerpenguins")
 **What does this geom do?**
 :::
 
+`geom_bar()` computes the number of rows per level (or group) of a categorical variable, then creates bars with the length of the bar proportional the `count` per level.  
+
 <br>
 
 ```{r}
@@ -65,48 +67,88 @@ install.packages("palmerpenguins")
 #| echo: false
 #| warning: false
 #| message: false
-#| out-height: '80%'
-#| out-width: '80%'
+#| out-height: '40%'
+#| out-width: '40%'
 #| fig-align: right
 library(palmerpenguins) 
 library(ggplot2)
 library(patchwork)
 
 peng_bar <- palmerpenguins::penguins |> 
-    dplyr::filter(!is.na(island) & !is.na(sex))
+    dplyr::filter(!is.na(island) & 
+                    !is.na(sex) & 
+                        !is.na(island))
 
 ggp2_bar_base <- ggplot(data = peng_bar)
 
 ggp2_bar_x <- ggp2_bar_base + 
     geom_bar(mapping = aes(x = island)) + 
-    theme_ggp2g(base_size = 7)
+    theme_void()
 
 ggp2_bar_fill <- ggp2_bar_base + 
     geom_bar(mapping = aes(x = island, 
         fill = island), show.legend = FALSE) + 
-    theme_ggp2g(base_size = 7)
+    theme_void() + 
+    theme(legend.text = element_blank(),
+         legend.title = element_blank())
 
 ggp2_bar_fill2 <- ggp2_bar_base + 
     geom_bar(mapping = aes(x = island, 
         fill = sex)) + 
-    theme_ggp2g(base_size = 7)
+    theme_void() + 
+    theme(legend.text = element_blank(),
+         legend.title = element_blank())
 
 ggp2_bar_dodge <- ggp2_bar_base + 
     geom_bar(mapping = 
             aes(x = island, fill = sex),
                 position = "dodge") + 
-    theme_ggp2g(base_size = 7)
+    theme_void() + 
+    theme(legend.text = element_blank(),
+         legend.title = element_blank())
 
-ggp2_bar_x + 
-    ggp2_bar_fill + 
+ggp2_bar_dodge2 <- ggp2_bar_base + 
+    geom_bar(mapping = 
+            aes(x = island, fill = sex),
+                position = "dodge2") + 
+    theme_void() + 
+    theme(legend.text = element_blank(),
+         legend.title = element_blank())
+
+ggp2_bar_fill + 
     ggp2_bar_fill2 + 
     ggp2_bar_dodge + 
+    ggp2_bar_dodge2 + 
     patchwork::plot_layout(nrow = 2, ncol = 2)
 ```
 
-`geom_bar()` computes the number of rows per level (or group) of a categorical variable, then creates bars with the length of the bar proportional the `count` per level.  
+<br>
 
-<!-- More_description -->
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**Use this geom with:**
+:::
+
+- One discrete/categorical variable 
+
+Examples: 
+
+```{r}
+#| label: variable_examples
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| layout-ncol: 3
+knitr::kable(
+    dplyr::distinct(peng_bar, sex)
+)
+knitr::kable(
+dplyr::distinct(peng_bar, species)
+)
+knitr::kable(
+dplyr::distinct(peng_bar, island)
+)
+```
 
 ::::
 
@@ -138,10 +180,10 @@ library(ggplot2)
 ```
 :::
 
-### Plot Data
+### Data
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**PLOT DATA:**
+**DATA:**
 :::
 
 ::: {.column-margin}
@@ -159,7 +201,7 @@ library(ggplot2)
 
 
 ::: {style="font-size: 0.85em;"}
-Remove the missing values from `island` and `sex` from `palmerpenguins::penguins`
+Remove the missing values from `island`, `species`, and `sex` from `palmerpenguins::penguins`
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -168,45 +210,54 @@ Remove the missing values from `island` and `sex` from `palmerpenguins::penguins
 #| eval: true
 #| echo: true
 peng_bar <- palmerpenguins::penguins |> 
-    dplyr::filter(!is.na(island) & !is.na(sex))
+    dplyr::filter(!is.na(island) & 
+                    !is.na(species) & 
+                        !is.na(sex))
 glimpse(peng_bar)
 ```
 :::
 ::::
 
 
-::::: {.callout-note collapse="true" icon=false}
-## BAR
+::::: {.callout-note collapse="false" icon=false}
+## `geom_bar()`
 
 :::: {.panel-tabset}
 
-### Build
+### `ggplot_build()`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**BUILD:**
+**`ggplot_build()`:**
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: build_geom_bar
+#| label: geom_layers_bar
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
+ggp2_bar_base <- ggplot(data = peng_bar)
 ggp2_bar_x <- ggp2_bar_base + 
     geom_bar(mapping = aes(x = island))
-bld_bar_x <- ggplot2::ggplot_build(ggp2_bar_x)
-names(bld_bar_x)
-bar_x_data <- bld_bar_x[["data"]][[1]]
-glimpse(bar_x_data)
+```
+
+```{r}
+#| label: ggplot_build_bar
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bld_ggp2_bar_x <- ggplot2::ggplot_build(ggp2_bar_x)
+names(bld_ggp2_bar_x)
 ```
 :::
 
 
-### Data
+### `"data"`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**DATA:**
+**`geom_bar()`: data**
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -217,49 +268,64 @@ Extract the data from the `ggplot2` object.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_geom_bar
+#| label: data_bld_bar
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
+bar_x_data <- bld_ggp2_bar_x[["data"]][[1]]
+glimpse(bar_x_data)
 select(bar_x_data, fill)
 ```
 :::
 
-### Plot
+### `"plot"`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**PLOT:**
+**`geom_bar()`: plot**
+:::
+
+::: {style="font-size: 0.85em;"}
+Extract the `"plot"` from `bld_` object:
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: plot_geom_bar
+#| label: plot_bld_bar
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
-bld_bar_x[["plot"]]
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-nrow: 1
+bld_ggp2_bar_x[["plot"]]
 ```
 :::
-
 ::::
 :::::
 
-::::: {.callout-note collapse="true" icon=false}
-## FILL
+
+::::: {.callout-caution collapse="true" icon=false}
+## `geom_bar(fill)`
 
 :::: {.panel-tabset}
 
-### Build
+### `ggplot_build()`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**BUILD:**
+**`ggplot_build()`:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Build `geom_bar(fill)` layers: 
+
+`ggp2_bar_fill` and `ggp2_bar_fill2`
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: build_geom_bar_fill
+#| label: geom_layers_fill
 #| eval: true
 #| echo: true 
 #| warning: false
@@ -267,63 +333,96 @@ bld_bar_x[["plot"]]
 ggp2_bar_fill <- ggp2_bar_base + 
     geom_bar(mapping = aes(x = island, 
         fill = island), show.legend = FALSE)
-bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
-names(bld_bar_fill)
-bar_fill_data <- bld_bar_fill[["data"]][[1]]
-glimpse(bar_fill_data)
 ggp2_bar_fill2 <- ggp2_bar_base + 
     geom_bar(mapping = aes(x = island, 
         fill = sex)) 
-bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
-names(bld_bar_fill2)
-bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
-glimpse(bar_fill2_data)
 ```
 :::
 
-
-### Data
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**DATA:**
-:::
-
 ::: {style="font-size: 0.85em;"}
-
-Extract the data from the `ggplot2` object.
-
+Create `bld_bar_fill` and `bld_bar_fill2` objects
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_geom_bar_fill
+#| label: geom_build_fill
 #| eval: true
-#| echo: true
+#| echo: true 
 #| warning: false
 #| message: false
+bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
+names(bld_bar_fill)
+bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
+names(bld_bar_fill2)
+```
+:::
 
+### `"data"`
+
+::: {style="font-size: 0.85em;"}
+Extract `"data"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_fill
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bar_fill_data <- bld_bar_fill[["data"]][[1]]
+glimpse(bar_fill_data)
 dplyr::select(bar_fill_data, x, y, fill)
+```
+:::
 
+::: {style="font-size: 0.85em;"}
+Extract `"data"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_fill2
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
+glimpse(bar_fill2_data)
 dplyr::count(bar_fill2_data, x, y, fill) |> 
     tidyr::pivot_wider(names_from = x,
         values_from = n)
 ```
 :::
 
-### Plot
+### `"plot"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**PLOT:**
+::: {style="font-size: 0.85em;"}
+Extract `"plot"` from `bld_` objects
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: plot_geom_bar_fill
+#| label: plot_bld_fill
 #| eval: true
-#| echo: true
+#| echo: true 
 #| warning: false
 #| message: false
 bld_bar_fill[["plot"]]
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Extract `"plot"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: plot_bld_fill2
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
 bld_bar_fill2[["plot"]]
 ```
 :::
@@ -331,20 +430,24 @@ bld_bar_fill2[["plot"]]
 ::::
 :::::
 
-::::: {.callout-note collapse="true" icon=false}
-## DODGE
+::::: {.callout-important collapse="true" icon=false}
+## `geom_bar(position = "dodge")`
 
 :::: {.panel-tabset}
-
-### Build
+### `ggplot_build()`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**BUILD:**
+**`ggplot_build()`:**
 :::
+
+::: {style="font-size: 0.85em;"}
+Build `geom_bar(position = "dodge")` layer:
+:::
+
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: build_geom_bar_dodge
+#| label: geom_layers_dodge
 #| eval: true
 #| echo: true 
 #| warning: false
@@ -353,51 +456,166 @@ ggp2_bar_dodge <- ggp2_bar_base +
     geom_bar(mapping = 
             aes(x = island, fill = sex),
                 position = "dodge") 
-bld_bar_dodge <- ggplot2::ggplot_build(ggp2_bar_dodge)
-names(bld_bar_dodge)
-bar_dodge_data <- bld_bar_dodge[["data"]][[1]]
-glimpse(bar_dodge_data)
 ```
 :::
 
+::: {style="font-size: 0.85em;"}
+Create `bld_bar_dodge` object:
+:::
 
-### Data
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggplot_build_dodge
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bld_bar_dodge <- ggplot2::ggplot_build(ggp2_bar_dodge)
+names(bld_bar_dodge)
+```
+:::
+
+### `"data"`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**DATA:**
+**`geom_bar(position = "dodge")`: data:**
 :::
 
 ::: {style="font-size: 0.85em;"}
 
-Extract the data from the `ggplot2` object.
+Extract the `"data"` from the `bld_bar_dodge` object.
 
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_geom_bar_dodge
+#| label: data_bld_dodge
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
+bar_dodge_data <- bld_bar_dodge[["data"]][[1]]
+glimpse(bar_dodge_data)
 select(bar_dodge_data, x, y, fill)
 ```
 :::
 
-### Plot
+### `"plot"`
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**PLOT:**
+**`geom_bar(position = "dodge")`: plot:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Extract the `"plot"` from the `bld_bar_dodge` object.
+
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: plot_geom_bar_dodge
+#| label: plot_bld_dodge
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
 bld_bar_dodge[["plot"]]
+```
+:::
+
+::::
+:::::
+
+::::: {.callout-important collapse="true" icon=false}
+## `geom_bar(position = "dodge2")`
+
+:::: {.panel-tabset}
+### `ggplot_build()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggplot_build()`:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Build `geom_bar(position = "dodge2")` layer:
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: geom_layers_dodge2
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+ggp2_bar_dodge2 <- ggp2_bar_base + 
+    geom_bar(mapping = 
+            aes(x = island, fill = sex),
+                position = "dodge2") 
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Create `bld_bar_dodge2` object:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggplot_build_dodge2
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bld_bar_dodge2 <- ggplot2::ggplot_build(ggp2_bar_dodge2)
+names(bld_bar_dodge2)
+```
+:::
+
+### `"data"`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`geom_bar(position = "dodge2")`: data:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Extract the `"data"` from the `bld_bar_dodge2` object.
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_dodge2
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+bar_dodge2_data <- bld_bar_dodge2[["data"]][[1]]
+glimpse(bar_dodge2_data)
+select(bar_dodge2_data, x, y, fill)
+```
+:::
+
+### `"plot"`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`geom_bar(position = "dodge2")`: plot:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Extract the `"plot"` from the `bld_bar_dodge2` object.
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: plot_bld_dodge2
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+bld_bar_dodge2[["plot"]]
 ```
 :::
 

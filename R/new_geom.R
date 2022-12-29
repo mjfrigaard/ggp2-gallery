@@ -21,4 +21,4 @@ new_geom <- function(geom_name) {
     }
 }
 
-new_geom(geom_name = "bar")
+# new_geom(geom_name = "bar")

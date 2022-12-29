@@ -1,0 +1,680 @@
+---
+title: "geom_ribbon()"
+format:
+  html:
+    toc: true
+    code-fold: show
+    df-print: paged
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  pillar.print_max = 10, 
+  pillar.print_min = 10,
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+# install data packages ----
+install.packages("ggplot2movies")
+install.packages("palmerpenguins")
+```
+
+
+:::: {.callout-tip collapse="false" icon=false}
+## Geom info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**What does this geom do?**
+:::
+
+`geom_ribbon()` draws a line between `x` and `y` values, but also gives us control over the 'thickness' of the line (by adjusting the range of `y` values with `ymin` and `ymax`). 
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '50%'
+#| out-width: '50%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+library(patchwork)
+show_geom_ribbon <- function() {
+  # get sd
+unemp_sd <- sd(economics$unemploy)
+# plot 1
+gg_rib1 <- ggplot(data = economics,
+  mapping = aes(x = date, y = unemploy)) +
+  geom_ribbon(aes(ymin = unemploy - 900, ymax = unemploy + 900)) +
+  theme_void() + 
+    theme(legend.text = element_blank(), 
+        legend.title = element_blank())
+# plot 2
+gg_rib2 <- ggplot(data = economics,
+  mapping = aes(x = date, y = unemploy)) +
+  geom_ribbon(aes(
+    ymin = unemploy - unemp_sd,
+    ymax = unemploy + unemp_sd,
+    alpha = 50),
+    show.legend = FALSE) +
+  geom_path(color = "red") +
+  theme_void() + 
+    theme(legend.text = element_blank(), 
+        legend.title = element_blank())
+
+  gg_rib1 / gg_rib2
+
+}
+show_geom_ribbon()
+```
+
+<br>
+
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**Use this geom with:**
+:::
+
+- Two numerical/quantitative variables
+
+Examples: `ggplot2::economics`
+
+```{r}
+#| label: variable_examples
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| layout-ncol: 2
+knitr::kable(
+    head(
+        dplyr::distinct(ggplot2::economics, date)
+    )
+)
+knitr::kable(
+    head(
+        dplyr::distinct(ggplot2::economics, unemploy)
+    )
+)
+```
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {.column-margin}
+![https://github.com/rstudio/hex-stickers](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+:::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_geom_ribbon
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2")
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Load the `ggplot2::economics` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_code_geom_ribbon
+#| eval: true
+#| echo: true
+economics <- ggplot2::economics
+dplyr::glimpse(economics)
+```
+:::
+::::
+
+
+::::: {.callout-note collapse="false" icon=false}
+## `geom_ribbon()`
+
+:::: {.panel-tabset}
+
+### `ggplot_build()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggplot_build()`:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Create a `ggp2_ribbon_base` layer, mapping `date` to `x` and `unemploy` to `y`
+
+Create `ggp2_ribbon_ymin_ymax` by adding `geom_ribbon()` and mapping `unemploy - 900` to `ymin` and `unemploy + 900` to `ymax`.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: geom_layers_geom_ribbon
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+ggp2_ribbon_base <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy))
+ggp2_ribbon_ymin_ymax <- ggp2_ribbon_base +
+    geom_ribbon(mapping = aes(ymin = unemploy - 900,
+        ymax = unemploy + 900))
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Create `bld_ggp2_ribbon` with `ggplot2::ggplot_build()`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggplot_build_geom_ribbon
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bld_ggp2_ribbon <- ggplot2::ggplot_build(ggp2_ribbon_ymin_ymax)
+names(bld_ggp2_ribbon)
+```
+:::
+
+
+### `"data"`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`geom_ribbon()`: data**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Extract the `"data"` from `bld_ggp2_ribbon`.
+
+`geom_ribbon()` displays `y` intervals (defined with `ymin` and `ymax`) for each `x` value. We'll select these variables from `ggp2_ribbon_ymin_ymax` below:
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_geom_ribbon
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+ribbon_ymin_ymax_data <- bld_ggp2_ribbon[["data"]][[1]]
+dplyr::select(ribbon_ymin_ymax_data, x, y, ymin, ymax) 
+```
+:::
+
+
+### `"plot"`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`geom_ribbon()`: plot**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Explore `ribbon_ymin_ymax_data` with `geom_point()` and compare the values with the `"plot"` object.
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: plot_bld_geom_ribbon1
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| layout-ncol: 2
+# plot x vs. y
+ggplot(data = dplyr::select(ribbon_ymin_ymax_data, x, y)) +
+    geom_point(mapping = aes(x = x, y = y), alpha = 1 / 3)
+# compare to plot
+bld_ggp2_ribbon[["plot"]]
+
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+
+We mapped `x` and `y` in `ggp2_ribbon_base`, and we can see above that `x` and `y` have a similar curve as `bld_ggp2_ribbon[["plot"]]`, but it's not clear how the 'height' of the ribbon (the `y` interval) is created...
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: plot_bld_geom_ribbon2
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+# plot x vs. ymin and x vs. ymax
+ggplot(data = dplyr::select(ribbon_ymin_ymax_data, x, ymin)) +
+    geom_point(
+        mapping = aes(x = x, y = ymin),
+        alpha = 1 / 3,
+        color = "#007bff") +
+    geom_point(
+        data = dplyr::select(ribbon_ymin_ymax_data, x, ymax),
+        mapping = aes(x = x, y = ymax),
+        alpha = 1 / 3,
+        color = "#E74A2F")
+# compare to plot
+bld_ggp2_ribbon[["plot"]]
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+The distance between the red and blue points gives us the shape (or `y` interval) of the ribbon.
+:::
+
+::::
+:::::
+
+
+
+
+::::: {.callout-caution collapse="false" icon=false}
+## `geom_ribbon() + geom_path()`
+
+:::: {.panel-tabset}
+
+### `ggplot_build()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggplot_build()`:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Define the standard deviation of the `unemploy` variable `economics` as `unemp_sd`. Then build the `geom_ribbon() + geom_path()` layer, mapping `date` to `x`, `unemploy` to `y`, `unemploy - unemp_sd` to `ymin` and `unemploy + unemp_sd` to `ymax`.
+
+In the `geom_path()` layer, map `date` to `x` and `unemploy` to `y`. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: geom_layers_ribbon_path
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# get sd of unemploy
+unemp_sd <- sd(economics$unemploy)
+ggp2_geom_ribbon_path <- ggplot(data = economics) +
+                            geom_ribbon(mapping = 
+                                    aes(x = date, 
+                                        y = unemploy,
+                                        ymin = unemploy - unemp_sd, 
+                                        ymax = unemploy + unemp_sd,
+                                    alpha = 50), 
+                                show.legend = FALSE) +
+                            geom_path(mapping = 
+                                    aes(x = date, 
+                                        y = unemploy), 
+                                    color = "red")
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Create `bld_geom_ribbon_path` object.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: geom_build_ribbon_path
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+bld_geom_ribbon_path <- ggplot2::ggplot_build(ggp2_geom_ribbon_path)
+names(bld_geom_ribbon_path)
+```
+:::
+
+### `"data"`
+
+::: {style="font-size: 0.85em;"}
+Extract `"data"` from `bld_geom_ribbon_path`.
+
+`geom_path()` *connects the observations in the order in which they appear in the data*, and requires `x` and `y` aesthetics. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_arg
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+geom_ribbon_path_data <- bld_geom_ribbon_path[["data"]][[1]]
+dplyr::select(geom_ribbon_path_data, x, y, ymin, ymax)
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+`ymin` and `y` look similar in the table above--check to see these are identical below:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: identical_ymin_y
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+identical(
+    x = geom_ribbon_path_data$ymin, 
+    y = geom_ribbon_path_data$y)
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+We can see they are--explore this with plots. 
+:::
+
+
+### `"plot"`
+
+::: {style="font-size: 0.85em;"}
+We'll use `geom_line()` and `geom_point()` to explore and compare the aesthetics with `"plot"`
+
+We'll start by looking at `x` vs. `ymax` and `x` vs. `ymax - unemp_sd`:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_x_vs_ymax_ggp2_ymax_unemp_sd_diff
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| layout-ncol: 2
+#| code-fold: true
+# plot x vs. ymax
+ggp2_x_vs_ymax <-
+    ggplot(dplyr::select(geom_ribbon_path_data, x, ymax)) +
+    geom_line(
+        mapping = aes(x = x, y = ymax),
+        color = "#696969",
+        alpha = 1 / 2,
+        size = 0.7)
+ggp2_x_vs_ymax
+# Add points for x vs. ymax - unemp_sd
+ggp2_ymax_unemp_sd_diff <- ggp2_x_vs_ymax +
+    geom_point(data = dplyr::select(geom_ribbon_path_data, x, ymin, ymax),
+        mapping = aes(x = x, y = ymax - unemp_sd),
+        color = "#0bd3d3",
+        alpha = 2 / 3,
+        shape = 73, # this is the 'I' character--great for vertical points!
+        size = 10)
+ggp2_ymax_unemp_sd_diff
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+We can see this results in two lines (presumably the top of `geom_ribbon` and the line mapped by `geom_path`). We'll check the lower end of the `y` interval with another `geom_line()` layer, mapping `x` vs. `ymin`.
+
+We'll also confirm the `geom_path` values are *connecting the observations in the order in which they appear in the data* by creating two layers: a layer with `x` vs. `ymax - unemp_sd` (in blue) and a layer with `x` vs. `ymax + unemp_sd` (in red)
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_x_vs_ymin_ggp2_yminmax_unemp_sd_diffs
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| layout-ncol: 2
+#| code-fold: true
+# Add line for x vs. ymin
+ggp2_x_vs_ymin <- ggp2_ymax_unemp_sd_diff +
+    geom_line(data = dplyr::select(geom_ribbon_path_data, x, ymin),
+        mapping = aes(x = x, y = ymin),
+        color = "#696969",
+        alpha = 1 / 2,
+        size = 0.7)
+ggp2_x_vs_ymin
+# Add points and line for ymax - unemp_sd and ymin + unemp_sd
+ggp2_yminmax_unemp_sd_diffs <-
+    ggplot(dplyr::select(geom_ribbon_path_data,
+        x, ymin, ymax)) +
+    geom_point(
+        data = dplyr::select(geom_ribbon_path_data,
+            x, ymin, ymax),
+        mapping = aes(x = x, y = ymax - unemp_sd),
+        color = "#0bd3d3",
+        alpha = 2 / 3,
+        shape = 73,
+        size = 12) +
+    geom_line(
+        data = dplyr::select(geom_ribbon_path_data, x, ymin, ymax),
+        mapping = aes(x = x, y = ymin + unemp_sd),
+        color = "#E74A2F",
+        size = 0.75)
+
+ggp2_yminmax_unemp_sd_diffs
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+The display of the blue points and red line shows the values plotted with `geom_path()` (plotted *in the order in which they appear*).
+
+Now if we combine the top and bottom of the ribbon with the plot produced by `geom_path()`, we'll see the shape is identical to the `"plot"` object. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_xy_yminmax_unemp_sd_diffs_vs_plot
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| layout-ncol: 2
+#| code-fold: true
+# add x vs. ymax and x vs. ymin
+ggp2_xy_yminmax_unemp_sd_diffs <- ggp2_yminmax_unemp_sd_diffs +
+    geom_line(
+        data = dplyr::select(geom_ribbon_path_data, x, ymax),
+        mapping = aes(x = x, y = ymax),
+        color = "#696969",
+        alpha = 1 / 2,
+        size = 0.7) +
+    geom_line(
+        data = dplyr::select(geom_ribbon_path_data, x, ymin),
+        mapping = aes(x = x, y = ymin),
+        color = "#696969",
+        alpha = 1 / 2,
+        size = 0.7)
+ggp2_xy_yminmax_unemp_sd_diffs
+# compare with "plot"
+bld_geom_ribbon_path[["plot"]]
+```
+:::
+
+::::
+:::::
+
+<!--
+::::: {.callout-important collapse="true" icon=false}
+## `geom_(imp_arg)`
+
+:::: {.panel-tabset}
+
+### `ggplot_build()`
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`ggplot_build()`:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Build `geom_` layers
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: geom_layers_imp_arg_
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# ggp2_bar_fill <- ggp2_bar_base + 
+#     geom_bar(mapping = aes(x = island, 
+#         fill = island), show.legend = FALSE)
+# ggp2_bar_fill2 <- ggp2_bar_base + 
+#     geom_bar(mapping = aes(x = island, 
+#         fill = sex)) 
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Create `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: geom_build_imp_arg_
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
+# names(bld_bar_fill)
+# bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
+# names(bld_bar_fill2)
+```
+:::
+
+### `imp_arg`: `"data"`
+
+::: {style="font-size: 0.85em;"}
+Extract `"data"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_imp_arg
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# bar_fill_data <- bld_bar_fill[["data"]][[1]]
+# glimpse(bar_fill_data)
+# dplyr::select(bar_fill_data, x, y, fill)
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Extract `"data"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_imp_arg2
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
+# glimpse(bar_fill2_data)
+# dplyr::count(bar_fill2_data, x, y, fill) |> 
+#     tidyr::pivot_wider(names_from = x,
+#         values_from = n)
+```
+:::
+
+### `imp_arg`: `"plot"`
+
+::: {style="font-size: 0.85em;"}
+Extract `"plot"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: plot_bld_imp_arg
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# bld_bar_fill[["plot"]]
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Extract `"plot"` from `bld_` objects
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: plot_bld_imp_arg2
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# bld_bar_fill2[["plot"]]
+```
+:::
+
+::::
+:::::
+-->

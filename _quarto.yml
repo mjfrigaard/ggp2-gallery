@@ -62,7 +62,10 @@ website:
           - rela/bins_2d.qmd
           - rela/hex_bins.qmd
           #- rela/correlograms.qmd
-      #- section: "Stat-Graphs"
+      - section: "Geoms"
+        contents:
+          - geoms/geom_ribbon.qmd
+          - geoms/geom_bar.qmd
 
 
 format:
