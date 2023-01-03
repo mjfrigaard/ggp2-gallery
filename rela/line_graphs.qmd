@@ -284,10 +284,12 @@ We'll be using the `US_births_1994_2003` and `US_births_2000_2014` datasets from
   - Use `year` and `quarter` to create `yr_qtr` 
 
 Save these changes to `usbirth_1994_2014`:
+:::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: data_usbirth_1994_2014
+#| code-fold: show
 #| eval: true
 #| echo: true
 usbirth_1994_2014 <- fivethirtyeight::US_births_2000_2014 |>
@@ -314,6 +316,7 @@ dplyr::glimpse(usbirth_1994_2014)
 ```
 :::
 
+::: {style="font-size: 0.85em;"}
 We'll use these data in the *More info* section for more line graphs, but for now:
 
 - Group `usbirth_1994_2014` on `year` and `day_category`   
@@ -321,12 +324,12 @@ We'll use these data in the *More info* section for more line graphs, but for no
 - Calculate the average `births` as `avg_births`  
 
 Store the data in `avg_birth_day_cat_yr`:
-
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: data_avg_birth_day_cat_yr
+#| code-fold: true
 #| eval: true
 #| echo: true
 avg_birth_day_cat_yr <- usbirth_1994_2014 |>
@@ -336,6 +339,7 @@ avg_birth_day_cat_yr <- usbirth_1994_2014 |>
 dplyr::glimpse(avg_birth_day_cat_yr)
 ```
 :::
+
 ::::
 
 :::: {.panel-tabset}
