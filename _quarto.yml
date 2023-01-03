@@ -54,6 +54,7 @@ website:
           - rela/grouped_scatter_plots.qmd
           - rela/bubble_charts.qmd
           - rela/grouped_bubble_charts.qmd
+          - rela/line_graphs.qmd
           - rela/alluvial_charts.qmd
           - rela/parallel_sets.qmd
           - rela/bump_charts.qmd
@@ -61,7 +62,6 @@ website:
           - rela/density_contours.qmd
           - rela/bins_2d.qmd
           - rela/hex_bins.qmd
-          - rela/line_graphs.qmd
           # - rela/correlograms.qmd
           
       # - section: "Geoms"
