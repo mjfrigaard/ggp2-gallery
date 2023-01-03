@@ -737,11 +737,14 @@ label_dow <- usbirth_1994_2014 |>
     dplyr::ungroup() |>
     dplyr::arrange(desc(max_births)) |>
     dplyr::rename(day = day_of_week) |>
-    dplyr::mutate(lbl = paste0(day, 
-                               ", max births = ", 
-                               max_births)) |>
     dplyr::inner_join(y = usbirth_1994_2014, 
                       by = c("max_births" = "births")) |>
+    dplyr::mutate(lbl = paste0(day, 
+                               " (",
+                                date,
+                               " )",
+                               ", births = ", 
+                               max_births)) |>
     dplyr::select(day, max_births, lbl, 
         date, day_category, yr_mnth, yr_qtr)
 label_dow
@@ -805,7 +808,7 @@ ggp2_line_wed_births_lbls <- geom_label(data = label_max_wed_dow,
             color = day),
         fill = "#ffffff",
         nudge_y = -650,
-        size = 3,
+        size = 2.5,
         show.legend = FALSE)
 
 ggp2_line_pal_d + 
@@ -849,7 +852,7 @@ ggp2_line_tues_births_lbls <- geom_label(data = label_min_tues_dow,
             color = day),
         fill = "#ffffff",
         nudge_y = -650,
-        size = 3,
+        size = 2.5,
         show.legend = FALSE)
 
 ggp2_line_pal_d + 
@@ -873,7 +876,7 @@ ggp2_line_pal_d +
 :::
 
 ::: {style="font-size: 0.85em;"}
-Facets....
+Finally, we can use facets to view each of the line graphs seperately (or small multiples).
 :::
 
 
@@ -902,12 +905,12 @@ dplyr::glimpse(med_births_dcat_dow_mnth)
 :::
 
 ::: {style="font-size: 0.85em;"}
-Facets....
+Using `facet_wrap()` with a single categorical variable (`. ~ var`) will create a plot for each discrete level, while `facet_grid()` will create a level-by-level grid (specified as `var ~ var`).
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: labs_line_graph_facet
+#| label: labs_line_graph_facet_wrap
 #| code-fold: true
 #| eval: true
 #| echo: true
@@ -915,7 +918,9 @@ Facets....
 #| message: false
 #| out-height: '100%'
 #| out-width: '100%'
-labs_line_graph_facet <- labs(
+#| column: page-inset-right
+#| layout-nrow: 1
+labs_line_graph_facet_wrap <- labs(
     title = "Median US births",
     subtitle = paste0("Between ",
         min(med_births_dcat_dow_mnth$date),
@@ -929,7 +934,7 @@ labs_line_graph_facet <- labs(
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: create_graph_line_grp_facet
+#| label: ggp2_line_facet_wrap
 #| code-fold: show
 #| eval: true
 #| echo: true
@@ -939,7 +944,7 @@ labs_line_graph_facet <- labs(
 #| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
-ggp2_line_grp_facet <- ggplot(data = med_births_dcat_dow_mnth,
+ggp2_line_facet_wrap <- ggplot(data = med_births_dcat_dow_mnth,
     mapping = aes(x = date,
                   y = med_births,
               group = day_of_week)) +
@@ -948,12 +953,68 @@ ggp2_line_grp_facet <- ggplot(data = med_births_dcat_dow_mnth,
         "#1AE4B6", "#A1FB3E", "#FABA39", "#E3460B", "#7A0403")) +
     scale_y_continuous(breaks = c(4000, 8000, 12000, 16000), 
                        labels = c('4000', '8000', '12000', '16000')) +
+    scale_x_date(date_breaks = "1 year", 
+        date_labels = c("2008", "2009", "2010")) + 
     facet_wrap(day_of_week ~ ., shrink = TRUE)
 
-ggp2_line_grp_facet + 
-    labs_line_graph_facet
+ggp2_line_facet_wrap + 
+    labs_line_graph_facet_wrap
 ```
 :::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: labs_line_graph_facet_grid
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+labs_line_graph_facet_grid <- labs(
+    title = "Median US births",
+    subtitle = paste0("Between ",
+        min(med_births_dcat_dow_mnth$date),
+        " and ",
+        max(med_births_dcat_dow_mnth$date)),
+    y = "Median births",
+    x = "Date",
+    color = "Day of Week")
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_line_facet_grid
+#| code-fold: show
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_line_facet_grid <- ggplot(data = med_births_dcat_dow_mnth,
+    mapping = aes(x = date,
+                  y = med_births,
+              group = day_of_week)) +
+    geom_line(aes(color = day_of_week)) +
+    scale_color_manual(values = c("#30123B", "#4485F6", 
+        "#1AE4B6", "#A1FB3E", "#FABA39", "#E3460B", "#7A0403")) +
+    scale_y_continuous(breaks = c(4000, 8000, 12000, 16000), 
+                       labels = c('4000', '8000', '12000', '16000')) +
+    scale_x_date(date_breaks = "1 year",
+        date_labels = c("2008", "2009", "2010")) + 
+    facet_grid(day_of_week ~ day_category, 
+        shrink = TRUE)
+
+ggp2_line_facet_grid + 
+    labs_line_graph_facet_grid
+```
+:::
+
 ::::
 
 
