@@ -61,11 +61,13 @@ website:
           - rela/density_contours.qmd
           - rela/bins_2d.qmd
           - rela/hex_bins.qmd
-          #- rela/correlograms.qmd
-      - section: "Geoms"
-        contents:
-          - geoms/geom_ribbon.qmd
-          - geoms/geom_bar.qmd
+          - rela/line_graphs.qmd
+          # - rela/correlograms.qmd
+          
+      # - section: "Geoms"
+      #   contents:
+      #     - geoms/geom_ribbon.qmd
+      #     - geoms/geom_bar.qmd
 
 
 format:

@@ -6,6 +6,8 @@ require(showtextdb)
 require(sysfonts)
 library(extrafont)
 library(palmerpenguins)
+library(fs)
+library(janitor)
 
 # theme_ggp2g -------------------------------------------------------------
 # this is a custom theme for the ggplot2 gallery

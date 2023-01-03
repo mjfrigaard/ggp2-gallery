@@ -1,0 +1,881 @@
+---
+title: "Line graphs"
+format:
+  html:
+    toc: true
+    code-fold: show
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorspace)
+library(munsell)
+library(colorblindr)
+library(downlit)
+library(patchwork)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 13))
+# utils
+source("../R/utils.R")
+# install data packages ----
+install.packages("fivethirtyeight")
+install.packages("palmerpenguins")
+```
+
+
+
+:::: {.callout-tip collapse="false" icon=false}
+## Graph info
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**Should I use this graph?**
+:::
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '30%'
+#| out-width: '30%'
+#| fig-align: right
+#| layout-nrow: 3
+library(fivethirtyeight)
+library(ggplot2)
+library(paletteer)
+library(ggthemes)
+# basic_line ----
+usbirth_1994_2014 <- fivethirtyeight::US_births_2000_2014 |>
+    dplyr::bind_rows(fivethirtyeight::US_births_1994_2003) |> 
+    dplyr::mutate(
+        day_category = case_when(
+            day_of_week %in% c("Sun", "Sat") ~ "Weekend",
+            day_of_week %nin% c("Sun", "Sat") ~ "Weekday",
+            TRUE ~ NA_character_
+        ),
+        month = dplyr::if_else(
+            condition = month < 10,
+            true = paste0("0", month),
+            false = as.character(month)
+        ),
+        yr_mnth = paste0(year, "-", month),
+        yr_mnth = lubridate::ym(yr_mnth),
+        yr_qtr = paste0(lubridate::year(date),
+                              "/0", 
+                              quarter(date)),
+        yr_qtr = factor(yr_qtr, ordered = TRUE)
+    )
+## basic_line data ----
+avg_birth_day_cat_yr <- usbirth_1994_2014 |>
+    dplyr::group_by(year, day_category) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup() 
+## basic_line graph ----
+ggp2_line <- ggplot(data = avg_birth_day_cat_yr, 
+       mapping = aes(x = year, 
+                     y = avg_births, 
+                     group = day_category)) + 
+    geom_line(aes(color = day_category)) 
+basic_line <- ggp2_line + 
+    theme(axis.text = element_blank(), 
+          legend.position = "none",
+          legend.title = element_blank(),
+          legend.text = element_blank())
+# grp_line -----
+## grp_line data ----
+avg_births_dow_qtr <- usbirth_1994_2014 |>
+    dplyr::filter(year >= 2007 & year < 2009) |>
+    dplyr::group_by(yr_qtr, day_of_week) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup()
+## grp_line graph ----
+ggp2_line_grp <- ggplot2::ggplot(data = avg_births_dow_qtr,
+       mapping = aes(x = yr_qtr,
+                     y = avg_births,
+                     group = day_of_week)) +
+        geom_line(aes(color = day_of_week))
+grp_line <- ggp2_line_grp +
+    theme(axis.text = element_blank(),
+          legend.text = element_blank(),
+          legend.position = "none",
+          legend.title = element_blank())
+# pal_line -----
+avg_births_dow_mnth <- usbirth_1994_2014 |>
+    dplyr::filter(date > lubridate::as_date("2003-01-01") &
+            date < lubridate::as_date("2003-06-01")) |>
+    dplyr::group_by(yr_mnth, day_category, day_of_week) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup()
+# levels
+ggp2_line_pal <- ggplot(data = dplyr::filter(avg_births_dow_mnth,
+                        day_of_week %in% c("Tues", "Wed", "Thurs"))) +
+                geom_line(aes(x = yr_mnth,
+                            y = avg_births,
+                            group = day_of_week,
+                            color = day_of_week),
+                            alpha = 1 / 5,
+                            linewidth = 1.4) +
+                geom_line(data = dplyr::filter(avg_births_dow_mnth,
+                        day_of_week %in% c("Sat", "Sun")),
+                       aes(x = yr_mnth,
+                           y = avg_births,
+                           group = day_of_week,
+                           color = day_of_week),
+                           alpha = 1 / 2,
+                           linewidth = 1.0,
+                           linetype = "longdash") +
+                geom_line(data = dplyr::filter(avg_births_dow_mnth,
+                        day_of_week %in% c("Mon", "Fri")),
+                        aes(x = yr_mnth,
+                           y = avg_births,
+                           group = day_of_week,
+                           color = day_of_week),
+                           linewidth = 1.0)
+# all four layers
+pal_line <- ggp2_line_pal +
+    theme(axis.text = element_blank(),
+          legend.text = element_blank(),
+          legend.background = element_blank(),
+          legend.position = "none",
+          legend.key = element_blank(),
+          legend.title = element_blank())
+# facet_line -----
+## facet_line data ----
+avg_births_dcat_dow_mnth <- usbirth_1994_2014 |>
+    dplyr::filter(date > lubridate::as_date("2003-01-01") &
+            date < lubridate::as_date("2003-06-01")) |>
+    dplyr::group_by(yr_mnth, day_category, day_of_week) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup()
+## facet_line graph ----
+ggp2_line_grp_facet <- ggplot(data = avg_births_dcat_dow_mnth,
+    mapping = aes(x = yr_mnth,
+                  y = avg_births,
+              group = day_of_week)) +
+    geom_line(aes(color = day_of_week),
+        linewidth = 0.9) +
+    scale_color_manual(values = c(
+        "#30123B", "#4485F6", "#1AE4B6",
+        "#A1FB3E", "#FABA39", "#E3460B",
+        "#7A0403"
+    )) +
+    facet_wrap(. ~ day_of_week, nrow = 2)
+
+facet_line <- ggp2_line_grp_facet +
+    theme(axis.text = element_blank(),
+          legend.text = element_blank(),
+          legend.position = "none",
+          strip.text = element_blank(),
+          legend.title = element_blank())
+# final graphs ----
+basic_line + ggplot2::labs(y = "Y", x = "Time")
+grp_line + ggplot2::labs(y = "Y", x = "Time")
+pal_line + ggplot2::labs(y = "Y", x = "Time")
+facet_line + ggplot2::labs(y = "Y", x = "Time")
+```
+
+Line graphs display changes of a numeric quantitative variable (on the `y` axis) over time (on the `x` axis). Color, line style, and faceting can be used to show group changes for categorical variables.
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_line_graph
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("fivethirtyeight")
+library(fivethirtyeight)
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {.column-margin}
+![](../www/538.png){fig-align="right" width="40%" height="40%"}
+:::
+
+
+<!-- 
+::: {.column-margin}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+![](../www/538.png){fig-align="right" width="15%" height="15%"}
+![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
+:::
+-->
+
+
+
+::: {style="font-size: 0.85em;"}
+We'll be using the `US_births_1994_2003` and `US_births_2000_2014` datasets from the `fivethirtyeight` package: 
+
+  - Binding these together (they have identical columns)  
+
+  - Create a `day_category` variable that distinguishes between weekdays (`Weekends`) and weekends (`Weekday`)  
+
+  - Use `year` and `month`  to create `yr_mnth`  
+
+  - Use `year` and `quarter` to create `yr_qtr` 
+
+Save these changes to `usbirth_1994_2014`:
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_usbirth_1994_2014
+#| eval: true
+#| echo: true
+usbirth_1994_2014 <- fivethirtyeight::US_births_2000_2014 |>
+    dplyr::bind_rows(fivethirtyeight::US_births_1994_2003) |> 
+    dplyr::mutate(
+        day_category = case_when(
+            day_of_week %in% c("Sun", "Sat") ~ "Weekend",
+            day_of_week %nin% c("Sun", "Sat") ~ "Weekday",
+            TRUE ~ NA_character_
+        ),
+        month = dplyr::if_else(
+            condition = month < 10,
+            true = paste0("0", month),
+            false = as.character(month)
+        ),
+        yr_mnth = paste0(year, "-", month),
+        yr_mnth = lubridate::ym(yr_mnth),
+        yr_qtr = paste0(lubridate::year(date),
+                              "/0", 
+                              quarter(date)),
+        yr_qtr = factor(yr_qtr, ordered = TRUE)
+    )
+dplyr::glimpse(usbirth_1994_2014)
+```
+:::
+
+We'll use these data in the *More info* section for more line graphs, but for now:
+
+- Group `usbirth_1994_2014` on `year` and `day_category`   
+
+- Calculate the average `births` as `avg_births`  
+
+Store the data in `avg_birth_day_cat_yr`:
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_avg_birth_day_cat_yr
+#| eval: true
+#| echo: true
+avg_birth_day_cat_yr <- usbirth_1994_2014 |>
+    dplyr::group_by(year, day_category) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup() 
+dplyr::glimpse(avg_birth_day_cat_yr)
+```
+:::
+::::
+
+:::: {.panel-tabset}
+
+### Code
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**CODE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+- Create labels   
+
+- Map `yr_mnth` to the `x`, `avg_births` to the `y`, and `day_category` to `group`
+
+- Add the `geom_line()` layer and map `day_category` to color (*inside* `aes()`)
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: code_graph_line
+#| eval: false
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+labs_line_graph <- labs(title = "Average US births", 
+                        subtitle = "1994-2014",
+                        y = "Average births", 
+                        x = "Year",  
+                        color = "Day Category")
+
+ggp2_line <- ggplot(data = avg_birth_day_cat_yr, 
+       mapping = aes(x = year, 
+                     y = avg_births, 
+                     group = day_category)) + 
+    geom_line(aes(color = day_category)) 
+ggp2_line + 
+    labs_line_graph
+```
+:::
+
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+```{r}
+#| label: create_graph_line
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+labs_line_graph <- labs(title = "Average US births", 
+                        subtitle = "1994-2014",
+                        y = "Average births", 
+                        x = "Year",  
+                        color = "Day Category")
+
+ggp2_line <- ggplot(data = avg_birth_day_cat_yr, 
+       mapping = aes(x = year, 
+                     y = avg_births, 
+                     group = day_category)) + 
+    geom_line(aes(color = day_category)) 
+ggp2_line + 
+    labs_line_graph
+```
+
+::::
+
+
+## More info
+
+Line graphs are great for displaying relationships across variables with multiple groups (or levels). We can also use facets for multiple comparisons (i.e., small multiples).
+
+
+:::: {.panel-tabset}
+
+### Groups
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+In the previous graph, we can see the number of births begins to decline around `2007` or `2008`.  We'll create another summarized dataset from the `usbirth_2010_2014` data, but this time we restrict the observations to only births in between `2007` and `2009`, group on `yr_qtr` and `day_of_week`, and get the average number of `births` (as `avg_births`).
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: avg_births_dow_qtr
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+avg_births_dow_qtr <- usbirth_1994_2014 |>
+    dplyr::filter(year >= 2007 & year <= 2009) |> 
+    dplyr::group_by(yr_qtr, day_of_week) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup() 
+dplyr::glimpse(avg_births_dow_qtr)
+```
+:::
+
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GROUPS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+Now when we create our line graph, we will have a categorical variable with more than two levels (`day_of_week`), so we should move the legend to the top of the graph using  `theme(legend.position = "top")` to improve readability. 
+
+When we create the labels, we use `paste0()` to ensure the `subtitle` is accurate. 
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: labs_line_graph_grp
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+labs_line_graph_grp <- labs(title = "Average US births", 
+                        subtitle = paste0("Between ",
+                                    min(avg_births_dow_qtr$yr_qtr), 
+                                    " and ",
+                                    max(avg_births_dow_qtr$yr_qtr)),
+                        y = "Average births", 
+                        x = "Year/Quarter",  
+                        color = "Day of Week")
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: avg_births_dow_qtr_grp_line
+#| code-fold: show
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_line_grp <- ggplot(data = avg_births_dow_qtr, 
+                   mapping = aes(x = yr_qtr, 
+                                 y = avg_births, 
+                                 group = day_of_week)) + 
+        geom_line(aes(color = day_of_week)) 
+    
+ggp2_line_grp + 
+    labs_line_graph_grp + 
+    theme(legend.position = "top")
+```
+:::
+
+### Palettes
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+In the previous graph, we can see the number of average births reaches it's peak in quarter three of `2008`. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: label_max_dow
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+#| df-print: kable
+label_dow <- usbirth_1994_2014 |> 
+    dplyr::group_by(day_of_week) |>
+    dplyr::summarise(max_births = max(births, na.rm = TRUE)) |> 
+    dplyr::ungroup() |> 
+    dplyr::arrange(desc(max_births)) |> 
+    dplyr::rename(day = day_of_week) |> 
+    dplyr::mutate(
+        lbl = paste0(day, ", max births = ", max_births)) |> 
+    dplyr::inner_join(y = usbirth_1994_2014, by = c("max_births" = "births")) |> 
+    dplyr::select(day, max_births, lbl, date, day_category, yr_mnth, yr_qtr)
+label_max_dow <- label_dow |> 
+    head(1)
+label_max_dow
+label_min_dow <- label_dow |> 
+    tail(1)
+label_min_dow
+```
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: avg_births_dow_mnth
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+avg_births_dow_mnth <- usbirth_1994_2014 |>
+    dplyr::filter(year >= 2008 & year < 2010) |> 
+    dplyr::group_by(yr_mnth, day_of_week) |>
+    dplyr::summarise(avg_births = mean(births, na.rm = TRUE)) |>
+    dplyr::ungroup() 
+dplyr::glimpse(avg_births_dow_mnth)
+```
+:::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PALETTES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Palettes are a great way to highlight or emphasize some lines over others. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: labs_line_graph_grp_pal
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+labs_line_graph_grp_pal <- labs(title = "Average US births", 
+                                subtitle = paste0("Between ",
+                                    min(avg_births_dow_mnth$yr_mnth), 
+                                    " and ",
+                                    max(avg_births_dow_mnth$yr_mnth)),
+                                y = "Average births", 
+                                x = "Year-Month",  
+                                color = "Day of Week")
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Palettes are a great way to highlight or emphasize some lines over others. We'll start by making the lines for Monday, Thursday, and Friday subdued by adjusting the `alpha`.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_line_pal_1
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+library(paletteer)
+library(ggthemes)
+ggp2_line_pal_1 <- ggplot(data = dplyr::filter(avg_births_dow_mnth,
+                            day_of_week %in% c("Mon", "Thurs", "Fri"))) +
+                    geom_line(aes(x = yr_mnth,
+                                  y = avg_births,
+                                group = day_of_week,
+                                color = day_of_week),
+                        alpha = 1 / 5,
+                        linewidth = 1.4)
+# layer 1 
+ggp2_line_pal_1 + 
+    labs_line_graph_grp_pal + 
+    theme(legend.position = "top")
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Then we'll change the `linetype` of Saturday and Sunday to `"longdash'` (and make this *somewhat* transparent with a slightly higher `alpha`).
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_line_pal_2
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_line_pal_2 <- geom_line(data = dplyr::filter(avg_births_dow_mnth, 
+                                     day_of_week %in% c("Sat", "Sun")), 
+                           aes(x = yr_mnth,
+                               y = avg_births, 
+                               group = day_of_week,
+                               color = day_of_week), 
+                                   alpha = 1 / 2, 
+                                   linewidth = 1.0,
+                                   linetype = "longdash") 
+# layers 1 & 2
+ggp2_line_pal_1 + 
+    ggp2_line_pal_2 + 
+    labs_line_graph_grp_pal + 
+    theme(legend.position = "top")
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Add `geom_line()` for Wednesday and Tuesday. 
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_line_pal_3
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+# levels 
+lev_order <- levels(avg_births_dow_mnth$day_of_week)
+# layer 3
+ggp2_line_pal_3 <- geom_line(data = dplyr::filter(avg_births_dow_mnth, 
+                                     day_of_week %in% c("Wed", "Tues")), 
+                       aes(x = yr_mnth,
+                           y = avg_births, 
+                           group = day_of_week,
+                           color = day_of_week),
+                           linewidth = 1.0)
+# three layers 
+ggp2_line_pal_1 + 
+    ggp2_line_pal_2 + 
+    ggp2_line_pal_3 + 
+    labs_line_graph_grp_pal + 
+    theme(legend.position = "top")
+```
+:::
+
+
+::: {style="font-size: 0.85em;"}
+Add `geom_point()`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_line_pal_4
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+# point for max births/day
+ggp2_line_pal_4 <- geom_point(data = filter(label_max_dow, 
+            day %in% c("Tues", "Wed")),
+        aes(x = yr_mnth, 
+            y = max_births, 
+            color = day), 
+        show.legend = FALSE)
+
+ggp2_line_pal_1 +
+    ggp2_line_pal_2 +
+    ggp2_line_pal_3 + 
+    ggp2_line_pal_4 + 
+    # add labels
+    labs_line_graph_grp_pal +
+    # move legend to top
+    theme(legend.position = "top")
+```
+:::
+
+
+::: {style="font-size: 0.85em;"}
+Add `geom_label()`
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: ggp2_line_pal_5
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+# point for max births/day
+# labels
+ggp2_line_pal_5 <- geom_label(data = filter(label_max_dow, 
+            day %in% c("Tues", "Wed")),
+        aes(x = yr_mnth, 
+            y = max_births, 
+            label = lbl, 
+            color = day), 
+            fill = "#ffffff",
+            nudge_y = -500, 
+            size = 1.85,
+            show.legend = FALSE)
+# all layers
+ggp2_line_pal_1 +
+    ggp2_line_pal_2 +
+    ggp2_line_pal_3 + 
+    ggp2_line_pal_4 + 
+    ggp2_line_pal_5 +
+    # add palette 
+    ggplot2::scale_color_manual(
+        breaks = lev_order,
+        values = paletteer::paletteer_d(palette = "ggthemes::gdoc", 
+            n = 7)) +
+    # add labels
+    labs_line_graph_grp_pal +
+    # move legend to top
+    theme(legend.position = "top")
+```
+:::
+
+### Facets
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**FACETS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+:::
+
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: max_births_dcat_dow_mnth
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+med_births_dcat_dow_mnth <- usbirth_1994_2014 |>
+    dplyr::filter(date >= lubridate::as_date("2009-04-01") &
+            date < lubridate::as_date("2010-01-01")) |>
+    dplyr::group_by(date, day_category, day_of_week) |>
+    dplyr::summarise(med_births = median(births, na.rm = TRUE)) |>
+    dplyr::ungroup()
+dplyr::glimpse(med_births_dcat_dow_mnth)
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: labs_line_graph_facet
+#| code-fold: true
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+labs_line_graph_facet <- labs(
+    title = "Median US births",
+    subtitle = paste0("Between ",
+        min(med_births_dcat_dow_mnth$date),
+        " and ",
+        max(med_births_dcat_dow_mnth$date)),
+    y = "Median births",
+    x = "Date",
+    color = "Day of Week")
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: create_graph_line_grp_facet
+#| code-fold: show
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+ggp2_line_grp_facet <- ggplot(data = med_births_dcat_dow_mnth,
+    mapping = aes(x = date,
+                  y = med_births,
+              group = day_of_week)) +
+    geom_line(aes(color = day_of_week),
+        linewidth = 0.9) +
+    scale_color_manual(values = c(
+        "#30123B", "#4485F6", "#1AE4B6",
+        "#A1FB3E", "#FABA39", "#E3460B",
+        "#7A0403"
+    )) +
+    facet_grid(day_of_week ~ day_category, 
+        shrink = TRUE)
+
+ggp2_line_grp_facet + 
+    labs_line_graph_facet
+```
+:::
+::::
+
+
+
+
+
+
+
+
+
+
+

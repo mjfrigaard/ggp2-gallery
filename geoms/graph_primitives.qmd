@@ -1,0 +1,473 @@
+---
+title: "Graphical primitives"
+format:
+  html:
+    toc: true
+    code-fold: show
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(colorblindr)
+library(downlit)
+# options ----
+options(
+  repos = "https://cloud.r-project.org",
+  dplyr.print_min = 6, 
+  dplyr.print_max = 6, 
+  scipen = 9999)
+# fonts ----
+library(extrafont)
+library(sysfonts)
+# import font
+extrafont::font_import(
+    paths = "../assets/Ubuntu/",
+    prompt = FALSE)
+# add font
+sysfonts::font_add(
+    family =  "Ubuntu", 
+    regular = "../assets/Ubuntu/Ubuntu-Regular.ttf")
+# use font
+showtext::showtext_auto()
+# add theme
+source("../R/theme_ggp2g.R")
+# set theme
+ggplot2::theme_set(theme_ggp2g(
+    base_size = 16))
+# install data packages ----
+install.packages("palmerpenguins")
+```
+
+
+:::: {.callout-tip collapse="false" icon=false}
+## Graphical primitives
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**Lines, rectangles, and areas**
+:::
+
+
+
+<br>
+
+```{r}
+#| label: full_code_display
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '40%'
+#| out-width: '40%'
+#| fig-align: right
+library(palmerpenguins) 
+library(ggplot2)
+library(patchwork)
+
+peng_primitive <- palmerpenguins::penguins |> 
+                    tidyr::drop_na()
+```
+
+<br>
+
+::: {style="font-size: 1.25em; color: #38B44A;"}
+**These geoms include:**
+:::
+
+`geom_path()`
+
+`geom_ribbon()`
+
+`geom_curve()`
+
+`geom_polygon()`
+
+`geom_rect()`
+
+`geom_blank()`
+
+::::
+
+
+:::: {.panel-tabset}
+
+### Packages
+
+::: {.column-margin}
+![https://github.com/rstudio/hex-stickers](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+:::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**PACKAGES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Install packages.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: pkg_code_primitives
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| results: hide
+install.packages("ggplot2")
+library(ggplot2)
+```
+:::
+
+### Data
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**DATA:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Load the `ggplot2::economics` data.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_primitives
+#| eval: true
+#| echo: true
+economics <- ggplot2::economics
+dplyr::glimpse(economics)
+```
+:::
+::::
+
+
+
+::::: {.callout-note collapse="false" icon=false}
+## `geom_path()`
+
+:::: {.panel-tabset}
+
+### Basic use
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**BASICS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: basic_path
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+ggp2_path_base <- ggplot(data = economics) + 
+    geom_path(mapping = aes(x = date, y = unemploy))
+ggp2_path_base
+```
+
+:::
+
+### Applications
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**APPLICATIONS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Below the graphs are built with `geom_path()`'s `lineend` argument set to `"butt"` and the three possible options for `linejoin` (`"bevel"`, `"round"`, and `"mitre"`). The `size` and `linemitre` have been increased to exaggerate their effects. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: applications_1_path
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+ggp2_path_bb <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(
+        size = 5,
+        lineend = "butt",
+        linejoin = "bevel",
+        linemitre = 3) + 
+    labs(title = "butt/bevel")
+ggp2_path_bb
+ggp2_path_br <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(size = 5,
+        lineend = "butt",
+        linejoin = "round",
+        linemitre = 3) + 
+    labs(title = "butt/round")
+ggp2_path_br
+ggp2_path_bm <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(
+        size = 5,
+        lineend = "butt",
+        linejoin = "mitre",
+        linemitre = 3
+    ) + 
+    labs(title = "butt/mitre")
+ggp2_path_bm
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: applications_2_path
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+ggp2_path_rb <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(
+        size = 5,
+        lineend = "round",
+        linejoin = "bevel",
+        linemitre = 3
+    ) + 
+    labs(title = "round/bevel")
+ggp2_path_rb
+ggp2_path_rr <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(size = 5,
+        lineend = "round",
+        linejoin = "round",
+        linemitre = 3)+ 
+    labs(title = "round/round")
+ggp2_path_rr
+ggp2_path_rm <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(size = 5,
+        lineend = "round",
+        linejoin = "mitre",
+        linemitre = 3) + 
+    labs(title = "round/mitre")
+ggp2_path_rm
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: applications_3_path
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+ggp2_path_sb <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(
+        size = 5,
+        lineend = "square",
+        linejoin = "bevel",
+        linemitre = 3
+    ) + 
+    labs(title = "square/bevel")
+ggp2_path_sb
+ggp2_path_sr <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(
+        size = 5,
+        lineend = "square",
+        linejoin = "round",
+        linemitre = 3
+    ) + 
+    labs(title = "square/round")
+ggp2_path_sr
+ggp2_path_sm <- ggplot(data = economics,
+    mapping = aes(x = date, y = unemploy)) +
+    geom_path(
+        size = 5,
+        lineend = "square",
+        linejoin = "mitre",
+        linemitre = 3
+    ) + 
+    labs(title = "square/mitre")
+ggp2_path_sm
+```
+:::
+
+
+### Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Addditional arguments include:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-nrow: 1
+
+```
+:::
+
+
+### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+The required aesthetics are: 
+
+Optional aesthetics include: 
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+```
+:::
+
+::::
+:::::
+
+<!--
+
+::::: {.callout-note collapse="false" icon=false}
+## `geom_()`
+
+:::: {.panel-tabset}
+
+### Basic use
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**BASICS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: basic_
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# ggp2_bar_base <- ggplot(data = peng_primitive)
+# ggp2_bar_x <- ggp2_bar_base + 
+#     geom_bar(mapping = aes(x = island))
+```
+
+:::
+
+### Other applications
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**APPLICATIONS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: applications_1_
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+
+```
+
+```{r}
+#| label: applications_2_
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+
+```
+:::
+
+### Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Addditional arguments include:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-nrow: 1
+
+```
+:::
+
+
+### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+The required aesthetics are: 
+
+Optional aesthetics include: 
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: data_bld_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+```
+:::
+
+::::
+:::::
+
+-->

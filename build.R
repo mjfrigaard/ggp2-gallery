@@ -11,7 +11,9 @@ library(sysfonts)
 source("R/new_graph.R")
 source("R/new_geom.R")
 # new_graph(name = "stream plots", section = "prp")
-# new_geom(geom_name = "ribbon")
+# new_geom(geom_name = "PRIMITIVES")
+
+# new_graph( "line graphs", "rela")
 
 # fonts --------------------
 # import font
