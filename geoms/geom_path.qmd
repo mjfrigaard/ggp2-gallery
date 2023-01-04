@@ -111,9 +111,10 @@ pth + ln + stp +
 
 ::: {.column-margin}
 ::: {style="font-size: 0.75em;"}
-![](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+![](../www/ggplot2.png){fig-align="right" width="33%" height="33%"}
 :::
 :::
+
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **PACKAGES:**
@@ -131,7 +132,6 @@ Install packages.
 #| warning: false
 #| message: false
 #| results: hide
-#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 install.packages("ggplot2")
@@ -154,7 +154,6 @@ Load the `ggplot2::economics` data.
 #| label: data_lines
 #| eval: true
 #| echo: true
-#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 economics <- ggplot2::economics

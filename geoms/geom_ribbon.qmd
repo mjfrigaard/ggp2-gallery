@@ -119,7 +119,7 @@ plygn + rct + rbn +
 
 ::: {.column-margin}
 ::: {style="font-size: 0.75em;"}
-![](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+![](../www/ggplot2.png){fig-align="right" width="33%" height="33%"}
 :::
 :::
 
@@ -139,6 +139,8 @@ Install packages.
 #| warning: false
 #| message: false
 #| results: hide
+#| out-height: '100%'
+#| out-width: '100%'
 install.packages("ggplot2")
 library(ggplot2)
 ```
@@ -159,6 +161,8 @@ Load the `ggplot2::economics` data.
 #| label: data_lines
 #| eval: true
 #| echo: true
+#| out-height: '100%'
+#| out-width: '100%'
 economics <- ggplot2::economics
 dplyr::glimpse(economics)
 ```
@@ -182,6 +186,9 @@ dplyr::glimpse(economics)
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
 ggp2_ribbon_base <- ggplot(data = economics,
                         mapping = aes(x = date))
 ggp2_ribbon_base + 
@@ -207,6 +214,9 @@ ggp2_ribbon_base +
 #| code-fold: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
 # load correlated data
 corr_data <- tibble::tribble(
                ~xvar,            ~yvar,
@@ -262,6 +272,9 @@ The required aesthetics are:
 #| warning: false
 #| message: false
 #| code-fold: show
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
 # map corr_data
 ggp2_ribbon_base <- ggplot(data = corr_data)
 # map x, y, ymin and ymax, and +/- adjustment
@@ -300,6 +313,7 @@ Optional aesthetics include:
 #| code-fold: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 #| layout-ncol: 2
@@ -342,6 +356,7 @@ ggp2_ribbon_base +
 #| code-fold: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 #| layout-ncol: 2
@@ -376,6 +391,7 @@ ggp2_ribbon_base +
 #| code-fold: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 #| layout-ncol: 2
@@ -428,6 +444,7 @@ ggp2_ribbon_base +
 #| code-fold: true
 #| warning: false
 #| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 #| layout-ncol: 2
