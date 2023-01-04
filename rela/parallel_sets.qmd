@@ -297,10 +297,18 @@ ggp2_psets_labs +
     labs_psets
 ```
 
-### Sets Labels
+::::
+
+## More info
+
+If the categories have long names, you can move the location of the labels *outside* the set. 
+
+
+:::: {.panel-tabset}
+### Labeling sets
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**PARALLEL SETS LABELS:**
+**PARALLEL SETS LABELLING:**
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -314,6 +322,7 @@ Manually setting the `limits` of the `x` axis in `scale_x_continuous()` will als
 #| label: create_graph_parallel_sets_labs
 #| eval: true
 #| echo: true
+#| code-fold: true
 #| warning: false
 #| message: false
 #| out-height: '100%'

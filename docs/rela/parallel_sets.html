@@ -475,14 +475,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../geoms/geom_ribbon.html" class="sidebar-item-text sidebar-link">geom_ribbon()</a>
+  <a href="../geoms/geom_ribbon.html" class="sidebar-item-text sidebar-link"><code>geom_ribbon()</code></a>
   </div>
 </li>
       </ul>
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#more-info" id="toc-more-info" class="nav-link active" data-scroll-target="#more-info">More info</a></li>
+  </ul>
+</nav>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -607,7 +613,7 @@ $ y       &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Dream, Dream, Dream, Dream
 </div>
 </div>
 <div class="panel-tabset page-columns page-full">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Sets Labels</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Graph</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
@@ -673,9 +679,17 @@ $ y       &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Dream, Dream, Dream, Dream
 </div>
 </div>
 </div>
-<div id="tabset-2-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+</div>
+</div>
+<section id="more-info" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="more-info">More info</h2>
+<p>If the categories have long names, you can move the location of the labels <em>outside</em> the set.</p>
+<div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Labeling sets</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-3-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div style="font-size: 0.90em; color: #1e83c8;">
-<p><strong>PARALLEL SETS LABELS:</strong></p>
+<p><strong>PARALLEL SETS LABELLING:</strong></p>
 </div>
 <div style="font-size: 0.85em;">
 <p>If the categories have long names, use the <code>angle</code>, <code>nudge_x</code>/<code>nudge_y</code> and <code>hjust</code>/<code>vjust</code> in <code>geom_parallel_sets_labels()</code> to adjust the size, location, and color of the labels.</p>
@@ -683,7 +697,7 @@ $ y       &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Dream, Dream, Dream, Dream
 </div>
 <div style="font-size: 0.75em;" class="page-columns page-full">
 <div class="page-columns page-full">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ggp2_psets_axes <span class="sc">+</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_labels</span>(</span>
@@ -715,6 +729,7 @@ $ y       &lt;fct&gt; Biscoe, Biscoe, Biscoe, Biscoe, Dream, Dream, Dream, Dream
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1278,46 +1293,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-309"><a href="#cb6-309" aria-hidden="true" tabindex="-1"></a>    labs_psets</span>
 <span id="cb6-310"><a href="#cb6-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-311"><a href="#cb6-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-312"><a href="#cb6-312" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sets Labels</span></span>
+<span id="cb6-312"><a href="#cb6-312" aria-hidden="true" tabindex="-1"></a>::::</span>
 <span id="cb6-313"><a href="#cb6-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-314"><a href="#cb6-314" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
-<span id="cb6-315"><a href="#cb6-315" aria-hidden="true" tabindex="-1"></a>**PARALLEL SETS LABELS:**</span>
-<span id="cb6-316"><a href="#cb6-316" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-314"><a href="#cb6-314" aria-hidden="true" tabindex="-1"></a><span class="fu">## More info</span></span>
+<span id="cb6-315"><a href="#cb6-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-316"><a href="#cb6-316" aria-hidden="true" tabindex="-1"></a>If the categories have long names, you can move the location of the labels *outside* the set. </span>
 <span id="cb6-317"><a href="#cb6-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-318"><a href="#cb6-318" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
-<span id="cb6-319"><a href="#cb6-319" aria-hidden="true" tabindex="-1"></a>If the categories have long names, use the <span class="in">`angle`</span>, <span class="in">`nudge_x`</span>/<span class="in">`nudge_y`</span> and <span class="in">`hjust`</span>/<span class="in">`vjust`</span> in <span class="in">`geom_parallel_sets_labels()`</span> to adjust the size, location, and color of the labels. </span>
-<span id="cb6-320"><a href="#cb6-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-321"><a href="#cb6-321" aria-hidden="true" tabindex="-1"></a>Manually setting the <span class="in">`limits`</span> of the <span class="in">`x`</span> axis in <span class="in">`scale_x_continuous()`</span> will also give more room for the labels. </span>
-<span id="cb6-322"><a href="#cb6-322" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-323"><a href="#cb6-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-324"><a href="#cb6-324" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
-<span id="cb6-327"><a href="#cb6-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-328"><a href="#cb6-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_parallel_sets_labs</span></span>
-<span id="cb6-329"><a href="#cb6-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb6-330"><a href="#cb6-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb6-331"><a href="#cb6-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb6-333"><a href="#cb6-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: '100%'</span></span>
-<span id="cb6-334"><a href="#cb6-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: '100%'</span></span>
-<span id="cb6-335"><a href="#cb6-335" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
-<span id="cb6-336"><a href="#cb6-336" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
-<span id="cb6-337"><a href="#cb6-337" aria-hidden="true" tabindex="-1"></a>ggp2_psets_axes <span class="sc">+</span> </span>
-<span id="cb6-338"><a href="#cb6-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_labels</span>(</span>
-<span id="cb6-339"><a href="#cb6-339" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fl">3.2</span>, </span>
-<span id="cb6-340"><a href="#cb6-340" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">'#000000'</span>,</span>
-<span id="cb6-341"><a href="#cb6-341" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb6-342"><a href="#cb6-342" aria-hidden="true" tabindex="-1"></a>      <span class="at">nudge_x =</span> <span class="fl">0.1</span>, </span>
-<span id="cb6-343"><a href="#cb6-343" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
-<span id="cb6-344"><a href="#cb6-344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb6-345"><a href="#cb6-345" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">3.2</span>),</span>
-<span id="cb6-346"><a href="#cb6-346" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
-<span id="cb6-347"><a href="#cb6-347" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Island"</span>, <span class="st">"Species"</span>, <span class="st">"Sex"</span>)) <span class="sc">+</span> </span>
-<span id="cb6-348"><a href="#cb6-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb6-349"><a href="#cb6-349" aria-hidden="true" tabindex="-1"></a>    labs_psets</span>
-<span id="cb6-350"><a href="#cb6-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-351"><a href="#cb6-351" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-352"><a href="#cb6-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-353"><a href="#cb6-353" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb6-318"><a href="#cb6-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-319"><a href="#cb6-319" aria-hidden="true" tabindex="-1"></a>:::: {.panel-tabset}</span>
+<span id="cb6-320"><a href="#cb6-320" aria-hidden="true" tabindex="-1"></a><span class="fu">### Labeling sets</span></span>
+<span id="cb6-321"><a href="#cb6-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-322"><a href="#cb6-322" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.90em; color: #1e83c8;"}</span>
+<span id="cb6-323"><a href="#cb6-323" aria-hidden="true" tabindex="-1"></a>**PARALLEL SETS LABELLING:**</span>
+<span id="cb6-324"><a href="#cb6-324" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-325"><a href="#cb6-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-326"><a href="#cb6-326" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.85em;"}</span>
+<span id="cb6-327"><a href="#cb6-327" aria-hidden="true" tabindex="-1"></a>If the categories have long names, use the <span class="in">`angle`</span>, <span class="in">`nudge_x`</span>/<span class="in">`nudge_y`</span> and <span class="in">`hjust`</span>/<span class="in">`vjust`</span> in <span class="in">`geom_parallel_sets_labels()`</span> to adjust the size, location, and color of the labels. </span>
+<span id="cb6-328"><a href="#cb6-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-329"><a href="#cb6-329" aria-hidden="true" tabindex="-1"></a>Manually setting the <span class="in">`limits`</span> of the <span class="in">`x`</span> axis in <span class="in">`scale_x_continuous()`</span> will also give more room for the labels. </span>
+<span id="cb6-330"><a href="#cb6-330" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-331"><a href="#cb6-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-332"><a href="#cb6-332" aria-hidden="true" tabindex="-1"></a>::: {style="font-size: 0.75em;"}</span>
+<span id="cb6-335"><a href="#cb6-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-336"><a href="#cb6-336" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create_graph_parallel_sets_labs</span></span>
+<span id="cb6-337"><a href="#cb6-337" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb6-338"><a href="#cb6-338" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb6-339"><a href="#cb6-339" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb6-340"><a href="#cb6-340" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-341"><a href="#cb6-341" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-342"><a href="#cb6-342" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: '100%'</span></span>
+<span id="cb6-343"><a href="#cb6-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: '100%'</span></span>
+<span id="cb6-344"><a href="#cb6-344" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-inset-right</span></span>
+<span id="cb6-345"><a href="#cb6-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-nrow: 1</span></span>
+<span id="cb6-346"><a href="#cb6-346" aria-hidden="true" tabindex="-1"></a>ggp2_psets_axes <span class="sc">+</span> </span>
+<span id="cb6-347"><a href="#cb6-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_labels</span>(</span>
+<span id="cb6-348"><a href="#cb6-348" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fl">3.2</span>, </span>
+<span id="cb6-349"><a href="#cb6-349" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">'#000000'</span>,</span>
+<span id="cb6-350"><a href="#cb6-350" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb6-351"><a href="#cb6-351" aria-hidden="true" tabindex="-1"></a>      <span class="at">nudge_x =</span> <span class="fl">0.1</span>, </span>
+<span id="cb6-352"><a href="#cb6-352" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb6-353"><a href="#cb6-353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb6-354"><a href="#cb6-354" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">3.2</span>),</span>
+<span id="cb6-355"><a href="#cb6-355" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb6-356"><a href="#cb6-356" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Island"</span>, <span class="st">"Species"</span>, <span class="st">"Sex"</span>)) <span class="sc">+</span> </span>
+<span id="cb6-357"><a href="#cb6-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb6-358"><a href="#cb6-358" aria-hidden="true" tabindex="-1"></a>    labs_psets</span>
+<span id="cb6-359"><a href="#cb6-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-360"><a href="#cb6-360" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-361"><a href="#cb6-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-362"><a href="#cb6-362" aria-hidden="true" tabindex="-1"></a>::::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

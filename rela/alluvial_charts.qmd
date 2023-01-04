@@ -275,6 +275,8 @@ ggp2_alluvial_w +
 
 ### More info
 
+The `ggalluvial` package can also help reshape data with the `to_lodes_form()` function.
+
 :::: {.panel-tabset}
 
 ### Data 
@@ -284,7 +286,7 @@ ggp2_alluvial_w +
 :::
 
 ::: {style="font-size: 0.85em;"}
-Below we create `peng_lodes` from the `penguins` dataset using the   `to_lodes_form()` from the `ggalluvial` package.
+Below we create `peng_lodes` from the `penguins` dataset using the `to_lodes_form()` from the `ggalluvial` package.
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -304,8 +306,7 @@ glimpse(peng_lodes)
 ```
 :::
 
-
-### Code
+### Graph
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **CODE:**
@@ -327,44 +328,6 @@ Add `geom_text()` and set `stat` to `"stratum"`
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_alluvial_lf
-#| eval: false
-#| echo: true 
-#| warning: false
-#| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| column: page-inset-right
-#| layout-nrow: 1
-labs_alluvial <- ggtitle(label = "Palmer Penguins", 
-    subtitle = "Stratified by year, island and species")
-
-ggp2_alluvial_lf <- ggplot(data = peng_lodes,
-  aes(x = Measure,
-      y = Freqency,
-      stratum = stratum,
-      alluvium = alluvium,
-      label = stratum)) +
-  ggalluvial::geom_alluvium(aes(fill = Sex)) +
-  ggalluvial::geom_stratum(width = 0.45) +
-  geom_text(stat = "stratum", size = 2.5)
-
-ggp2_alluvial_lf + 
-  labs_alluvial
-```
-:::
-
-### Graph
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
-:::
-
-::: {style="font-size: 0.85em;"}
-Convert data to lodes form using `to_lodes_form()` from the `ggalluvial` package.
-:::
-
-```{r}
 #| label: create_graph_alluvial_lf
 #| eval: true
 #| echo: false
@@ -377,19 +340,21 @@ Convert data to lodes form using `to_lodes_form()` from the `ggalluvial` package
 labs_alluvial <- ggtitle(label = "Palmer Penguins", 
     subtitle = "Stratified by year, island and species")
 
-ggp2_alluvial_lf <- ggplot(data = peng_lodes,
-  aes(x = Measure,
-      y = Freqency,
-      stratum = stratum,
-      alluvium = alluvium,
-      label = stratum)) +
-  ggalluvial::geom_alluvium(aes(fill = Sex)) +
-  ggalluvial::geom_stratum(width = 0.45) +
-  geom_text(stat = "stratum", size = 2.5)
+ggp2_alluvial_lf <- ggplot(
+    data = peng_lodes,
+    aes(x = Measure,
+        y = Freqency,
+        stratum = stratum,
+        alluvium = alluvium,
+        label = stratum)) +
+    ggalluvial::geom_alluvium(aes(fill = Sex)) +
+    ggalluvial::geom_stratum(width = 0.45) +
+    geom_text(stat = "stratum", size = 2.5)
 
-ggp2_alluvial_lf + 
-  labs_alluvial + 
+ggp2_alluvial_lf +
+    labs_alluvial +
     theme_ggp2g(base_size = 13)
 ```
+:::
 
 ::::
