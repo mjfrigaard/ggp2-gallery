@@ -1,9 +1,10 @@
 ---
-title: "geom_path()"
+title: "`geom_path()`"
 format:
   html:
     toc: true
     code-fold: show
+    df-print: paged
 execute:
   warning: false
   message: false
@@ -21,6 +22,8 @@ library(knitr)
 library(kableExtra)
 library(colorblindr)
 library(downlit)
+library(patchwork)
+library(faux)
 # options ----
 options(
   repos = "https://cloud.r-project.org",
@@ -51,15 +54,11 @@ install.packages("palmerpenguins")
 
 
 :::: {.callout-tip collapse="false" icon=false}
-## Geom info
-::: {style="font-size: 1.25em; color: #38B44A;"}
-**What does this geom do?**
+## Lines in `ggplot2`
+
+::: {style="color: #38B44A;"}
+#### Primary geoms for lines
 :::
-
-The `geom_path()` draws lines to connect values. The arguments in this functions control the shape, size, and appearance of the connections. 
-
-
-<br>
 
 ```{r}
 #| label: full_code_display
@@ -67,160 +66,53 @@ The `geom_path()` draws lines to connect values. The arguments in this functions
 #| echo: false
 #| warning: false
 #| message: false
-#| out-width: '100%'
+#| out-height: '55%'
+#| out-width: '55%'
 #| fig-align: right
 library(palmerpenguins) 
 library(ggplot2)
 library(patchwork)
-
-show_geom_path <- function() {
-
-  ggp2_butt_bevel <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "butt",
-      linejoin = "bevel"
-    ) +
-        theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_butt_round <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "butt",
-      linejoin = "round"
-    ) +
-        theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_butt_mitre <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "butt",
-      linejoin = "mitre"
-    ) +
-        theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_round_bevel <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "round",
-      linejoin = "bevel"
-    ) +
+economics <- ggplot2::economics
+seals <- ggplot2::seals
+ggp2_line_base <- ggplot(data = economics, 
+    aes(x = date, y = unemploy))
+# geom_path ----
+pth <- ggp2_line_base + 
+    geom_path() + 
     theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_round_round <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "round",
-      linejoin = "round"
-    ) +
+    labs(title = "geom_path()")
+# geom_line ----
+ln <- ggp2_line_base + 
+    geom_line() + 
     theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_round_mitre <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "round",
-      linejoin = "mitre"
-    ) +
+    labs(title = "geom_line()")
+# geom_step ----
+stp <- ggp2_line_base + 
+    geom_step() + 
     theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_square_bevel <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "square",
-      linejoin = "bevel"
-    ) +
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_square_round <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "square",
-      linejoin = "round"
-    ) +
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-  
-  ggp2_square_mitre <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-      size = 3.2,
-      lineend = "square",
-      linejoin = "mitre"
-    ) +
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-
-  ggp2_butt_bevel + ggp2_butt_round + ggp2_butt_mitre + 
-      ggp2_round_bevel + ggp2_round_round + ggp2_round_mitre + 
-      ggp2_square_bevel + ggp2_square_round + ggp2_square_mitre +
-      patchwork::plot_layout(nrow = 3)
-
-}
-show_geom_path()
+    labs(title = "geom_step()")
+# path, line, step ----
+pth + ln + stp + 
+    patchwork::plot_layout(ncol = 2)
 ```
 
-<br>
 
-::: {style="font-size: 1.25em; color: #38B44A;"}
-**Use this geom with:**
-:::
+  - `geom_path()`  
 
-- Two numerical/quantitative variables
+  - `geom_line()`  
 
-Examples: `ggplot2::economics`
-
-```{r}
-#| label: variable_examples
-#| eval: true
-#| echo: false
-#| warning: false
-#| message: false
-#| layout-ncol: 3
-knitr::kable(
-    head(
-        dplyr::distinct(ggplot2::economics, date)
-    )
-)
-knitr::kable(
-    head(
-        dplyr::distinct(ggplot2::economics, unemploy)
-    )
-)
-```
-
+  - `geom_step()` 
+  
 ::::
-
 
 :::: {.panel-tabset}
 
 ### Packages
 
 ::: {.column-margin}
-![https://github.com/rstudio/hex-stickers](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+::: {style="font-size: 0.75em;"}
+![](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+:::
 :::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
@@ -233,12 +125,15 @@ Install packages.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_geom_path
+#| label: pkg_code_lines
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
 #| results: hide
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
 install.packages("ggplot2")
 library(ggplot2)
 ```
@@ -256,460 +151,487 @@ Load the `ggplot2::economics` data.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_ggeom_path
+#| label: data_lines
 #| eval: true
 #| echo: true
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
 economics <- ggplot2::economics
 dplyr::glimpse(economics)
 ```
 :::
 ::::
 
-
-::::: {.callout-note collapse="false" icon=false}
-## `geom_()`
+## `geom_path()`
 
 :::: {.panel-tabset}
 
-### `ggplot_build()`
+### Basic Use
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`ggplot_build()`:**
+**BASICS:**
 :::
 
 ::: {style="font-size: 0.85em;"}
-We're going to build a little function that let's us quickly create a `geom_path()` graph (and alter the arguments)
+Below is a quick demonstration of a line graph with `geom_path()` using a `date` variable on the `x` axis and a numeric (double) variable on the `y` axis. 
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: graph_ggp2_paths
-#| code-fold: show
-#| eval: true
-#| echo: true 
-graph_ggp2_paths <- function(size, lend, ljoin, lmitre) {
-    small_econ <- dplyr::filter(economics,
-            date <= "2014-08-01" & date >= "2014-04-01")
-    ggp2_path_base <- ggplot(data = small_econ)
-    ggp2_path_base +
-    geom_path(mapping = aes(x = date, y = unemploy),
-        size = as.double(size),
-        lineend = as.character(lend),
-        linejoin = as.character(ljoin),
-        linemitre = as.double(lmitre)) + 
-    theme(legend.text = element_blank(),
-          legend.title = element_blank(),
-          axis.title.x = element_blank(),
-          axis.title.y = element_blank())
-}
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Now we'll test this out on a few options.
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: graph_ggp2_paths_round
-#| code-fold: show
+#| label: basic_path
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+ggp2_path_base <- ggplot(data = economics, 
+    aes(x = date, y = unemploy))
+ggp2_path_base + geom_path()
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+ [`geom_path()`](https://ggplot2.tidyverse.org/reference/geom_path.html) *connects the observations in the order in which they appear in the data.*
+:::
+
+### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The required aesthetics are: `x` and `y` positions 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: req_aes_path
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+ggp2_path_base <- ggplot(economics) 
+ggp2_path_base + 
+    geom_path(aes(x = date, 
+                  y = uempmed))
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Optional aesthetics include: 
+
+  - `color`   
+  
+  - `linewidth`  
+  
+  - `alpha`  
+  
+  - `linetype`  
+  
+  - `group`  
+:::
+
+#### `color`
+
+::: {style="font-size: 0.85em;"}
+The `color` aesthetic can be set or mapped, and is useful for differentiating categorical levels.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_color
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 #| layout-ncol: 2
-graph_ggp2_paths(7, "round", "round", 2)
-graph_ggp2_paths(7, "butt", "mitre", 3)
-graph_ggp2_paths(7, "square", "bevel", 4)
-graph_ggp2_paths(7, "butt", "round", 4)
+ggp2_path_base <- ggplot(economics) 
+ggp2_path_base_long <- ggplot(economics_long)
+# mapped color
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable))
+# set color
+ggp2_path_base + 
+    geom_path(aes(x = date, 
+        y = uempmed),
+        color = "#007bff")
 ```
 :::
 
+#### `linewidth`
+
 ::: {style="font-size: 0.85em;"}
-Next we'll write a function for returning the build object, which is just our `graph_ggp2_paths()` function with a `build` argument. 
+The `linewidth` determines the size of the line. 
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: ggp2_path_build
-#| code-fold: show
+#| label: aes_path_linewidth
 #| eval: true
-#| echo: true 
+#| echo: true
+#| code-fold: true
 #| warning: false
 #| message: false
-ggp2_path_build <- function(build, size, lend, ljoin, lmitre) {
-    small_econ <- dplyr::filter(economics,
-        date <= "2014-01-01" & date >= "1989-01-01")
-    ggp2_path_base <- ggplot2::ggplot(data = small_econ)
-    # graph
-    ggp2_path_graph <- ggp2_path_base +
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+# color, linewidth
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable),
+        linewidth = 0.75)
+```
+:::
+
+#### `alpha`
+
+::: {style="font-size: 0.85em;"}
+The alpha sets the opacity of the line (and is useful for overlapping lines).
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_alpha
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+# color, alpha, linewidth
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable), 
+        alpha = 1 / 2,
+        linewidth = 0.75)
+```
+:::
+
+#### `linetype`
+
+::: {style="font-size: 0.85em;"}
+The `linetype` can be mapped or set with values from [ggplot2-specs](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#lines)
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_linetype
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+# map group, color, linetype, with facets 
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable, 
+        group = variable,
+        linetype = variable)) + 
+    facet_wrap(. ~ variable, ncol = 2) + 
+    theme(legend.position = "none")
+```
+:::
+
+### Additional Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+We've defined two functions for displaying the arguments in `geom_path()`: `path_linetype()` displays the different `linetype` options, and `path_lines()` displays the options for `lineend` and `linejoin`.
+:::
+
+#### `linetype`
+
+::: {style="font-size: 0.85em;"}
+We've defined `path_linetype()`, a function that lets us quickly specify the `linetype` aesthetic for `geom_path()`:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: path_linetype
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+path_linetype <- function(type = "solid") {
+    df <- data.frame(x = 1:5, y = c(5, 1, 4, 2, 7))
+    ggplot2::ggplot(data = df,
+        mapping = aes(x = x, y = y)) +
+            xlim(0.5, 5.5) +
+            ylim(0, 10) + 
         ggplot2::geom_path(
-            mapping = aes(x = date, y = unemploy),
-            size = as.double(size),
-            lineend = as.character(lend),
-            linejoin = as.character(ljoin),
-            linemitre = as.double(lmitre)
-        ) +
-        ggplot2::theme(
-            legend.text = element_blank(),
-            legend.title = element_blank(),
-            axis.title.x = element_blank(),
-            axis.title.y = element_blank()
-        )
-    # build
-    ggp2_path_built <- ggplot2::ggplot_build(ggp2_path_graph)
-    if (build == "data") {
-        build_obj <- ggp2_path_built[["data"]][[1]]
-    } else if (build == "plot") {
-        build_obj <- ggp2_path_built[["plot"]]
-    } else {
-        build_obj <- ggp2_path_built
-    }
-    return(build_obj)
+            linewidth = 15,
+            lineend = "round",
+            linetype = "solid") + 
+        ggplot2::geom_path(
+            linewidth = 1.5,
+            color = "#ffffff",
+            linetype = type) + 
+        ggplot2::labs(subtitle = type)
 }
 ```
 :::
 
 ::: {style="font-size: 0.85em;"}
-This will return either the `"data"` or `"plot"` output object from `ggplot2::ggplot_build()`. 
-
-We'll test it below:
+The white line displays the `linetype` against a black backdrop to enhance visibility. See the `lineend` argument in the section below: 
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: ggp2_path_build_test
-#| code-fold: show
+#| label: draw_path_linetype_use
 #| eval: true
-#| echo: true 
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
 #| layout-ncol: 2
-ggp2_path_build(
-    build = "plot",
-    size = 5, 
-    lend = "butt", 
-    ljoin = "mitre", 
-    lmitre = 3)
-head(
-ggp2_path_build(
-    build = "data",
-    size = 5, 
-    lend = "butt", 
-    ljoin = "mitre", 
-    lmitre = 3)
-)
+# manually set linetype
+# type = one of: "solid", "dashed", "dotted", "dotdash",
+# "longdash", "twodash"
+path_linetype(type = "dashed")
+path_linetype(type = "dotted")
+path_linetype(type = "dotdash")
+path_linetype(type = "longdash")
+path_linetype(type = "twodash")
+path_linetype(type = "solid")
 ```
 :::
 
-
-### `"data"`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`geom_()`: data**
-:::
-
 ::: {style="font-size: 0.85em;"}
+Below the define `path_lines()`, which builds line graphs with  `geom_path()`'s `lineend` and `linejoin` arguments set to `"round"`, `"butt"`, or `"square"` and `"bevel"`, `"round"`, and `"mitre"`. 
 
-Extract the data from the `ggplot2` object.
+The `linewidth` (`lw`) and `linemitre` (`lnmtr`) can be adjusted to exaggerate their effects.
 
+We've added white lines/points to illustrate the data points.
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_bld_
+#| label: path_lines
+#| code-fold: true
 #| eval: true
-#| echo: true
+#| echo: true 
 #| warning: false
 #| message: false
-ggp2_path_build(
-    size = 7, 
-    lend = "round", 
-    ljoin = "round", 
-    lmitre = 4, 
-    build = "data") |> 
-    ggplot(aes(x = x, y = y)) + 
-    geom_point(aes(size = linewidth), 
-        shape = 73, show.legend = FALSE)
-ggp2_path_build(
-    size = 7, 
-    lend = "round", 
-    ljoin = "round", 
-    lmitre = 4, 
-    build = "plot")
-```
-:::
-
-### `"plot"`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`geom_()`: plot**
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract the `"plot"` from `bld_` object:
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_
-#| eval: true
-#| echo: true
-#| warning: false
-#| message: false
+#| column: page-inset-right
 #| out-height: '100%'
 #| out-width: '100%'
-#| layout-nrow: 1
-# bld_ggp2_bar_x[["plot"]]
+#| layout-ncol: 2
+path_lines <- function(lw = 5, lend = 'r', ljoin = 'r', lnmtr = NULL) {
+    lineends <- c('r' = 'round', 'b' = 'butt', 's' = 'square')
+    linejoins <- c('r' = 'round', 'm' = 'mitre', 'b' = 'bevel')
+    ljoin <- linejoins[ljoin]
+    lend <- lineends[lend]
+    df <- data.frame(x = 1:5, y = c(5, 1, 4, 2, 7))
+    ggplot2::ggplot(data = df,
+        mapping = aes(x = x, y = y)) +
+        xlim(0.5, 5.5) +
+        ylim(0, 10) +
+        ggplot2::geom_path(
+            linewidth = lw,
+            lineend = lend,
+            linejoin = ljoin,
+            linemitre = lnmtr
+        ) + 
+        geom_path(color = "#ffffff") +
+        geom_point(size = 3, color = "#ffffff") +
+        ggplot2::labs(title = paste0(
+            "lineend = ", lend,
+            " / ", 
+            "linejoin = ", ljoin), 
+            subtitle = paste0("linewidth = ", lw))
+}
 ```
 :::
-::::
-:::::
 
-
-::::: {.callout-caution collapse="true" icon=false}
-## `geom_(arg)`
-
-:::: {.panel-tabset}
-
-### `ggplot_build()`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`ggplot_build()`:**
-:::
+#### Lineend: `round`
 
 ::: {style="font-size: 0.85em;"}
-Build `geom_` layers
+A "round" line ending extends the line width slightly and produces curved caps at the start and end of the line (with the intersecting values at the center).
+
+*The white line/points are the data points*
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: geom_layers_arg
+#| label: args_path_lend_round
+#| code-fold: true
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# ggp2_bar_fill <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = island), show.legend = FALSE)
-# ggp2_bar_fill2 <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = sex)) 
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "r", ljoin = "r") # round/round
+path_lines(lw = 15, lend = "r", ljoin = "m") # round/mitre 
+path_lines(lw = 15, lend = "r", ljoin = "b") # round/bevel 
 ```
 :::
 
+#### Linejoin: `round`
+
 ::: {style="font-size: 0.85em;"}
-Create `bld_` objects
+A "round" line join produces a curve at the intersection of points on the line.
+
+*The white line/points are the data points*
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: geom_build_arg
+#| label: args_path_ljoin_round
+#| code-fold: true
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
-# names(bld_bar_fill)
-# bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
-# names(bld_bar_fill2)
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "r", ljoin = "r") # round/round
+path_lines(lw = 15, lend = "b", ljoin = "r") # butt/round
+path_lines(lw = 15, lend = "s", ljoin = "r") # square/round
 ```
 :::
 
-### `arg`: `"data"`
+#### Lineend: `butt`
 
 ::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
+A "butt" line end produces an abrupt ending at the start and end of the data points along the line.
+
+*The white line/points are the data points*
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_bld_arg
+#| label: args_path_lend_butt
+#| code-fold: true
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# bar_fill_data <- bld_bar_fill[["data"]][[1]]
-# glimpse(bar_fill_data)
-# dplyr::select(bar_fill_data, x, y, fill)
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "b", ljoin = "r") # butt/round
+path_lines(lw = 15, lend = "b", ljoin = "m") # butt/mitre 
+path_lines(lw = 15, lend = "b", ljoin = "b") # butt/bevel 
 ```
 :::
 
+#### Linejoin: `mitre`
+
 ::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
+A "mitre" line join extends the area of the line width between intersecting points, giving each connecting point a straight edge. 
+
+*The white line/points are the data points*
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_bld_arg2
+#| label: args_path_ljoin_mitre
+#| code-fold: true
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
-# glimpse(bar_fill2_data)
-# dplyr::count(bar_fill2_data, x, y, fill) |> 
-#     tidyr::pivot_wider(names_from = x,
-#         values_from = n)
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "b", ljoin = "m") # butt/mitre 
+path_lines(lw = 15, lend = "s", ljoin = "m") # square/mitre 
+path_lines(lw = 15, lend = "r", ljoin = "m") # round/mitre 
 ```
 :::
 
-### `arg`: `"plot"`
+#### Lineend: `square`
 
 ::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
+A "square" line ending extends the line width slightly and produces a square cap at the start and end of the line (with the intersecting values at the center).
+
+*The white line/points are the data points*
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: plot_bld_arg
+#| label: args_path_lend_square
+#| code-fold: true
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# bld_bar_fill[["plot"]]
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "s", ljoin = "r") # square/round
+path_lines(lw = 15, lend = "s", ljoin = "m") # square/mitre 
+path_lines(lw = 15, lend = "s", ljoin = "b") # square/bevel
 ```
 :::
 
+#### Linejoin: `bevel`
+
 ::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
+A "bevel" line join 'shaves' the line width at the intersection of data points and curves the line with by producing two additional angles (with the intersecting values at the center of the two angles).
+
+*The white line/points are the data points*
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: plot_bld_arg2
+#| label: args_path_ljoin_bevel
+#| code-fold: true
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# bld_bar_fill2[["plot"]]
-```
-:::
-
-::::
-:::::
-
-
-::::: {.callout-important collapse="true" icon=false}
-## `geom_(imp_arg)`
-
-:::: {.panel-tabset}
-
-### `ggplot_build()`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`ggplot_build()`:**
-:::
-
-::: {style="font-size: 0.85em;"}
-Build `geom_` layers
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: geom_layers_imp_arg_
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# ggp2_bar_fill <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = island), show.legend = FALSE)
-# ggp2_bar_fill2 <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = sex)) 
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Create `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: geom_build_imp_arg_
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
-# names(bld_bar_fill)
-# bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
-# names(bld_bar_fill2)
-```
-:::
-
-### `imp_arg`: `"data"`
-
-::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_imp_arg
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bar_fill_data <- bld_bar_fill[["data"]][[1]]
-# glimpse(bar_fill_data)
-# dplyr::select(bar_fill_data, x, y, fill)
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_imp_arg2
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
-# glimpse(bar_fill2_data)
-# dplyr::count(bar_fill2_data, x, y, fill) |> 
-#     tidyr::pivot_wider(names_from = x,
-#         values_from = n)
-```
-:::
-
-### `imp_arg`: `"plot"`
-
-::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_imp_arg
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill[["plot"]]
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_imp_arg2
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill2[["plot"]]
+#| column: page-inset-right
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "b", ljoin = "b") # butt/bevel 
+path_lines(lw = 15, lend = "s", ljoin = "b") # square/bevel
+path_lines(lw = 15, lend = "r", ljoin = "b") # round/bevel 
 ```
 :::
 
 ::::
-:::::

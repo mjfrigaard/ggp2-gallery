@@ -63,9 +63,17 @@ website:
           - rela/bins_2d.qmd
           - rela/hex_bins.qmd
           # - rela/correlograms.qmd
-      - section: "Geoms"
+      - section: "Lines"
         contents:
-          - geoms/lines.qmd
+          - geoms/geom_path.qmd
+          - geoms/geom_line.qmd
+          - geoms/geom_step.qmd
+      - section: "Complex lines"
+        contents:
+          - geoms/geom_curve.qmd
+      - section: "Areas"
+        contents:
+          - geoms/geom_ribbon.qmd
 
 
 format:
