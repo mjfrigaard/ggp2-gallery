@@ -1,5 +1,5 @@
 ---
-title: "Title"
+title: "[topic]"
 format:
   html:
     toc: true
@@ -46,18 +46,18 @@ source("../R/theme_ggp2g.R")
 ggplot2::theme_set(theme_ggp2g(
     base_size = 16))
 # install data packages ----
-install.packages("ggplot2movies")
 install.packages("palmerpenguins")
 ```
 
 
 :::: {.callout-tip collapse="false" icon=false}
-## Geom info
+## **[topic]**
+
 ::: {style="font-size: 1.25em; color: #38B44A;"}
-**What does this geom do?**
+
 :::
 
-`geom_()` ... 
+
 
 <br>
 
@@ -74,77 +74,17 @@ library(palmerpenguins)
 library(ggplot2)
 library(patchwork)
 
-peng_bar <- palmerpenguins::penguins |> 
-    dplyr::filter(!is.na(island) & 
-                    !is.na(sex) & 
-                        !is.na(island))
-
-ggp2_bar_base <- ggplot(data = peng_bar)
-
-ggp2_bar_fill <- ggp2_bar_base + 
-    geom_bar(mapping = aes(x = island, 
-        fill = island), show.legend = FALSE) + 
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-
-ggp2_bar_fill2 <- ggp2_bar_base + 
-    geom_bar(mapping = aes(x = island, 
-        fill = sex)) + 
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-
-ggp2_bar_dodge <- ggp2_bar_base + 
-    geom_bar(mapping = 
-            aes(x = island, fill = sex),
-                position = "dodge") + 
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-
-ggp2_bar_dodge2 <- ggp2_bar_base + 
-    geom_bar(mapping = 
-            aes(x = island, fill = sex),
-                position = "dodge2") + 
-    theme_void() + 
-    theme(legend.text = element_blank(),
-         legend.title = element_blank())
-
-ggp2_bar_fill + 
-    ggp2_bar_fill2 + 
-    ggp2_bar_dodge + 
-    ggp2_bar_dodge2 + 
-    patchwork::plot_layout(nrow = 2, ncol = 2)
+peng_lines <- palmerpenguins::penguins |> 
+                    tidyr::drop_na()
 ```
 
 <br>
 
 ::: {style="font-size: 1.25em; color: #38B44A;"}
-**Use this geom with:**
+**geoms:**
 :::
 
-- One discrete/categorical variable 
-
-Examples: 
-
-```{r}
-#| label: variable_examples
-#| eval: true
-#| echo: false
-#| warning: false
-#| message: false
-#| layout-ncol: 3
-knitr::kable(
-    dplyr::distinct(peng_bar, sex)
-)
-knitr::kable(
-dplyr::distinct(peng_bar, species)
-)
-knitr::kable(
-dplyr::distinct(peng_bar, island)
-)
-```
+`geom_()`
 
 ::::
 
@@ -152,6 +92,12 @@ dplyr::distinct(peng_bar, island)
 :::: {.panel-tabset}
 
 ### Packages
+
+::: {.column-margin}
+::: {style="font-size: 0.75em;"}
+![source: https://github.com/rstudio/hex-stickers](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+:::
+:::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **PACKAGES:**
@@ -161,18 +107,16 @@ dplyr::distinct(peng_bar, island)
 Install packages.
 :::
 
-
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_
+#| label: pkg_code_lines
 #| eval: true
 #| echo: true
 #| warning: false
 #| message: false
 #| results: hide
-# install.packages("palmerpenguins")
-# library(palmerpenguins) 
-# library(ggplot2)
+install.packages("ggplot2")
+library(ggplot2)
 ```
 :::
 
@@ -182,28 +126,21 @@ Install packages.
 **DATA:**
 :::
 
-<!-- 
-::: {.column-margin}
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="70%" height="70%"}
-![](../www/538.png){fig-align="right" width="15%" height="15%"}
-![](../www/imdb.png){fig-align="right" width="20%" height="20%"}
-:::
--->
-
 ::: {style="font-size: 0.85em;"}
-<!-- Description of data -->
+<!--Load the `ggplot2::economics` data.-->
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_code_
+#| label: data_lines
 #| eval: true
 #| echo: true
-# penguins <- palmerpenguins::penguins
-# glimpse(penguins)
+economics <- ggplot2::economics
+dplyr::glimpse(economics)
 ```
 :::
 ::::
+
 
 
 ::::: {.callout-note collapse="false" icon=false}
@@ -211,329 +148,186 @@ Install packages.
 
 :::: {.panel-tabset}
 
-### `ggplot_build()`
+### Basic use
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`ggplot_build()`:**
+**BASICS:**
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: geom_layers_
+#| label: basic_
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# ggp2_bar_base <- ggplot(data = peng_bar)
-# ggp2_bar_x <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island))
+ggp2_basic_blank <- ggplot(data = economics) + 
+    geom_blank(mapping = aes(x = date, y = unemploy))
+ggp2_basic_blank
 ```
+:::
 
+### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+The required aesthetics are: 
+
+Optional aesthetics include: 
+
+:::
+
+::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: ggplot_build_
+#| label: aes_
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+
+```
+:::
+
+### Additional Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Below ...
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_1_
+#| code-fold: true
 #| eval: true
 #| echo: true 
-#| warning: false
-#| message: false
-# bld_ggp2_bar_x <- ggplot2::ggplot_build(ggp2_bar_x)
-# names(bld_ggp2_bar_x)
-```
-:::
-
-
-### `"data"`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`geom_()`: data**
-:::
-
-::: {style="font-size: 0.85em;"}
-
-Extract the data from the `ggplot2` object.
-
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_
-#| eval: true
-#| echo: true
-#| warning: false
-#| message: false
-# bar_x_data <- bld_ggp2_bar_x[["data"]][[1]]
-# glimpse(bar_x_data)
-# select(bar_x_data, fill)
-```
-:::
-
-### `"plot"`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`geom_()`: plot**
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract the `"plot"` from `bld_` object:
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_
-#| eval: true
-#| echo: true
 #| warning: false
 #| message: false
 #| out-height: '100%'
 #| out-width: '100%'
-#| layout-nrow: 1
-# bld_ggp2_bar_x[["plot"]]
+#| layout-ncol: 2
+
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_2_
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+
+```
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_3_
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+
 ```
 :::
 ::::
 :::::
 
+<!--
 
-::::: {.callout-caution collapse="true" icon=false}
-## `geom_(arg)`
+::::: {.callout-note collapse="false" icon=false}
+## `geom_()`
 
 :::: {.panel-tabset}
 
-### `ggplot_build()`
+### Basic use
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`ggplot_build()`:**
-:::
-
-::: {style="font-size: 0.85em;"}
-Build `geom_` layers
+**BASICS:**
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: geom_layers_arg
+#| label: basic__
 #| eval: true
 #| echo: true 
 #| warning: false
 #| message: false
-# ggp2_bar_fill <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = island), show.legend = FALSE)
-# ggp2_bar_fill2 <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = sex)) 
+# ggp2_bar_base <- ggplot(data = peng_primitive)
+# ggp2_bar_x <- ggp2_bar_base + 
+#     geom_bar(mapping = aes(x = island))
+```
+
+:::
+
+### Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_1__
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+
+```
+
+```{r}
+#| label: args_2__
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+
 ```
 :::
 
+### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
 ::: {style="font-size: 0.85em;"}
-Create `bld_` objects
+
+The required aesthetics are: 
+
+Optional aesthetics include: 
+
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: geom_build_arg
+#| label: aes__
 #| eval: true
-#| echo: true 
+#| echo: true
 #| warning: false
 #| message: false
-# bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
-# names(bld_bar_fill)
-# bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
-# names(bld_bar_fill2)
-```
-:::
 
-### `arg`: `"data"`
-
-::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_arg
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bar_fill_data <- bld_bar_fill[["data"]][[1]]
-# glimpse(bar_fill_data)
-# dplyr::select(bar_fill_data, x, y, fill)
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_arg2
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
-# glimpse(bar_fill2_data)
-# dplyr::count(bar_fill2_data, x, y, fill) |> 
-#     tidyr::pivot_wider(names_from = x,
-#         values_from = n)
-```
-:::
-
-### `arg`: `"plot"`
-
-::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_arg
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill[["plot"]]
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_arg2
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill2[["plot"]]
 ```
 :::
 
 ::::
 :::::
 
-
-::::: {.callout-important collapse="true" icon=false}
-## `geom_(imp_arg)`
-
-:::: {.panel-tabset}
-
-### `ggplot_build()`
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**`ggplot_build()`:**
-:::
-
-::: {style="font-size: 0.85em;"}
-Build `geom_` layers
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: geom_layers_imp_arg_
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# ggp2_bar_fill <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = island), show.legend = FALSE)
-# ggp2_bar_fill2 <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island, 
-#         fill = sex)) 
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Create `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: geom_build_imp_arg_
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill <- ggplot2::ggplot_build(ggp2_bar_fill)
-# names(bld_bar_fill)
-# bld_bar_fill2 <- ggplot2::ggplot_build(ggp2_bar_fill2)
-# names(bld_bar_fill2)
-```
-:::
-
-### `imp_arg`: `"data"`
-
-::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_imp_arg
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bar_fill_data <- bld_bar_fill[["data"]][[1]]
-# glimpse(bar_fill_data)
-# dplyr::select(bar_fill_data, x, y, fill)
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract `"data"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: data_bld_imp_arg2
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bar_fill2_data <- bld_bar_fill2[["data"]][[1]]
-# glimpse(bar_fill2_data)
-# dplyr::count(bar_fill2_data, x, y, fill) |> 
-#     tidyr::pivot_wider(names_from = x,
-#         values_from = n)
-```
-:::
-
-### `imp_arg`: `"plot"`
-
-::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_imp_arg
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill[["plot"]]
-```
-:::
-
-::: {style="font-size: 0.85em;"}
-Extract `"plot"` from `bld_` objects
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: plot_bld_imp_arg2
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# bld_bar_fill2[["plot"]]
-```
-:::
-
-::::
-:::::
+-->

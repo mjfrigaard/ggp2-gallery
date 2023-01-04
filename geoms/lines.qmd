@@ -1,9 +1,10 @@
 ---
-title: "Lines"
+title: "Lines (*in development*)"
 format:
   html:
     toc: true
     code-fold: show
+    df-print: paged
 execute:
   warning: false
   message: false
@@ -21,6 +22,8 @@ library(knitr)
 library(kableExtra)
 library(colorblindr)
 library(downlit)
+library(patchwork)
+library(faux)
 # options ----
 options(
   repos = "https://cloud.r-project.org",
@@ -103,7 +106,7 @@ peng_lines <- palmerpenguins::penguins |>
 
 ::: {.column-margin}
 ::: {style="font-size: 0.75em;"}
-![source: https://github.com/rstudio/hex-stickers](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
+![](../www/ggplot2.png){fig-align="right" width="40%" height="40%"}
 :::
 :::
 
@@ -151,12 +154,12 @@ dplyr::glimpse(economics)
 
 
 
-::::: {.callout-note collapse="false" icon=false}
+::::: {.callout-note collapse="true" icon=false}
 ## `geom_path()`
 
 :::: {.panel-tabset}
 
-### Basic use
+### Basic Use
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **BASICS:**
@@ -169,13 +172,757 @@ dplyr::glimpse(economics)
 #| echo: true 
 #| warning: false
 #| message: false
-ggp2_path_base <- ggplot(data = economics) + 
-    geom_path(mapping = aes(x = date, y = unemploy))
-ggp2_path_base
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+ggp2_path_base <- ggplot(data = economics, 
+    aes(x = date, y = unemploy))
+ggp2_path_base + geom_path()
 ```
 :::
 
 ### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+The required aesthetics are: `x` and `y` positions 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: req_aes_path
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+ggp2_path_base <- ggplot(economics) 
+ggp2_path_base + 
+    geom_path(aes(x = date, 
+                  y = uempmed))
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Optional aesthetics include: 
+
+  - `color`   
+  
+  - `linewidth`  
+  
+  - `alpha`  
+  
+  - `linetype`  
+  
+  - `group`  
+:::
+
+#### `color`
+
+::: {style="font-size: 0.85em;"}
+The `color` aesthetic can be set or mapped, and is useful for differentiating categorical levels.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_color
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+ggp2_path_base <- ggplot(economics) 
+ggp2_path_base_long <- ggplot(economics_long)
+# mapped color
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable))
+# set color
+ggp2_path_base + 
+    geom_path(aes(x = date, 
+        y = uempmed),
+        color = "#007bff")
+```
+:::
+
+#### `linewidth`
+
+::: {style="font-size: 0.85em;"}
+The `linewidth` determines the size of the line. 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_linewidth
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+# color, linewidth
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable),
+        linewidth = 0.75)
+```
+:::
+
+#### `alpha`
+
+::: {style="font-size: 0.85em;"}
+The alpha sets the opacity of the line (and is useful for overlapping lines).
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_alpha
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+# color, alpha, linewidth
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable), 
+        alpha = 1 / 2,
+        linewidth = 0.75)
+```
+:::
+
+#### `linetype`
+
+::: {style="font-size: 0.85em;"}
+The `linetype` can be mapped or set with values from [ggplot2-specs](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#lines)
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_path_linetype
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 1
+# map group, color, linetype, with facets 
+ggp2_path_base_long + 
+    geom_path(aes(x = date, 
+        y = value01, 
+        color = variable, 
+        group = variable,
+        linetype = variable)) + 
+    facet_wrap(. ~ variable, ncol = 2) + 
+    theme(legend.position = "none")
+```
+:::
+
+### Additional Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.85em;"}
+We've defined two functions for displaying the arguments in `geom_path()`: `path_linetype()` displays the different `linetype` options, and `path_lines()` displays the options for `lineend` and `linejoin`.
+:::
+
+#### `linetype`
+
+::: {style="font-size: 0.85em;"}
+We've defined `path_linetype()`, a function that lets us quickly specify the `linetype` aesthetic for `geom_path()`:
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: path_linetype
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+path_linetype <- function(type = "solid") {
+    df <- data.frame(x = 1:5, y = c(5, 1, 4, 2, 7))
+    ggplot2::ggplot(data = df,
+        mapping = aes(x = x, y = y)) +
+            xlim(0.5, 5.5) +
+            ylim(0, 10) + 
+        ggplot2::geom_path(
+            linewidth = 15,
+            lineend = "round",
+            linetype = "solid") + 
+        ggplot2::geom_path(
+            linewidth = 1.5,
+            color = "#ffffff",
+            linetype = type) + 
+        ggplot2::labs(subtitle = type)
+}
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+The white line displays the `linetype` against a black backdrop to enhance visibility. See the `lineend` argument in the section below: 
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: draw_path_linetype_use
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+# manually set linetype
+# type = one of: "solid", "dashed", "dotted", "dotdash",
+# "longdash", "twodash"
+path_linetype(type = "dashed")
+path_linetype(type = "dotted")
+path_linetype(type = "dotdash")
+path_linetype(type = "longdash")
+path_linetype(type = "twodash")
+path_linetype(type = "solid")
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Below the define `path_lines()`, which builds line graphs with  `geom_path()`'s `lineend` and `linejoin` arguments set to `"round"`, `"butt"`, or `"square"` and `"bevel"`, `"round"`, and `"mitre"`. 
+
+The `linewidth` (`lw`) and `linemitre` (`lnmtr`) can be adjusted to exaggerate their effects.
+
+We've added white lines/points to illustrate the data points.
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: path_lines
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines <- function(lw = 5, lend = 'r', ljoin = 'r', lnmtr = NULL) {
+    lineends <- c('r' = 'round', 'b' = 'butt', 's' = 'square')
+    linejoins <- c('r' = 'round', 'm' = 'mitre', 'b' = 'bevel')
+    ljoin <- linejoins[ljoin]
+    lend <- lineends[lend]
+    df <- data.frame(x = 1:5, y = c(5, 1, 4, 2, 7))
+    ggplot2::ggplot(data = df,
+        mapping = aes(x = x, y = y)) +
+        xlim(0.5, 5.5) +
+        ylim(0, 10) +
+        ggplot2::geom_path(
+            linewidth = lw,
+            lineend = lend,
+            linejoin = ljoin,
+            linemitre = lnmtr
+        ) + 
+        geom_path(color = "#ffffff") +
+        geom_point(size = 3, color = "#ffffff") +
+        ggplot2::labs(title = paste0(
+            "lineend = ", lend,
+            " / ", 
+            "linejoin = ", ljoin), 
+            subtitle = paste0("linewidth = ", lw))
+}
+```
+:::
+
+#### Lineend: `round`
+
+::: {style="font-size: 0.85em;"}
+A "round" line ending extends the line width slightly and produces curved caps at the start and end of the line (with the intersecting values at the center).
+
+*The white line/points are the data points*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path_lend_round
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "r", ljoin = "r") # round/round
+path_lines(lw = 15, lend = "r", ljoin = "m") # round/mitre 
+path_lines(lw = 15, lend = "r", ljoin = "b") # round/bevel 
+```
+:::
+
+#### Linejoin: `round`
+
+::: {style="font-size: 0.85em;"}
+A "round" line join produces a curve at the intersection of points on the line.
+
+*The white line/points are the data points*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path_ljoin_round
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "r", ljoin = "r") # round/round
+path_lines(lw = 15, lend = "b", ljoin = "r") # butt/round
+path_lines(lw = 15, lend = "s", ljoin = "r") # square/round
+```
+:::
+
+#### Lineend: `butt`
+
+::: {style="font-size: 0.85em;"}
+A "butt" line end produces an abrupt ending at the start and end of the data points along the line.
+
+*The white line/points are the data points*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path_lend_butt
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "b", ljoin = "r") # butt/round
+path_lines(lw = 15, lend = "b", ljoin = "m") # butt/mitre 
+path_lines(lw = 15, lend = "b", ljoin = "b") # butt/bevel 
+```
+:::
+
+#### Linejoin: `mitre`
+
+::: {style="font-size: 0.85em;"}
+A "mitre" line join extends the area of the line width between intersecting points, giving each connecting point a straight edge. 
+
+*The white line/points are the data points*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path_ljoin_mitre
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "b", ljoin = "m") # butt/mitre 
+path_lines(lw = 15, lend = "s", ljoin = "m") # square/mitre 
+path_lines(lw = 15, lend = "r", ljoin = "m") # round/mitre 
+```
+:::
+
+#### Lineend: `square`
+
+::: {style="font-size: 0.85em;"}
+A "square" line ending extends the line width slightly and produces a square cap at the start and end of the line (with the intersecting values at the center).
+
+*The white line/points are the data points*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path_lend_square
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "s", ljoin = "r") # square/round
+path_lines(lw = 15, lend = "s", ljoin = "m") # square/mitre 
+path_lines(lw = 15, lend = "s", ljoin = "b") # square/bevel
+```
+:::
+
+#### Linejoin: `bevel`
+
+::: {style="font-size: 0.85em;"}
+A "bevel" line join 'shaves' the line width at the intersection of data points and curves the line with by producing two additional angles (with the intersecting values at the center of the two angles).
+
+*The white line/points are the data points*
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_path_ljoin_bevel
+#| code-fold: true
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+path_lines(lw = 15, lend = "b", ljoin = "b") # butt/bevel 
+path_lines(lw = 15, lend = "s", ljoin = "b") # square/bevel
+path_lines(lw = 15, lend = "r", ljoin = "b") # round/bevel 
+```
+:::
+
+
+::::
+:::::
+
+
+::::: {.callout-note collapse="false" icon=false}
+## `geom_ribbon()`
+
+:::: {.panel-tabset}
+
+### Basic Use
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**BASICS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: basic_ribbon
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+ggp2_ribbon_base <- ggplot(data = economics,
+                        mapping = aes(x = date))
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = 
+            aes(y = uempmed, 
+                ymin = uempmed + 0.5, 
+                ymax = uempmed - 0.5))
+```
+
+:::
+
+### Aesthetics
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**AESTHETICS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: corr_data
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+# load correlated data
+corr_data <- tibble::tribble(
+               ~xvar,            ~yvar,
+    4.39945542597731, 8.72304029683653,
+    4.17063449620983, 7.90063554987357,
+    5.93523342401092, 11.4541978978465,
+     5.1469950216844,  10.497618946837,
+     6.5602921658934, 10.2514082668131,
+    3.60318467023933, 8.75455336713591,
+    4.44593466081161, 8.29243026086505,
+    5.91928050392941, 12.7755963254406,
+    5.37762836695204, 12.2029024379286,
+    5.67997074416441, 12.3725943179292,
+    5.08056199671095, 10.1234733135857,
+    7.13968234777943, 13.1122471221455,
+    5.47953584350558, 10.8483125442327,
+     5.1207247271694, 11.6978354394502,
+    5.16886610539834, 11.2012361563169,
+    2.44285898166558,  4.5859655824687,
+    5.23078516502559, 9.73404777362049,
+    3.96375780089961, 8.76414720443707,
+    5.84839340452937, 10.5978562919754,
+    3.41647188446529, 5.92403646423495,
+    5.09953017417824, 10.3752983817394,
+    5.57659911788499, 9.03573690321113,
+    5.11637581346714, 10.1137194319908,
+    3.85058930107654, 9.46184974952373,
+    4.43941450511781, 7.63624635401869,
+    4.75719629862186, 10.8272731721497,
+     4.5302676699022, 9.85046648295819,
+     6.6923491882959, 13.7537499935159,
+     4.8406593897924, 9.31946299458958,
+    4.96677080464114, 9.81206097632927)
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+
+The required aesthetics are: 
+
+  - `x` or `y` positions  
+  
+  - `ymin` or `ymax`  
+  
+  - `xmin` or `xmax`  
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_ribbon
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| code-fold: show
+# map corr_data
+ggp2_ribbon_base <- ggplot(data = corr_data)
+# map x, y, ymin and ymax, and +/- adjustment
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(x = xvar,
+                    y = yvar,
+                    ymin = yvar - 0.667, 
+                    ymax = yvar + 0.667))
+```
+:::
+
+::: {style="font-size: 0.85em;"}
+Optional aesthetics include: 
+
+`alpha`
+
+`color`
+
+`fill`
+
+`group`
+
+`linetype`
+
+`linewidth`
+
+:::
+
+#### `alpha`
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_alpha_ribbon
+#| eval: true
+#| echo: true 
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+# adjustment
+adj <- sd(corr_data$xvar)
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(
+        x = xvar, y = yvar,
+        ymin = yvar - adj, ymax = yvar + adj), 
+        alpha = 1/3) +
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#ffffff") +
+    labs(subtitle = "alpha = 1/3")
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(
+        x = xvar, y = yvar,
+        ymin = yvar - adj, ymax = yvar + adj), 
+        alpha = 1/2) +
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#ffffff") +
+    labs(subtitle = "alpha = 1/2")
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(
+        x = xvar, y = yvar,
+        ymin = yvar - adj, ymax = yvar + adj),
+        alpha = 3/4) +
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#ffffff") + 
+    labs(subtitle = "alpha = 3/4")
+```
+:::
+
+#### `color`
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_color_ribbon
+#| eval: true
+#| echo: true 
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+# adjustment
+adj <- sd(corr_data$xvar)
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(
+        x = xvar, y = yvar,
+        ymin = yvar - adj, ymax = yvar + adj), 
+        color = "#fa7b3c") +
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#ffffff") +
+    labs(subtitle = "geom_ribbon(color = '#fa7b3c'), geom_line(color = '#ffffff')")
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(
+        x = xvar, y = yvar,
+        ymin = yvar - adj, ymax = yvar + adj),
+        color = "#007bff") +
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#89D6FB") + 
+    labs(subtitle = "geom_ribbon(color = '#007bff'), geom_line(color = '#89D6FB')")
+```
+:::
+
+#### `fill`
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: aes_fill_ribbon
+#| eval: true
+#| echo: true 
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(x = xvar,
+                    y = yvar,
+                    ymin = min(yvar) - 1, 
+                    ymax = yvar - 0.75),
+        fill = "#0bd3d3") + 
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#9d40f5", linewidth = 1) + 
+    labs(subtitle = "ymin = min(yvar) - 1 , ymax = yvar - 0.75")
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(x = xvar,
+                    y = yvar,
+                    ymin = yvar + 0.75, 
+                    ymax = max(yvar) + 1), 
+        fill = "#f890e7") + 
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#9d40f5", linewidth = 1) + 
+    labs(subtitle = "ymin = yvar + 0.75 , ymax = max(yvar) + 1")
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(x = xvar,
+                    y = yvar,
+                    ymin = min(yvar) - 1, 
+                    ymax = yvar - 0.75),
+        fill = "#0bd3d3") + 
+    geom_ribbon(mapping = aes(x = xvar,
+                    y = yvar,
+                    ymin = yvar + 0.75, 
+                    ymax = max(yvar) + 1), 
+        fill = "#f890e7") + 
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#9d40f5", linewidth = 1) + 
+    labs(subtitle = "ymin = min(yvar) - 1 , ymax = yvar - 0.75\nymin = yvar + 0.75 / ymax = max(yvar) + 1")
+```
+:::
+
+### Additional Arguments
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**ARGUMENTS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: args_1_ribbon
+#| eval: true
+#| echo: true 
+#| code-fold: true
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| layout-ncol: 2
+# adjustment
+adj <- sd(corr_data$xvar)
+# line only
+ggp2_ribbon_base + 
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#9d40f5") + 
+    labs(subtitle = "geom_line()")
+ggp2_ribbon_base + 
+    geom_ribbon(mapping = aes(
+        x = xvar, y = yvar,
+        xmin = xvar - adj, xmax = xvar + adj),
+        fill = "#89D6FB") +
+    geom_line(mapping = aes(x = xvar, y = yvar),
+        color = "#9d40f5", orientation = "y") + 
+    labs(subtitle = "xmin, xmin & orientation = 'y'")
+```
+:::
+
+::::
+:::::
+
+
+<!--
+
+::::: {.callout-note collapse="false" icon=false}
+## `geom_()`
+
+:::: {.panel-tabset}
+
+### Basic Use
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**BASICS:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: basic__
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+# ggp2_bar_base <- ggplot(data = peng_primitive)
+# ggp2_bar_x <- ggp2_bar_base + 
+#     geom_bar(mapping = aes(x = island))
+```
+
+:::
+
+### Additional Aesthetics
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **AESTHETICS:**
@@ -191,199 +938,9 @@ Optional aesthetics include:
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: aes_path
+#| label: aes__
 #| eval: true
 #| echo: true
-#| warning: false
-#| message: false
-
-```
-:::
-
-### Additional Arguments
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**ARGUMENTS:**
-:::
-
-::: {style="font-size: 0.85em;"}
-Below the graphs are built with `geom_path()`'s `lineend` argument set to `"butt"` and the three possible options for `linejoin` (`"bevel"`, `"round"`, and `"mitre"`). The `size` and `linemitre` have been increased to exaggerate their effects. 
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: args_1_path
-#| code-fold: true
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| layout-ncol: 2
-ggp2_path_bb <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-        size = 5,
-        lineend = "butt",
-        linejoin = "bevel",
-        linemitre = 3) + 
-    labs(title = "butt/bevel")
-ggp2_path_bb
-ggp2_path_br <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(size = 5,
-        lineend = "butt",
-        linejoin = "round",
-        linemitre = 3) + 
-    labs(title = "butt/round")
-ggp2_path_br
-ggp2_path_bm <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-        size = 5,
-        lineend = "butt",
-        linejoin = "mitre",
-        linemitre = 3
-    ) + 
-    labs(title = "butt/mitre")
-ggp2_path_bm
-```
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: args_2_path
-#| code-fold: true
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| layout-ncol: 2
-ggp2_path_rb <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-        size = 5,
-        lineend = "round",
-        linejoin = "bevel",
-        linemitre = 3
-    ) + 
-    labs(title = "round/bevel")
-ggp2_path_rb
-ggp2_path_rr <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(size = 5,
-        lineend = "round",
-        linejoin = "round",
-        linemitre = 3) + 
-    labs(title = "round/round")
-ggp2_path_rr
-ggp2_path_rm <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(size = 5,
-        lineend = "round",
-        linejoin = "mitre",
-        linemitre = 3) + 
-    labs(title = "round/mitre")
-ggp2_path_rm
-```
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: args_3_path
-#| code-fold: true
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| layout-ncol: 2
-ggp2_path_sb <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-        size = 5,
-        lineend = "square",
-        linejoin = "bevel",
-        linemitre = 3
-    ) + 
-    labs(title = "square/bevel")
-ggp2_path_sb
-ggp2_path_sr <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-        size = 5,
-        lineend = "square",
-        linejoin = "round",
-        linemitre = 3
-    ) + 
-    labs(title = "square/round")
-ggp2_path_sr
-ggp2_path_sm <- ggplot(data = economics,
-    mapping = aes(x = date, y = unemploy)) +
-    geom_path(
-        size = 5,
-        lineend = "square",
-        linejoin = "mitre",
-        linemitre = 3
-    ) + 
-    labs(title = "square/mitre")
-ggp2_path_sm
-```
-:::
-::::
-:::::
-
-<!--
-
-::::: {.callout-note collapse="false" icon=false}
-## `geom_()`
-
-:::: {.panel-tabset}
-
-### Basic use
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**BASICS:**
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: basic_
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-# ggp2_bar_base <- ggplot(data = peng_primitive)
-# ggp2_bar_x <- ggp2_bar_base + 
-#     geom_bar(mapping = aes(x = island))
-```
-
-:::
-
-### Other applications
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**APPLICATIONS:**
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
-#| label: applications_1_
-#| eval: true
-#| echo: true 
-#| warning: false
-#| message: false
-
-```
-
-```{r}
-#| label: applications_2_
-#| eval: true
-#| echo: true 
 #| warning: false
 #| message: false
 
@@ -396,44 +953,20 @@ ggp2_path_sm
 **ARGUMENTS:**
 :::
 
-::: {style="font-size: 0.85em;"}
-Addditional arguments include:
-:::
-
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: args_
+#| label: args_1__
 #| eval: true
-#| echo: true
+#| echo: true 
 #| warning: false
 #| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| layout-nrow: 1
 
 ```
-:::
 
-
-### Aesthetics
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**AESTHETICS:**
-:::
-
-::: {style="font-size: 0.85em;"}
-
-The required aesthetics are: 
-
-Optional aesthetics include: 
-
-:::
-
-::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: data_bld_
+#| label: args_2__
 #| eval: true
-#| echo: true
+#| echo: true 
 #| warning: false
 #| message: false
 

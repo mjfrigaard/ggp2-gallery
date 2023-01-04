@@ -63,11 +63,9 @@ website:
           - rela/bins_2d.qmd
           - rela/hex_bins.qmd
           # - rela/correlograms.qmd
-          
-      # - section: "Geoms"
-      #   contents:
-      #     - geoms/geom_ribbon.qmd
-      #     - geoms/geom_bar.qmd
+      - section: "Geoms"
+        contents:
+          - geoms/lines.qmd
 
 
 format:
