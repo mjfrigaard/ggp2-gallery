@@ -54,7 +54,7 @@ install.packages("palmerpenguins")
 
 :::: {.callout-tip collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -90,6 +90,7 @@ If one of the continuous variables is assumed to affect the other (i.e., `outcom
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -142,6 +143,8 @@ glimpse(penguins)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

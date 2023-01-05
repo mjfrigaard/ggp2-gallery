@@ -55,9 +55,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -132,6 +132,7 @@ across both the x and the y dimensions.
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -188,6 +189,8 @@ glimpse(peng_dnsty_2d)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 
@@ -306,7 +309,7 @@ ggp2_dnsty_2d +
 
 ::::
 
-## Layer-by-layer
+## Layers
 
 We're going to break down how to create the density contour layer-by-layer using the `stat_density_2d()` function (which allows us to access some of the inner-workings of `geom_density_2d()`)
 

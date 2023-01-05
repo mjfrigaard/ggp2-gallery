@@ -53,9 +53,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -129,6 +129,7 @@ We'll build a treemap using the [`treemapify` package.](http://wilkox.org/treema
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -188,6 +189,8 @@ glimpse(treemap_peng)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

@@ -50,9 +50,9 @@ library(palmerpenguins)
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -109,6 +109,7 @@ Density plots are [*smoothed version(s) of  histogram(s)*](https://ggplot2.tidyv
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -161,6 +162,8 @@ dplyr::glimpse(peng_density)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

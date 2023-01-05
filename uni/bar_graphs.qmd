@@ -54,9 +54,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -90,10 +90,10 @@ ggp2_bar +
 
 A bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!). 
 
-Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each level value.
-
-In `ggplot2`, bar charts can be built using `geom_bar()` (see also: `geom_col()`).
+Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value.
 ::::
+
+## Getting set up 
 
 :::: {.panel-tabset}
 
@@ -148,6 +148,10 @@ glimpse(penguins_bar)
 :::
 ::::
 
+## The grammar
+
+In `ggplot2`, bar charts can be built using `geom_bar()` (see also: `geom_col()`).
+
 :::: {.panel-tabset}
 
 ### Code
@@ -158,7 +162,7 @@ glimpse(penguins_bar)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `species` to the `x` axis
 
@@ -225,9 +229,18 @@ ggp2_bar +
 
 ## More info
 
+Below we cover why `geom_bar(stat = "count")` produces the same result as `stat_count(geom = "bar")`. 
+
+The connection between statistical transformations and geoms is an important principle for building graphs (and mastering the grammar) with `ggplot2`: 
+We'll also show how to create bar charts with `geom_col()`. 
+
+::: {.column-margin}
+> "*You only need to set one of stat and geom: every geom has a default stat, and every stat a default geom.*" - [`ggplot2` book](https://ggplot2-book.org/layers.html#layers)
+:::
+
 :::: {.panel-tabset}
 
-### `stat = "count"`
+### `stat_`s and `geom_`s
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **stat_count():**
@@ -242,6 +255,7 @@ The link between `geom_[geom_name](stat = "[stat_name]")` and `stat_[stat_name](
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: stat_vs_geom_bar
+#| code-fold: true
 #| eval: true
 #| echo: true
 #| warning: false
@@ -282,6 +296,7 @@ To create a bar-graph with `geom_col()`, the `count` variable needs to be comput
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: bar_with_geom_col
+#| code-fold: true
 #| eval: true
 #| echo: true
 #| warning: false

@@ -54,9 +54,9 @@ remotes::install_github("davidsjoberg/ggstream")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -113,6 +113,7 @@ Categorical groups are differentiated by color layers, with the area of the laye
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -182,6 +183,8 @@ dplyr::glimpse(movies_stream)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

@@ -54,9 +54,9 @@ library(palmerpenguins)
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -100,6 +100,7 @@ ggp2_grp_col +
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -159,6 +160,8 @@ glimpse(peng_grp_col)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

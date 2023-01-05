@@ -57,9 +57,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -88,10 +88,13 @@ ggp2_freqpoly +
   labs_freqpoly
 ```
 
-Frequency polygons are similar to histograms, but they use lines instead of bars to represent the variable distribution. The height of the line represents the frequency (or count) of the value occurrence.
+Frequency polygons are similar to histograms, but they use lines instead of bars to represent the variable's distribution. The height of the line represents the frequency (or count) of the value occurrence.
+
+When viewing frequency polygons, we're still assessing the shape of the lines for [symmetry](https://en.wikipedia.org/wiki/Normal_distribution) and [skewness.](https://en.wikipedia.org/wiki/Skewness).
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -144,6 +147,8 @@ glimpse(penguins)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

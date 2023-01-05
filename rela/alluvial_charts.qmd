@@ -53,9 +53,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -109,10 +109,13 @@ ggalluvial_wide
 
 An alluvial graph displays the changes in composition or flow over time or across multiple categories. 
 
-We can build alluvial charts in `ggplot2` with the [`ggalluvial` package:](https://corybrunson.github.io/ggalluvial/)  
+We can build alluvial charts in `ggplot2` with the [`ggalluvial` package:](https://corybrunson.github.io/ggalluvial/). 
+
+See also: [parallel sets](https://mjfrigaard.github.io/ggp2-gallery/rela/parallel_sets.html)
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -171,6 +174,8 @@ glimpse(peng_wide)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 
@@ -273,7 +278,7 @@ ggp2_alluvial_w +
 
 ::::
 
-### More info
+## More info
 
 The `ggalluvial` package can also help reshape data with the `to_lodes_form()` function.
 

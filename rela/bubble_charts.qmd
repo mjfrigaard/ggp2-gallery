@@ -52,9 +52,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -88,12 +88,13 @@ ggp2_bubble +
   labs_bubble
 ```
 
-Bubble graphs display relationships between three continuous variables.
+Bubble graphs display relationships between three numeric (continuous) variables.
 
-The position on the `x` and `y` axis illustrates the relationship between the first two, and the `size` of the point (i.e., bubble) conveys the value of the third. 
+The position on the `x` and `y` axis illustrates the relationship between the first two variables, and the `size` of the point (i.e., the bubble) conveys the numeric value of the third. 
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -146,6 +147,8 @@ glimpse(penguins)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

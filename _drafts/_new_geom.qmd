@@ -53,7 +53,7 @@ install.packages("palmerpenguins")
 :::: {.callout-tip collapse="false" icon=false}
 ## **[topic]**
 
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 
 :::
 
@@ -80,7 +80,7 @@ peng_lines <- palmerpenguins::penguins |>
 
 <br>
 
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **geoms:**
 :::
 

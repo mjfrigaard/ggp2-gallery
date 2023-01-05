@@ -52,9 +52,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -93,6 +93,7 @@ The five statistical measures are 1) the first quartile, 2) the second quartile,
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -145,6 +146,8 @@ glimpse(peng_box)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

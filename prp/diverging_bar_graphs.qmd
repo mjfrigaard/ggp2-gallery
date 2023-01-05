@@ -56,9 +56,9 @@ library(fivethirtyeight)
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -173,6 +173,7 @@ We can also compare approval vs. disapproval for each month (i.e., compare the b
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -240,6 +241,8 @@ glimpse(trump_approval_diverg)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

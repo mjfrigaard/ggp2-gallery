@@ -53,9 +53,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -102,6 +102,7 @@ Typically, the graph contains two points representing the numerical value on the
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -160,6 +161,8 @@ glimpse(peng_clev_dots)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 
@@ -289,10 +292,10 @@ glimpse(peng_clev_dots2)
 ```
 :::
 
-### Code
+### Graph
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**GRAPH:**
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -311,48 +314,9 @@ Add `facet_wrap()` and facet by `median_measure`, setting `shrink` to `TRUE` and
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: graph_code_clev_dots2
-#| eval: false
-#| echo: true
-#| out-height: '100%'
-#| out-width: '100%'
-#| column: page-inset-right
-#| layout-nrow: 1
-labs_clev_dots2 <- labs(
-    title = "Penguin Measurements Differences",
-    subtitle = "Male and female penguins",
-    x = "Median Bill Length/Depth (mm)",
-    y = "Island",
-    color = "Sex"
-)
-
-ggp2_clev_dots2 <- ggplot(data = peng_clev_dots2,
-                mapping = aes(x = median_value, 
-                              y = fct_rev(island))) +
-                    geom_line(aes(group = island), 
-                        linewidth = 0.75) +
-                    geom_point(aes(color = sex), 
-                        size = 2.25) +
-                    facet_wrap(. ~ median_measure, 
-                        shrink = TRUE, 
-                        scales = "free_x")
-
-ggp2_clev_dots2 +
-    labs_clev_dots2
-```
-:::
-
-### Graph
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
-:::
-
-::: {style="font-size: 0.75em;"}
-```{r}
 #| label: graph_run_clev_dots2
 #| eval: true
-#| echo: false
+#| echo: true
 #| out-height: '100%'
 #| out-width: '100%'
 #| column: page-inset-right

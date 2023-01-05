@@ -54,9 +54,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -86,10 +86,15 @@ ggp2_violin +
   labs_violin
 ```
 
-A violin plot is a variation of the density plot, where the smoothed distribution is plotted symmetrically, creating a mirrored, two-sided area.
+Violin plots will display the distribution of a single numeric (continuous) variable. If you're trying to view the shape of a continuous distribution across the groups or levels of a categorical variable, check out [grouped violin plots.](https://mjfrigaard.github.io/ggp2-gallery/dist/grouped_violin_plots.html) 
+
+The violin plot is essentially a mirrored density plot, in which a smoothed distribution is plotted symmetrically across the `x` or `y` axis, creating a Rorschach-like inkblot area for the distribution:
+
+![source: Rorschach test, Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/70/Rorschach_blot_01.jpg){fig-align="center" width="20%" height="20%"}
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -142,6 +147,8 @@ glimpse(penguins)
 ```
 :::
 ::::
+
+## The grammar 
 
 :::: {.panel-tabset}
 

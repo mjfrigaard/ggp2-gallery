@@ -57,9 +57,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -89,12 +89,13 @@ ggp2_density +
   labs_density
 ```
 
-Density plots are similar to a frequency polygon, except the line has been ‘smoothed.’
+Density plots are similar to a histogram or frequency polygon, except the outline of the distribution has been ‘smoothed.’
 
-Instead of dividing the x axis into discrete quantitative ‘bins’ to create groups for the variable values, density plots transform the distribution according to a kernel density estimate.
+Instead of dividing the `x` axis into discrete ‘bins’ to create groupings for the variable's values, density plots transform the distribution according to a kernel density estimate.
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -147,6 +148,8 @@ glimpse(penguins)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

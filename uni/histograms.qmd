@@ -56,9 +56,9 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -87,10 +87,12 @@ ggp2_hist +
   labs_histogram
 ```
 
-Histograms are a special kind of bar-graph. The `x` axis is divided into ‘bins’ that cover the range of the variable values, and the height of the bars is the frequency (or count) of the value occurrence (on the `y` axis).
+Histograms are a special kind of bar-graph. The `x` axis is divided into ‘bins’ that cover the range of a variable's values, and the height of the bars is the frequency (or count) of the value occurrence (on the `y` axis).
 
+Unlike a typical bar-graph, histograms can be used to visually asses the '[normality](https://en.wikipedia.org/wiki/Normal_distribution)' (i.e. are the bars symmetrical, with a single peak in the middle of the `x` axis, or do the bars form multiple peaks?) or '[skewness](https://en.wikipedia.org/wiki/Skewness)' (i.e., is there a long 'tail' of bars with decreasing length on either end of the `x` axis?) of a variable's distribution.
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -144,6 +146,8 @@ glimpse(penguins)
 :::
 ::::
 
+## The grammar 
+
 :::: {.panel-tabset}
 
 ### Code
@@ -189,16 +193,19 @@ ggp2_hist +
 
 ### Graph
 
+<!--
+:::: {.column-margin}
+::: {style="font-size: 0.95em;"}
+
+:::
+::::
+-->
+
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
-::: {.column-margin}
-::: {style="font-size: 0.95em;"}
 
-The standard number of bins is `30`, but ['you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
-:::
-:::
 
 ```{r}
 #| label: create_graph_histogram
@@ -208,6 +215,7 @@ The standard number of bins is `30`, but ['you should always override this value
 #| message: false
 #| column: page-inset-right
 #| layout-nrow: 1
+#| fig-cap: "The standard number of bins is `30`, but [*'you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'*](https://ggplot2.tidyverse.org/reference/geom_histogram.html)"
 labs_histogram <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",

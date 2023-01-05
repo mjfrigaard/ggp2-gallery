@@ -55,9 +55,9 @@ library(palmerpenguins)
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -102,6 +102,7 @@ We’ll build a waffle chart using the [`ggwaffle` package.](https://liamgilbey.
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -118,7 +119,7 @@ Install packages.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_
+#| label: pkg_code_waffle
 #| eval: true
 #| echo: true
 #| warning: false
@@ -165,6 +166,8 @@ glimpse(waffle_peng)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 

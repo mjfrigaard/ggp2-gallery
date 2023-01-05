@@ -58,7 +58,7 @@ install.packages("palmerpenguins")
 ## Lines in `ggplot2`
 
 ::: {style="color: #38B44A;"}
-#### Geoms that play well with lines:
+#### Geoms for areas:
 :::
   
 ```{r}

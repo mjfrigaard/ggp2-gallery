@@ -54,7 +54,7 @@ install.packages("palmerpenguins")
 
 :::: {.callout-tip collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -92,6 +92,7 @@ Hex-bins are a very similar to 2-D histograms, but instead of dividing the graph
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -154,6 +155,8 @@ glimpse(penguins_hex)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 
@@ -231,7 +234,7 @@ ggp2_hex +
 
 ::::
 
-## More options
+## More info
 
 :::: {.panel-tabset}
 

@@ -54,7 +54,7 @@ install.packages("palmerpenguins")
 
 :::: {.callout-tip collapse="false" icon=false}
 ## Graph info
-::: {style="font-size: 1.25em; color: #38B44A;"}
+::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
 :::
 
@@ -105,6 +105,7 @@ We can build slope graphs in `ggplot2` using the `geom_line()` and `geom_point()
 
 ::::
 
+## Getting set up
 
 :::: {.panel-tabset}
 
@@ -174,6 +175,8 @@ glimpse(peng_slope)
 :::
 ::::
 
+## The grammar 
+
 :::: {.panel-tabset}
 
 ### Code
@@ -192,7 +195,7 @@ Add a `geom_line()` layer, mapping `island` to `color`, and setting the `size` t
 
 Add a `geom_point()` layer, mapping `color` to `island`, and setting `size` to `4`
 
-We'll adjust the x axis with `scale_x_continuous()`, manually setting the `breaks` and moving the `position` to the `"top"` of the graph
+We'll adjust the `x` axis with `scale_x_continuous()`, manually setting the `breaks` and moving the `position` to the `"top"` of the graph
 
 
 :::
