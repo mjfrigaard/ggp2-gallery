@@ -113,7 +113,7 @@ If we want to plot density curves but retain the interpretability of the axes, c
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -139,7 +139,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -168,7 +168,7 @@ glimpse(peng_ridges)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -218,7 +218,7 @@ ggp2_ridges +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 

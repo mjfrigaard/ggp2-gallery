@@ -69,7 +69,7 @@ In `ggplot2`, we can create grouped column graphs with `geom_co()`.
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -94,7 +94,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -119,7 +119,7 @@ glimpse(movies_grp_col)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -159,7 +159,7 @@ ggp2_col +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -185,7 +185,7 @@ ggp2_col +
 
 ### Summary
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SUMMARY:**
 :::
 
@@ -256,7 +256,7 @@ ggplot2movies::movies |>
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -281,7 +281,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -309,7 +309,7 @@ glimpse(movies_sum_col)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -349,7 +349,7 @@ ggp2_col +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -395,7 +395,7 @@ This results in bars differentiated by color and ‘stacked’ on top of each ot
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -420,7 +420,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -444,7 +444,7 @@ glimpse(penguins_ovrlp)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -479,7 +479,7 @@ ggp2_bar_ovrlp +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -518,7 +518,7 @@ To compare amounts using bar size (length or height) in a side-to-side display, 
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -543,7 +543,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -567,7 +567,7 @@ glimpse(penguins_dodge)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -605,7 +605,7 @@ ggp2_bar_dodge +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -648,7 +648,7 @@ ggp2_bar_dodge +
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -673,7 +673,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -697,7 +697,7 @@ glimpse(penguins_dodge2)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -734,7 +734,7 @@ ggp2_bar_dodge2 +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -781,7 +781,7 @@ We’ll build a waffle chart using the [`ggwaffle` package.](https://liamgilbey.
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -808,7 +808,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -838,7 +838,7 @@ glimpse(waffle_peng)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -879,7 +879,7 @@ ggp2_waffle +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -924,7 +924,7 @@ The intersecting cells contain variations of color saturation (i.e., the grade o
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -949,7 +949,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -986,7 +986,7 @@ glimpse(heatmap_ross)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -1024,7 +1024,7 @@ ggp2_heatmap_tile +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -1067,7 +1067,7 @@ In addition to `geom_tile()`, heatmaps can also be created with the `geom_raster
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -1092,7 +1092,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -1114,7 +1114,7 @@ glimpse(heatmap_ross)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -1152,7 +1152,7 @@ ggp2_heatmap_raster +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -1202,7 +1202,7 @@ More_description.
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -1227,7 +1227,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -1250,7 +1250,7 @@ glimpse(penguins)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -1284,7 +1284,7 @@ ggp2_scatter +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 

@@ -129,7 +129,7 @@ We can build bump charts in `ggplot2` with the [`ggbump` package:](https://githu
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -157,7 +157,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -194,7 +194,7 @@ glimpse(tidy_hurricanes)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -240,7 +240,7 @@ ggp2_bump +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 

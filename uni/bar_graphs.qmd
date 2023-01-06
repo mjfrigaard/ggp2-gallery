@@ -116,7 +116,7 @@ In `ggplot2`, bar graphs can be built using `geom_bar()` (see also: [`geom_col()
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -142,7 +142,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -172,7 +172,7 @@ glimpse(penguins_bar)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -216,7 +216,7 @@ ggp2_bar +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -261,7 +261,7 @@ ggp2_bar +
 
 ### stats and geoms
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **stat_count():**
 :::
 
@@ -305,7 +305,7 @@ ggp2_stat_count
 
 ### `geom_col()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **geom_col:**
 :::
 

@@ -157,7 +157,7 @@ dplyr::distinct(peng_bar, island)
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -182,7 +182,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -226,7 +226,7 @@ glimpse(peng_bar)
 
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 
@@ -256,7 +256,7 @@ names(bld_ggp2_bar_x)
 
 ### `"data"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_bar()`: data**
 :::
 
@@ -281,7 +281,7 @@ select(bar_x_data, fill)
 
 ### `"plot"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_bar()`: plot**
 :::
 
@@ -313,7 +313,7 @@ bld_ggp2_bar_x[["plot"]]
 
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 
@@ -436,7 +436,7 @@ bld_bar_fill2[["plot"]]
 :::: {.panel-tabset}
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 
@@ -477,7 +477,7 @@ names(bld_bar_dodge)
 
 ### `"data"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_bar(position = "dodge")`: data:**
 :::
 
@@ -502,7 +502,7 @@ select(bar_dodge_data, x, y, fill)
 
 ### `"plot"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_bar(position = "dodge")`: plot:**
 :::
 
@@ -532,7 +532,7 @@ bld_bar_dodge[["plot"]]
 :::: {.panel-tabset}
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 
@@ -573,7 +573,7 @@ names(bld_bar_dodge2)
 
 ### `"data"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_bar(position = "dodge2")`: data:**
 :::
 
@@ -598,7 +598,7 @@ select(bar_dodge2_data, x, y, fill)
 
 ### `"plot"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_bar(position = "dodge2")`: plot:**
 :::
 

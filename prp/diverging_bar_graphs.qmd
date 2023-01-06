@@ -207,7 +207,7 @@ We can also compare approval vs. disapproval for each month (i.e., compare the b
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -233,7 +233,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -276,7 +276,7 @@ glimpse(trump_approval_diverg)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -331,7 +331,7 @@ ggp2_bars_diverg +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -373,7 +373,7 @@ For horizontally arranged bars, we switch the `x` and `y` axis variables.
 
 ### Horizontally arranged bars
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **Horizontal bars:**
 :::
 

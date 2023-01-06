@@ -142,7 +142,7 @@ Also check out [alluvial charts.](https://mjfrigaard.github.io/ggp2-gallery/rela
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -170,7 +170,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -207,7 +207,7 @@ dplyr::glimpse(para_set_peng)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -276,7 +276,7 @@ ggp2_psets_labs +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -330,7 +330,7 @@ If the categories have long names, you can move the location of the labels *outs
 :::: {.panel-tabset}
 ### Labeling sets
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **LABELS:**
 :::
 

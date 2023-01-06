@@ -66,8 +66,8 @@ website:
           # - rela/correlograms.qmd
       - section: "Lines"
         contents:
-          - geoms/geom_path.qmd
           - geoms/geom_line.qmd
+          - geoms/geom_path.qmd
           - geoms/geom_step.qmd
       - section: "Complex lines"
         contents:

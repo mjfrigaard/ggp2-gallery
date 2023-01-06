@@ -129,7 +129,7 @@ We can create beeswarm plot using `geom_jitter()` or the [`ggbeeswarm` package](
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -157,7 +157,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -190,7 +190,7 @@ glimpse(peng_beeswarm)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -240,7 +240,7 @@ ggp2_beeswarm +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -285,7 +285,7 @@ Below we cover some additional arguments and methods for beeswarm plots.
 
 ### `method`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **METHOD:**
 :::
 
@@ -330,7 +330,7 @@ ggp2_compact_swarm +
 
 ### `side`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SIDE:**
 :::
 
@@ -369,7 +369,7 @@ ggp2_rside_swarm +
 
 ### `cex`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CEX:**
 :::
 
@@ -409,7 +409,7 @@ ggp2_beeswarm_cex +
 
 ### `geom_jitter()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **JITTER:**
 :::
 

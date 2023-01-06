@@ -113,7 +113,7 @@ A ‘violin plot’ is a variation of a density or ridgeline plot,  where the di
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -139,7 +139,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -166,7 +166,7 @@ glimpse(peng_violin)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -213,7 +213,7 @@ ggp2_grp_violin +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -260,7 +260,7 @@ ggp2_grp_violin +
 Change the shape of the line with [`linetype` and `linewidth`](https://ggplot2.tidyverse.org/reference/geom_violin.html#aesthetics).
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **draw_quantiles:**
 :::
 
@@ -293,7 +293,7 @@ ggplot(data = peng_violin,
 
 ### Kernel
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **kernel:**
 :::
 
@@ -325,7 +325,7 @@ ggplot(data = peng_violin,
 
 ### Bandwidth
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **bw:**
 :::
 

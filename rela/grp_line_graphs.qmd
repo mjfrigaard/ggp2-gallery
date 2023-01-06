@@ -267,7 +267,7 @@ Grouped line graphs use color, line style, and faceting to show group changes ov
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -292,7 +292,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -388,7 +388,7 @@ dplyr::glimpse(avg_birth_day_cat_yr)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -432,7 +432,7 @@ ggp2_line +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -472,7 +472,7 @@ Line graphs are great for displaying relationships across variables with multipl
 
 ### Groups
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -501,7 +501,7 @@ dplyr::glimpse(avg_births_dow_qtr)
 :::
 
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GROUPS:**
 :::
 
@@ -572,7 +572,7 @@ We can make it easier to distinguish between lines in our graph by adjusting the
 We'll work through some examples below using another subset from `usbirth_1994_2014`.
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -630,7 +630,7 @@ labs_line_styles <- labs(
 ```
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`alpha` & `linewidth`:**
 :::
 
@@ -669,7 +669,7 @@ ggp2_line_mon_thur_fri +
 ```
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`linetype`:**
 :::
 
@@ -706,7 +706,7 @@ ggp2_line_sat_sun +
 ```
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **Color palettes:**
 :::
 
@@ -765,7 +765,7 @@ Changing the look of the lines is a great way to highlight or emphasize some lin
 
 ### Labels
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **LABELS:**
 :::
 
@@ -1053,7 +1053,7 @@ ggp2_line_pal_d +
 
 ### Facets
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -1084,7 +1084,7 @@ dplyr::glimpse(med_births_dcat_dow_mnth)
 ```
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **FACETS:**
 :::
 

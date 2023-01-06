@@ -115,7 +115,7 @@ To adjust the dot plot display to look similar to a histogram or frequency polyg
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -141,7 +141,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -176,7 +176,7 @@ dplyr::glimpse(peng_dotplot)
 - [`binpositions`](https://ggplot2.tidyverse.org/reference/geom_dotplot.html) = *"all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.*
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -225,7 +225,7 @@ ggp2_ovrlp_dotplot +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 

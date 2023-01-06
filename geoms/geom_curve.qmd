@@ -154,7 +154,7 @@ crv + abln + sgmnt + hln + vln + spk +
 
 ### Basic Use
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BASICS:**
 :::
 
@@ -176,7 +176,7 @@ ggp2_curve_base +
 
 ### Additional Aesthetics
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **AESTHETICS:**
 :::
 
@@ -201,7 +201,7 @@ Optional aesthetics include:
 
 ### Arguments
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **ARGUMENTS:**
 :::
 

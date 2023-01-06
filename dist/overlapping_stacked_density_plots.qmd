@@ -131,7 +131,7 @@ Density plots are [*smoothed version(s) of  histogram(s)*](https://ggplot2.tidyv
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -157,7 +157,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -186,7 +186,7 @@ dplyr::glimpse(peng_density)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -231,7 +231,7 @@ ggp2_ovrlp_density +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -276,7 +276,7 @@ ggp2_ovrlp_density +
 
 ### `"stack"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **STACK:**
 :::
 
@@ -315,7 +315,7 @@ Setting `position` to `'stack'` [loses marginal densities](https://ggplot2.tidyv
 
 ### `after_stat(count)`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **AFTER STAT:** 
 :::
 
@@ -355,7 +355,7 @@ Adding [`after_stat(count)`](https://ggplot2.tidyverse.org/reference/geom_densit
 
 ### `"fill"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **FILL:** 
 :::
 

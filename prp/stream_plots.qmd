@@ -140,7 +140,7 @@ Categorical groups are differentiated by color layers, with the area of the laye
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -168,7 +168,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -212,7 +212,7 @@ dplyr::glimpse(movies_stream)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -271,7 +271,7 @@ ggp2_stream +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -315,7 +315,7 @@ The [`ggstream` package](https://github.com/davidsjoberg/ggstream) has multiple 
 
 ### Type
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **TYPE:**
 :::
 
@@ -366,7 +366,7 @@ ggp2_stream_prp +
 
 ### Sorting
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SORTING:**
 :::
 

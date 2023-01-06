@@ -173,7 +173,7 @@ We can use the [`raincloudplots` package](https://github.com/jorvlan/raincloudpl
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -202,7 +202,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -239,7 +239,7 @@ glimpse(peng_1x1)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -289,7 +289,7 @@ ggp2_raincloud_x +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -333,7 +333,7 @@ ggp2_raincloud_x +
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -360,7 +360,7 @@ glimpse(peng_raincloud)
 
 ### Box-plot
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot2::geom_boxplot()`**
 :::
 
@@ -404,7 +404,7 @@ ggp2_box +
 
 ### Density
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggdist::stat_halfeye()`**
 :::
 
@@ -442,7 +442,7 @@ ggp2_stat_halfeye +
 
 ### Points
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot2::geom_point()`**
 :::
 
@@ -490,7 +490,7 @@ ggp2_jitter +
 
 ### Point shape
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **Point shape**
 :::
 
@@ -528,7 +528,7 @@ ggplot2::geom_point(
 
 ### #TidyTuesday example
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **Polished Graph**
 :::
 
@@ -541,7 +541,7 @@ The code to re-create the #TidyTuesday graph is contained in this [gist.](https:
 
 ### More resources
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **MORE RESOURCES**
 :::
 

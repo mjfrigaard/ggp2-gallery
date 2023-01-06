@@ -123,7 +123,7 @@ plygn + rct + rbn +
 :::
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -148,7 +148,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -175,7 +175,7 @@ dplyr::glimpse(economics)
 
 ### Basic Use
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BASICS:**
 :::
 
@@ -202,7 +202,7 @@ ggp2_ribbon_base +
 
 ### Aesthetics
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **AESTHETICS:**
 :::
 
@@ -432,7 +432,7 @@ ggp2_ribbon_base +
 
 ### Additional Arguments
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **ARGUMENTS:**
 :::
 

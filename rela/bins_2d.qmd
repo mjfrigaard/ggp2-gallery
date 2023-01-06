@@ -117,7 +117,7 @@ When we extend this display to two numerical/quantitative variables, the bins ar
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -143,7 +143,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -180,7 +180,7 @@ glimpse(penguins_2dhist)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -226,7 +226,7 @@ ggp2_2dhist +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -263,7 +263,7 @@ ggp2_2dhist +
 
 ### Bins
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BINS:**
 :::
 
@@ -298,7 +298,7 @@ ggp2_2dbins15 +
 
 ### Scale
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SCALES:**
 :::
 
@@ -336,7 +336,7 @@ ggp2_2dbins15 +
 
 ### Options
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **OPTIONS:**
 :::
 

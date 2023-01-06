@@ -156,7 +156,7 @@ Specifically, the contour lines outline areas on the graph with differing point 
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -182,7 +182,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -215,7 +215,7 @@ glimpse(peng_dnsty_2d)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -283,7 +283,7 @@ ggp2_dnsty_2d +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -339,7 +339,7 @@ We're going to break down how to create the density contour layer-by-layer using
 
 ### Base
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BASE:**
 :::
 
@@ -396,7 +396,7 @@ base_sdens_2d +
 
 ### Stat
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **STAT:**
 :::
 
@@ -466,7 +466,7 @@ ggp1 <- stat_sdens_2d +
 
 ### Fill
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **FILL:**
 :::
 
@@ -537,7 +537,7 @@ fill_sdens_2d +
 
 ### Points
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **POINTS:**
 :::
 
@@ -609,7 +609,7 @@ In the previous plot, we used the `species` variable in the `geom_point()` layer
 
 ### Groups
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GROUPS:**
 :::
 
@@ -681,7 +681,7 @@ ggp2_dnsty_2d_pnts +
 
 ### Facets
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **FACETING:**
 :::
 
@@ -825,7 +825,7 @@ In the previous section, we defined the color values used in `geom_density_2d_fi
 
 ### Fill 
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **Fill:**
 :::
 
@@ -936,7 +936,7 @@ ggp2_dnsty_2d_fill +
 
 ### Lines
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **LINES:**
 :::
 

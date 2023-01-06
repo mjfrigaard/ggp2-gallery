@@ -111,7 +111,7 @@ Hexagon bins (or hex-bins) are a very similar to 2-D histograms, but instead of 
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -137,7 +137,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -176,7 +176,7 @@ glimpse(penguins_hex)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -221,7 +221,7 @@ ggp2_hex +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -257,7 +257,7 @@ ggp2_hex +
 
 ### Bins
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BINS:**
 :::
 
@@ -296,7 +296,7 @@ ggp2_hex_b15 +
 
 ### Scale
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SCALES:**
 :::
 
@@ -344,7 +344,7 @@ Get a full list of available color palette's using `hcl_palettes(type = ` `"sequ
 
 ### Options
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **OPTIONS:**
 :::
 

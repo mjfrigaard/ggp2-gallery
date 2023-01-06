@@ -125,7 +125,7 @@ We can build mosaic plots using the [`ggmosaic` package.](https://haleyjeppson.g
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -153,7 +153,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -184,7 +184,7 @@ glimpse(fly_mosaic)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -235,7 +235,7 @@ ggp2_mosaic +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -269,7 +269,7 @@ ggp2_mosaic +
 
 ### Details
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DETAILS:**
 :::
 
@@ -358,7 +358,7 @@ kableExtra::kable_paper(
 ```
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **TWO VARIABLES:**
 :::
 
@@ -436,7 +436,7 @@ ggp2_mosaic_cond +
 
 ### Facets
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **FACETS:**
 :::
 

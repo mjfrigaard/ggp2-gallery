@@ -157,7 +157,7 @@ dplyr::distinct(peng_bar, island)
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -182,7 +182,7 @@ Install packages.
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -217,7 +217,7 @@ Install packages.
 
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 
@@ -247,7 +247,7 @@ Install packages.
 
 ### `"data"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_area()`: data**
 :::
 
@@ -272,7 +272,7 @@ Extract the data from the `ggplot2` object.
 
 ### `"plot"`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`geom_area()`: plot**
 :::
 
@@ -304,7 +304,7 @@ Extract the `"plot"` from `bld_` object:
 
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 
@@ -427,7 +427,7 @@ Extract `"plot"` from `bld_` objects
 
 ### `ggplot_build()`
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **`ggplot_build()`:**
 :::
 

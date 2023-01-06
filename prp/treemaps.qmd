@@ -151,7 +151,7 @@ We'll build a treemap using the [`treemapify` package.](http://wilkox.org/treema
 
 ### Packages
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -179,7 +179,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -213,7 +213,7 @@ glimpse(treemap_peng)
 
 ### Code
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **CODE:**
 :::
 
@@ -274,7 +274,7 @@ ggp2_treemap +
 
 ### Graph
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
@@ -322,7 +322,7 @@ ggp2_treemap +
 :::: {.panel-tabset}
 ### Subgroup 
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SUBGROUP:**
 :::
 
@@ -376,7 +376,7 @@ ggp2_tm_subgroup +
 
 ### Subgroup 2
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **SUBGROUP 2:**
 :::
 

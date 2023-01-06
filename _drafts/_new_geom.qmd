@@ -99,7 +99,7 @@ peng_lines <- palmerpenguins::penguins |>
 :::
 :::
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **PACKAGES:**
 :::
 
@@ -122,7 +122,7 @@ library(ggplot2)
 
 ### Data
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **DATA:**
 :::
 
@@ -150,7 +150,7 @@ dplyr::glimpse(economics)
 
 ### Basic use
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BASICS:**
 :::
 
@@ -169,7 +169,7 @@ ggp2_basic_blank
 
 ### Aesthetics
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **AESTHETICS:**
 :::
 
@@ -194,7 +194,7 @@ Optional aesthetics include:
 
 ### Additional Arguments
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **ARGUMENTS:**
 :::
 
@@ -258,7 +258,7 @@ Below ...
 
 ### Basic use
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **BASICS:**
 :::
 
@@ -278,7 +278,7 @@ Below ...
 
 ### Arguments
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **ARGUMENTS:**
 :::
 
@@ -304,7 +304,7 @@ Below ...
 
 ### Aesthetics
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
+::: {style="font-size: 1.15em; color: #1e83c8;"}
 **AESTHETICS:**
 :::
 
