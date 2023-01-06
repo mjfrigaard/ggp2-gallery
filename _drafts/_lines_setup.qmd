@@ -56,7 +56,7 @@ install.packages("palmerpenguins")
 :::: {.callout-tip collapse="false" icon=false}
 ## Lines in `ggplot2`
 
-::: {style="color: #38B44A;"}
+::: {style="color: #043b67;"}
 #### Primary geoms for lines
 :::
 
@@ -106,7 +106,7 @@ pth + ln + stp +
 
 <br>
 
-::: {style="color: #38B44A;"}
+::: {style="color: #043b67;"}
 #### Other line geoms:
 :::
   
@@ -194,7 +194,7 @@ crv + abln + sgmnt + hln + vln + spk +
   
   - `geom_vline()`
   
-::: {style="color: #38B44A;"}
+::: {style="color: #043b67;"}
 #### Play well with lines:
 :::
   

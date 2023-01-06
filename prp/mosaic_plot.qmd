@@ -3,7 +3,9 @@ title: "Mosaic Plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -99,13 +101,23 @@ ggp2_mosaic +
     labs_mosaic
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` at least two categorical variables      
+:::
+
+::::
+
+## Description 
+
 A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
 
 Mosaic plot legends should be positioned on top or bottom and justified horizontally to preserve shape and improve readability. 
 
 We can build mosaic plots using the [`ggmosaic` package.](https://haleyjeppson.github.io/ggmosaic/)
-
-::::
 
 ## Getting set up
 
@@ -125,6 +137,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_mosaic
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -179,6 +192,8 @@ glimpse(fly_mosaic)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map the `product()` of `unruly_child` and `baby` to the `x` axis
 
 Map `baby` to `fill`
@@ -192,6 +207,7 @@ Move the legend to the bottom with `theme(legend.position = "bottom")`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_mosaic
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -322,16 +338,6 @@ I recommend reading the [`ggmosaic` vignette](https://haleyjeppson.github.io/ggm
 
 ### Two variables
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**TWO VARIABLES:**
-:::
-
-::: {style="font-size: 0.85em;"}
-Below is another example of a two-variable mosaic plot, mapping the `product()` variables as `unruly_child` and `recline_rude`, and the `fill` variable as `recline_rude`.
-
-Once again we can see the counts for each category in the cross-tabulation:
-:::
-
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: fly_mosaic_2var_counts
@@ -350,6 +356,16 @@ kableExtra::kable_paper(
   kable_input = knitr::kable(fly_mosaic_2var_counts), 
   font_size = 12)
 ```
+:::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**TWO VARIABLES:**
+:::
+
+::: {style="font-size: 0.85em;"}
+Below is another example of a two-variable mosaic plot, mapping the `product()` variables as `unruly_child` and `recline_rude`, and the `fill` variable as `recline_rude`.
+
+Once again we can see the counts for each category in the cross-tabulation:
 :::
 
 ::: {style="font-size: 0.75em;"}

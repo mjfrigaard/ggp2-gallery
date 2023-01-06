@@ -3,7 +3,9 @@ title: "Alluvial Charts"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -107,13 +109,27 @@ ggalluvial_wide <- ggp2_alluvial_w +
 ggalluvial_wide
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` multiple categorical variables     
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a date variable    
+:::
+
+::::
+
+## Description 
+
 An alluvial graph displays the changes in composition or flow over time or across multiple categories. 
 
 We can build alluvial charts in `ggplot2` with the [`ggalluvial` package:](https://corybrunson.github.io/ggalluvial/). 
 
 See also: [parallel sets](https://mjfrigaard.github.io/ggp2-gallery/rela/parallel_sets.html)
-
-::::
 
 ## Getting set up
 
@@ -133,6 +149,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_alluvial
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -200,6 +217,7 @@ Add `geom_text()`, with `stat` set to `stratum` and label set to `after_stat(str
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_alluvial
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false

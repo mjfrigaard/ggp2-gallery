@@ -3,7 +3,9 @@ title: "Diverging Bar-graphs"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -135,9 +137,29 @@ plot_spacer() + diverg +
         title = "Trump Approval Ratings\nFrom 'How Popular is Donald Trump'")
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
+
+::::
+
+## Description
+
 If you have two proportions that contain positive and negative values, consider using diverging bars with `geom_bar()`. 
 
 Unlike a standard or stacked bar graphs, diverging bar graphs display positive and negative quantities on both sides of a reference or baseline value (zero in this example). Color, length and position are used to compare the quantities across categorical levels (and within variable values). 
+
+:::: {.panel-tabset}
+
+### Vertical bars
 
 ```{r}
 #| label: diverg
@@ -145,15 +167,19 @@ Unlike a standard or stacked bar graphs, diverging bar graphs display positive a
 #| echo: false
 #| warning: false
 #| message: false
-#| out-height: '50%'
-#| out-width: '50%'
+#| out-height: '75%'
+#| out-width: '75%'
 #| fig-align: center
 ggp2_bars_diverg + 
   labs_geom_bar_diverg + 
     theme_ggp2g(base_size = 11)
 ```
 
+::: {style="font-size: 0.85em;"}
 For example, we can use the length of the bar from the reference line to compare disapproval estimates across all months (i.e., comparing red bars to each other). 
+:::
+
+### Horizontal bars
 
 ```{r}
 #| label: diverg_vert
@@ -161,15 +187,17 @@ For example, we can use the length of the bar from the reference line to compare
 #| echo: false
 #| warning: false
 #| message: false
-#| out-height: '50%'
-#| out-width: '50%'
+#| out-height: '75%'
+#| out-width: '75%'
 #| fig-align: center
 ggp2_bar_diverg_vert + 
   labs_geom_bar_diverg_vert + 
     theme_ggp2g(base_size = 11)
 ```
 
+::: {style="font-size: 0.85em;"}
 We can also compare approval vs. disapproval for each month (i.e., compare the blue vs. red bars to each other within each month).
+:::
 
 ::::
 
@@ -191,6 +219,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_diverging_bar
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -237,7 +266,6 @@ fivethirtyeight::trump_approval_trend |>
     ) |> 
   dplyr::ungroup() -> trump_approval_diverg
 glimpse(trump_approval_diverg)
-glimpse(trump_approval_diverg)
 ```
 :::
 ::::
@@ -256,6 +284,8 @@ glimpse(trump_approval_diverg)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map the `month` to the `x` and `month_avg` to the `y`
 
 Inside` geom_bar()`
@@ -271,6 +301,7 @@ Add `scale_y_continuous()` to manually set the limits and format the axis with `
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_diverging_bar
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -334,16 +365,16 @@ ggp2_bars_diverg +
 
 ::::
 
-## Vertical diverging Bar-graphs
+## More info
 
-For vertically arranged bars, we switch the `x` and `y` axis variables.
+For horizontally arranged bars, we switch the `x` and `y` axis variables.
 
 :::: {.panel-tabset}
 
-### Code
+### Horizontally arranged bars
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**Horizontal bars:**
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -363,46 +394,11 @@ Add `scale_y_continuous()` to manually set the limits and format the axis with `
 :::
 
 ::: {style="font-size: 0.75em;"}
-```{r}
-#| label: code_graph_vert_diverg_bars
-#| eval: false
-#| echo: true 
-#| warning: false
-#| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| column: page-inset-right
-#| layout-nrow: 1
-labs_geom_bar_diverg_vert <- labs(
-  title = "Trump Approval Ratings",
-  subtitle = "From 'How Popular is Donald Trump'",
-  x = "Monthly average percent",
-  y = "Month",
-  fill = "Estimate")
-ggp2_bar_diverg_vert <- ggplot(
-  data = trump_approval_diverg,
-      aes(x = month_avg, y =  month)) +
-  geom_bar(
-      aes(fill = poll), 
-        stat = "identity", width = .5) + 
-  scale_x_continuous(limits = c(-1, 1), 
-        labels = scales::percent)
-ggp2_bar_diverg_vert + 
-  labs_geom_bar_diverg_vert
-```
-
-:::
-
-### Graph
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
-:::
 
 ```{r}
 #| label: create_graph_vert_diverg_bars
 #| eval: true
-#| echo: false
+#| echo: true
 #| warning: false
 #| message: false
 #| out-height: '100%'
@@ -426,5 +422,8 @@ ggp2_bar_diverg_vert <- ggplot(
 ggp2_bar_diverg_vert + 
   labs_geom_bar_diverg_vert
 ```
+
+:::
+
 
 ::::

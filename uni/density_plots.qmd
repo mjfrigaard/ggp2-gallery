@@ -3,7 +3,9 @@ title: "Density Plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -90,10 +92,10 @@ ggp2_density +
 ```
 
 ::: {style="font-size: 1.10em; color: #02577A;"}
-***Does your data have...***
+**This graph requires:**
 :::
 
-::: {style="font-size: 0.90em; color: #38B44A;"}
+::: {style="font-size: 0.90em; color: #043b67;"}
 `r emo::ji("check")` a numeric (continuous) variable
 :::
 
@@ -123,6 +125,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_density
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -184,6 +187,7 @@ Add the `geom_density()` layer
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_density
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -204,12 +208,6 @@ ggp2_density +
 :::
 
 ### Graph
-
-:::: {.column-margin}
-::: {style="font-size: 0.80em; color: #02577A;"}
-A downside of using density plots is the lack of interpretability of the `y` axis. 
-:::
-::::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
@@ -234,5 +232,9 @@ ggp2_density <- ggplot(data = penguins,
 ggp2_density +
   labs_density
 ```
+
+::: {style="font-size: 0.85em;"}
+A downside of using density plots is the lack of interpretability of the `y` axis. 
+:::
 
 ::::

@@ -3,7 +3,9 @@ title: "Treemaps"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -80,7 +82,7 @@ treemap_peng <- penguins |>
   count(species, island, sex) |> 
   ungroup()
 labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins",
+  title = "Adult foraging penguins",
     fill = "Sex")
 ggp2_treemap <- ggplot(treemap_peng, 
        aes(area = n, 
@@ -123,11 +125,25 @@ ggp2_tm_subgroup2 +
   labs_treemap
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` at least two categorical variables     
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric variable of counts (for each level of the categorical variables)
+:::
+
+::::
+
+## Description 
+
 Treemaps display proportionally divided rectangular hierarchies for levels of categorical variables. The layout consists of 'squarified' tiles, which display the relative contribution of each categorical value to the overall graph space. 
 
 We'll build a treemap using the [`treemapify` package.](http://wilkox.org/treemapify/) Also check out [mosaic plots](https://mjfrigaard.github.io/ggp2-gallery/prp/mosaic_plot.html).
-
-::::
 
 ## Getting set up
 
@@ -147,6 +163,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_treemap
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -194,15 +211,17 @@ glimpse(treemap_peng)
 
 :::: {.panel-tabset}
 
-### Basic Treemap
+### Code
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**BASIC TREEMAP:**
+**CODE:**
 :::
 
 ::: {style="font-size: 0.85em;"}
 
 Create labels with `labs()`
+
+Initialize the graph with `ggplot()` and provide `data`
 
 - Map the `n` to `area`, `sex` to `fill` and `label`, `species` to `subgroup`, and `island` to `subgroup2`
 
@@ -222,7 +241,8 @@ Create labels with `labs()`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_treemap
-#| eval: true
+#| code-fold: show
+#| eval: false
 #| echo: true 
 #| warning: false
 #| message: false
@@ -231,7 +251,7 @@ Create labels with `labs()`
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_treemap <- labs(
-  title = "Species, island, and sex of adult penguins",
+  title = "Adult foraging penguins",
     fill = "Sex")
 ggp2_treemap <- ggplot(treemap_peng, 
        aes(area = n, 
@@ -252,6 +272,54 @@ ggp2_treemap +
 ```
 :::
 
+### Graph
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**GRAPH:**
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: create_graph_treemap
+#| eval: true
+#| echo: true 
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+labs_treemap <- labs(
+  title = "Adult foraging penguins",
+    fill = "Sex")
+ggp2_treemap <- ggplot(treemap_peng, 
+       aes(area = n, 
+           fill = sex, 
+           label = sex,
+           subgroup = species,
+           subgroup2 = island)) +
+       treemapify::geom_treemap() +
+       treemapify::geom_treemap_text(
+           place = "bottomright",
+           color = "#d0d0d0",
+           min.size = 0,
+           alpha = 0.90,
+           fontface = "italic",
+           family = "sans") 
+ggp2_treemap + 
+  labs_treemap
+```
+:::
+
+::::
+
+
+## More info
+
+`treemapify` has multiple options for building treemaps. We cover a few of these below, but you should check out the [package vignette](https://cran.r-project.org/web/packages/treemapify/vignettes/introduction-to-treemapify.html). 
+
+
+:::: {.panel-tabset}
 ### Subgroup 
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}

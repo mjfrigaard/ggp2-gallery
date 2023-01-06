@@ -3,7 +3,11 @@ title: "Title"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
+    out-height: '100%'
+    out-width: '100%'
 execute:
   warning: false
   message: false
@@ -51,8 +55,7 @@ install.packages("palmerpenguins")
 ```
 
 
-
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
@@ -73,14 +76,43 @@ library(palmerpenguins)
 library(ggplot2movies)
 library(fivethirtyeight)
 library(ggplot2)
+df <- tibble::tibble(X = sample(x = 1:100, 10, FALSE),
+                     Y = rlnorm(10, 1, 3))
+labs_graph <- ggplot2::labs(title = "Title", 
+                            subtitle = "subtitle", 
+                            x = "X", y = "Y")
+
+ggp2_graph <- ggplot2::ggplot(data = df, 
+    mapping = aes(x = X, y = Y)) + 
+    ggplot2::geom_blank()
+
+ggp2_graph + 
+    labs_graph
 ```
 
-<!-- Description -->
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
 
-<!-- More_description -->
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
 
 ::::
 
+## Description 
+
+Description of graph aesthetics, appropriate use, similar graphs, etc. 
+
+## Getting set up 
 
 :::: {.panel-tabset}
 
@@ -103,9 +135,9 @@ Install packages.
 #| warning: false
 #| message: false
 #| results: hide
-# install.packages("palmerpenguins")
-# library(palmerpenguins) 
-# library(ggplot2)
+install.packages("palmerpenguins")
+library(palmerpenguins)
+library(ggplot2)
 ```
 :::
 
@@ -134,11 +166,14 @@ Install packages.
 #| label: data_code_
 #| eval: true
 #| echo: true
-# penguins <- palmerpenguins::penguins
-# glimpse(penguins)
+df <- tibble::tibble(X = sample(x = 1:100, 10, FALSE),
+                     Y = rlnorm(10, 1, 3))
+dplyr::glimpse(df)
 ```
 :::
 ::::
+
+## The grammar
 
 :::: {.panel-tabset}
 
@@ -152,6 +187,7 @@ Install packages.
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
 
 :::
 
@@ -166,11 +202,26 @@ Create labels with `labs()`
 #| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
+labs_graph <- ggplot2::labs(title = "Title", 
+                            subtitle = "subtitle", 
+                            x = "X", y = "Y")
 
+ggp2_graph <- ggplot2::ggplot(data = df, 
+    mapping = aes(x = X, y = Y)) + 
+    ggplot2::geom_blank()
+
+ggp2_graph + 
+    labs_graph
 ```
 :::
 
 ### Graph
+
+:::: {.column-margin}
+::: {style="font-size: 0.80em; color: #02577A;"}
+More description of graph and code. 
+:::
+::::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
@@ -186,7 +237,77 @@ Create labels with `labs()`
 #| out-width: '100%'
 #| column: page-inset-right
 #| layout-nrow: 1
+labs_graph <- ggplot2::labs(title = "Title", 
+                            subtitle = "subtitle", 
+                            x = "X", y = "Y")
 
+ggp2_graph <- ggplot2::ggplot(data = df, 
+    mapping = aes(x = X, y = Y)) + 
+    ggplot2::geom_blank()
+
+ggp2_graph + 
+    labs_graph
 ```
+
+::::
+
+## More info
+
+:::: {.panel-tabset}
+
+### Info
+
+:::: {.column-margin}
+::: {style="font-size: 0.80em; color: #02577A;"}
+Info 
+:::
+::::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**INFO:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: more_info_1
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+```
+
+:::
+
+### More 
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**MORE:**
+:::
+
+::: {style="font-size: 0.85em;"}
+
+:::
+
+::: {style="font-size: 0.75em;"}
+```{r}
+#| label: more_info_1
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+#| out-height: '100%'
+#| out-width: '100%'
+#| column: page-inset-right
+#| layout-nrow: 1
+```
+:::
 
 ::::

@@ -3,7 +3,9 @@ title: "Stream plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -104,14 +106,33 @@ ggp2_stream <- ggplot(data = movies_stream,
     ggstream::geom_stream() + 
     scale_y_continuous(labels = scales::dollar)
 ggp2_stream + 
-    labs_stream
+    labs_stream + 
+    theme(legend.position = "bottom")
 ```
+
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable (preferably a factor)   
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable 
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (date) variable
+:::
+
+::::
+
+## Description 
 
 Stream graphs display how a numerical variable (typically on the `y` axis) changes over time (on the `x` axis) across levels of a categorical variable. These graphs are handy if the numerical value varies wildly (or isn't always present) over the time measurement.  
 
 Categorical groups are differentiated by color layers, with the area of the layer representing the change in `y` value. In `ggplot2`, we can create stream graphs using [ggstream.](https://github.com/davidsjoberg/ggstream)
-
-::::
 
 ## Getting set up
 
@@ -130,7 +151,8 @@ Install packages.
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: pkg_code_
+#| label: pkg_code_stream
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -200,17 +222,23 @@ Create labels with `labs()`
 
   - use `paste0()` in the `subtitle` to automatically update the `year` when the `movies_stream` changes   
   
+
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `year` to the `x`, `avg_budget` to `y`, and `mpaa` to `fill`
 
 Add the `geom_stream()` layer 
 
 Adjust the `y` axis with `scale_y_continuous()` and `scales::dollar`
 
+Finally, move the legend with  `theme(legend.position = "bottom")` 
+
 :::
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_stream
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -236,7 +264,8 @@ ggp2_stream <- ggplot(data = movies_stream,
     ggstream::geom_stream() + 
     scale_y_continuous(labels = scales::dollar)
 ggp2_stream + 
-    labs_stream
+    labs_stream + 
+    theme(legend.position = "bottom")
 ```
 :::
 
@@ -272,7 +301,8 @@ ggp2_stream <- ggplot(data = movies_stream,
     ggstream::geom_stream() + 
     scale_y_continuous(labels = scales::dollar)
 ggp2_stream + 
-    labs_stream
+    labs_stream + 
+    theme(legend.position = "bottom")
 ```
 
 ::::
@@ -301,6 +331,8 @@ Adjust colors:
 
   - `scale_fill_manual()`: Add colors as a named vector to `values`
 
+Finally, add the `fill` to the labels and move the legend with  `theme(legend.position = "bottom")` 
+
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -327,7 +359,8 @@ ggp2_stream_prp <- ggplot(data = movies_stream,
                  "NC-17" = "#772953"))
 ggp2_stream_prp + 
     labs_stream + 
-    labs(fill = "mpaa")
+    labs(fill = "mpaa") + 
+    theme(legend.position = "bottom")
 ```
 :::
 
@@ -355,7 +388,9 @@ Colors:
 
   - Use `scale_colour_manual()` and `scale_fill_manual()` to manually set the values using a named vector 
 
-Finally, change the `y` axis to US dollars using `scale_y_continuous()` and `scales::dollar`
+Change the `y` axis to US dollars using `scale_y_continuous()` and `scales::dollar`
+
+Finally, add the `fill` to the labels and move the legend with  `theme(legend.position = "bottom")` 
 
 :::
 
@@ -398,7 +433,8 @@ ggp2_stream_srt <- ggplot(data = movies_stream,
     
 ggp2_stream_srt + 
     labs_stream + 
-    labs(fill = "mpaa")
+    labs(fill = "mpaa") + 
+    theme(legend.position = "bottom")
 ```
 :::
 

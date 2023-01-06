@@ -3,7 +3,9 @@ title: "Frequency Polygons"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -89,10 +91,10 @@ ggp2_freqpoly +
 ```
 
 ::: {style="font-size: 1.10em; color: #02577A;"}
-***Does your data have...***
+**This graph requires:**
 :::
 
-::: {style="font-size: 0.90em; color: #38B44A;"}
+::: {style="font-size: 0.90em; color: #043b67;"}
 `r emo::ji("check")` a numeric (continuous) variable
 :::
 
@@ -122,6 +124,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_freq_poly
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -183,6 +186,7 @@ Add the `geom_freqpoly()` layer
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_freq_poly
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -207,10 +211,6 @@ ggp2_freqpoly +
 **GRAPH:**
 :::
 
-::: {.column-margin}
-Experiment to see how many `bins` fit your variable’s distribution
-:::
-
 ```{r}
 #| label: create_graph_freq_poly
 #| eval: true
@@ -229,5 +229,9 @@ ggp2_freqpoly <- ggplot(data = penguins,
 ggp2_freqpoly + 
   labs_freqpoly
 ```
+
+::: {style="font-size: 0.85em;"}
+Experiment to see how many `bins` fit your variable’s distribution
+:::
 
 ::::

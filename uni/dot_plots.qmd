@@ -3,7 +3,9 @@ title: "Dot-plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -89,10 +91,10 @@ ggp2_dotplot +
 ```
 
 ::: {style="font-size: 1.10em; color: #02577A;"}
-***Does your data have...***
+**This graph requires:**
 :::
 
-::: {style="font-size: 0.90em; color: #38B44A;"}
+::: {style="font-size: 0.90em; color: #043b67;"}
 `r emo::ji("check")` a numeric (continuous) variable
 :::
 
@@ -120,6 +122,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_dotplot
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -183,6 +186,7 @@ Adjust the `dotsize`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_dotplot
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -202,12 +206,6 @@ ggp2_dotplot +
 :::
 
 ### Graph
-
-:::: {.column-margin}
-::: {style="font-size: 0.80em; color: #02577A;"}
-A downside of using dot-plots is the lack of interpretability of the `y` axis. 
-:::
-::::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
@@ -231,5 +229,9 @@ ggp2_dotplot <- ggplot(data = penguins,
 ggp2_dotplot + 
   labs_dotplot
 ```
+
+::: {style="font-size: 0.85em;"}
+A downside of using dot-plots is the lack of interpretability of the `y` axis. 
+:::
 
 ::::

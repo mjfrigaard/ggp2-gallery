@@ -3,7 +3,9 @@ title: "Grouped bar-graphs"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -96,9 +98,23 @@ ggp2_grp_col +
     labs_grp_col
 ```
 
-`geom_col()` allows us to display 'grouped' numerical values across levels (or groups) of a categorical variable. Grouped bar-graphs assume the statistical measure (i.e., the value that the length of the bars will be derived from) is contained in a variable and mapped to the `x` or `y` aesthetic. 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
 
 ::::
+
+## Description 
+
+`geom_col()` allows us to display 'grouped' numerical values across levels (or groups) of a categorical variable. Grouped bar-graphs assume the statistical measure (i.e., the value that the length of the bars will be derived from) is contained in a variable and mapped to the `x` or `y` aesthetic. 
 
 ## Getting set up
 
@@ -118,6 +134,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_grp_col
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -175,6 +192,8 @@ glimpse(peng_grp_col)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `island` to the `x` and `avg_body_mass_g` to the `y`
 
 Map `island` to `fill` *inside* the `aes()` of `geom_col()` 
@@ -184,6 +203,7 @@ Map `island` to `fill` *inside* the `aes()` of `geom_col()`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_grp_col
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false

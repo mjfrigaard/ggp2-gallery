@@ -57,7 +57,7 @@ install.packages("palmerpenguins")
 :::: {.callout-tip collapse="false" icon=false}
 ## Lines in `ggplot2`
 
-::: {style="color: #38B44A;"}
+::: {style="color: #043b67;"}
 #### Primary geoms for lines
 :::
 

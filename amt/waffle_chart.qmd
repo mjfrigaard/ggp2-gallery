@@ -3,7 +3,9 @@ title: "Waffle charts"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -81,7 +83,7 @@ penguins <- dplyr::mutate(penguins,
 waffle_peng <- ggwaffle::waffle_iron(penguins,
                       aes_d(group = species))
 labs_waffle <- labs(
-  title = "Waffle chart of palmer penguin species",
+  title = "Palmer penguin species",
   x = "", y = "", fill = "Species")
 ggp2_waffle <- ggplot(data = waffle_peng, 
        aes(x = x, 
@@ -94,13 +96,21 @@ ggp2_waffle +
   theme(legend.position = "top")
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+`r emo::ji("check")` a categorical variable 
+
+::::
+
+## Description 
+
 Waffle charts use color to display the levels that make up the values in a categorical variable. The counts for each level are divided into separate colors into a square or grid display.
 
 Waffle chart legends should be positioned on top or bottom and justified horizontally to preserve shape and improve readability. 
 
 We’ll build a waffle chart using the [`ggwaffle` package.](https://liamgilbey.github.io/ggwaffle/)
-
-::::
 
 ## Getting set up
 
@@ -120,6 +130,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_waffle
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -181,6 +192,8 @@ glimpse(waffle_peng)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map the `x` and `y` to the `x` and `y` axes
 
 Map `group` to `fill`
@@ -196,6 +209,7 @@ Move the legend to the top with `theme(legend.position = "top")`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_waffle
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -205,7 +219,7 @@ Move the legend to the top with `theme(legend.position = "top")`
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_waffle <- labs(
-  title = "Waffle chart of palmer penguin species",
+  title = "Palmer penguin species",
   x = "", y = "", fill = "Species")
 ggp2_waffle <- ggplot(data = waffle_peng, 
        aes(x = x, 
@@ -236,7 +250,7 @@ ggp2_waffle +
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_waffle <- labs(
-  title = "Waffle chart of palmer penguin species",
+  title = "Palmer penguin species",
   x = "", y = "", fill = "Species")
 ggp2_waffle <- ggplot(data = waffle_peng, 
        aes(x = x, 

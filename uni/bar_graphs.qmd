@@ -1,9 +1,11 @@
 ---
-title: "Bar-graphs"
+title: "Bar graphs"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -91,11 +93,11 @@ ggp2_bar +
 ```
 
 ::: {style="font-size: 1.10em; color: #02577A;"}
-***Does your data have...***
+**This graph requires:**
 :::
 
-::: {style="font-size: 0.90em; color: #38B44A;"}
-`r emo::ji("check")` a categorical variable (i.e., with non-numeric value levels)
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
 :::
 
 ::::
@@ -104,7 +106,9 @@ ggp2_bar +
 
 A bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!). 
 
-Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value.
+Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value. 
+
+In `ggplot2`, bar charts can be built using `geom_bar()` (see also: [`geom_col()`](https://mjfrigaard.github.io/ggp2-gallery/geoms/geom_col.html)).
 
 ## Getting set up 
 
@@ -124,6 +128,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_bar
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -162,8 +167,6 @@ glimpse(penguins_bar)
 ::::
 
 ## The grammar
-
-In `ggplot2`, bar charts can be built using `geom_bar()` (see also: [`geom_col()`](https://mjfrigaard.github.io/ggp2-gallery/geoms/geom_col.html)).
 
 :::: {.panel-tabset}
 
@@ -244,25 +247,28 @@ ggp2_bar +
 
 ## More info
 
-Below we cover why `geom_bar(stat = "count")` produces the same result as `stat_count(geom = "bar")`. 
-
-The connection between statistical transformations and geoms is an important principle for building graphs (and mastering the grammar) with `ggplot2`: 
-We'll also show how to create bar charts with `geom_col()`. 
+- The connection between statistical transformations and geoms is an important principle for building graphs (and mastering the grammar) with `ggplot2`
+    - Below we cover why `geom_bar(stat = "count")` produces the same result as `stat_count(geom = "bar")`
 
 ::: {.column-margin}
-> "*You only need to set one of stat and geom: every geom has a default stat, and every stat a default geom.*" - [`ggplot2` book](https://ggplot2-book.org/layers.html#layers)
+"*every geom has a default stat, and every stat a default geom.*" - [`ggplot2` book](https://ggplot2-book.org/layers.html#layers)
 :::
+
+
+- Bar charts can also be created with `geom_col()`
 
 :::: {.panel-tabset}
 
-### `stat_`s and `geom_`s
+### stats and geoms
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **stat_count():**
 :::
 
 ::: {style="font-size: 0.85em;"}
-The default `stat` argument in `geom_bar()` is set to `"count"`, which *counts the number of cases at each `x` position*, so it's ideal for categorical variables (or factors). The `stat_count()` function can also be used to create bar-graphs using the `geom` argument.  
+The default `stat` argument in `geom_bar()` is set to `"count"`, which '*counts the number of cases at each `x` position*', so it's ideal for categorical variables (or factors). 
+
+The `stat_count()` function can also be used to create bar-graphs using the `geom` argument.  
 
 The link between `geom_`**geom_name**`(stat = "`**stat_name**`")` and `stat_`**stat_name**`(geom = "`**geom_name**`")` is shown below:
 :::

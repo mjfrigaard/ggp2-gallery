@@ -3,7 +3,9 @@ title: "Histograms"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -79,7 +81,7 @@ penguins <- palmerpenguins::penguins
 labs_histogram <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",
-  x = "Flipper length (millimeters)")
+  x = "Flipper length (mm)")
 ggp2_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm)) + 
      geom_histogram() 
@@ -88,10 +90,10 @@ ggp2_hist +
 ```
 
 ::: {style="font-size: 1.10em; color: #02577A;"}
-***Does your data have...***
+**This graph requires:**
 :::
 
-::: {style="font-size: 0.90em; color: #38B44A;"}
+::: {style="font-size: 0.90em; color: #043b67;"}
 `r emo::ji("check")` a numeric (continuous) variable
 :::
 
@@ -121,6 +123,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_histogram
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -184,6 +187,7 @@ Adjust the `bins` accordingly
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_histogram
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -206,19 +210,9 @@ ggp2_hist +
 
 ### Graph
 
-<!--
-:::: {.column-margin}
-::: {style="font-size: 0.95em;"}
-
-:::
-::::
--->
-
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
 :::
-
-
 
 ```{r}
 #| label: create_graph_histogram
@@ -228,7 +222,6 @@ ggp2_hist +
 #| message: false
 #| column: page-inset-right
 #| layout-nrow: 1
-#| fig-cap: "The standard number of bins is `30`, but [*'you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'*](https://ggplot2.tidyverse.org/reference/geom_histogram.html)"
 labs_histogram <- labs(
   title = "Adult foraging penguins",
   subtitle = "Distribution of flipper length",
@@ -241,5 +234,10 @@ ggp2_hist <- ggplot(data = penguins,
 ggp2_hist + 
   labs_histogram
 ```
+
+
+::: {style="font-size: 0.85em;"}
+The standard number of bins is `30`, but ['you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.'](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+:::
 
 ::::

@@ -3,7 +3,9 @@ title: "Hexagon bin map"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -52,7 +54,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
@@ -88,9 +90,20 @@ ggp2_hex_b15 +
     labs_hex
 ```
 
-Hex-bins are a very similar to 2-D histograms, but instead of dividing the graph area into a grid, it's divided into hexagons. The number of points inside each per hexagon determine it's color. 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` two numeric (continuous) variable
+:::
 
 ::::
+
+## Description 
+
+Hex-bins are a very similar to 2-D histograms, but instead of dividing the graph area into a grid, it's divided into hexagons. The number of points inside each per hexagon determine it's color. 
+
 
 ## Getting set up
 
@@ -110,6 +123,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_hex
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -170,6 +184,8 @@ glimpse(penguins_hex)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `bill_length_mm` to the `x` and `flipper_length_mm` to the `y`
 
 Add the `geom_hex()` layer
@@ -179,6 +195,7 @@ Add the `geom_hex()` layer
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_hex
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -283,12 +300,6 @@ ggp2_hex_b15 +
 **SCALES:**
 :::
 
-::: {.column-margin}
-::: {style="font-size: 0.95em;"}
-Get a full list of available color palette's using `hcl_palettes(type = ` `"sequential")`
-:::
-:::
-
 ::: {style="font-size: 0.85em;"}
 We can adjust the color scale using  `scale_color_discrete_sequential()` and setting `aesthetics` to `"fill"`. 
 
@@ -325,16 +336,16 @@ ggplot(data = penguins_hex,
     labs_hex2
 ```
 
+::: {style="font-size: 0.85em;"}
+Get a full list of available color palette's using `hcl_palettes(type = ` `"sequential")`
+:::
+
 :::
 
 ### Options
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **OPTIONS:**
-:::
-
-::: {.column-margin}
-Bins can be set with `bins` (a single number) or `binwidth` (a numeric vector of `c(x, y)`)
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -367,7 +378,7 @@ ggplot(data = penguins_hex,
     aes(x = bill_length_mm, 
         y = flipper_length_mm, 
         fill = species)) + 
-    geom_hex(binwidth = c(1.2, 4),
+    geom_hex(binwidth = c(1.1, 3),
         linewidth = 0.5, 
         alpha = 3/4,
         color = "#000000") + 
@@ -376,6 +387,10 @@ ggplot(data = penguins_hex,
         palette = "Dark Mint") +
     labs_hex3
 ```
+:::
+
+::: {style="font-size: 0.85em;"}
+Bins can be set with `bins` (a single number) or `binwidth` (a numeric vector of `c(x, y)`)
 :::
 
 ::::

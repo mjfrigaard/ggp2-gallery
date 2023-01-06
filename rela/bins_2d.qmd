@@ -3,7 +3,9 @@ title: "2D Histograms"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -52,7 +54,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
@@ -90,13 +92,24 @@ ggp2_base +
      labs_2dhist 
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` two numeric (continuous) variables
+:::
+
+::::
+
+## Description 
+
 Standard histograms separate a variable's values into discrete groups, or 'bins,' which are arranged in increasing order across the `x` axis. The `y` axis displays the frequency (or count) of values within each bin. 
 
 Vertical bars capture the variable's distribution using the height of the bar to represent the number of values per 'bin', and the number of bars corresponds with the bin value (or 'bin-width'). 
 
 When we extend this display to two numerical/quantitative variables, the bins are used to divide the total graph area into a grid, and color is used to display the variation in frequency (or count) of both variable values that fall within each intersecting square.
 
-::::
 
 ## Getting set up
 
@@ -116,6 +129,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_2d_hist
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -174,6 +188,8 @@ glimpse(penguins_2dhist)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `bill_length_mm` to the `x` and `flipper_length_mm` to the `y`
 
 Add the `geom_bin2d()` layer
@@ -183,6 +199,7 @@ Add the `geom_bin2d()` layer
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_2d_hist
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -250,11 +267,10 @@ ggp2_2dhist +
 **BINS:**
 :::
 
-::: {.column-margin}
-The value for `bins` will be vary depending on the variable values--there is no correct number. If the number of `bins` is too low, the density may hide important nuances between the variables. If the number of `bins` is too high, the noise might drown out the signal.
-:::
 
 ::: {style="font-size: 0.85em;"}
+The value for `bins` will be vary depending on the variable values--there is no correct number. If the number of `bins` is too low, the density may hide important nuances between the variables. If the number of `bins` is too high, the noise might drown out the signal.
+
 Below we change the `bins` to `15` and save this layer as `ggp2_2dbins15`:
 :::
 

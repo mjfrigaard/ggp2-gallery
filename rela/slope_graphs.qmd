@@ -3,7 +3,9 @@ title: "Slope graphs"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -52,7 +54,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
@@ -99,11 +101,30 @@ ggp2_slope +
     labs_slope
 ```
 
+
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (date) variable
+:::
+
+::::
+
+## Description
+
 Slope graphs show changes in a numeric value (displayed on the `y` axis) typically over two points in time (along the `x` axis). The values for each group or unit of measurement are connected by lines, and any differences between the two time points are represented by the slope of the lines (hence the name, 'slope chart').
 
 We can build slope graphs in `ggplot2` using the `geom_line()` and `geom_point()` functions.
-
-::::
 
 ## Getting set up
 
@@ -123,6 +144,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_slope
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -189,6 +211,8 @@ glimpse(peng_slope)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `year` to the `x`, `avg_bill_depth_mm` to `y`, and `island` to `group`
 
 Add a `geom_line()` layer, mapping `island` to `color`, and setting the `size` to `2`
@@ -203,6 +227,7 @@ We'll adjust the `x` axis with `scale_x_continuous()`, manually setting the `bre
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_slope
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -312,14 +337,17 @@ glimpse(peng_grp_slope)
 
 :::
 
-### Code
+### Graph
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**CODE:**
+**GRAPH:**
 :::
 
 ::: {style="font-size: 0.85em;"}
+
 Create labels with `labs()` 
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Map `year` to the `x`, `avg_bill_depth_mm` to `y`, and `island` to `group`
 
@@ -336,58 +364,9 @@ Finally, we facet the graph by `sex`, adjust the `size` of the text, and move th
 
 ::: {style="font-size: 0.75em;"}
 ```{r}
-#| label: code_graph_grp_slope
-#| eval: false
-#| echo: true 
-#| warning: false
-#| message: false
-#| out-height: '100%'
-#| out-width: '100%'
-#| column: page-inset-right
-#| layout-nrow: 1
-labs_grp_slope <- labs(
-    title = "Changes in Bill Depth of Palmer Penguins", 
-    subtitle = "Years 2008 & 2009",
-    x = "", 
-    color = "Island")
-
-ggp2_grp_slope <- ggplot(data = peng_grp_slope, 
-    mapping = aes(x = year,
-                  y = avg_bill_depth_mm, 
-              group = island)) +
-    geom_line(aes(color = island), 
-                size = 2, show.legend = FALSE) +
-    geom_point(aes(color = island), 
-                size = 4) + 
-    scale_x_continuous(
-                breaks = c(2008, 2009), 
-                position = "top") + 
-    scale_y_continuous(name = "Bill Depth (mm)",
-                sec.axis = dup_axis(
-                            name = "Bill Depth (mm)")) + 
-    facet_wrap(. ~ sex, 
-                ncol = 2) +
-    theme_minimal(base_size = 14) +
-    theme(legend.position = "bottom",
-        axis.text.x = element_text(size = 9),
-        axis.text.y = element_text(size = 9),
-        strip.text = element_text(size = 10))
-
-ggp2_grp_slope + 
-    labs_grp_slope
-```
-:::
-
-### Graph
-
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**GRAPH:**
-:::
-
-```{r}
 #| label: create_graph_grp_slope
 #| eval: true
-#| echo: false
+#| echo: true
 #| warning: false
 #| message: false
 #| out-height: '100%'
@@ -395,35 +374,35 @@ ggp2_grp_slope +
 #| column: page-inset-right
 #| layout-nrow: 1
 labs_grp_slope <- labs(
-    title = "Changes in Bill Depth of Palmer Penguins", 
+    title = "Changes in Bill Depth of Palmer Penguins",
     subtitle = "Years 2008 & 2009",
-    x = "", 
+    x = "",
     color = "Island")
 
-ggp2_grp_slope <- ggplot(data = peng_grp_slope, 
+ggp2_grp_slope <- ggplot(data = peng_grp_slope,
     mapping = aes(x = year,
-                  y = avg_bill_depth_mm, 
-              group = island)) +
-    geom_line(aes(color = island), 
-                size = 2, show.legend = FALSE) +
-    geom_point(aes(color = island), 
-                size = 4) + 
-    scale_x_continuous(
-                breaks = c(2008, 2009), 
-                position = "top") + 
+        y = avg_bill_depth_mm,
+        group = island)) +
+    geom_line(aes(color = island),
+        size = 2, show.legend = FALSE) +
+    geom_point(aes(color = island),
+        size = 4) +
+    scale_x_continuous(breaks = c(2008, 2009),
+        position = "top") +
     scale_y_continuous(name = "Bill Depth (mm)",
-                sec.axis = dup_axis(
-                            name = "Bill Depth (mm)")) + 
-    facet_wrap(. ~ sex, 
-                ncol = 2) +
+        sec.axis = dup_axis(name = "Bill Depth (mm)")) +
+    facet_wrap(. ~ sex,
+        ncol = 2) +
     theme_minimal(base_size = 14) +
-    theme(legend.position = "bottom",
+    theme(
+        legend.position = "bottom",
         axis.text.x = element_text(size = 9),
         axis.text.y = element_text(size = 9),
         strip.text = element_text(size = 10))
 
-ggp2_grp_slope + 
+ggp2_grp_slope +
     labs_grp_slope
 ```
+:::
 
 ::::

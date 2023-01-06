@@ -3,7 +3,9 @@ title: "Density Contours"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -119,11 +121,19 @@ ggp2_dnsty_2d_fill +
   labs_dnsty_2d
 ```
 
-Density contours (or 2-D density plots) are helpful for displaying differences in values between two numeric (continuous) variables. 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
 
-In [topographical maps](https://en.wikipedia.org/wiki/Topography), contour lines are drawn around areas of equal elevation above sea-level. In density contours, the contour lines are drawn around the areas our data occupy (essentially replacing sea-level as '*an area without any x or y values.*')
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
 
-Specifically, the contour lines outline areas on the graph with differing point densities, and semi-transparent colors (gradient) can be added to further highlight the separate regions.
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` two numeric (continuous) variables
+:::
+
+
 
 <!--
 This technique works well when the point density changes slowly
@@ -131,6 +141,14 @@ across both the x and the y dimensions.
 -->
 
 ::::
+
+## Description
+
+Density contours (or 2-D density plots) are helpful for displaying differences in values between two numeric (continuous) variables. 
+
+In [topographical maps](https://en.wikipedia.org/wiki/Topography), contour lines are drawn around areas of equal elevation above sea-level. In density contours, the contour lines are drawn around the areas our data occupy (essentially replacing sea-level as '*an area without any x or y values.*')
+
+Specifically, the contour lines outline areas on the graph with differing point densities, and semi-transparent colors (gradient) can be added to further highlight the separate regions.
 
 ## Getting set up
 
@@ -150,6 +168,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_geom_density_2d
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -204,6 +223,8 @@ glimpse(peng_dnsty_2d)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Create two values for extending the range of the `x` and `y` axis (`x_min`/`x_max` and `y_min`/`y_max`) 
 
 Map `bill_length_mm` to `x` and `flipper_length_mm` to `y`
@@ -218,6 +239,7 @@ Add the `geom_density_2d()`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_geom_density_2d
+#| code-fold: show
 #| eval: false
 #| echo: true
 #| warning: false
@@ -309,7 +331,7 @@ ggp2_dnsty_2d +
 
 ::::
 
-## Layers
+## More info
 
 We're going to break down how to create the density contour layer-by-layer using the `stat_density_2d()` function (which allows us to access some of the inner-workings of `geom_density_2d()`)
 
@@ -325,6 +347,8 @@ We're going to break down how to create the density contour layer-by-layer using
 ::: {style="font-size: 0.85em;"}
 
 Create a new set of labels
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Build a base layer: 
 
@@ -507,26 +531,6 @@ fill_sdens_2d <- stat_sdens_2d +
   )
 fill_sdens_2d +
   labs_sdens_2d
-
-# # patchwork plot 2
-# ggp2 <- fill_sdens_2d +
-#   labs(
-#     x = "Bill Length (mm)",
-#     y = "Flipper length (mm)"
-#   ) +
-#   theme(
-#     axis.title = element_text(size = 8),
-#     axis.text = element_text(size = 6),
-#     legend.text = element_text(size = 6),
-#     legend.title = element_text(size = 7, face = "bold")
-#   )
-# # patch
-# ggp1 + patchwork::guide_area() +
-#   ggp2 + patchwork::guide_area() +
-#   patchwork::plot_layout(ncol = 2, guides = "keep") +
-#   plot_annotation(
-#     title = "stat_density_2d() +  scale_fill_gradient()"
-#   )
 ```
 
 :::
@@ -592,38 +596,6 @@ pnts_sdens_2d <- fill_sdens_2d +
     alpha = 2 / 3)
 pnts_sdens_2d +
   labs_sdens_2d
-
-# patchwork 3
-# ggp3 <- stat_sdens_2d +
-#   scale_fill_gradient(
-#     low = "#ffffff",
-#     high = "#404040",
-#     guide = "none"
-#   ) +
-#   geom_point(aes(color = species),
-#     size = 1.2,
-#     alpha = 2 / 3
-#   ) +
-#   labs(
-#     x = "Bill Length (mm)",
-#     y = "Flipper length (mm)"
-#   ) +
-#   theme(
-#     axis.title = element_text(size = 8),
-#     axis.text = element_text(size = 6),
-#     legend.text = element_text(size = 6),
-#     legend.title = element_text(size = 7, face = "bold")
-#   )
-# # patch
-# ggp2 + patchwork::guide_area() +
-#   ggp3 + patchwork::guide_area() +
-#   patchwork::plot_layout(
-#     ncol = 2,
-#     guides = "keep"
-#   ) +
-#   patchwork::plot_annotation(
-#     title = "scale_fill_gradient() + geom_point()"
-#   )
 ```
 :::
 
@@ -645,6 +617,8 @@ In the previous plot, we used the `species` variable in the `geom_point()` layer
 ::: {style="font-size: 0.85em;"}
 
 Re-create the labels 
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Build a `geom_density_2d()` layer:   
 
@@ -714,6 +688,8 @@ ggp2_dnsty_2d_pnts +
 ::: {style="font-size: 0.85em;"}
 
 Re-create the labels
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Build the base/limits: 
 
@@ -841,7 +817,7 @@ ggp2_dnsty_2d_facet +
 
 ::::
 
-## More 2-D densities  
+## Using fill and line color  
 
 In the previous section, we defined the color values used in `geom_density_2d_filled()` with `scale_discrete_manual()`. Below we give an example using the default colors: 
 
@@ -857,6 +833,8 @@ In the previous section, we defined the color values used in `geom_density_2d_fi
 ::: {style="font-size: 0.85em;"}
 
 Re-create the labels
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Build the base/limits: 
 

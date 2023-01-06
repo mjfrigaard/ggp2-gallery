@@ -3,7 +3,9 @@ title: "Grouped Box-plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -87,11 +89,25 @@ ggp2_grp_boxplots +
   labs_grp_boxplots
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
+
+::::
+
+## Description 
+
 Grouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
 
 The five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges.
-
-::::
 
 ## Getting set up
 
@@ -111,6 +127,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_grp_boxplots
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -161,6 +178,8 @@ glimpse(peng_box)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `island` to the `x` axis and to `fill`
 
 Map `bill_length_mm` to the `y` axis
@@ -174,6 +193,7 @@ Remove the legend with `show.legend = FALSE`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_grp_boxplots
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false

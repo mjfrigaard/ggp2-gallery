@@ -42,7 +42,7 @@ website:
           - dist/overlapping_histograms.qmd
           - dist/overlapping_frequency_polygons.qmd
           - dist/overlapping_dot_plots.qmd
-          - dist/bee_swarm_plots.qmd
+          - dist/beeswarm_plots.qmd
           - dist/overlapping_stacked_density_plots.qmd
           - dist/ridgeline_plots.qmd
           - dist/grouped_box_plots.qmd
@@ -55,6 +55,7 @@ website:
           - rela/bubble_charts.qmd
           - rela/grouped_bubble_charts.qmd
           - rela/line_graphs.qmd
+          - rela/grp_line_graphs.qmd
           - rela/alluvial_charts.qmd
           - rela/parallel_sets.qmd
           - rela/bump_charts.qmd

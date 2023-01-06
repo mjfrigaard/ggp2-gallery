@@ -3,7 +3,11 @@ title: "Overlapping Histograms"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
+    out-height: '100%'
+    out-width: '100%'
 execute:
   warning: false
   message: false
@@ -72,7 +76,7 @@ library(ggplot2)
 penguins <- palmerpenguins::penguins
 labs_ovrlp_hist <- labs(
   title = "Adult foraging penguins",
-  x = "Flipper length (millimeters)", 
+  x = "Flipper length (mm)", 
   fill = "Species")
 ggp2_ovrlp_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm, 
@@ -82,9 +86,23 @@ ggp2_ovrlp_hist +
   labs_ovrlp_hist
 ```
 
-Overlapping histograms allow us to compare distributions across the groups of a categorical (or ordinal) variable.
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
 
 ::::
+
+## Description
+
+Overlapping histograms allow us to compare distributions across the groups of a categorical (or ordinal) variable.
 
 ## Getting set up
 
@@ -104,6 +122,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_ovrlp_hist
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -155,6 +174,8 @@ glimpse(penguins)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `flipper_length_mm` to the `x` axis and `species` to `fill` 
 
 Set `alpha` to `2/3` inside `geom_histogram()`
@@ -164,6 +185,7 @@ Set `alpha` to `2/3` inside `geom_histogram()`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_ovrlp_hist
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -174,7 +196,7 @@ Set `alpha` to `2/3` inside `geom_histogram()`
 #| layout-nrow: 1
 labs_ovrlp_hist <- labs(
   title = "Adult foraging penguins",
-  x = "Flipper length (millimeters)", 
+  x = "Flipper length (mm)", 
   fill = "Species")
 ggp2_ovrlp_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm, 
@@ -187,16 +209,16 @@ ggp2_ovrlp_hist +
 
 ### Graph
 
+::: {.column-margin}
+Experiment with different `binwidth`s when comparing distributions across groups. 
+:::
+
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
 :::
 
 ::: {style="font-size: 0.85em;"}
 Histograms work by dividing the variable provided to `x` [*into bins and counting the number of observations in each bin.*](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
-:::
-
-::: {.column-margin}
-Experiment with different `binwidth`s when comparing distributions across groups. 
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -212,7 +234,7 @@ Experiment with different `binwidth`s when comparing distributions across groups
 #| layout-nrow: 1
 labs_ovrlp_hist <- labs(
   title = "Adult foraging penguins",
-  x = "Flipper length (millimeters)", 
+  x = "Flipper length (mm)", 
   fill = "Species")
 ggp2_ovrlp_hist <- ggplot(data = penguins,
      aes(x = flipper_length_mm, 

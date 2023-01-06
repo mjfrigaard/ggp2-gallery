@@ -3,7 +3,9 @@ title: "Parallel Sets"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -53,7 +55,7 @@ devtools::install_github("thomasp85/ggforce")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
@@ -110,6 +112,22 @@ ggp2_psets_labs +
     labs_psets
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` three categorical variables     
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric variable of counts
+:::
+
+::::
+
+## Description
+
 Parallel sets (also referred to as Sankey diagrams or Alluvial charts) show the counts of categorical variables connected via a two-sided parallel display (or 'sets'). Parallel sets can also be used to show different states of paired dependent relationships (such as input vs output), or time 1 vs time 2.
 
 The height of the connecting bands *between* the categories on the `x` axis represent the relative counts for each discrete level (displayed on the `y` axis). The levels *within* each variable are represented with color. 
@@ -117,8 +135,6 @@ The height of the connecting bands *between* the categories on the `x` axis repr
 We can build parallel set diagrams with the [`ggforce` package](https://ggforce.data-imaginist.com/index.html).  
 
 Also check out [alluvial charts.](https://mjfrigaard.github.io/ggp2-gallery/rela/alluvial_charts.html)
-
-::::
 
 ## Getting set up 
 
@@ -138,6 +154,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_parallel_sets
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -198,6 +215,8 @@ dplyr::glimpse(para_set_peng)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `x` to `x`, `id` to `id`, `y` to `split`, and `value` to `value`
 
 In the `geom_parallel_sets()` function, map `sex` to `fill` and manually set the `alpha` (opacity) and the `axis.width` 
@@ -215,6 +234,7 @@ Finally, remove the `x` title with `axis.title.x = element_blank()`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_parallel_sets
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -311,7 +331,7 @@ If the categories have long names, you can move the location of the labels *outs
 ### Labeling sets
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
-**PARALLEL SETS LABELLING:**
+**LABELS:**
 :::
 
 ::: {style="font-size: 0.85em;"}

@@ -3,7 +3,9 @@ title: "Grouped Scatter-Plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -52,7 +54,7 @@ install.packages("palmerpenguins")
 
 
 
-:::: {.callout-tip collapse="false" icon=false}
+:::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
 **Should I use this graph?**
@@ -86,11 +88,26 @@ ggp2_grp_scatter +
   labs_grp_scatter
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` two numeric (continuous) variable
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+
+::::
+
+## Description 
+
 Grouped scatter-plots display the relationships between two continuous variables across a *third* categorical variable.
 
 The `x` and `y` position displays the relationship between the two continuous variables, and color is used to distinguish between the categorical levels.
-
-::::
 
 ## Getting set up
 
@@ -110,6 +127,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_grp_scatter
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -160,6 +178,8 @@ glimpse(penguins)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `bill_length_mm` to the `x` axis 
 
 Map `flipper_length_mm` to the `y` axis  
@@ -171,6 +191,7 @@ Map `species` to `color` inside the `geom_point()`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_grp_scatter
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false

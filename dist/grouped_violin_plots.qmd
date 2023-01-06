@@ -3,7 +3,9 @@ title: "Grouped Violin-Plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -87,9 +89,23 @@ ggp2_grp_violin +
   labs_grp_violin
 ```
 
-A ‘violin plot’ is a variation of a density or ridgeline plot,  where the distribution is plotted symmetrically, creating a two-sided, smoothed distribution.
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
 
 ::::
+
+## Description 
+
+A ‘violin plot’ is a variation of a density or ridgeline plot,  where the distribution is plotted symmetrically, creating a two-sided, smoothed distribution.
 
 ## Getting set up
 
@@ -109,6 +125,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_grp_violin
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -156,6 +173,8 @@ glimpse(peng_violin)
 ::: {style="font-size: 0.85em;"}
 
 Create labels with `labs()`
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Map `island` to the `x`, `bill_length_mm` to the `y`, and  `island` to `fill` 
 
@@ -237,12 +256,12 @@ ggp2_grp_violin +
 
 ### Quartiles
 
-::: {style="font-size: 0.90em; color: #1e83c8;"}
-**draw_quantiles:**
-:::
-
 ::: {.column-margin}
 Change the shape of the line with [`linetype` and `linewidth`](https://ggplot2.tidyverse.org/reference/geom_violin.html#aesthetics).
+:::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**draw_quantiles:**
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -264,7 +283,8 @@ ggplot(data = peng_violin,
        aes(x = island, 
            y = bill_length_mm, 
         fill = island)) +
-  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75),
+  geom_violin(
+      draw_quantiles = c(0.25, 0.5, 0.75),
       alpha = 1/2, 
       linewidth = 0.5, 
       show.legend = FALSE) 
@@ -350,8 +370,5 @@ grp_violin_bw4p5 +
     labs(caption = "bw = 4.5")
 ```
 :::
-
-
-
 
 ::::

@@ -58,7 +58,7 @@ install.packages("palmerpenguins")
 ## Complex lines in `ggplot2`
 
 
-::: {style="color: #38B44A;"}
+::: {style="color: #043b67;"}
 #### Complex line geoms:
 :::
   

@@ -3,7 +3,9 @@ title: "Cleveland Dot Plot"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -91,16 +93,30 @@ ggp2_clev_dots <- ggplot(data = peng_clev_dots,
     mapping = aes(x = med_flip_length_mm, y = fct_rev(island))) +
         geom_line(aes(group = island), linewidth = 0.75) + 
         geom_point(aes(color = sex), size = 2.25) 
-
-ggp2_clev_dots + 
+# glimpse(peng_clev_dots)
+ggp2_clev_dots +
     labs_clev_dots
 ```
+
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+
+`r emo::ji("check")` a numeric (continuous) variable
+
+`r emo::ji("check")` at least one categorical variable (with two levels)  
+
+:::
+
+::::
+
+## Description 
 
 A Cleveland dot plot displays differences in a numerical variable for different levels of a categorical variable.
 
 Typically, the graph contains two points representing the numerical value on the `y` axis, differentiated by color. A line connecting the two points represents the difference between the two categorical levels (the width of the line is the size of the difference).
-
-::::
 
 ## Getting set up
 
@@ -120,6 +136,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_clev_dots
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -176,6 +193,8 @@ glimpse(peng_clev_dots)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map the `med_flip_length_mm` to the `x` axis, and `island` to the `y` axis, but wrap `island` in `forcats::fct_rev()`.
 
 Add `geom_line()`, and map `island` to the `group` aesthetic. Set the `linewidth` to `0.75`
@@ -187,6 +206,7 @@ Add `geom_point()` and map `sex` to `color` aesthetic. Set the `size` to `2.25`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_clev_dots
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -198,8 +218,7 @@ labs_clev_dots <- labs(
     subtitle = "Male and female penguins",
     x = "Median Flipper Length",
     y = "Island",
-    color = "Sex"
-)
+    color = "Sex")
 
 ggp2_clev_dots <- ggplot(data = peng_clev_dots,
                 mapping = aes(x = med_flip_length_mm, 
@@ -273,6 +292,7 @@ Finally, convert `median_measure` into a factor.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: data_code_clev_dots2
+#| code-fold: show
 #| eval: true
 #| echo: true
 peng_clev_dots2 <- palmerpenguins::penguins |>
@@ -302,6 +322,8 @@ glimpse(peng_clev_dots2)
 
 Re-create labels
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map the `median_value` to the `x` axis, and `island` to the `y` axis, but wrap `island` in `forcats::fct_rev()`.
 
 Add `geom_line()`, and map `island` to the `group` aesthetic. Set the `linewidth` to `0.75`
@@ -309,6 +331,8 @@ Add `geom_line()`, and map `island` to the `group` aesthetic. Set the `linewidth
 Add `geom_point()` and map `sex` to `color` aesthetic. Set the `size` to `2.25`
 
 Add `facet_wrap()` and facet by `median_measure`, setting `shrink` to `TRUE` and `scales` to `"free_x"`
+
+Move the legend with `theme(legend.position = "top")`
 
 :::
 
@@ -326,19 +350,19 @@ labs_clev_dots2 <- labs(
     subtitle = "Male and female penguins",
     x = "Median Bill Length/Depth (mm)",
     y = "Island",
-    color = "Sex"
-)
+    color = "Sex")
 
 ggp2_clev_dots2 <- ggplot(data = peng_clev_dots2,
-                mapping = aes(x = median_value, 
-                              y = fct_rev(island))) +
-                    geom_line(aes(group = island), 
-                        linewidth = 0.75) +
-                    geom_point(aes(color = sex), 
-                        size = 2.25) +
-                    facet_wrap(. ~ median_measure, 
-                        shrink = TRUE, 
-                        scales = "free_x")
+    mapping = aes(x = median_value,
+        y = fct_rev(island))) +
+    geom_line(aes(group = island),
+        linewidth = 0.75) +
+    geom_point(aes(color = sex),
+        size = 2.25) +
+    facet_wrap(. ~ median_measure,
+        shrink = TRUE,
+        scales = "free_x") +
+    theme(legend.position = "top")
 
 ggp2_clev_dots2 +
     labs_clev_dots2

@@ -3,7 +3,9 @@ title: "Summary bar-graphs"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -52,8 +54,6 @@ install.packages("palmerpenguins")
 library(palmerpenguins)
 ```
 
-
-
 :::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
@@ -92,11 +92,21 @@ ggp2_sum_col +
     labs_sum_col
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+`r emo::ji("check")` a numeric (continuous) variable
+
+`r emo::ji("check")` a categorical variable 
+
+::::
+
+## Description
+
 Summary bar-graphs display the sum (or total) of a numerical variable across the levels of a second categorical variable. Color is used to make comparisons and distinguish between groups (or levels) of the categorical variable. 
 
 In `ggplot2`, we can create summary bar-graphs with `geom_bar()`.
-
-::::
 
 ## Getting set up
 
@@ -116,6 +126,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_sum_col
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -134,7 +145,7 @@ library(ggplot2)
 :::
 
 ::: {.column-margin}
-![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="30%" height="30%"}
+![Artwork by @allison_horst](../www/lter_penguins.png){fig-align="right" width="100%" height="100%"}
 :::
 
 ::: {style="font-size: 0.85em;"}
@@ -174,6 +185,8 @@ dplyr::glimpse(peng_sum_col)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `island` to `x` and `body_mass_kg` to `y`
 
 *Inside* the `aes()` of `geom_col()`, map `island` to `fill` 
@@ -185,6 +198,7 @@ Map `island` to `x` and `body_mass_kg` to `y`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_sum_col
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -246,26 +260,7 @@ Note that we didn't have to write any code to calculate the total `body_mass_g` 
 
 That's because `ggplot2` does this for us!
 
-:::: {.column-margin}
-
-**`_bar()` vs. `_col()`:**
-
-::: {style="font-size: 0.85em; color: #1da2d8;"}
-`geom_bar()` will map a categorical variable to the `x` *or* `y` and display counts for the discrete levels (see [`stat_count()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) for more info)
-:::
-
-::::
-
-:::: {.column-margin}
-
-::: {style="font-size: 0.85em; color: #660066;"}
-`geom_col()` will map *both* `x` *and* `y` aesthetics, and is used when we want to display numerical (quantitative) values across the levels of a categorical variable. `geom_col()` assumes these values have been created in their own column (see  [`stat_identity()`](https://ggplot2.tidyverse.org/reference/stat_identity.html) for more info)
-:::
-
-::::
-
 :::: {.panel-tabset}
-
 ### Summary
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
@@ -276,7 +271,6 @@ That's because `ggplot2` does this for us!
 
 If we pass a categorical variable to the `x` (like `island`) and a continuous variable to `y` (like `body_mass_kg`), `geom_col()` will calculate the `sum()` of `y` by levels of `x`
 :::
-
 
 ::: {style="font-size: 0.85em;"}
 We can see the underlying summary of budget using `dplyr`’s `group_by()` and `summarise()` functions.
@@ -359,6 +353,17 @@ ggplot(data = peng_sum_col,
         stat = "identity")  +
     labs_sum_col
 ```
+:::
+
+::: {style="font-size: 0.90em; color: #1e83c8;"}
+**`geom_bar()` vs. `geom_col()`:**
+:::
+
+::: {style="font-size: 0.85em;"}
+`geom_bar()` will map a categorical variable to the `x` *or* `y` and display counts for the discrete levels (see [`stat_count()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) for more info)
+
+
+`geom_col()` will map *both* `x` *and* `y` aesthetics, and is used when we want to display numerical (quantitative) values across the levels of a categorical variable. `geom_col()` assumes these values have been created in their own column (see  [`stat_identity()`](https://ggplot2.tidyverse.org/reference/stat_identity.html) for more info)
 :::
 
 ::::

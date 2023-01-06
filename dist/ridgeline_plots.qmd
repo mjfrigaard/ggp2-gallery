@@ -3,7 +3,9 @@ title: "Ridgeline Plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -87,9 +89,23 @@ ggp2_ridges +
   labs_ridges
 ```
 
-If we want to plot density curves but retain the interpretability of the axes, consider comparing multiple distributions using the [`ggridges` package](https://wilkelab.org/ggridges/).
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
 
 ::::
+
+## Description 
+
+If we want to plot density curves but retain the interpretability of the axes, consider comparing multiple distributions using the [`ggridges` package](https://wilkelab.org/ggridges/).
 
 ## Getting set up
 
@@ -109,6 +125,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_ridges
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -159,6 +176,8 @@ glimpse(peng_ridges)
 
 Create labels with `labs()`
 
+Initialize the graph with `ggplot()` and provide `data`
+
 Map `bill_length_mm` to the `x` axis
 
 Map `island` to the `y` axis and `fill`
@@ -173,6 +192,7 @@ Remove the legend with `show.legend = FALSE`
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_ridges
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false

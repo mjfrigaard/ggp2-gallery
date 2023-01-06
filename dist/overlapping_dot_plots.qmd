@@ -3,7 +3,9 @@ title: "Overlapping Dot-Plots"
 format:
   html:
     toc: true
-    code-fold: show
+    toc-location: right
+    toc-title: Contents
+    code-fold: true
     out-height: '100%'
     out-width: '100%'
 execute:
@@ -87,10 +89,25 @@ ggp2_ovrlp_dotplot +
   labs_ovrlp_dotplot
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+**This graph requires:**
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a categorical variable      
+:::
+
+::: {style="font-size: 0.90em; color: #043b67;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
+
+::::
+
+## Description
+
 Overlapping dot-plots display distributions of a continuous variable across the levels of a categorical variable.
 
 To adjust the dot-plot display to look similar to a histogram or frequency polygon, change the `method` and `binposition` arguments.
-::::
 
 ## Getting set up
 
@@ -110,6 +127,7 @@ Install packages.
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: pkg_code_ovrlp_dot_plots
+#| code-fold: show
 #| eval: true
 #| echo: true
 #| warning: false
@@ -152,6 +170,12 @@ dplyr::glimpse(peng_dotplot)
 
 ### Code
 
+::: {.column-margin}
+- [`binwidth`](https://ggplot2.tidyverse.org/reference/geom_dotplot.html) = *When method is "histodot", this specifies bin width. Defaults to 1/30 of the range of the data*
+
+- [`binpositions`](https://ggplot2.tidyverse.org/reference/geom_dotplot.html) = *"all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.*
+:::
+
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **CODE:**
 :::
@@ -159,6 +183,8 @@ dplyr::glimpse(peng_dotplot)
 ::: {style="font-size: 0.85em;"}
 
 Create labels with `labs()`
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Map `flipper_length_mm` to `x`
 
@@ -171,6 +197,7 @@ Inside `geom_dotplot`, set `method` to `"histodot"`, `binwidth` to `1.35`, and `
 ::: {style="font-size: 0.75em;"}
 ```{r}
 #| label: code_graph_ovrlp_dot_plots
+#| code-fold: show
 #| eval: false
 #| echo: true 
 #| warning: false
@@ -200,12 +227,6 @@ ggp2_ovrlp_dotplot +
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**
-:::
-
-::: {.column-margin}
-- `binwidth` = [*When method is "histodot", this specifies bin width. Defaults to 1/30 of the range of the data*](https://ggplot2.tidyverse.org/reference/geom_dotplot.html)
-
-- `binpositions` = [*"all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.*](https://ggplot2.tidyverse.org/reference/geom_dotplot.html)
 :::
 
 ```{r}
