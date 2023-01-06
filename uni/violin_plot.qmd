@@ -1,5 +1,5 @@
 ---
-title: "Violin Plots"
+title: "Violin plots"
 format:
   html:
     toc: true

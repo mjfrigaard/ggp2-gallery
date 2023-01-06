@@ -1,5 +1,5 @@
 ---
-title: "Grouped Scatter-Plots"
+title: "Grouped scatter plots"
 format:
   html:
     toc: true

@@ -474,11 +474,11 @@ The following graphs are used to display **amounts**:
 
 -   [x] Summarized column-graphs
 
--   [x] Overlapping bar-graphs
+-   [x] Overlapping bar graphs
 
--   [x] Side-to-side (`"dodge"`) bar-graphs
+-   [x] Side-to-side (`"dodge"`) bar graphs
 
--   [x] Side-to-side (`"dodge2"`) bar-graphs
+-   [x] Side-to-side (`"dodge2"`) bar graphs
 
 -   [x] Waffle charts
 

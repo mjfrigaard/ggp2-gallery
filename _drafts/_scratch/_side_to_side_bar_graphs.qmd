@@ -1,5 +1,5 @@
 ---
-title: "Side-to-side (`'dodge'`) bar-graphs"
+title: "Side-to-side (`'dodge'`) bar graphs"
 execute:
   warning: false
   message: false

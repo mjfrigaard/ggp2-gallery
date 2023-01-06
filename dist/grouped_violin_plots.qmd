@@ -1,5 +1,5 @@
 ---
-title: "Grouped Violin-Plots"
+title: "Grouped violin plots"
 format:
   html:
     toc: true

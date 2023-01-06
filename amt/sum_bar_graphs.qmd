@@ -1,5 +1,5 @@
 ---
-title: "Summary bar-graphs"
+title: "Summary bar graphs"
 format:
   html:
     toc: true
@@ -104,9 +104,9 @@ ggp2_sum_col +
 
 ## Description
 
-Summary bar-graphs display the sum (or total) of a numerical variable across the levels of a second categorical variable. Color is used to make comparisons and distinguish between groups (or levels) of the categorical variable. 
+Summary bar graphs display the sum (or total) of a numerical variable across the levels of a second categorical variable. Color is used to make comparisons and distinguish between groups (or levels) of the categorical variable. 
 
-In `ggplot2`, we can create summary bar-graphs with `geom_bar()`.
+In `ggplot2`, we can create summary bar graphs with `geom_bar()`.
 
 ## Getting set up
 
@@ -331,7 +331,7 @@ palmerpenguins::penguins |>
 :::
 
 ::: {style="font-size: 0.85em;"}
-The `geom_bar()` geom will also create grouped bar-graphs, but we have to switch the `stat` argument to `"identity"`.
+The `geom_bar()` geom will also create grouped bar graphs, but we have to switch the `stat` argument to `"identity"`.
 :::
 
 ::: {style="font-size: 0.75em;"}

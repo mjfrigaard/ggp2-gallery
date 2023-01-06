@@ -1,5 +1,5 @@
 ---
-title: "Alluvial Charts"
+title: "Alluvial charts"
 format:
   html:
     toc: true

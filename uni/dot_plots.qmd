@@ -1,5 +1,5 @@
 ---
-title: "Dot-plots"
+title: "Dot plots"
 format:
   html:
     toc: true
@@ -231,7 +231,7 @@ ggp2_dotplot +
 ```
 
 ::: {style="font-size: 0.85em;"}
-A downside of using dot-plots is the lack of interpretability of the `y` axis. 
+A downside of using dot plots is the lack of interpretability of the `y` axis. 
 :::
 
 ::::

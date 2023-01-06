@@ -1,5 +1,5 @@
 ---
-title: "Beeswarm Plots"
+title: "Beeswarm plots"
 format:
   html:
     toc: true

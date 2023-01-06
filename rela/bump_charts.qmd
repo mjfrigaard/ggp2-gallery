@@ -1,5 +1,5 @@
 ---
-title: "Bump Charts"
+title: "Bump charts"
 format:
   html:
     toc: true

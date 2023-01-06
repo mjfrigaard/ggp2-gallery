@@ -104,11 +104,11 @@ ggp2_bar +
 
 ## Description
 
-A bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!). 
+A bar graph (or bar chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!). 
 
-Bar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value. 
+Bar graphs can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value. 
 
-In `ggplot2`, bar charts can be built using `geom_bar()` (see also: [`geom_col()`](https://mjfrigaard.github.io/ggp2-gallery/geoms/geom_col.html)).
+In `ggplot2`, bar graphs can be built using `geom_bar()` (see also: [`geom_col()`](https://mjfrigaard.github.io/ggp2-gallery/geoms/geom_col.html)).
 
 ## Getting set up 
 
@@ -255,7 +255,7 @@ ggp2_bar +
 :::
 
 
-- Bar charts can also be created with `geom_col()`
+- Bar graphs can also be created with `geom_col()`
 
 :::: {.panel-tabset}
 
@@ -268,7 +268,7 @@ ggp2_bar +
 ::: {style="font-size: 0.85em;"}
 The default `stat` argument in `geom_bar()` is set to `"count"`, which '*counts the number of cases at each `x` position*', so it's ideal for categorical variables (or factors). 
 
-The `stat_count()` function can also be used to create bar-graphs using the `geom` argument.  
+The `stat_count()` function can also be used to create bar graphs using the `geom` argument.  
 
 The link between `geom_`**geom_name**`(stat = "`**stat_name**`")` and `stat_`**stat_name**`(geom = "`**geom_name**`")` is shown below:
 :::
@@ -310,7 +310,7 @@ ggp2_stat_count
 :::
 
 ::: {style="font-size: 0.85em;"}
-To create a bar-graph with `geom_col()`, the `count` variable needs to be computed before being mapped into the graph `y` aesthetic. 
+To create a bar graph with `geom_col()`, the `count` variable needs to be computed before being mapped into the graph `y` aesthetic. 
 :::
 
 

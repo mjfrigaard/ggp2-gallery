@@ -1,5 +1,5 @@
 ---
-title: "Overlapping Frequency Polygons"
+title: "Overlapping frequency polygons"
 format:
   html:
     toc: true

@@ -1,5 +1,5 @@
 ---
-title: "Grouped Bubble Graph"
+title: "Grouped bubble graph"
 format:
   html:
     toc: true

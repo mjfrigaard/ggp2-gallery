@@ -1,5 +1,5 @@
 ---
-title: "Cleveland Dot Plot"
+title: "Cleveland dot plot"
 format:
   html:
     toc: true

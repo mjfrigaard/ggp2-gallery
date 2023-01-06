@@ -1,5 +1,5 @@
 ---
-title: "Grouped bar-graphs"
+title: "Grouped bar graphs"
 format:
   html:
     toc: true
@@ -114,7 +114,7 @@ ggp2_grp_col +
 
 ## Description 
 
-`geom_col()` allows us to display 'grouped' numerical values across levels (or groups) of a categorical variable. Grouped bar-graphs assume the statistical measure (i.e., the value that the length of the bars will be derived from) is contained in a variable and mapped to the `x` or `y` aesthetic. 
+`geom_col()` allows us to display 'grouped' numerical values across levels (or groups) of a categorical variable. Grouped bar graphs assume the statistical measure (i.e., the value that the length of the bars will be derived from) is contained in a variable and mapped to the `x` or `y` aesthetic. 
 
 ## Getting set up
 

@@ -1,5 +1,5 @@
 ---
-title: "Raincloud Plots"
+title: "Raincloud plots"
 format:
   html:
     toc: true
@@ -97,7 +97,7 @@ ggplot(peng_raincloud,
     adjust = 0.6, # shape = adjust * density estimator
     .width = 0, # can use probabilities or 0
     point_colour = NA, # removes the point in center
-    orientation = "horizontal", # like the box-plot
+    orientation = "horizontal", # like the box plot
     height = 0.5, # height of curve
     justification = -0.3) + # shift vertically above box
     geom_point(aes(fill = species),
@@ -163,7 +163,7 @@ ggp2_raincloud_x +
 
 ## Description 
 
-Raincloud plots are a combination of density graph, a box-plot, and a beeswarm (or jitter) plot, and are used to compare distributions of quantitative/numerical variables across the levels of a categorical (or discrete) grouping variable.
+Raincloud plots are a combination of density graph, a box plot, and a beeswarm (or jitter) plot, and are used to compare distributions of quantitative/numerical variables across the levels of a categorical (or discrete) grouping variable.
 
 We can use the [`raincloudplots` package](https://github.com/jorvlan/raincloudplots) to create raincloud plots, or they can be built using the [`ggdist` package](https://mjskay.github.io/ggdist/) and geoms from `ggplot2`.
 
@@ -370,7 +370,7 @@ Create labels with `labs()`
 
 Initialize the graph with `ggplot()` and provide `data`
 
-For the first layer, we create a box-plot with `geom_boxplot()`, but include notches and remove the outliers. 
+For the first layer, we create a box plot with `geom_boxplot()`, but include notches and remove the outliers. 
 
 :::
 
@@ -410,7 +410,7 @@ ggp2_box +
 
 ::: {style="font-size: 0.85em;"}
 
-We then add a horizontal density curve with `ggdist::stat_halfeye()`, mapping `species` to `fill`, and adjusting the size and shape of the density curve and shifting it slightly above the box-plot.
+We then add a horizontal density curve with `ggdist::stat_halfeye()`, mapping `species` to `fill`, and adjusting the size and shape of the density curve and shifting it slightly above the box plot.
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -429,7 +429,7 @@ ggp2_stat_halfeye <- ggp2_box +
     adjust = 0.6, # shape = adjust * density estimator
     .width = 0, # can use probabilities or 0
     point_colour = NA, # removes the point in center
-    orientation = "horizontal", # like the box-plot
+    orientation = "horizontal", # like the box plot
     height = 0.5, # height of curve
     justification = -0.3, # shift vertically above box
     show.legend = FALSE # don't need this 

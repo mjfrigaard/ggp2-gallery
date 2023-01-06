@@ -655,7 +655,7 @@ ggp2_fill_density +
 **Should I use this graph?**
 :::
 
-A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
+A mosaic plot is similar to a stacked bar graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
 
 We can build mosaic plots using the [`ggmosaic` package.](https://haleyjeppson.github.io/ggmosaic/)
 

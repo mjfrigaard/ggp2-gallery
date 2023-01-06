@@ -1,5 +1,5 @@
 ---
-title: "Frequency Polygons"
+title: "Frequency polygons"
 format:
   html:
     toc: true

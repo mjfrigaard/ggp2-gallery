@@ -1,5 +1,5 @@
 ---
-title: "Overlapping Dot-Plots"
+title: "Overlapping dot plots"
 format:
   html:
     toc: true
@@ -105,9 +105,9 @@ ggp2_ovrlp_dotplot +
 
 ## Description
 
-Overlapping dot-plots display distributions of a continuous variable across the levels of a categorical variable.
+Overlapping dot plots display distributions of a continuous variable across the levels of a categorical variable.
 
-To adjust the dot-plot display to look similar to a histogram or frequency polygon, change the `method` and `binposition` arguments.
+To adjust the dot plot display to look similar to a histogram or frequency polygon, change the `method` and `binposition` arguments.
 
 ## Getting set up
 

@@ -1,5 +1,5 @@
 ---
-title: "Grouped Box-plots"
+title: "Grouped box plots"
 format:
   html:
     toc: true
@@ -105,7 +105,7 @@ ggp2_grp_boxplots +
 
 ## Description 
 
-Grouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
+Grouped box plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
 
 The five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges.
 
@@ -268,7 +268,7 @@ ggp2_grp_boxplots +
 :::
 
 ::: {style="font-size: 0.85em;"}
-Add notches to the box-plot using the `notch = TRUE` and `notchwidth` arguments. 
+Add notches to the box plot using the `notch = TRUE` and `notchwidth` arguments. 
 :::
 
 
@@ -304,7 +304,7 @@ ggp2_grp_box_notch +
 :::
 
 ::: {style="font-size: 0.85em;"}
-Box-plots display outliers using points, and we can change the color these using the `outlier.colour` argument. Inside the `geom_boxplot()`, we map `island` to `color` and set `outlier.colour` to `NULL`:
+Box plots display outliers using points, and we can change the color these using the `outlier.colour` argument. Inside the `geom_boxplot()`, we map `island` to `color` and set `outlier.colour` to `NULL`:
 :::
 
 ::: {style="font-size: 0.75em;"}

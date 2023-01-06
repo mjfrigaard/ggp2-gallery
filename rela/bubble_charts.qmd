@@ -1,5 +1,5 @@
 ---
-title: "Bubble Charts"
+title: "Bubble charts"
 format:
   html:
     toc: true

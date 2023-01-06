@@ -1,5 +1,5 @@
 ---
-title: "Pie Charts"
+title: "Pie charts"
 format:
   html:
     toc: true

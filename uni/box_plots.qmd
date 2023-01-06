@@ -1,5 +1,5 @@
 ---
-title: "Box-Plots"
+title: "Box plots"
 format:
   html:
     toc: true
@@ -100,7 +100,7 @@ ggp2_boxplot +
 
 ## Description
 
-Box-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
+Box plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
 
 ## Getting set up
 
@@ -236,14 +236,14 @@ ggp2_boxplot +
 
 ### More Info
 
-Below we provide more information on interpreting box-plots. 
+Below we provide more information on interpreting Box plots. 
 
 :::: {.panel-tabset}
 
 ### `movies` data 
 
 ::: {style="font-size: 0.85em;"}
-We'll use the `ggplot2movies::movies` data to create a box-plot for movie `length`
+We'll use the `ggplot2movies::movies` data to create a box plot for movie `length`
 :::
 
 ::: {style="font-size: 0.75em;"}
@@ -284,7 +284,7 @@ head(movies_box)
 
 ::: {style="font-size: 0.85em;"}
 
-Below we create a box-plot of the `length` variable using the methods described above: 
+Below we create a box plot of the `length` variable using the methods described above: 
 
 :::
 
@@ -336,7 +336,7 @@ kableExtra::kable_paper(
 :::
 
 ::: {style="font-size: 0.85em;"}
-The figure below displays how each element in the box-plot represents each of the statistics using lines and points.
+The figure below displays how each element in the box plot represents each of the statistics using lines and points.
 :::
 
 :::: {.column-margin}

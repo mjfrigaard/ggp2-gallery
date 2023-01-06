@@ -111,7 +111,7 @@ movies_sum_budget <- movies_data |>
 movies_sum_budget
 
 # GROUPED COLUMN-GRAPHS 2 --------------------
-# average bar-graph data
+# average bar graph data
 peng_sum_col <- palmerpenguins::penguins |>
     dplyr::select(body_mass_g, island) |> 
     tidyr::drop_na() |> 

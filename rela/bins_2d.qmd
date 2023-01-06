@@ -1,5 +1,5 @@
 ---
-title: "2D Histograms"
+title: "2D histograms"
 format:
   html:
     toc: true

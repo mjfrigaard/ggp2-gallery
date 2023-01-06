@@ -604,8 +604,8 @@ url("./bootstrap-icons.woff?524846017b983fc8ded9325d94ed40f3") format("woff");
 .bi-file-arrow-down::before { content: "\f346"; }
 .bi-file-arrow-up-fill::before { content: "\f347"; }
 .bi-file-arrow-up::before { content: "\f348"; }
-.bi-file-bar-graph-fill::before { content: "\f349"; }
-.bi-file-bar-graph::before { content: "\f34a"; }
+.bi-file-bar graph-fill::before { content: "\f349"; }
+.bi-file-bar graph::before { content: "\f34a"; }
 .bi-file-binary-fill::before { content: "\f34b"; }
 .bi-file-binary::before { content: "\f34c"; }
 .bi-file-break-fill::before { content: "\f34d"; }
@@ -620,8 +620,8 @@ url("./bootstrap-icons.woff?524846017b983fc8ded9325d94ed40f3") format("woff");
 .bi-file-earmark-arrow-down::before { content: "\f356"; }
 .bi-file-earmark-arrow-up-fill::before { content: "\f357"; }
 .bi-file-earmark-arrow-up::before { content: "\f358"; }
-.bi-file-earmark-bar-graph-fill::before { content: "\f359"; }
-.bi-file-earmark-bar-graph::before { content: "\f35a"; }
+.bi-file-earmark-bar graph-fill::before { content: "\f359"; }
+.bi-file-earmark-bar graph::before { content: "\f35a"; }
 .bi-file-earmark-binary-fill::before { content: "\f35b"; }
 .bi-file-earmark-binary::before { content: "\f35c"; }
 .bi-file-earmark-break-fill::before { content: "\f35d"; }

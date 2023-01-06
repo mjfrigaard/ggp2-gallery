@@ -1,5 +1,5 @@
 ---
-title: "Overlapping bar-graphs"
+title: "Overlapping bar graphs"
 format:
   html:
     toc: true

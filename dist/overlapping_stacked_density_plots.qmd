@@ -1,5 +1,5 @@
 ---
-title: "Overlapping Density Plot"
+title: "Overlapping density plot"
 format:
   html:
     toc: true

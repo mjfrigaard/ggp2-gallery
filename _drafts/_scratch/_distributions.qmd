@@ -313,7 +313,7 @@ ggp2_ovrlp_freq_poly +
 **Should I use this graph?**
 :::
 
-We can use dot-plots to compare distributions of a continuous variable across the levels of a categorical variable, but we need to adjust the way the dots are displayed. 
+We can use dot plots to compare distributions of a continuous variable across the levels of a categorical variable, but we need to adjust the way the dots are displayed. 
 
 The `geom_dotplot()` function has adjustable `method` and `binposition` arguments that allow it to function similar to a histogram or frequency polygon. 
 
@@ -945,7 +945,7 @@ ggp2_ridges +
 **Should I use this graph?**
 :::
 
-Grouped box-plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
+Grouped box plots display five different statistical measures across a series of categories, or groups, of a discrete, ordinal, or interval variable.
 
 The five statistical measures are 1) the first quartile, 2) the second quartile, and 3) the third quartile. The fourth and fifth values are the largest/smallest values no further than 1.5 X inter-quartile range from the hinges.
 

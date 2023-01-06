@@ -1,5 +1,5 @@
 ---
-title: "Mosaic Plots"
+title: "Mosaic plots"
 format:
   html:
     toc: true
@@ -113,7 +113,7 @@ ggp2_mosaic +
 
 ## Description 
 
-A mosaic plot is similar to a stacked bar-graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
+A mosaic plot is similar to a stacked bar graph, but instead of only relying on height and color to display the relative amount for each value, mosaic plots also use width.
 
 Mosaic plot legends should be positioned on top or bottom and justified horizontally to preserve shape and improve readability. 
 
