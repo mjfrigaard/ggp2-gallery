@@ -89,11 +89,21 @@ ggp2_density +
   labs_density
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+***Does your data have...***
+:::
+
+::: {style="font-size: 0.90em; color: #38B44A;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
+
+::::
+
+## Description
+
 Density plots are similar to a histogram or frequency polygon, except the outline of the distribution has been ‘smoothed.’
 
 Instead of dividing the `x` axis into discrete ‘bins’ to create groupings for the variable's values, density plots transform the distribution according to a kernel density estimate.
-
-::::
 
 ## Getting set up
 
@@ -161,7 +171,9 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Map `flipper_length_mm` to the `x` axis
 
@@ -192,6 +204,12 @@ ggp2_density +
 :::
 
 ### Graph
+
+:::: {.column-margin}
+::: {style="font-size: 0.80em; color: #02577A;"}
+A downside of using density plots is the lack of interpretability of the `y` axis. 
+:::
+::::
 
 ::: {style="font-size: 0.90em; color: #1e83c8;"}
 **GRAPH:**

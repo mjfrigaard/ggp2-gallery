@@ -196,7 +196,7 @@ dplyr::glimpse(para_set_peng)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `x` to `x`, `id` to `id`, `y` to `split`, and `value` to `value`
 

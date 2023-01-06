@@ -362,7 +362,7 @@ dplyr::glimpse(avg_birth_day_cat_yr)
 
 ::: {style="font-size: 0.85em;"}
 
-- Create labels   
+- Create labels with `labs()`   
 
 - Map `yr_mnth` to the `x`, `avg_births` to the `y`, and `day_category` to `group`
 

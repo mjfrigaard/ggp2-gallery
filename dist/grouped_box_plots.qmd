@@ -159,7 +159,7 @@ glimpse(peng_box)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `island` to the `x` axis and to `fill`
 

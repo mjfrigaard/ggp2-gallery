@@ -196,7 +196,7 @@ dplyr::glimpse(movies_stream)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
   - use `paste0()` in the `subtitle` to automatically update the `year` when the `movies_stream` changes   
   

@@ -173,7 +173,7 @@ glimpse(peng_grp_col)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `island` to the `x` and `avg_body_mass_g` to the `y`
 

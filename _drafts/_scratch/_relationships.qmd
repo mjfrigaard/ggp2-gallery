@@ -120,7 +120,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `bill_length_mm` to the `x` axis
 
@@ -252,7 +252,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `bill_length_mm` to the `x` axis 
 
@@ -392,7 +392,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `bill_length_mm` to `x` axis
 
@@ -539,7 +539,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `bill_length_mm` to the `x` axis and  `flipper_length_mm` to the `y` axis  
 
@@ -688,7 +688,7 @@ glimpse(peng_wide)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels (with `ggtitle()`, `ylab()`, and `labs()`)
+Create labels with `labs()` (with `ggtitle()`, `ylab()`, and `labs()`)
 
 Add `scale_x_discrete()` with the `limits` set to `"Year"`, `"Island"` and `"Species"`, and `expand` to `0.1` and `0.07`
 
@@ -809,7 +809,7 @@ glimpse(peng_lodes)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `Measure` to `x`, `Frequency` to `y`, `stratum` to `stratum`, `alluvium` to `alluvium`, and `label` to `stratum`.
 
@@ -965,7 +965,7 @@ glimpse(tidy_hurricanes)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map date to the `x`, `rank` to the `y`, and `hurricane` to `color`
 
@@ -1103,7 +1103,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 
 :::

@@ -118,7 +118,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `flipper_length_mm` to the `x` axis and `species` to `fill` 
 
@@ -251,7 +251,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `flipper_length_mm` to the `x` and `species` to `group`  
 
@@ -378,7 +378,7 @@ glimpse(peng_dotplot)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `flipper_length_mm` to `x`
 
@@ -521,7 +521,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `island` to the `x` axis and `color`
 
@@ -661,7 +661,7 @@ glimpse(peng_density)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map the `flipper_length_mm` to the `x` and `sex` to `fill` 
 
@@ -735,7 +735,7 @@ ggp2_ovrlp_density +
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map the `flipper_length_mm` to the `x`, add  `after_stat(count)`, and map `sex` to `fill` 
 
@@ -871,7 +871,7 @@ glimpse(peng_ridges)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `bill_length_mm` to the `x` axis
 
@@ -1010,7 +1010,7 @@ glimpse(peng_box)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `island` to the `x` axis and to `fill`
 
@@ -1145,7 +1145,7 @@ glimpse(peng_violin)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `island` to the `x`, `bill_length_mm` to the `y`, and  `island` to `fill` 
 
@@ -1284,7 +1284,7 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 
 :::

@@ -226,7 +226,7 @@ glimpse(peng_1x1)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Use the `raincloudplots::raincloud_1x1()` to build the plot, assigning `peng_1x1` to `data_1x1`  
   - assign `colors` and `fills`  
@@ -344,7 +344,7 @@ glimpse(peng_raincloud)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 For the first layer, we create a box-plot with `geom_boxplot()`, but include notches and remove the outliers. 
 

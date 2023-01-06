@@ -202,7 +202,7 @@ glimpse(peng_dnsty_2d)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Create two values for extending the range of the `x` and `y` axis (`x_min`/`x_max` and `y_min`/`y_max`) 
 

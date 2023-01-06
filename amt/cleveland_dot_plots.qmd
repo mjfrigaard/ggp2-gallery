@@ -174,7 +174,7 @@ glimpse(peng_clev_dots)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map the `med_flip_length_mm` to the `x` axis, and `island` to the `y` axis, but wrap `island` in `forcats::fct_rev()`.
 

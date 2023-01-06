@@ -53,7 +53,6 @@ install.packages("palmerpenguins")
 ```
 
 
-
 :::: {.callout-note collapse="false" icon=false}
 ## Graph info
 ::: {style="font-size: 1.25em; color: #02577A;"}
@@ -87,9 +86,19 @@ ggp2_boxplot +
   labs_boxplot
 ```
 
-Box-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
+::: {style="font-size: 1.10em; color: #02577A;"}
+***Does your data have...***
+:::
+
+::: {style="font-size: 0.90em; color: #38B44A;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
 
 ::::
+
+## Description
+
+Box-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph.
 
 ## Getting set up
 
@@ -157,7 +166,9 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
+
+Initialize the graph with `ggplot()` and provide `data`
 
   - Assign a blank character string (`""`) to the `x` axis in `labs()`
 

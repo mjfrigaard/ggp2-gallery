@@ -160,7 +160,7 @@ glimpse(trump_approval_diverg)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map the `month_avg` to the `x` and `month` to the `y` 
 

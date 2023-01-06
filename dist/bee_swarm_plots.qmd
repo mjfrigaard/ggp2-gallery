@@ -171,7 +171,7 @@ glimpse(peng_beeswarm)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `species` to the `x` axis and `color`
 

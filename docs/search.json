@@ -515,7 +515,7 @@
     "href": "uni/frequency_polygons.html",
     "title": "Frequency Polygons",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nFrequency polygons are similar to histograms, but they use lines instead of bars to represent the variable’s distribution. The height of the line represents the frequency (or count) of the value occurrence.\nWhen viewing frequency polygons, we’re still assessing the shape of the lines for symmetry and skewness.."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a numeric (continuous) variable"
   },
   {
     "objectID": "uni/frequency_polygons.html#getting-set-up",
@@ -529,14 +529,14 @@
     "href": "uni/frequency_polygons.html#the-grammar",
     "title": "Frequency Polygons",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap flipper_length_mm to the x axis\nAdd the geom_freqpoly() layer\n\n\n\n\nCode\nlabs_freqpoly <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\nggp2_freqpoly <- ggplot(data = penguins,\n      aes(x = flipper_length_mm)) + \n    geom_freqpoly()\nggp2_freqpoly + \n  labs_freqpoly\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\nExperiment to see how many bins fit your variable’s distribution"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\nMap flipper_length_mm to the x axis\nAdd the geom_freqpoly() layer\n\n\n\n\nCode\nlabs_freqpoly <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\nggp2_freqpoly <- ggplot(data = penguins,\n      aes(x = flipper_length_mm)) + \n    geom_freqpoly()\nggp2_freqpoly + \n  labs_freqpoly\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\nExperiment to see how many bins fit your variable’s distribution"
   },
   {
     "objectID": "uni/histograms.html",
     "href": "uni/histograms.html",
     "title": "Histograms",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nHistograms are a special kind of bar-graph. The x axis is divided into ‘bins’ that cover the range of a variable’s values, and the height of the bars is the frequency (or count) of the value occurrence (on the y axis).\nUnlike a typical bar-graph, histograms can be used to visually asses the ‘normality’ (i.e. are the bars symmetrical, with a single peak in the middle of the x axis, or do the bars form multiple peaks?) or ‘skewness’ (i.e., is there a long ‘tail’ of bars with decreasing length on either end of the x axis?) of a variable’s distribution."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a numeric (continuous) variable"
   },
   {
     "objectID": "uni/histograms.html#getting-set-up",
@@ -550,14 +550,14 @@
     "href": "uni/histograms.html#the-grammar",
     "title": "Histograms",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nAssign flipper_length_mm to the x\nAdd the geom_histogram()\nAdjust the bins accordingly\n\n\n\n\nCode\nlabs_histogram <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\n\nggp2_hist <- ggplot(data = penguins,\n     aes(x = flipper_length_mm)) + \n     geom_histogram() \n\nggp2_hist + \n  labs_histogram\n\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\nThe standard number of bins is 30, but ‘you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.’"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\nAssign flipper_length_mm to the x\nAdd the geom_histogram()\nAdjust the bins accordingly\n\n\n\n\nCode\nlabs_histogram <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\n\nggp2_hist <- ggplot(data = penguins,\n     aes(x = flipper_length_mm)) + \n     geom_histogram() \n\nggp2_hist + \n  labs_histogram\n\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\nThe standard number of bins is 30, but ‘you should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.’"
   },
   {
     "objectID": "uni/dot_plots.html",
     "href": "uni/dot_plots.html",
     "title": "Dot-plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nDot-plots are similar to histograms and frequency polygons, except instead of using bars or lines, they use dots to represent the frequency (or count) of values for a given variable."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a numeric (continuous) variable"
   },
   {
     "objectID": "uni/dot_plots.html#getting-set-up",
@@ -571,14 +571,14 @@
     "href": "uni/dot_plots.html#the-grammar",
     "title": "Dot-plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap flipper_length_mm to the x axis\nAdd the geom_dotplot() layer\nAdjust the dotsize\n\n\n\n\nCode\nlabs_dotplot <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\nggp2_dotplot <- ggplot(data = penguins,\n      aes(x = flipper_length_mm)) + \n    geom_dotplot(dotsize = 0.5) \nggp2_dotplot + \n  labs_dotplot\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\nMap flipper_length_mm to the x axis\nAdd the geom_dotplot() layer\nAdjust the dotsize\n\n\n\n\nCode\nlabs_dotplot <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\nggp2_dotplot <- ggplot(data = penguins,\n      aes(x = flipper_length_mm)) + \n    geom_dotplot(dotsize = 0.5) \nggp2_dotplot + \n  labs_dotplot\n\n\n\n\n\n\n\n\n\n\n\nA downside of using dot-plots is the lack of interpretability of the y axis.\n\n\nGRAPH:"
   },
   {
     "objectID": "uni/density_plots.html",
     "href": "uni/density_plots.html",
     "title": "Density Plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nDensity plots are similar to a histogram or frequency polygon, except the outline of the distribution has been ‘smoothed.’\nInstead of dividing the x axis into discrete ‘bins’ to create groupings for the variable’s values, density plots transform the distribution according to a kernel density estimate."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a numeric (continuous) variable"
   },
   {
     "objectID": "uni/density_plots.html#getting-set-up",
@@ -592,14 +592,14 @@
     "href": "uni/density_plots.html#the-grammar",
     "title": "Density Plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap flipper_length_mm to the x axis\nAdd the geom_density() layer\n\n\n\n\nCode\nlabs_density <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\nggp2_density <- ggplot(data = penguins, \n        aes(x = flipper_length_mm)) + \n      geom_density() \n\nggp2_density +\n  labs_density\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\nMap flipper_length_mm to the x axis\nAdd the geom_density() layer\n\n\n\n\nCode\nlabs_density <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Flipper length (millimeters)\")\nggp2_density <- ggplot(data = penguins, \n        aes(x = flipper_length_mm)) + \n      geom_density() \n\nggp2_density +\n  labs_density\n\n\n\n\n\n\n\n\n\n\n\nA downside of using density plots is the lack of interpretability of the y axis.\n\n\nGRAPH:"
   },
   {
     "objectID": "uni/box_plots.html",
     "href": "uni/box_plots.html",
     "title": "Box-Plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nBox-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a numeric (continuous) variable"
   },
   {
     "objectID": "uni/box_plots.html#getting-set-up",
@@ -613,14 +613,14 @@
     "href": "uni/box_plots.html#the-grammar",
     "title": "Box-Plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\n\nAssign a blank character string (\"\") to the x axis in labs()\n\nMap flipper_length_mm to the y axis and an empty string (\"\") to the x axis\nAdd the geom_boxplot() layer\n\n\n\n\nCode\nlabs_boxplot <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"\",\n  y = \"Flipper length (millimeters)\")\nggp2_boxplot <- ggplot(data = penguins,\n           aes(x = \"\", \n               y = flipper_length_mm)) +\n        geom_boxplot() \nggp2_boxplot + \n  labs_boxplot\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\n\n\n\n\n\nMore Info\nBelow we provide more information on interpreting box-plots.\n\nmovies dataGraphInterpretCompare\n\n\n\nWe’ll use the ggplot2movies::movies data to create a box-plot for movie length\n\n\n\n\nCode\ninstall.packages(\"ggplot2movies\")\nlibrary(ggplot2movies) \nlibrary(ggplot2)\n\n\n\n\nFilter ggplot2movies::movies to only include films after the made after 2000, and remove missing values from mpaa and budget\n\n\n\n\nCode\nmovies_box <- ggplot2movies::movies |> \n                dplyr::filter(year > 2000 & \n                                mpaa != \"\" & \n                                    !is.na(budget))\nhead(movies_box)\n\n\n# A tibble: 6 × 24\n  title      year length budget rating votes    r1    r2    r3    r4    r5    r6\n  <chr>     <int>  <int>  <int>  <dbl> <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1 100 Mile…  2002     98  1.1e6    5.6   181   4.5   4.5   4.5   4.5  14.5  24.5\n2 13 Going…  2004     98  3.7e7    6.4  7859   4.5   4.5   4.5   4.5   4.5  14.5\n3 15 Minut…  2001    120  4.2e7    6.1 10866   4.5   4.5   4.5   4.5  14.5  24.5\n4 2 Fast 2…  2003    107  7.6e7    5.1  9556  14.5   4.5   4.5   4.5  14.5  14.5\n5 2046       2004    129  1.2e7    7.6  2663   4.5   4.5   4.5   4.5   4.5   4.5\n6 21 Grams   2003    124  2  e7    8   21857   4.5   4.5   4.5   4.5   4.5   4.5\n# … with 12 more variables: r7 <dbl>, r8 <dbl>, r9 <dbl>, r10 <dbl>,\n#   mpaa <chr>, Action <int>, Animation <int>, Comedy <int>, Drama <int>,\n#   Documentary <int>, Romance <int>, Short <int>\n\n\n\n\n\n\nBelow we create a box-plot of the length variable using the methods described above:\n\n\n\n\nCode\nlabs_boxplot <- labs(\n  title = \"IMDB Movie information and user ratings\",\n  y = \"Movie length (min)\", x = \"\")\nggp2_boxplot <- ggplot(data = movies_box, \n           aes(x = \" \", \n               y = length)) +\n        geom_boxplot() \n\nggp2_boxplot + \n  labs_boxplot\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the length variable from the movies_box dataset.\n\n\n\n\n\n\n \n  \n    25th \n    Median \n    75th \n    IQR \n    Histogram \n  \n \n\n  \n    92 \n    100 \n    113 \n    21 \n    ▁▇▅▁▁ \n  \n\n\n\n\n\n\n\nThe figure below displays how each element in the box-plot represents each of the statistics using lines and points.\n\n\n\n\nIn ggplot2, values that fall more than 1.5 times the IQR are displayed as individual points (aka outliers). The lines extending from the bottom and top of the main box represent the last non-outlier value in the distribution.\n\n\n\n\n\n\n\n\n\nCompare the geom_point(), geom_freqpoly(), geom_histogram(), and geom_density() graphs of length from movie_box below to the geom_boxplot():"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\n\nAssign a blank character string (\"\") to the x axis in labs()\n\nMap flipper_length_mm to the y axis and an empty string (\"\") to the x axis\nAdd the geom_boxplot() layer\n\n\n\n\nCode\nlabs_boxplot <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"\",\n  y = \"Flipper length (millimeters)\")\nggp2_boxplot <- ggplot(data = penguins,\n           aes(x = \"\", \n               y = flipper_length_mm)) +\n        geom_boxplot() \nggp2_boxplot + \n  labs_boxplot\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\n\n\n\n\n\nMore Info\nBelow we provide more information on interpreting box-plots.\n\nmovies dataGraphInterpretCompare\n\n\n\nWe’ll use the ggplot2movies::movies data to create a box-plot for movie length\n\n\n\n\nCode\ninstall.packages(\"ggplot2movies\")\nlibrary(ggplot2movies) \nlibrary(ggplot2)\n\n\n\n\nFilter ggplot2movies::movies to only include films after the made after 2000, and remove missing values from mpaa and budget\n\n\n\n\nCode\nmovies_box <- ggplot2movies::movies |> \n                dplyr::filter(year > 2000 & \n                                mpaa != \"\" & \n                                    !is.na(budget))\nhead(movies_box)\n\n\n# A tibble: 6 × 24\n  title      year length budget rating votes    r1    r2    r3    r4    r5    r6\n  <chr>     <int>  <int>  <int>  <dbl> <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n1 100 Mile…  2002     98  1.1e6    5.6   181   4.5   4.5   4.5   4.5  14.5  24.5\n2 13 Going…  2004     98  3.7e7    6.4  7859   4.5   4.5   4.5   4.5   4.5  14.5\n3 15 Minut…  2001    120  4.2e7    6.1 10866   4.5   4.5   4.5   4.5  14.5  24.5\n4 2 Fast 2…  2003    107  7.6e7    5.1  9556  14.5   4.5   4.5   4.5  14.5  14.5\n5 2046       2004    129  1.2e7    7.6  2663   4.5   4.5   4.5   4.5   4.5   4.5\n6 21 Grams   2003    124  2  e7    8   21857   4.5   4.5   4.5   4.5   4.5   4.5\n# … with 12 more variables: r7 <dbl>, r8 <dbl>, r9 <dbl>, r10 <dbl>,\n#   mpaa <chr>, Action <int>, Animation <int>, Comedy <int>, Drama <int>,\n#   Documentary <int>, Romance <int>, Short <int>\n\n\n\n\n\n\nBelow we create a box-plot of the length variable using the methods described above:\n\n\n\n\nCode\nlabs_boxplot <- labs(\n  title = \"IMDB Movie information and user ratings\",\n  y = \"Movie length (min)\", x = \"\")\nggp2_boxplot <- ggplot(data = movies_box, \n           aes(x = \" \", \n               y = length)) +\n        geom_boxplot() \n\nggp2_boxplot + \n  labs_boxplot\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe table below shows the 25th percentile, the median, the 75th percentile, the IQR, and a histogram of the length variable from the movies_box dataset.\n\n\n\n\n\n\n \n  \n    25th \n    Median \n    75th \n    IQR \n    Histogram \n  \n \n\n  \n    92 \n    100 \n    113 \n    21 \n    ▁▇▅▁▁ \n  \n\n\n\n\n\n\n\nThe figure below displays how each element in the box-plot represents each of the statistics using lines and points.\n\n\n\n\nIn ggplot2, values that fall more than 1.5 times the IQR are displayed as individual points (aka outliers). The lines extending from the bottom and top of the main box represent the last non-outlier value in the distribution.\n\n\n\n\n\n\n\n\n\nCompare the geom_point(), geom_freqpoly(), geom_histogram(), and geom_density() graphs of length from movie_box below to the geom_boxplot():"
   },
   {
     "objectID": "uni/violin_plot.html",
     "href": "uni/violin_plot.html",
     "title": "Violin Plots",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nViolin plots will display the distribution of a single numeric (continuous) variable. If you’re trying to view the shape of a continuous distribution across the groups or levels of a categorical variable, check out grouped violin plots.\nThe violin plot is essentially a mirrored density plot, in which a smoothed distribution is plotted symmetrically across the x or y axis, creating a Rorschach-like inkblot area for the distribution:\n\n\n\nsource: Rorschach test, Wikipedia"
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a numeric (continuous) variable"
   },
   {
     "objectID": "uni/violin_plot.html#getting-set-up",
@@ -634,14 +634,14 @@
     "href": "uni/violin_plot.html#the-grammar",
     "title": "Violin Plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\n\nPlace an empty string (\"\") in the x argument\n\nMap and empty string (\"\") to the x and flipper_length_mm to the y\nAdd geom_violin()\n\n\n\n\nCode\nlabs_violin <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"\",\n  y = \"Flipper length (millimeters)\")\nggp2_violin <- ggplot(data = penguins,\n       aes(x = '', \n           y = flipper_length_mm)) +\n       geom_violin() \nggp2_violin + \n  labs_violin\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\n\nPlace an empty string (\"\") in the x argument\n\nMap and empty string (\"\") to the x and flipper_length_mm to the y\nAdd geom_violin()\n\n\n\n\nCode\nlabs_violin <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"\",\n  y = \"Flipper length (millimeters)\")\nggp2_violin <- ggplot(data = penguins,\n       aes(x = '', \n           y = flipper_length_mm)) +\n       geom_violin() \nggp2_violin + \n  labs_violin\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "uni/bar_graphs.html",
     "href": "uni/bar_graphs.html",
     "title": "Bar-graphs",
     "section": "",
-    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\nA bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!).\nBar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value."
+    "text": "Graph info\n\n\n\n\n\n\nShould I use this graph?\n\n\n\n\n\n\n\n\n\n\n\n\nDoes your data have…\n\n\n✅ a categorical variable (i.e., with non-numeric value levels)"
   },
   {
     "objectID": "uni/bar_graphs.html#getting-set-up",
@@ -655,14 +655,14 @@
     "href": "uni/bar_graphs.html#the-grammar",
     "title": "Bar-graphs",
     "section": "The grammar",
-    "text": "The grammar\nIn ggplot2, bar charts can be built using geom_bar() (see also: geom_col()).\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap species to the x axis\nMap species to the fill aesthetic inside the aes() of geom_bar()\nRemove the legend with show.legend = FALSE\n\n\n\n\nCode\nlabs_bar <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Species\", y = \"Count\", \n  fill = \"Species\")\nggp2_bar <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    geom_bar(aes(fill = species), \n        show.legend = FALSE)\nggp2_bar +\n  labs_bar\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\nIn ggplot2, bar charts can be built using geom_bar() (see also: geom_col()).\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nInitialize the graph with ggplot() and provide data\nMap species to the x axis\nMap species to the fill aesthetic inside the aes() of geom_bar()\nRemove the legend with show.legend = FALSE\n\n\n\n\nCode\nlabs_bar <- labs(\n  title = \"Adult foraging penguins\",\n  subtitle = \"Distribution of flipper length\",\n  x = \"Species\", y = \"Count\", \n  fill = \"Species\")\nggp2_bar <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    geom_bar(aes(fill = species), \n        show.legend = FALSE)\nggp2_bar +\n  labs_bar\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "uni/bar_graphs.html#more-info",
     "href": "uni/bar_graphs.html#more-info",
     "title": "Bar-graphs",
     "section": "More info",
-    "text": "More info\nBelow we cover why geom_bar(stat = \"count\") produces the same result as stat_count(geom = \"bar\").\nThe connection between statistical transformations and geoms is an important principle for building graphs (and mastering the grammar) with ggplot2: We’ll also show how to create bar charts with geom_col().\n\n\n\n“You only need to set one of stat and geom: every geom has a default stat, and every stat a default geom.” - ggplot2 book\n\n\nstat_s and geom_sgeom_col()\n\n\n\nstat_count():\n\n\nThe default stat argument in geom_bar() is set to \"count\", which counts the number of cases at each x position, so it’s ideal for categorical variables (or factors). The stat_count() function can also be used to create bar-graphs using the geom argument.\nThe link between geom_[geom_name](stat = \"[stat_name]\") and stat_[stat_name](geom = \"[geom_name]\") is shown below:\n\n\n\n\nCode\nggp2_geom_bar <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    geom_bar(aes(fill = species), \n        stat = \"count\") + \n    labs(title = \"geom_bar(stat = 'count')\")\nggp2_geom_bar\nggp2_stat_count <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    stat_count(aes(fill = species), \n        geom = \"bar\") + \n    labs(title = \"stat_count(geom = 'bar')\")\nggp2_stat_count\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_col:\n\n\nTo create a bar-graph with geom_col(), the count variable needs to be computed before being mapped into the graph y aesthetic.\n\n\n\n\nCode\npenguins_bar |> \n    # create column of counts \n    dplyr::count(species, name = \"count\") |> \n    # map into x and y\n    ggplot(mapping = aes(x = species, y = count)) +\n    geom_col(aes(fill = species), \n        show.legend = FALSE) + \n    labs_bar +\n    labs(caption = \"*created with geom_col()\")\n# compare to geom_bar()\nggp2_bar +\n  labs_bar"
+    "text": "More info\nBelow we cover why geom_bar(stat = \"count\") produces the same result as stat_count(geom = \"bar\").\nThe connection between statistical transformations and geoms is an important principle for building graphs (and mastering the grammar) with ggplot2: We’ll also show how to create bar charts with geom_col().\n\n\n\n“You only need to set one of stat and geom: every geom has a default stat, and every stat a default geom.” - ggplot2 book\n\n\nstat_s and geom_sgeom_col()\n\n\n\nstat_count():\n\n\nThe default stat argument in geom_bar() is set to \"count\", which counts the number of cases at each x position, so it’s ideal for categorical variables (or factors). The stat_count() function can also be used to create bar-graphs using the geom argument.\nThe link between geom_geom_name(stat = \"stat_name\") and stat_stat_name(geom = \"geom_name\") is shown below:\n\n\n\n\nCode\nggp2_geom_bar <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    geom_bar(aes(fill = species), \n        stat = \"count\") + \n    labs(title = \"geom_bar(stat = 'count')\")\nggp2_geom_bar\nggp2_stat_count <- ggplot(data = penguins_bar,\n       aes(x = species)) +\n    stat_count(aes(fill = species), \n        geom = \"bar\") + \n    labs(title = \"stat_count(geom = 'bar')\")\nggp2_stat_count\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_col:\n\n\nTo create a bar-graph with geom_col(), the count variable needs to be computed before being mapped into the graph y aesthetic.\n\n\n\n\nCode\npenguins_bar |> \n    # create column of counts \n    dplyr::count(species, name = \"count\") |> \n    # map into x and y\n    ggplot(mapping = aes(x = species, y = count)) +\n    geom_col(aes(fill = species), \n        show.legend = FALSE) + \n    labs_bar +\n    labs(caption = \"*created with geom_col()\")\n# compare to geom_bar()\nggp2_bar +\n  labs_bar"
   },
   {
     "objectID": "rela/scatter_plot.html",
@@ -690,7 +690,7 @@
     "href": "rela/correlograms.html",
     "title": "Correlograms",
     "section": "",
-    "text": "PackagesData\n\n\n\nPACKAGES:\n\n\nInstall packages.\n\n\n\n\nCode\n# install.packages(\"palmerpenguins\")\n# library(palmerpenguins) \n# library(ggplot2)\n\n\n\n\n\n\nDATA:\n\n\n\n\n\n\n\n\nCode\n# penguins <- palmerpenguins::penguins\n# glimpse(penguins)\n\n\n\n\n\n\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "PackagesData\n\n\n\nPACKAGES:\n\n\nInstall packages.\n\n\n\n\nCode\n# install.packages(\"palmerpenguins\")\n# library(palmerpenguins) \n# library(ggplot2)\n\n\n\n\n\n\nDATA:\n\n\n\n\n\n\n\n\nCode\n# penguins <- palmerpenguins::penguins\n# glimpse(penguins)\n\n\n\n\n\n\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "rela/line_graphs.html",
@@ -865,7 +865,7 @@
     "href": "rela/density_contours.html#the-grammar",
     "title": "Density Contours",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nCreate two values for extending the range of the x and y axis (x_min/x_max and y_min/y_max)\nMap bill_length_mm to x and flipper_length_mm to y\nAdd the expand_limits() function, assigning our stored values to x and y\nAdd the geom_density_2d()\n\n\n\n\nCode\n# labels\nlabs_dnsty_2d <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\",\n  y = \"Flipper length (mm)\"\n)\n\n# x limits\nx_min <- min(peng_dnsty_2d$bill_length_mm) - 5\nx_max <- max(peng_dnsty_2d$bill_length_mm) + 5\n# y limits\ny_min <- min(peng_dnsty_2d$flipper_length_mm) - 10\ny_max <- max(peng_dnsty_2d$flipper_length_mm) + 10\n\nggp2_dnsty_2d <- ggplot(\n  data = peng_dnsty_2d,\n  mapping = aes(\n    x = bill_length_mm,\n    y = flipper_length_mm\n  )\n) +\n  # use our stored values\n  expand_limits(\n    x = c(x_min, x_max),\n    y = c(y_min, y_max)\n  ) +\n  geom_density_2d()\n# plot\nggp2_dnsty_2d +\n  labs_dnsty_2d\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nCreate two values for extending the range of the x and y axis (x_min/x_max and y_min/y_max)\nMap bill_length_mm to x and flipper_length_mm to y\nAdd the expand_limits() function, assigning our stored values to x and y\nAdd the geom_density_2d()\n\n\n\n\nCode\n# labels\nlabs_dnsty_2d <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\",\n  y = \"Flipper length (mm)\"\n)\n\n# x limits\nx_min <- min(peng_dnsty_2d$bill_length_mm) - 5\nx_max <- max(peng_dnsty_2d$bill_length_mm) + 5\n# y limits\ny_min <- min(peng_dnsty_2d$flipper_length_mm) - 10\ny_max <- max(peng_dnsty_2d$flipper_length_mm) + 10\n\nggp2_dnsty_2d <- ggplot(\n  data = peng_dnsty_2d,\n  mapping = aes(\n    x = bill_length_mm,\n    y = flipper_length_mm\n  )\n) +\n  # use our stored values\n  expand_limits(\n    x = c(x_min, x_max),\n    y = c(y_min, y_max)\n  ) +\n  geom_density_2d()\n# plot\nggp2_dnsty_2d +\n  labs_dnsty_2d\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "rela/density_contours.html#layers",
@@ -907,7 +907,7 @@
     "href": "rela/hex_bins.html#the-grammar",
     "title": "Hexagon bin map",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap bill_length_mm to the x and flipper_length_mm to the y\nAdd the geom_hex() layer\n\n\n\n\nCode\nlabs_hex <- labs(\n    title = \"Adult Foraging Penguins\", \n    subtitle = \"Near Palmer Station, Antarctica\", \n    x = \"Bill length (mm)\", \n    y = \"Flipper length (mm)\")\n# graph\nggp2_hex <- ggplot(data = penguins_hex, \n    aes(x = bill_length_mm, y = flipper_length_mm)) + \n    geom_hex()\n\nggp2_hex + \n    labs_hex\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap bill_length_mm to the x and flipper_length_mm to the y\nAdd the geom_hex() layer\n\n\n\n\nCode\nlabs_hex <- labs(\n    title = \"Adult Foraging Penguins\", \n    subtitle = \"Near Palmer Station, Antarctica\", \n    x = \"Bill length (mm)\", \n    y = \"Flipper length (mm)\")\n# graph\nggp2_hex <- ggplot(data = penguins_hex, \n    aes(x = bill_length_mm, y = flipper_length_mm)) + \n    geom_hex()\n\nggp2_hex + \n    labs_hex\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "rela/hex_bins.html#more-info",
@@ -935,7 +935,7 @@
     "href": "rela/grouped_scatter_plots.html#the-grammar",
     "title": "Grouped Scatter-Plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap bill_length_mm to the x axis\nMap flipper_length_mm to the y axis\nMap species to color inside the geom_point()\n\n\n\n\nCode\nlabs_grp_scatter <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\", \n  y = \"Flipper length (mm)\", \n  color = \"Species\")\n\nggp2_grp_scatter <- penguins |> \n  ggplot(\n    aes(x = bill_length_mm, \n        y = flipper_length_mm)) + \n  geom_point(aes(color = species)) \n\nggp2_grp_scatter + \n  labs_grp_scatter\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\nAdjust over-plotting with transparency (alpha)"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap bill_length_mm to the x axis\nMap flipper_length_mm to the y axis\nMap species to color inside the geom_point()\n\n\n\n\nCode\nlabs_grp_scatter <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\", \n  y = \"Flipper length (mm)\", \n  color = \"Species\")\n\nggp2_grp_scatter <- penguins |> \n  ggplot(\n    aes(x = bill_length_mm, \n        y = flipper_length_mm)) + \n  geom_point(aes(color = species)) \n\nggp2_grp_scatter + \n  labs_grp_scatter\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\nAdjust over-plotting with transparency (alpha)"
   },
   {
     "objectID": "rela/bins_2d.html",
@@ -956,7 +956,7 @@
     "href": "rela/bins_2d.html#the-grammar",
     "title": "2D Histograms",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap bill_length_mm to the x and flipper_length_mm to the y\nAdd the geom_bin2d() layer\n\n\n\n\nCode\nlabs_2dhist <- labs(\n    title = \"Adult Foraging Penguins\", \n    subtitle = \"Near Palmer Station, Antarctica\", \n    x = \"Bill length (mm)\", \n    y = \"Flipper length (mm)\")\n\nggp2_2dhist <- ggplot(data = penguins_2dhist, \n    mapping = aes(x = bill_length_mm, \n                  y = flipper_length_mm)) + \n    geom_bin2d()\n            \nggp2_2dhist + \n    labs_2dhist\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap bill_length_mm to the x and flipper_length_mm to the y\nAdd the geom_bin2d() layer\n\n\n\n\nCode\nlabs_2dhist <- labs(\n    title = \"Adult Foraging Penguins\", \n    subtitle = \"Near Palmer Station, Antarctica\", \n    x = \"Bill length (mm)\", \n    y = \"Flipper length (mm)\")\n\nggp2_2dhist <- ggplot(data = penguins_2dhist, \n    mapping = aes(x = bill_length_mm, \n                  y = flipper_length_mm)) + \n    geom_bin2d()\n            \nggp2_2dhist + \n    labs_2dhist\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "rela/bins_2d.html#more-info",
@@ -984,7 +984,7 @@
     "href": "rela/grouped_bubble_charts.html#the-grammar",
     "title": "Grouped Bubble Graph",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap bill_length_mm to the x axis and flipper_length_mm to the y axis\nInside geom_point()\n\nmap body_mass_g to size and species to fill\n\nset the alpha to 2/3\n\nIn the scale_size()\n\nset range to c(.04, 6)\n\n\n\n\n\nCode\nlabs_grp_bubble <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\", \n  y = \"Flipper length (mm)\", \n  size = \"Body Mass\", \n  fill = \"Species\")\n\nggp2_grp_bubble <- penguins |> \n  ggplot(aes(\n    x = bill_length_mm, y = flipper_length_mm)) + \n  geom_point(\n    aes(size = body_mass_g, \n        color = species), \n            alpha = 2/3) + \n  scale_size(range = c(.04, 6)) \n\nggp2_grp_bubble + \n  labs_grp_bubble\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap bill_length_mm to the x axis and flipper_length_mm to the y axis\nInside geom_point()\n\nmap body_mass_g to size and species to fill\n\nset the alpha to 2/3\n\nIn the scale_size()\n\nset range to c(.04, 6)\n\n\n\n\n\nCode\nlabs_grp_bubble <- labs(\n  title = \"Bill Length vs. Flipper Length\",\n  x = \"Bill Length (mm)\", \n  y = \"Flipper length (mm)\", \n  size = \"Body Mass\", \n  fill = \"Species\")\n\nggp2_grp_bubble <- penguins |> \n  ggplot(aes(\n    x = bill_length_mm, y = flipper_length_mm)) + \n  geom_point(\n    aes(size = body_mass_g, \n        color = species), \n            alpha = 2/3) + \n  scale_size(range = c(.04, 6)) \n\nggp2_grp_bubble + \n  labs_grp_bubble\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "rela/grouped_bubble_charts.html#more-info",
@@ -1012,7 +1012,7 @@
     "href": "prp/stacked_filled_density_graphs.html#the-grammar",
     "title": "Stacked densities",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap the flipper_length_mm to the x and add after_stat(count)\nMap sex to fill\nInside the geom_density() function, set position to \"fill\"\n\n\n\n\nCode\nlabs_fill_density <- labs(\n  title = \"Adult foraging penguins\",\n  x = \"Flipper length (millimeters)\",\n  fill = \"Sex\")\nggp2_fill_density <- ggplot(data = peng_density, \n       aes(x = flipper_length_mm, \n           after_stat(count),\n          fill = sex)) +\n      geom_density(position = \"fill\") \nggp2_fill_density + \n  labs_fill_density\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap the flipper_length_mm to the x and add after_stat(count)\nMap sex to fill\nInside the geom_density() function, set position to \"fill\"\n\n\n\n\nCode\nlabs_fill_density <- labs(\n  title = \"Adult foraging penguins\",\n  x = \"Flipper length (millimeters)\",\n  fill = \"Sex\")\nggp2_fill_density <- ggplot(data = peng_density, \n       aes(x = flipper_length_mm, \n           after_stat(count),\n          fill = sex)) +\n      geom_density(position = \"fill\") \nggp2_fill_density + \n  labs_fill_density\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "prp/pie_charts.html",
@@ -1033,7 +1033,7 @@
     "href": "prp/pie_charts.html#the-grammar",
     "title": "Pie Charts",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nAssign \"perc\" to x\nAssign labs to label\nAssign \"in\" to lab.pos\nAssign \"white\" to lab.font and color\nAssign \"mpaa\" to fill\nRemove legend with theme(legend.position = \"none\")\n\n\n\n\nCode\nlabs <- paste0(movie_pie$mpaa, \" (\", \n               (100*movie_pie$perc), \"%)\")\nlabs_pie <- labs(\n  title = \"Percent MPAA ratings for IMDB movies\",\n  x = \"Percent MPAA rating\")\n\nggp2_pie <- ggpubr::ggpie(movie_pie, \n          x = \"perc\", label = labs, \n          lab.pos = \"in\", lab.font = \"#ffffff\",\n          fill = \"mpaa\", color = \"#ffffff\") + \n    theme(legend.position = \"none\")  \n    \nggp2_pie + \n  labs_pie\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nAssign \"perc\" to x\nAssign labs to label\nAssign \"in\" to lab.pos\nAssign \"white\" to lab.font and color\nAssign \"mpaa\" to fill\nRemove legend with theme(legend.position = \"none\")\n\n\n\n\nCode\nlabs <- paste0(movie_pie$mpaa, \" (\", \n               (100*movie_pie$perc), \"%)\")\nlabs_pie <- labs(\n  title = \"Percent MPAA ratings for IMDB movies\",\n  x = \"Percent MPAA rating\")\n\nggp2_pie <- ggpubr::ggpie(movie_pie, \n          x = \"perc\", label = labs, \n          lab.pos = \"in\", lab.font = \"#ffffff\",\n          fill = \"mpaa\", color = \"#ffffff\") + \n    theme(legend.position = \"none\")  \n    \nggp2_pie + \n  labs_pie\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "prp/treemaps.html",
@@ -1054,7 +1054,7 @@
     "href": "prp/treemaps.html#the-grammar",
     "title": "Treemaps",
     "section": "The grammar",
-    "text": "The grammar\n\nBasic TreemapSubgroupSubgroup 2\n\n\n\nBASIC TREEMAP:\n\n\nCreate labels\n\nMap the n to area, sex to fill and label, species to subgroup, and island to subgroup2\nAdd geom_treemap()\nAdd geom_treemap_text()\n\nplace: this controls where the boxes start\n\ncolor: text color\n\nmin.size: the minimum font size (when re-sizing)\n\nalpha: opacity\n\nfontface: itlalic/bond\n\nfamily: \"sans\"/\"sansserif\"/\"mono\"\n\n\n\n\n\n\nCode\nlabs_treemap <- labs(\n  title = \"Species, island, and sex of adult penguins\",\n    fill = \"Sex\")\nggp2_treemap <- ggplot(treemap_peng, \n       aes(area = n, \n           fill = sex, \n           label = sex,\n           subgroup = species,\n           subgroup2 = island)) +\n       treemapify::geom_treemap() +\n       treemapify::geom_treemap_text(\n           place = \"bottomright\",\n           color = \"#d0d0d0\",\n           min.size = 0,\n           alpha = 0.90,\n           fontface = \"italic\",\n           family = \"sans\") \nggp2_treemap + \n  labs_treemap\n\n\n\n\n\n\n\n\n\n\n\n\n\nSUBGROUP:\n\n\nggplot2 build layers in the order they’re written, so it’s advised to build the subgroups in order from “from deepest to shallowest”, with subgroups2 first (ending on subgroup)\n\nAdd geom_treemap_subgroup2_border()\n\nSet the size and color\n\nAdd geom_treemap_subgroup2_text()\n\nplace: this controls where the boxes start\n\ncolor: text color\n\nmin.size: the minimum font size (when re-sizing)\n\nalpha: opacity\n\nfontface: itlalic/bond\n\nfamily: \"sans\"/\"sansserif\"/\"mono\"\n\n\nSee full list of arguments here.\n\n\n\n\nCode\nggp2_tm_subgroup <- ggp2_treemap +\n    treemapify::geom_treemap_subgroup2_border(\n           color = \"#282b2d\",\n           size = 4.0) + \n       treemapify::geom_treemap_subgroup2_text(\n           place = \"center\",\n           alpha = 0.65,\n           color = \"#282b2d\",\n           min.size = 0,\n           family = \"sans\")\nggp2_tm_subgroup +\n  labs_treemap\n\n\n\n\n\n\n\n\n\n\n\n\n\nSUBGROUP 2:\n\n\nAdd geom_treemap_subgroup_border()\n\nSet the size and color\n\nAdd geom_treemap_subgroup_text()\n\nplace: this controls where the boxes start\n\ncolor: text color\n\nmin.size: the minimum font size (when re-sizing)\n\nalpha: opacity\n\nfontface: itlalic/bond\n\nfamily: \"sans\"/\"sansserif\"/\"mono\"\n\n\n\n\n\nCode\nggp2_tm_subgroup2 <- ggp2_tm_subgroup + \n       treemapify::geom_treemap_subgroup_border(\n           color = \"#ffffff\", \n           size = 4) + \n       treemapify::geom_treemap_subgroup_text(\n           place = \"topleft\",\n           alpha = 0.65,\n           grow = TRUE,\n           color = \"#ffffff\",\n           min.size = 0,\n           family = \"mono\",\n           fontface = \"bold\")\n\nggp2_tm_subgroup2 + \n  labs_treemap"
+    "text": "The grammar\n\nBasic TreemapSubgroupSubgroup 2\n\n\n\nBASIC TREEMAP:\n\n\nCreate labels with labs()\n\nMap the n to area, sex to fill and label, species to subgroup, and island to subgroup2\nAdd geom_treemap()\nAdd geom_treemap_text()\n\nplace: this controls where the boxes start\n\ncolor: text color\n\nmin.size: the minimum font size (when re-sizing)\n\nalpha: opacity\n\nfontface: itlalic/bond\n\nfamily: \"sans\"/\"sansserif\"/\"mono\"\n\n\n\n\n\n\nCode\nlabs_treemap <- labs(\n  title = \"Species, island, and sex of adult penguins\",\n    fill = \"Sex\")\nggp2_treemap <- ggplot(treemap_peng, \n       aes(area = n, \n           fill = sex, \n           label = sex,\n           subgroup = species,\n           subgroup2 = island)) +\n       treemapify::geom_treemap() +\n       treemapify::geom_treemap_text(\n           place = \"bottomright\",\n           color = \"#d0d0d0\",\n           min.size = 0,\n           alpha = 0.90,\n           fontface = \"italic\",\n           family = \"sans\") \nggp2_treemap + \n  labs_treemap\n\n\n\n\n\n\n\n\n\n\n\n\n\nSUBGROUP:\n\n\nggplot2 build layers in the order they’re written, so it’s advised to build the subgroups in order from “from deepest to shallowest”, with subgroups2 first (ending on subgroup)\n\nAdd geom_treemap_subgroup2_border()\n\nSet the size and color\n\nAdd geom_treemap_subgroup2_text()\n\nplace: this controls where the boxes start\n\ncolor: text color\n\nmin.size: the minimum font size (when re-sizing)\n\nalpha: opacity\n\nfontface: itlalic/bond\n\nfamily: \"sans\"/\"sansserif\"/\"mono\"\n\n\nSee full list of arguments here.\n\n\n\n\nCode\nggp2_tm_subgroup <- ggp2_treemap +\n    treemapify::geom_treemap_subgroup2_border(\n           color = \"#282b2d\",\n           size = 4.0) + \n       treemapify::geom_treemap_subgroup2_text(\n           place = \"center\",\n           alpha = 0.65,\n           color = \"#282b2d\",\n           min.size = 0,\n           family = \"sans\")\nggp2_tm_subgroup +\n  labs_treemap\n\n\n\n\n\n\n\n\n\n\n\n\n\nSUBGROUP 2:\n\n\nAdd geom_treemap_subgroup_border()\n\nSet the size and color\n\nAdd geom_treemap_subgroup_text()\n\nplace: this controls where the boxes start\n\ncolor: text color\n\nmin.size: the minimum font size (when re-sizing)\n\nalpha: opacity\n\nfontface: itlalic/bond\n\nfamily: \"sans\"/\"sansserif\"/\"mono\"\n\n\n\n\n\nCode\nggp2_tm_subgroup2 <- ggp2_tm_subgroup + \n       treemapify::geom_treemap_subgroup_border(\n           color = \"#ffffff\", \n           size = 4) + \n       treemapify::geom_treemap_subgroup_text(\n           place = \"topleft\",\n           alpha = 0.65,\n           grow = TRUE,\n           color = \"#ffffff\",\n           min.size = 0,\n           family = \"mono\",\n           fontface = \"bold\")\n\nggp2_tm_subgroup2 + \n  labs_treemap"
   },
   {
     "objectID": "prp/diverging_bar_graphs.html",
@@ -1075,14 +1075,14 @@
     "href": "prp/diverging_bar_graphs.html#the-grammar",
     "title": "Diverging Bar-graphs",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap the month to the x and month_avg to the y\nInsidegeom_bar()\n\nmap poll to fill\nuse stat = \"identity\" and width = .5\n\nAdd scale_y_continuous() to manually set the limits and format the axis with scales::percent\n\n\n\n\nCode\nlabs_geom_bar_diverg <- labs(\n  title = \"Trump Approval Ratings\",\n  subtitle = \"From 'How Popular is Donald Trump'\",\n  x = \"Month\",\n  y = \"Monthly average percent\",\n  fill = \"Estimate\")\nggp2_bars_diverg <- ggplot(\n  data = trump_approval_diverg, \n    aes(x = month, y = month_avg)) +\n  geom_bar(aes(fill = poll),\n    stat = \"identity\", width = .5) + \n  scale_y_continuous(limits = c(-1, 1), \n    labels = scales::percent) \n\nggp2_bars_diverg + \n  labs_geom_bar_diverg\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap the month to the x and month_avg to the y\nInsidegeom_bar()\n\nmap poll to fill\nuse stat = \"identity\" and width = .5\n\nAdd scale_y_continuous() to manually set the limits and format the axis with scales::percent\n\n\n\n\nCode\nlabs_geom_bar_diverg <- labs(\n  title = \"Trump Approval Ratings\",\n  subtitle = \"From 'How Popular is Donald Trump'\",\n  x = \"Month\",\n  y = \"Monthly average percent\",\n  fill = \"Estimate\")\nggp2_bars_diverg <- ggplot(\n  data = trump_approval_diverg, \n    aes(x = month, y = month_avg)) +\n  geom_bar(aes(fill = poll),\n    stat = \"identity\", width = .5) + \n  scale_y_continuous(limits = c(-1, 1), \n    labels = scales::percent) \n\nggp2_bars_diverg + \n  labs_geom_bar_diverg\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "prp/diverging_bar_graphs.html#vertical-diverging-bar-graphs",
     "href": "prp/diverging_bar_graphs.html#vertical-diverging-bar-graphs",
     "title": "Diverging Bar-graphs",
     "section": "Vertical diverging Bar-graphs",
-    "text": "Vertical diverging Bar-graphs\nFor vertically arranged bars, we switch the x and y axis variables.\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\nMap the month_avg to the x and month to the y\nInside geom_bar()\n\nmap poll to fill\nuse stat = \"identity\" and width = .5\n\nAdd scale_y_continuous() to manually set the limits and format the axis with scales::percent\n\n\n\n\nCode\nlabs_geom_bar_diverg_vert <- labs(\n  title = \"Trump Approval Ratings\",\n  subtitle = \"From 'How Popular is Donald Trump'\",\n  x = \"Monthly average percent\",\n  y = \"Month\",\n  fill = \"Estimate\")\nggp2_bar_diverg_vert <- ggplot(\n  data = trump_approval_diverg,\n      aes(x = month_avg, y =  month)) +\n  geom_bar(\n      aes(fill = poll), \n        stat = \"identity\", width = .5) + \n  scale_x_continuous(limits = c(-1, 1), \n        labels = scales::percent)\nggp2_bar_diverg_vert + \n  labs_geom_bar_diverg_vert\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "Vertical diverging Bar-graphs\nFor vertically arranged bars, we switch the x and y axis variables.\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap the month_avg to the x and month to the y\nInside geom_bar()\n\nmap poll to fill\nuse stat = \"identity\" and width = .5\n\nAdd scale_y_continuous() to manually set the limits and format the axis with scales::percent\n\n\n\n\nCode\nlabs_geom_bar_diverg_vert <- labs(\n  title = \"Trump Approval Ratings\",\n  subtitle = \"From 'How Popular is Donald Trump'\",\n  x = \"Monthly average percent\",\n  y = \"Month\",\n  fill = \"Estimate\")\nggp2_bar_diverg_vert <- ggplot(\n  data = trump_approval_diverg,\n      aes(x = month_avg, y =  month)) +\n  geom_bar(\n      aes(fill = poll), \n        stat = \"identity\", width = .5) + \n  scale_x_continuous(limits = c(-1, 1), \n        labels = scales::percent)\nggp2_bar_diverg_vert + \n  labs_geom_bar_diverg_vert\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "prp/stream_plots.html",
@@ -1103,7 +1103,7 @@
     "href": "prp/stream_plots.html#the-grammar",
     "title": "Stream plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels\n\nuse paste0() in the subtitle to automatically update the year when the movies_stream changes\n\nMap year to the x, avg_budget to y, and mpaa to fill\nAdd the geom_stream() layer\nAdjust the y axis with scale_y_continuous() and scales::dollar\n\n\n\n\nCode\nlabs_stream <- labs(\n    title = \"20 years of movie budgets\", \n    subtitle = \n        paste0(\"movies between\", \n            min(movies_stream$year), \n            \" and \", \n            max(movies_stream$year)),\n    x = \"Year\", \n    y = \"Average Movie Budget\")\n\nggp2_stream <- ggplot(data = movies_stream, \n    mapping = aes(x = year, \n                  y = avg_budget, \n                  fill = mpaa)) + \n    ggstream::geom_stream() + \n    scale_y_continuous(labels = scales::dollar)\nggp2_stream + \n    labs_stream\n\n\n\n\n\n\n\n\n\nGRAPH:"
+    "text": "The grammar\n\nCodeGraph\n\n\n\nCODE:\n\n\nCreate labels with labs()\n\nuse paste0() in the subtitle to automatically update the year when the movies_stream changes\n\nMap year to the x, avg_budget to y, and mpaa to fill\nAdd the geom_stream() layer\nAdjust the y axis with scale_y_continuous() and scales::dollar\n\n\n\n\nCode\nlabs_stream <- labs(\n    title = \"20 years of movie budgets\", \n    subtitle = \n        paste0(\"movies between\", \n            min(movies_stream$year), \n            \" and \", \n            max(movies_stream$year)),\n    x = \"Year\", \n    y = \"Average Movie Budget\")\n\nggp2_stream <- ggplot(data = movies_stream, \n    mapping = aes(x = year, \n                  y = avg_budget, \n                  fill = mpaa)) + \n    ggstream::geom_stream() + \n    scale_y_continuous(labels = scales::dollar)\nggp2_stream + \n    labs_stream\n\n\n\n\n\n\n\n\n\nGRAPH:"
   },
   {
     "objectID": "prp/stream_plots.html#more-info",
@@ -1131,7 +1131,7 @@
     "href": "prp/mosaic_plot.html#the-grammar",
     "title": "Mosaic Plots",
     "section": "The grammar",
-    "text": "The grammar\n\nCodeGraphDetails\n\n\n\nCODE:\n\n\nCreate labels\nMap the product() of unruly_child and baby to the x axis\nMap baby to fill\nAdd theme_mosaic()\nMove the legend to the bottom with theme(legend.position = \"bottom\")\n\n\n\n\nCode\nlabs_mosaic <- labs(\n      title = \"In general...\", \n      subtitle = \"...is it rude to...\",\n      x = \"... bring a baby on a plane?\",\n      y = \"...knowingly bring unruly children on a plane?\",\n      fill = \"Response\") \nggp2_mosaic <- ggplot(data = fly_mosaic) +\n   ggmosaic::geom_mosaic(mapping = \n          aes(x = product(unruly_child, baby), \n              fill = baby)) + \n    ggmosaic::theme_mosaic(base_size = 10) + \n    theme(legend.position = \"bottom\")\nggp2_mosaic + \n    labs_mosaic\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\n\n\n\n\n\n\nDETAILS:\n\n\nWe’ve re-written the labels for the mosaic plot (ggp2_mosaic) to illustrate what’s happening in the aes() of geom_mosaic().\n\n\n\n\nIt’s a good idea to adjust the fig-height and fig-width of your graph\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    unruly_child \n    No \n    Somewhat \n    Very \n  \n \n\n  \n    Very \n    152 \n    125 \n    74 \n  \n  \n    Somewhat \n    296 \n    54 \n    1 \n  \n  \n    No \n    144 \n    3 \n     \n  \n\n\n\n\n\n\n\n\nThe table above displays the counts for each combined response. As we can see, the counts are represented by height and width in the graph."
+    "text": "The grammar\n\nCodeGraphDetails\n\n\n\nCODE:\n\n\nCreate labels with labs()\nMap the product() of unruly_child and baby to the x axis\nMap baby to fill\nAdd theme_mosaic()\nMove the legend to the bottom with theme(legend.position = \"bottom\")\n\n\n\n\nCode\nlabs_mosaic <- labs(\n      title = \"In general...\", \n      subtitle = \"...is it rude to...\",\n      x = \"... bring a baby on a plane?\",\n      y = \"...knowingly bring unruly children on a plane?\",\n      fill = \"Response\") \nggp2_mosaic <- ggplot(data = fly_mosaic) +\n   ggmosaic::geom_mosaic(mapping = \n          aes(x = product(unruly_child, baby), \n              fill = baby)) + \n    ggmosaic::theme_mosaic(base_size = 10) + \n    theme(legend.position = \"bottom\")\nggp2_mosaic + \n    labs_mosaic\n\n\n\n\n\n\n\n\n\nGRAPH:\n\n\n\n\n\n\n\n\n\n\n\n\n\nDETAILS:\n\n\nWe’ve re-written the labels for the mosaic plot (ggp2_mosaic) to illustrate what’s happening in the aes() of geom_mosaic().\n\n\n\n\nIt’s a good idea to adjust the fig-height and fig-width of your graph\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    unruly_child \n    No \n    Somewhat \n    Very \n  \n \n\n  \n    Very \n    152 \n    125 \n    74 \n  \n  \n    Somewhat \n    296 \n    54 \n    1 \n  \n  \n    No \n    144 \n    3 \n     \n  \n\n\n\n\n\n\n\n\nThe table above displays the counts for each combined response. As we can see, the counts are represented by height and width in the graph."
   },
   {
     "objectID": "prp/mosaic_plot.html#more-info",
@@ -1139,5 +1139,54 @@
     "title": "Mosaic Plots",
     "section": "More info",
     "text": "More info\nI recommend reading the ggmosaic vignette, particularly the sections on ordering and conditioning.\n\nTwo variablesFacets\n\n\n\nTWO VARIABLES:\n\n\nBelow is another example of a two-variable mosaic plot, mapping the product() variables as unruly_child and recline_rude, and the fill variable as recline_rude.\nOnce again we can see the counts for each category in the cross-tabulation:\n\n\n\n\n\n\n\n \n  \n    unruly_child \n    No \n    Somewhat \n    Very \n  \n \n\n  \n    Very \n    193 \n    119 \n    39 \n  \n  \n    Somewhat \n    204 \n    123 \n    24 \n  \n  \n    No \n    102 \n    38 \n    7 \n  \n\n\n\n\n\n\n\n\nCode\n# build 2-variable mosiac plot\nlabs_mosaic_2var <- labs(\n  title = \"In general...is it rude to...\", \n  subtitle = \"2-Variable plot\",\n  x = \"... recline your seat on a plane?\",\n  y = \"...knowingly bring unruly children on a plane?\",\n  fill = \"recline_rude responses\")\n\nggp2_mosaic_2var <- ggplot(data = fly_mosaic) +\n  geom_mosaic(aes(\n    x = product(unruly_child, recline_rude),\n    fill = recline_rude)) +\n  ggmosaic::theme_mosaic(base_size = 10) + \n  theme(legend.position = \"bottom\")\n  \nggp2_mosaic_2var + \n    labs_mosaic_2var\n\n\n\n\n\n\n\n\n\n\n\nFor conditional variables, we map the product() variable as unruly_child and the fill variable as baby, but include a conds variable (as product(recline_rude)).\n\n\n\n\nCode\n# build conditional mosiac plot\nlabs_mosaic_cond <- labs(\n  title = \"In general...is it rude to...\", \n  subtitle = \"Conditional plot\",\n  x = \"...recline your seat on a plane?\",\n  y = \"...knowingly bring unruly children on a plane?\",\n  fill = \"unruly_child responses\")\nggp2_mosaic_cond <- ggplot(data = fly_mosaic) +\n  geom_mosaic(aes(\n    x = product(unruly_child), # product variable\n    fill = unruly_child,\n    conds = product(recline_rude))) + # conditional variable\n  ggmosaic::theme_mosaic(base_size = 10) + \n  theme(legend.position = \"bottom\")\n\nggp2_mosaic_cond + \n    labs_mosaic_cond\n\n\n\n\n\n\n\n\n\n\n\n\n\nFACETS:\n\n\nAnother option for including a conditioning variable is including facets. In the example below we use recline_rude in both x and fill (we don’t need to wrap recline_rude in product() because it’s the only variable).\nThe divider argument let’s us control the spine partitions (vertically and horizontally). Below are the two vertical orientation options for the divider argument.\n\n\n\n\n\n\n\n\n\n\n\nThe two horizontal orientation options make the axis text harder to read, so these need to be manipulated manually."
+  },
+  {
+    "objectID": "uni/bar_graphs.html#description",
+    "href": "uni/bar_graphs.html#description",
+    "title": "Bar-graphs",
+    "section": "Description",
+    "text": "Description\nA bar-graph (or bar-chart) is typically used to display counts for the discrete levels of a categorical variable, like political affiliation, hair color, or race/ethnicity (or species of penguin!).\nBar charts can be arranged vertically or horizontally, but the length of the bar represents the ‘count’ for each category value."
+  },
+  {
+    "objectID": "uni/histograms.html#description",
+    "href": "uni/histograms.html#description",
+    "title": "Histograms",
+    "section": "Description",
+    "text": "Description\nHistograms are a special kind of bar-graph. The x axis is divided into ‘bins’ that cover the range of a variable’s values, and the height of the bars is the frequency (or count) of the value occurrence (displayed on the y axis).\nUnlike a typical bar-graph, histograms can be used to visually asses the ‘normality’ (i.e. are the bars symmetrical, with a single peak in the middle of the x axis? Or do the bars form multiple peaks?) or ‘skewness’ (i.e., is there a long ‘tail’ of bars with decreasing length on either end of the x axis?) of a variable’s distribution."
+  },
+  {
+    "objectID": "uni/violin_plot.html#description",
+    "href": "uni/violin_plot.html#description",
+    "title": "Violin Plots",
+    "section": "Description",
+    "text": "Description\nViolin plots will display the distribution of a single numeric (continuous) variable. If you’re trying to view the shape of a continuous distribution across the groups or levels of a categorical variable, check out grouped violin plots.\nThe violin plot is essentially a mirrored density plot, in which a smoothed distribution is plotted symmetrically across the x or y axis, creating a Rorschach-like inkblot area for the distribution:\n\n\n\nsource: Rorschach test, Wikipedia"
+  },
+  {
+    "objectID": "uni/frequency_polygons.html#description",
+    "href": "uni/frequency_polygons.html#description",
+    "title": "Frequency Polygons",
+    "section": "Description",
+    "text": "Description\nFrequency polygons are similar to histograms, but they use lines instead of bars to represent the variable’s distribution. The height of the line represents the frequency (or count) of the value occurrence.\nWhen viewing frequency polygons, we’re still assessing the shape of the lines for symmetry and skewness.."
+  },
+  {
+    "objectID": "uni/dot_plots.html#description",
+    "href": "uni/dot_plots.html#description",
+    "title": "Dot-plots",
+    "section": "Description",
+    "text": "Description\nDot-plots are similar to histograms and frequency polygons, except instead of using bars or lines, they use dots to represent the frequency (or count) of values for a given variable."
+  },
+  {
+    "objectID": "uni/density_plots.html#description",
+    "href": "uni/density_plots.html#description",
+    "title": "Density Plots",
+    "section": "Description",
+    "text": "Description\nDensity plots are similar to a histogram or frequency polygon, except the outline of the distribution has been ‘smoothed.’\nInstead of dividing the x axis into discrete ‘bins’ to create groupings for the variable’s values, density plots transform the distribution according to a kernel density estimate."
+  },
+  {
+    "objectID": "uni/box_plots.html#description",
+    "href": "uni/box_plots.html#description",
+    "title": "Box-Plots",
+    "section": "Description",
+    "text": "Description\nBox-plots (sometimes called box-and-whisker plots) use position, lines (vertical and horizontal), and points to convey a collection of summary statistics in a single graph."
   }
 ]

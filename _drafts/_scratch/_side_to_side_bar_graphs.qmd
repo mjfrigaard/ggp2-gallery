@@ -133,7 +133,7 @@ glimpse(penguins_dodge)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `species` to the `x` and `sex` to `fill`
 

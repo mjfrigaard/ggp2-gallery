@@ -163,7 +163,7 @@ glimpse(penguins_ovrlp)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `flipper_length_mm` to the `x` and `species` to `fill`
 
@@ -274,7 +274,7 @@ glimpse(penguins_dodge)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `species` to the `x` and `island` to `group` and `fill` 
 
@@ -329,7 +329,7 @@ ggp2_bar_dodge +
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `species` to `x` and `island` to `fill`
 

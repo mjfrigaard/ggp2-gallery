@@ -153,7 +153,7 @@ glimpse(penguins)
 ::: {style="font-size: 0.85em;"}
 
 
-Create labels
+Create labels with `labs()`
 
 Map `flipper_length_mm` to the `x` axis and `species` to `fill` 
 

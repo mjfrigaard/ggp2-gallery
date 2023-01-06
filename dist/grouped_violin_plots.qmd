@@ -155,7 +155,7 @@ glimpse(peng_violin)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `island` to the `x`, `bill_length_mm` to the `y`, and  `island` to `fill` 
 

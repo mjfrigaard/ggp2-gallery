@@ -157,7 +157,7 @@ glimpse(peng_ridges)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Map `bill_length_mm` to the `x` axis
 

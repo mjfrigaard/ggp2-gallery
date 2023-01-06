@@ -50,7 +50,7 @@ ggp2_bar +
 ## DATA ----
 penguins |> glimpse()
 ## CODE ----
-# Create labels 
+# Create labels with `labs()` 
 labs_histogram <- labs(
   title = "Adult foraging penguins",
   x = "Flipper length (millimeters)")

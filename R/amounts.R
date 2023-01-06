@@ -86,7 +86,7 @@ peng_grp_col <- palmerpenguins::penguins |>
     dplyr::mutate(
         body_mass_kg = body_mass_g / 1000
     )
-# Create labels
+# Create labels with `labs()`
 labs_grp_col <- labs(
     title = "Total Penguin Mass",
     subtitle = "How many kilograms of penguin per Island?",
@@ -120,7 +120,7 @@ peng_sum_col <- palmerpenguins::penguins |>
         avg_body_mass_g = mean(body_mass_g)
         ) |>
     dplyr::ungroup()
-# Create labels
+# Create labels with `labs()`
 labs_sum_col <- labs(
     title = "Average Penguin Mass",
     subtitle = "What's the average mass of penguins per Island?",

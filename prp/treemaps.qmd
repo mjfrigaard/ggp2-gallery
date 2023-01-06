@@ -202,7 +202,7 @@ glimpse(treemap_peng)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 - Map the `n` to `area`, `sex` to `fill` and `label`, `species` to `subgroup`, and `island` to `subgroup2`
 

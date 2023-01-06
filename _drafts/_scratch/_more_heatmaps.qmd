@@ -155,7 +155,7 @@ heatmap_ross <- fivethirtyeight::bob_ross |>
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
 
 Assign `season` to `x`, `object` to `y`, and `occurrences` to fill
 

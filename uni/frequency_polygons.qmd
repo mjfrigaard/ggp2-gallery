@@ -88,11 +88,21 @@ ggp2_freqpoly +
   labs_freqpoly
 ```
 
+::: {style="font-size: 1.10em; color: #02577A;"}
+***Does your data have...***
+:::
+
+::: {style="font-size: 0.90em; color: #38B44A;"}
+`r emo::ji("check")` a numeric (continuous) variable
+:::
+
+::::
+
+## Description 
+
 Frequency polygons are similar to histograms, but they use lines instead of bars to represent the variable's distribution. The height of the line represents the frequency (or count) of the value occurrence.
 
 When viewing frequency polygons, we're still assessing the shape of the lines for [symmetry](https://en.wikipedia.org/wiki/Normal_distribution) and [skewness.](https://en.wikipedia.org/wiki/Skewness).
-
-::::
 
 ## Getting set up
 
@@ -160,7 +170,9 @@ glimpse(penguins)
 
 ::: {style="font-size: 0.85em;"}
 
-Create labels
+Create labels with `labs()`
+
+Initialize the graph with `ggplot()` and provide `data`
 
 Map `flipper_length_mm` to the `x` axis
 
