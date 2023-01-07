@@ -57,7 +57,7 @@ install.packages("ggplot2")
 library(ggplot2)
 ```
 
-Or install `ggplot2` as part of the `tidyverse`:
+Or you can install `ggplot2` as part of the `tidyverse`:
 
 ::: {.column-margin}
 ![](www/tidyverse.png){fig-align="center" width="40%" height="40%"}

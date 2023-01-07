@@ -487,7 +487,7 @@
     "href": "index.html",
     "title": "Overview",
     "section": "",
-    "text": "Welcome! This website contains a collection of graphs created using ggplot2 (and friends!).\nInstall ggplot2 using the code below:\nOr install ggplot2 as part of the tidyverse:"
+    "text": "Welcome! This website contains a collection of graphs created using ggplot2 (and friends!).\nInstall ggplot2 using the code below:\nOr you can install ggplot2 as part of the tidyverse:"
   },
   {
     "objectID": "index.html#the-data",
