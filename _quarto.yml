@@ -14,56 +14,58 @@ website:
           - index.qmd
       - section: "Univariate"
         contents:
-          - uni/bar_graphs.qmd
-          - uni/histograms.qmd
-          - uni/frequency_polygons.qmd
-          - uni/dot_plots.qmd
-          - uni/density_plots.qmd
-          - uni/violin_plot.qmd
-          - uni/box_plots.qmd
+          - bar_graphs.qmd
+          - histograms.qmd
+          - frequency_polygons.qmd
+          - dot_plots.qmd
+          - density_plots.qmd
+          - violin_plot.qmd
+          - box_plots.qmd
       - section: "Amounts"
         contents:
-          - amt/sum_bar_graphs.qmd
-          - amt/grp_bar_graphs.qmd
-          - amt/overlapping_bar_graphs.qmd
-          - amt/waffle_chart.qmd
-          - amt/heatmaps.qmd
-          - amt/cleveland_dot_plots.qmd
+          - sum_bar_graphs.qmd
+          - grp_bar_graphs.qmd
+          - overlapping_bar_graphs.qmd
+          - waffle_chart.qmd
+          - heatmaps.qmd
+          - cleveland_dot_plots.qmd
       - section: "Proportions"
         contents:
-          - prp/pie_charts.qmd
-          - prp/diverging_bar_graphs.qmd
-          - prp/mosaic_plot.qmd
-          - prp/treemaps.qmd
-          - prp/stacked_filled_density_graphs.qmd
-          - prp/stream_plots.qmd
+          - pie_charts.qmd
+          - diverging_bar_graphs.qmd
+          - mosaic_plot.qmd
+          - treemaps.qmd
+          - stacked_filled_density_graphs.qmd
       - section: "Distributions"
         contents:
-          - dist/overlapping_histograms.qmd
-          - dist/overlapping_frequency_polygons.qmd
-          - dist/overlapping_dot_plots.qmd
-          - dist/beeswarm_plots.qmd
-          - dist/overlapping_stacked_density_plots.qmd
-          - dist/ridgeline_plots.qmd
-          - dist/grouped_box_plots.qmd
-          - dist/grouped_violin_plots.qmd
-          - dist/raincloud_plots.qmd
+          - overlapping_histograms.qmd
+          - overlapping_frequency_polygons.qmd
+          - overlapping_dot_plots.qmd
+          - beeswarm_plots.qmd
+          - overlapping_stacked_density_plots.qmd
+          - ridgeline_plots.qmd
+          - grouped_box_plots.qmd
+          - grouped_violin_plots.qmd
+          - raincloud_plots.qmd
+      - section: "Dates and times"
+        contents:
+          - line_graphs.qmd
+          - grp_line_graphs.qmd
+          - bump_charts.qmd
+          - slope_graphs.qmd
+          - stream_plots.qmd
+          - alluvial_charts.qmd
       - section: "Relationships"
         contents:
-          - rela/scatter_plot.qmd
-          - rela/grouped_scatter_plots.qmd
-          - rela/bubble_charts.qmd
-          - rela/grouped_bubble_charts.qmd
-          - rela/line_graphs.qmd
-          - rela/grp_line_graphs.qmd
-          - rela/alluvial_charts.qmd
-          - rela/parallel_sets.qmd
-          - rela/bump_charts.qmd
-          - rela/slope_graphs.qmd
-          - rela/density_contours.qmd
-          - rela/bins_2d.qmd
-          - rela/hex_bins.qmd
-          # - rela/correlograms.qmd
+          - scatter_plot.qmd
+          - grouped_scatter_plots.qmd
+          - bubble_charts.qmd
+          - grouped_bubble_charts.qmd
+          - parallel_sets.qmd
+          - density_contours.qmd
+          - bins_2d.qmd
+          - hex_bins.qmd
+          # - correlograms.qmd
       - section: "Lines"
         contents:
           - geoms/geom_line.qmd
